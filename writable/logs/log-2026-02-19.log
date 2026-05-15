@@ -1,0 +1,22 @@
+CRITICAL - 2026-02-19 05:20:36 --> CodeIgniter\Security\Exceptions\SecurityException: Attempted to send a secure cookie over a non-secure connection.
+[Method: GET, Route: /]
+in SYSTEMPATH\HTTP\ResponseTrait.php on line 679.
+ 1 SYSTEMPATH\HTTP\ResponseTrait.php(679): CodeIgniter\Security\Exceptions\SecurityException::forInsecureCookie()
+ 2 SYSTEMPATH\HTTP\ResponseTrait.php(669): CodeIgniter\HTTP\Response->dispatchCookies()
+ 3 SYSTEMPATH\HTTP\ResponseTrait.php(377): CodeIgniter\HTTP\Response->sendCookies()
+ 4 SYSTEMPATH\CodeIgniter.php(1107): CodeIgniter\HTTP\Response->send()
+ 5 SYSTEMPATH\CodeIgniter.php(377): CodeIgniter\CodeIgniter->sendResponse()
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-19 05:21:10 --> CodeIgniter\Security\Exceptions\SecurityException: Attempted to send a secure cookie over a non-secure connection.
+[Method: GET, Route: /]
+in SYSTEMPATH\HTTP\ResponseTrait.php on line 679.
+ 1 SYSTEMPATH\HTTP\ResponseTrait.php(679): CodeIgniter\Security\Exceptions\SecurityException::forInsecureCookie()
+ 2 SYSTEMPATH\HTTP\ResponseTrait.php(669): CodeIgniter\HTTP\Response->dispatchCookies()
+ 3 SYSTEMPATH\HTTP\ResponseTrait.php(377): CodeIgniter\HTTP\Response->sendCookies()
+ 4 SYSTEMPATH\CodeIgniter.php(1107): CodeIgniter\HTTP\Response->send()
+ 5 SYSTEMPATH\CodeIgniter.php(377): CodeIgniter\CodeIgniter->sendResponse()
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

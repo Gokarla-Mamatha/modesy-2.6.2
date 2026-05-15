@@ -1,0 +1,115 @@
+# ===============================
+# Basic Security
+# ===============================
+Options -Indexes
+ServerSignature Off
+php_flag expose_php Off
+
+# Block env & hidden files
+<Files ".env">
+  Require all denied
+</Files>
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# ===============================
+# Rewrite Engine (SINGLE BLOCK)
+# ===============================
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+  
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # Allow service worker
+  RewriteCond %{REQUEST_URI} ^/pwa-sw\.js$ [NC]
+  RewriteRule .* - [L]
+
+  # Remove trailing slash
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [L,R=301]
+
+  # Front controller
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php?/$1 [L]
+
+  # Authorization header
+  RewriteCond %{HTTP:Authorization} .
+  RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+  ErrorDocument 404 index.php
+</IfModule>
+# ===============================
+# 1. Security Headers
+# ===============================
+<IfModule mod_headers.c>
+    # Remove metadata to hinder fingerprinting
+    Header always unset X-Powered-By
+    Header always unset Server
+
+    # CSP - Hardened Whitelist Version
+    # Note: Removed 'unsafe-inline' from style-src. (You must move inline CSS to files)
+    #Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://ajax.googleapis.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://cdn.jsdelivr.net; frame-src https://www.google.com https://www.gstatic.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Control how much info is shared when clicking links
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Prevent Clickjacking
+    Header always set X-Frame-Options "DENY"
+
+    # Disable unused browser features
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+    # Enforce HTTPS (HSTS)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Prevent Cross-Site Scripting (XSS) filter (Legacy but good for VAPT)
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ===============================
+# 2. Basic Server Protection
+# ===============================
+# Disable Directory Browsing
+Options -Indexes
+
+# Protect .htaccess and .htpasswd files
+<FilesMatch "^\.ht">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+# ===============================
+# Service Worker headers
+# ===============================
+<Files "pwa-sw.js">
+  Header set Content-Type "application/javascript"
+  Header set Service-Worker-Allowed "/"
+</Files>
+
+# ===============================
+# Caching
+# ===============================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+# ===============================
+# Compression (NO images)
+# ===============================
+<IfModule mod_deflate.c>
+  SetEnvIfNoCase Request_URI \.(?:gif|jpg|jpeg|png|webp)$ no-gzip dont-vary
+</IfModule>

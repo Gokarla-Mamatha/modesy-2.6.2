@@ -1,0 +1,26 @@
+CRITICAL - 2025-12-12 02:35:49 --> Exception: Not enough coupons available
+[Method: POST, Route: checkout/complete-bank-transfer-payment]
+in APPPATH/Models/OrderModel.php on line 273.
+ 1 APPPATH/Models/OrderModel.php(134): App\Models\OrderModel->addOrderItems()
+ 2 APPPATH/Models/CheckoutModel.php(471): App\Models\OrderModel->addOrder()
+ 3 APPPATH/Controllers/CheckoutController.php(1058): App\Models\CheckoutModel->handleProductCheckout()
+ 4 APPPATH/Controllers/CheckoutController.php(966): App\Controllers\CheckoutController->handlePayment()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CheckoutController->completeBankTransferPayment()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2025-12-12 02:38:19 --> Exception: Not enough coupons available
+[Method: POST, Route: checkout/complete-bank-transfer-payment]
+in APPPATH/Models/OrderModel.php on line 273.
+ 1 APPPATH/Models/OrderModel.php(134): App\Models\OrderModel->addOrderItems()
+ 2 APPPATH/Models/CheckoutModel.php(471): App\Models\OrderModel->addOrder()
+ 3 APPPATH/Controllers/CheckoutController.php(1058): App\Models\CheckoutModel->handleProductCheckout()
+ 4 APPPATH/Controllers/CheckoutController.php(966): App\Controllers\CheckoutController->handlePayment()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CheckoutController->completeBankTransferPayment()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

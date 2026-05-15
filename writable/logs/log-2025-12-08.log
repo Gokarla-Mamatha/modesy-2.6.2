@@ -1,0 +1,752 @@
+CRITICAL - 2025-12-08 11:01:06 --> ErrorException: Undefined variable $saleSubtotal
+[Method: GET, Route: dashboard/sale/10003]
+in APPPATH\Views\dashboard\sales\sale.php on line 187.
+ 1 APPPATH\Views\dashboard\sales\sale.php(187): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $saleSubtotal', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\dashboard\\sales\\sale.php', 187)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\dashboard\\sales\\sale.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('dashboard/sales/sale', [], true)
+ 5 APPPATH\Controllers\DashboardController.php(726): view('dashboard/sales/sale', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->sale('10003')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-12-08 01:12:14 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `pr...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(274): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(197): App\Models\ProductOptionsModel->processSingleOption(50, Array, Array, Array, Array, Array)
+#6 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\DashboardController.php(334): App\Models\ProductOptionsModel->saveProductOptionsData(50, Array, Array)
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\DashboardController->editProductDetailsPost()
+#8 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+#9 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-08 01:13:00 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `pr...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(274): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(197): App\Models\ProductOptionsModel->processSingleOption(50, Array, Array, Array, Array, Array)
+#6 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\DashboardController.php(334): App\Models\ProductOptionsModel->saveProductOptionsData(50, Array, Array)
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\DashboardController->editProductDetailsPost()
+#8 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+#9 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-08 01:13:10 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `pr...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(274): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(197): App\Models\ProductOptionsModel->processSingleOption(50, Array, Array, Array, Array, Array)
+#6 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\DashboardController.php(334): App\Models\ProductOptionsModel->saveProductOptionsData(50, Array, Array)
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\DashboardController->editProductDetailsPost()
+#8 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+#9 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-08 02:10:09 --> ErrorException: Undefined variable $pager
+[Method: GET, Route: dashboard/product/product-details/50]
+in APPPATH\Views\dashboard\product\product-options\_section_product_options.php on line 152.
+ 1 APPPATH\Views\dashboard\product\product-options\_section_product_options.php(152): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pager', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\dashboard\\product\\product-options\\_section_product_options.php', 152)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\dashboard\\product\\product-options\\_section_product_options.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('dashboard/product/product-options/_section_product_options', [], true)
+ 5 APPPATH\Views\dashboard\product\edit_product_details.php(55): view('dashboard/product/product-options/_section_product_options')
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\dashboard\\product\\edit_product_details.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('dashboard/product/edit_product_details', [], true)
+ 9 APPPATH\Controllers\DashboardController.php(289): view('dashboard/product/edit_product_details', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DashboardController->editProductDetails('50')
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 03:58:37 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "product/_product_iatem.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('product/_product_iatem.php')
+ 2 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_iatem', [], true)
+ 3 APPPATH\Views\index.php(33): view('product/_product_iatem', [...])
+ 4 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+ 7 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 03:58:53 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "product/_product_iatem.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('product/_product_iatem.php')
+ 2 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_iatem', [], true)
+ 3 APPPATH\Views\index.php(33): view('product/_product_iatem', [...])
+ 4 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+ 7 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 03:59:06 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "product/_product_iatem.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('product/_product_iatem.php')
+ 2 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_iatem', [], true)
+ 3 APPPATH\Views\index.php(33): view('product/_product_iatem', [...])
+ 4 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+ 7 APPPATH\Controllers\HomeController.php(69): view('index', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 03:59:07 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "product/_product_iatem.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('product/_product_iatem.php')
+ 2 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_iatem', [], true)
+ 3 APPPATH\Views\index.php(33): view('product/_product_iatem', [...])
+ 4 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+ 7 APPPATH\Controllers\HomeController.php(69): view('index', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 03:59:08 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "product/_product_iatem.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('product/_product_iatem.php')
+ 2 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_iatem', [], true)
+ 3 APPPATH\Views\index.php(33): view('product/_product_iatem', [...])
+ 4 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+ 7 APPPATH\Controllers\HomeController.php(69): view('index', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 03:59:50 --> ErrorException: Attempt to read property "slug" on array
+[Method: GET, Route: /]
+in APPPATH\Common.php on line 880.
+ 1 APPPATH\Common.php(880): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "slug" on array', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Common.php', 880)
+ 2 APPPATH\Views\product\_product_item.php(2): generateProductUrl([...])
+ 3 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 6 APPPATH\Views\index.php(87): view('product/_product_item', [...])
+ 7 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+ 8 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+10 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:02:55 --> ErrorException: Attempt to read property "slug" on array
+[Method: GET, Route: /]
+in APPPATH\Common.php on line 880.
+ 1 APPPATH\Common.php(880): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "slug" on array', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Common.php', 880)
+ 2 APPPATH\Views\product\_product_item.php(2): generateProductUrl([...])
+ 3 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 6 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 7 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 8 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+10 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+11 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+12 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+13 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+14 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+15 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+16 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+17 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+18 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+19 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+20 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:08:51 --> ErrorException: Attempt to read property "slug" on array
+[Method: GET, Route: /]
+in APPPATH\Common.php on line 880.
+ 1 APPPATH\Common.php(880): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "slug" on array', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Common.php', 880)
+ 2 APPPATH\Views\product\_product_item.php(2): generateProductUrl([...])
+ 3 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 6 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 7 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 8 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+10 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+11 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+12 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+13 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+14 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+15 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+16 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+17 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+18 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+19 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+20 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:08:54 --> ErrorException: Attempt to read property "slug" on array
+[Method: GET, Route: /]
+in APPPATH\Common.php on line 880.
+ 1 APPPATH\Common.php(880): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "slug" on array', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Common.php', 880)
+ 2 APPPATH\Views\product\_product_item.php(2): generateProductUrl([...])
+ 3 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 6 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 7 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 8 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+10 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+11 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+12 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+13 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+14 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+15 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+16 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+17 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+18 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+19 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+20 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:08:56 --> ErrorException: Attempt to read property "slug" on array
+[Method: GET, Route: /]
+in APPPATH\Common.php on line 880.
+ 1 APPPATH\Common.php(880): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "slug" on array', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Common.php', 880)
+ 2 APPPATH\Views\product\_product_item.php(2): generateProductUrl([...])
+ 3 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 6 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 7 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 8 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+10 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+11 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+12 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+13 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+14 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+15 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+16 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+17 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+18 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+19 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+20 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:08:56 --> ErrorException: Attempt to read property "slug" on array
+[Method: GET, Route: /]
+in APPPATH\Common.php on line 880.
+ 1 APPPATH\Common.php(880): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "slug" on array', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Common.php', 880)
+ 2 APPPATH\Views\product\_product_item.php(2): generateProductUrl([...])
+ 3 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 6 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 7 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 8 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+10 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+11 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+12 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+13 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+14 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+15 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+16 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+17 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+18 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+19 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+20 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:09:15 --> ErrorException: Undefined property: stdClass::$title
+[Method: GET, Route: /]
+in APPPATH\Views\product\_product_item.php on line 19.
+ 1 APPPATH\Views\product\_product_item.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$title', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php', 19)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 5 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+ 9 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+10 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+13 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:11:40 --> ErrorException: Undefined property: stdClass::$title
+[Method: GET, Route: /]
+in APPPATH\Views\product\_product_item.php on line 19.
+ 1 APPPATH\Views\product\_product_item.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$title', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php', 19)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 5 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+ 9 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+10 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+13 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:13:38 --> ErrorException: Undefined property: stdClass::$title
+[Method: GET, Route: /]
+in APPPATH\Views\product\_product_item.php on line 19.
+ 1 APPPATH\Views\product\_product_item.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$title', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php', 19)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 5 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+ 9 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+10 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+13 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:13:40 --> ErrorException: Undefined property: stdClass::$title
+[Method: GET, Route: /]
+in APPPATH\Views\product\_product_item.php on line 19.
+ 1 APPPATH\Views\product\_product_item.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$title', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php', 19)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 5 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+ 9 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+10 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+13 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:13:41 --> ErrorException: Undefined property: stdClass::$title
+[Method: GET, Route: /]
+in APPPATH\Views\product\_product_item.php on line 19.
+ 1 APPPATH\Views\product\_product_item.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$title', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php', 19)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 5 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+ 9 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+10 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+13 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:23:02 --> ErrorException: Undefined property: stdClass::$title
+[Method: GET, Route: /]
+in APPPATH\Views\product\_product_item.php on line 19.
+ 1 APPPATH\Views\product\_product_item.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$title', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php', 19)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 5 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+ 9 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+10 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+13 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 04:37:34 --> ErrorException: Undefined property: stdClass::$title
+[Method: GET, Route: /]
+in APPPATH\Views\product\_product_item.php on line 19.
+ 1 APPPATH\Views\product\_product_item.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$title', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php', 19)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_product_item.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_product_item', [], true)
+ 5 APPPATH\Views\product\_coupon_offers.php(15): view('product/_product_item', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\product\\_coupon_offers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('product/_coupon_offers', [], true)
+ 9 APPPATH\Views\index.php(13): view('product/_coupon_offers', [...])
+10 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\index.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('index', [], true)
+13 APPPATH\Controllers\HomeController.php(70): view('index', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:01:29 --> Error: Call to a member function getCategoriesWithThreadCount() on null
+[Method: GET, Route: /]
+in APPPATH\Controllers\HomeController.php on line 63.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:02:33 --> Error: Call to a member function getCategoriesWithThreadCount() on null
+[Method: GET, Route: /]
+in APPPATH\Controllers\HomeController.php on line 65.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:12:41 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getForum
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(66): CodeIgniter\Model->__call('getForum', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:13:25 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getForum
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(66): CodeIgniter\Model->__call('getForum', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-12-08 05:16:53 --> mysqli_sql_exception: Unknown column 'c.status' in 'where clause' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Models\ForumCategoryModel.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\HomeController.php(66): App\Models\ForumCategoryModel->getForum()
+#6 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\HomeController->index()
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#8 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-12-08 05:16:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.status' in 'where clause'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = :c.status:
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`', [...], false)
+ 2 APPPATH\Models\ForumCategoryModel.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\HomeController.php(66): App\Models\ForumCategoryModel->getForum()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:16:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.status' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = 1
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = 1
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = :c.status:
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`', [...], false)
+ 4 APPPATH\Models\ForumCategoryModel.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\HomeController.php(66): App\Models\ForumCategoryModel->getForum()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:16:53 --> [Caused by] mysqli_sql_exception: Unknown column 'c.status' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = 1
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = 1
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = 1
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`slug`, `c`.`description`, COUNT(t.id) AS thread_count
+FROM `forum_categories` `c`
+LEFT JOIN `forum_threads` `t` ON `t`.`category_id` = `c`.`id`
+WHERE `c`.`status` = :c.status:
+GROUP BY `c`.`id`
+ORDER BY `c`.`name`', [...], false)
+ 5 APPPATH\Models\ForumCategoryModel.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\HomeController.php(66): App\Models\ForumCategoryModel->getForum()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:17:51 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getForum
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(66): CodeIgniter\Model->__call('getForum', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:19:41 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getForm
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(66): CodeIgniter\Model->__call('getForm', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:30:09 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getActiveCategoriesWithThreadCount
+[Method: GET, Route: forum]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\ForumController.php(40): CodeIgniter\Model->__call('getActiveCategoriesWithThreadCount', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ForumController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:30:09 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getActiveCategoriesWithThreadCount
+[Method: GET, Route: forum]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\ForumController.php(40): CodeIgniter\Model->__call('getActiveCategoriesWithThreadCount', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ForumController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:30:56 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getActiveCategoriesWithThreadCount
+[Method: GET, Route: forum/category/test-forum-category]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\ForumController.php(59): CodeIgniter\Model->__call('getActiveCategoriesWithThreadCount', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ForumController->category('test-forum-category')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 05:32:49 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ForumCategoryModel::getActiveCategoriesWithThreadCount
+[Method: GET, Route: forum]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\ForumController.php(40): CodeIgniter\Model->__call('getActiveCategoriesWithThreadCount', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ForumController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-12-08 08:07:28 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `pr...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(274): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(197): App\Models\ProductOptionsModel->processSingleOption(50, Array, Array, Array, Array, Array)
+#6 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\DashboardController.php(334): App\Models\ProductOptionsModel->saveProductOptionsData(50, Array, Array)
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\DashboardController->editProductDetailsPost()
+#8 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+#9 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-08 08:07:38 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `pr...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(274): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\app\Models\ProductOptionsModel.php(197): App\Models\ProductOptionsModel->processSingleOption(50, Array, Array, Array, Array, Array)
+#6 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\DashboardController.php(334): App\Models\ProductOptionsModel->saveProductOptionsData(50, Array, Array)
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\DashboardController->editProductDetailsPost()
+#8 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DashboardController))
+#9 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-08 18:38:00 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 18:38:04 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 18:38:04 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 18:38:07 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 08:08:14 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 08:08:16 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 08:08:23 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 08:08:39 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getCouponProducts
+[Method: GET, Route: /]
+in SYSTEMPATH\Model.php on line 927.
+ 1 APPPATH\Controllers\HomeController.php(67): CodeIgniter\Model->__call('getCouponProducts', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

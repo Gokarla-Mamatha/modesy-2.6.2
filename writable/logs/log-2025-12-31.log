@@ -1,0 +1,176 @@
+ERROR - 2025-12-31 01:16:33 --> mysqli_sql_exception: Unknown column 'invited_user_ids' in 'SET' in /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/AdminForumController.php(242): CodeIgniter\Database\BaseBuilder->update()
+#5 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(933): App\Controllers\AdminForumController->inviteUsersPost()
+#6 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#7 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/u476517538/domains/desibazars.com/public_html/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2025-12-31 01:16:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'invited_user_ids' in 'SET'
+[Method: POST, Route: admin/invite-thread-users-post]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/AdminForumController.php(242): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AdminForumController->inviteUsersPost()
+ 4 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 6 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2025-12-31 01:16:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'invited_user_ids' in 'SET'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query()
+ 4 APPPATH/Controllers/AdminForumController.php(242): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AdminForumController->inviteUsersPost()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2025-12-31 01:16:33 --> [Caused by] mysqli_sql_exception: Unknown column 'invited_user_ids' in 'SET'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/AdminForumController.php(242): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AdminForumController->inviteUsersPost()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2025-12-31 04:10:11 --> REGISTER POST HIT
+ERROR - 2025-12-31 04:10:11 --> ABOUT TO CALL AuthModel::register()
+ERROR - 2025-12-31 04:10:11 --> AuthModel::register() HIT
+ERROR - 2025-12-31 04:10:11 --> REGISTER INSERT DATA: {"email":"mamathagokarla2004@gmail.com","first_name":"mamatha","last_name":"g","password":"$2y$10$8eclh4a01hhIdlP89EgIWeKR08TB9vI\/TS4TcfqbHVDSLd0Lynxj2","username":"mamatha g 1","slug":"mamatha-g-1","role_id":3,"user_type":"registered","banned":0,"token":"62c2504c1d6606691f546c8801a6dafbef9b7674","last_seen":"2025-12-31 04:10:11","created_at":"2025-12-31 04:10:11","email_status":0,"referral_code":"E1B43BC6","referred_by":null}
+ERROR - 2025-12-31 04:33:03 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:33:03 --> GOOGLE LOGIN REDIRECTING TO GOOGLE
+ERROR - 2025-12-31 04:33:04 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:34:55 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:34:55 --> GOOGLE LOGIN REDIRECTING TO GOOGLE
+ERROR - 2025-12-31 04:34:55 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:34:55 --> GOOGLE CALLBACK RECEIVED
+ERROR - 2025-12-31 04:38:52 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:38:52 --> GOOGLE LOGIN REDIRECTING TO GOOGLE
+ERROR - 2025-12-31 04:38:52 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:38:52 --> GOOGLE CALLBACK RECEIVED
+ERROR - 2025-12-31 04:38:52 --> GOOGLE LOGIN FAILED INSIDE MODEL
+ERROR - 2025-12-31 04:45:04 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:45:04 --> GOOGLE LOGIN REDIRECTING TO GOOGLE
+ERROR - 2025-12-31 04:45:04 --> GOOGLE LOGIN HIT - STEP 1
+ERROR - 2025-12-31 04:45:04 --> GOOGLE CALLBACK RECEIVED
+ERROR - 2025-12-31 04:45:05 --> SOCIAL LOGIN STARTED
+ERROR - 2025-12-31 04:45:05 --> PROVIDER: google
+ERROR - 2025-12-31 04:45:05 --> EMAIL: mamathagokarla2004@gmail.com
+ERROR - 2025-12-31 04:45:05 --> USER CREATED BUT NOT FETCHED
+ERROR - 2025-12-31 04:45:05 --> GOOGLE USER RAW: {"id":"110630449652255101563","email":"mamathagokarla2004@gmail.com","name":"Mamatha","firstName":"Mamatha","lastName":null}
+ERROR - 2025-12-31 04:45:05 --> GOOGLE LOGIN FAILED INSIDE MODEL
+WARNING - 2025-12-31 05:42:36 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 25.
+ 1 APPPATH\Controllers\AdminForumController.php(25): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-12-31 05:42:36 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 26.
+ 1 APPPATH\Controllers\AdminForumController.php(26): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-12-31 05:42:36 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 27.
+ 1 APPPATH\Controllers\AdminForumController.php(27): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-12-31 05:42:36 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 28.
+ 1 APPPATH\Controllers\AdminForumController.php(28): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-31 05:42:36 --> ErrorException: Attempt to read property "avatar" on null
+[Method: GET, Route: admin/forums-threads]
+in APPPATH\Views\admin\includes\_header.php on line 59.
+ 1 APPPATH\Views\admin\includes\_header.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "avatar" on null', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\admin\\includes\\_header.php', 59)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\admin\\includes\\_header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('admin/includes/_header', [], true)
+ 5 APPPATH\Views\admin\forums\threads_list.php(1): view('admin/includes/_header')
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\admin\\forums\\threads_list.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('admin/forums/threads_list', [], true)
+ 9 APPPATH\Controllers\AdminForumController.php(54): view('admin/forums/threads_list', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-12-31 05:42:45 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 25.
+ 1 APPPATH\Controllers\AdminForumController.php(25): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-12-31 05:42:45 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 26.
+ 1 APPPATH\Controllers\AdminForumController.php(26): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-12-31 05:42:45 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 27.
+ 1 APPPATH\Controllers\AdminForumController.php(27): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-12-31 05:42:45 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\AdminForumController.php on line 28.
+ 1 APPPATH\Controllers\AdminForumController.php(28): trim(null)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-31 05:42:45 --> ErrorException: Attempt to read property "avatar" on null
+[Method: GET, Route: admin/forums-threads]
+in APPPATH\Views\admin\includes\_header.php on line 59.
+ 1 APPPATH\Views\admin\includes\_header.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "avatar" on null', 'F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\admin\\includes\\_header.php', 59)
+ 2 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\admin\\includes\\_header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('admin/includes/_header', [], true)
+ 5 APPPATH\Views\admin\forums\threads_list.php(1): view('admin/includes/_header')
+ 6 SYSTEMPATH\View\View.php(226): include('F:\\xampp\\htdocs\\modesy-2.6.2\\app\\Views\\admin\\forums\\threads_list.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1203): CodeIgniter\View\View->render('admin/forums/threads_list', [], true)
+ 9 APPPATH\Controllers\AdminForumController.php(54): view('admin/forums/threads_list', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminForumController->adminThreads()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminForumController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

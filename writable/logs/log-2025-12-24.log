@@ -1,0 +1,27 @@
+ERROR - 2025-12-24 09:06:30 --> LOYALTY: Calling addLoyaltyPointsAfterOrder
+ERROR - 2025-12-24 09:06:30 --> LOYALTY: Function called for order ID: 88
+ERROR - 2025-12-24 09:06:30 --> LOYALTY: Buyer ID = 4
+ERROR - 2025-12-24 09:06:30 --> LOYALTY: Product points=10, Qty=1
+ERROR - 2025-12-24 09:06:30 --> LOYALTY: Total calculated points = 10
+ERROR - 2025-12-24 09:06:30 --> LOYALTY: Points added to user
+ERROR - 2025-12-24 09:06:30 --> LOYALTY: Order marked as loyalty_given
+CRITICAL - 2025-12-24 09:23:39 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\EarningsModel::getLoyaltyTransactions
+[Method: GET, Route: wallet]
+in SYSTEMPATH/Model.php on line 927.
+ 1 APPPATH/Controllers/ProfileController.php(270): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ProfileController->wallet()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2025-12-24 23:34:58 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getProductsWithCouponsCount
+[Method: GET, Route: coupons]
+in SYSTEMPATH/Model.php on line 927.
+ 1 APPPATH/Controllers/CouponController.php(39): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CouponController->coupons()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

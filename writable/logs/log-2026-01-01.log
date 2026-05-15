@@ -1,0 +1,10 @@
+CRITICAL - 2026-01-01 17:48:10 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getProductsWithCouponsCount
+[Method: GET, Route: coupons]
+in SYSTEMPATH/Model.php on line 927.
+ 1 APPPATH/Controllers/CouponController.php(39): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CouponController->coupons()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

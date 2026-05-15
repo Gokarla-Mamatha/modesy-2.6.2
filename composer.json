@@ -1,0 +1,7 @@
+{
+    "require": {
+        "mews/captcha": "^3.4",
+        "ezyang/htmlpurifier": "^4.19",
+        "taxjar/taxjar-php": "^2.0"
+    }
+}

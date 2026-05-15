@@ -1,0 +1,76 @@
+ERROR - 2025-12-25 07:41:35 --> mysqli_sql_exception: Unknown column 'loyalty_given' in 'INSERT INTO' in /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u476517538/domains/desibazars.com/public_html/app/Models/OrderModel.php(238): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/u476517538/domains/desibazars.com/public_html/app/Models/OrderModel.php(134): App\Models\OrderModel->addOrderItems()
+#6 /home/u476517538/domains/desibazars.com/public_html/app/Models/CheckoutModel.php(471): App\Models\OrderModel->addOrder()
+#7 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(1058): App\Models\CheckoutModel->handleProductCheckout()
+#8 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(966): App\Controllers\CheckoutController->handlePayment()
+#9 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(933): App\Controllers\CheckoutController->completeBankTransferPayment()
+#10 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /home/u476517538/domains/desibazars.com/public_html/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 {main}
+ERROR - 2025-12-25 07:41:35 --> [OrderModel] Failed to create order items (Order ID: 21)
+ERROR - 2025-12-25 07:41:35 --> [OrderModel] Failed to create a complete order within a transaction for Checkout ID: 8
+ERROR - 2025-12-25 07:44:32 --> mysqli_sql_exception: Unknown column 'loyalty_given' in 'INSERT INTO' in /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u476517538/domains/desibazars.com/public_html/app/Models/OrderModel.php(238): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/u476517538/domains/desibazars.com/public_html/app/Models/OrderModel.php(134): App\Models\OrderModel->addOrderItems()
+#6 /home/u476517538/domains/desibazars.com/public_html/app/Models/CheckoutModel.php(471): App\Models\OrderModel->addOrder()
+#7 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(1058): App\Models\CheckoutModel->handleProductCheckout()
+#8 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(966): App\Controllers\CheckoutController->handlePayment()
+#9 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(933): App\Controllers\CheckoutController->completeBankTransferPayment()
+#10 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#11 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#12 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /home/u476517538/domains/desibazars.com/public_html/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 {main}
+ERROR - 2025-12-25 07:44:32 --> [OrderModel] Failed to create order items (Order ID: 22)
+ERROR - 2025-12-25 07:44:32 --> [OrderModel] Failed to create a complete order within a transaction for Checkout ID: 8
+ERROR - 2025-12-25 08:06:07 --> DEBUG: CONTROLLER LOG WORKING
+ERROR - 2025-12-25 08:14:58 --> DEBUG: CONTROLLER LOG WORKING
+ERROR - 2025-12-25 09:29:15 --> mysqli_sql_exception: Unknown column 'loyalty_points_used' in 'INSERT INTO' in /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u476517538/domains/desibazars.com/public_html/app/Models/OrderModel.php(122): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/u476517538/domains/desibazars.com/public_html/app/Models/CheckoutModel.php(471): App\Models\OrderModel->addOrder()
+#6 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(1058): App\Models\CheckoutModel->handleProductCheckout()
+#7 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(966): App\Controllers\CheckoutController->handlePayment()
+#8 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(933): App\Controllers\CheckoutController->completeBankTransferPayment()
+#9 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#10 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /home/u476517538/domains/desibazars.com/public_html/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 {main}
+ERROR - 2025-12-25 09:29:55 --> mysqli_sql_exception: Unknown column 'loyalty_points_used' in 'INSERT INTO' in /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/u476517538/domains/desibazars.com/public_html/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/u476517538/domains/desibazars.com/public_html/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#4 /home/u476517538/domains/desibazars.com/public_html/app/Models/OrderModel.php(122): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/u476517538/domains/desibazars.com/public_html/app/Models/CheckoutModel.php(471): App\Models\OrderModel->addOrder()
+#6 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(1058): App\Models\CheckoutModel->handleProductCheckout()
+#7 /home/u476517538/domains/desibazars.com/public_html/app/Controllers/CheckoutController.php(966): App\Controllers\CheckoutController->handlePayment()
+#8 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(933): App\Controllers\CheckoutController->completeBankTransferPayment()
+#9 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#10 /home/u476517538/domains/desibazars.com/public_html/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 /home/u476517538/domains/desibazars.com/public_html/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /home/u476517538/domains/desibazars.com/public_html/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 {main}

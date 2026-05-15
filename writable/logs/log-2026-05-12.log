@@ -1,0 +1,961 @@
+CRITICAL - 2026-05-12 01:50:56 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:50:57 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:00 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:00 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:00 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:00 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:01 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:04 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:05 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:06 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:06 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 01:51:06 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/addToNewsletter]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-12 01:51:55 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:51:56 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:51:57 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:51:57 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:51:58 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:51:58 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:51:59 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:51:59 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:52:00 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:52:00 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:52:00 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:52:01 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:54 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:54 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:55 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:56 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:57 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:57 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:57 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:58 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:58 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:59 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:53:59 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 01:54:00 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 04:45:36 --> mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist in /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/ubuntu/desibazars/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/ubuntu/desibazars/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/ubuntu/desibazars/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/ubuntu/desibazars/app/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/ubuntu/desibazars/system/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+#6 /home/ubuntu/desibazars/system/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+#7 /home/ubuntu/desibazars/system/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/ubuntu/desibazars/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 /home/ubuntu/desibazars/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/ubuntu/desibazars/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2026-05-12 04:45:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+[Method: GET, Route: admin/profile-activities]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 4 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 6 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:45:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 6 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:45:36 --> [Caused by] mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 7 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-12 04:46:01 --> mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist in /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/ubuntu/desibazars/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/ubuntu/desibazars/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/ubuntu/desibazars/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/ubuntu/desibazars/app/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/ubuntu/desibazars/system/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+#6 /home/ubuntu/desibazars/system/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+#7 /home/ubuntu/desibazars/system/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/ubuntu/desibazars/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 /home/ubuntu/desibazars/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/ubuntu/desibazars/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2026-05-12 04:46:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+[Method: GET, Route: admin/profile-activities]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 4 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 6 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:46:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 6 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:46:01 --> [Caused by] mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 7 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-12 04:49:12 --> mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist in /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/ubuntu/desibazars/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/ubuntu/desibazars/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/ubuntu/desibazars/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/ubuntu/desibazars/app/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/ubuntu/desibazars/system/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+#6 /home/ubuntu/desibazars/system/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+#7 /home/ubuntu/desibazars/system/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/ubuntu/desibazars/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 /home/ubuntu/desibazars/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/ubuntu/desibazars/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2026-05-12 04:49:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+[Method: GET, Route: admin/profile-activities]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 4 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 6 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:49:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 6 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:49:12 --> [Caused by] mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 7 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-12 04:49:40 --> mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist in /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/ubuntu/desibazars/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/ubuntu/desibazars/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/ubuntu/desibazars/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/ubuntu/desibazars/app/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/ubuntu/desibazars/system/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+#6 /home/ubuntu/desibazars/system/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+#7 /home/ubuntu/desibazars/system/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/ubuntu/desibazars/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 /home/ubuntu/desibazars/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/ubuntu/desibazars/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2026-05-12 04:49:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+[Method: GET, Route: admin/profile-activities]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 4 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 6 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:49:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 6 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:49:40 --> [Caused by] mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 7 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-12 04:56:56 --> mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist in /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/ubuntu/desibazars/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/ubuntu/desibazars/system/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/ubuntu/desibazars/system/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/ubuntu/desibazars/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/ubuntu/desibazars/app/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/ubuntu/desibazars/system/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+#6 /home/ubuntu/desibazars/system/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+#7 /home/ubuntu/desibazars/system/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/ubuntu/desibazars/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 /home/ubuntu/desibazars/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#10 /home/ubuntu/desibazars/index.php(59): CodeIgniter\Boot::bootWeb()
+#11 {main}
+CRITICAL - 2026-05-12 04:56:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+[Method: GET, Route: admin/profile-activities]
+in SYSTEMPATH/Database/BaseConnection.php on line 684.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 4 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 6 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 8 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:56:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 6 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 04:56:56 --> [Caused by] mysqli_sql_exception: Table 'desibazars.user_profile_activities' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Controllers/MembershipController.php(225): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 7 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 05:46:53 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/loadActiveCountries]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:02:17 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getProductsWithCouponsCount
+[Method: GET, Route: coupons]
+in SYSTEMPATH/Model.php on line 927.
+ 1 APPPATH/Controllers/CouponController.php(39): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\CouponController->coupons()
+ 3 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:02:17 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getProductsWithCouponsCount
+[Method: GET, Route: coupons]
+in SYSTEMPATH/Model.php on line 927.
+ 1 APPPATH/Controllers/CouponController.php(39): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\CouponController->coupons()
+ 3 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:07:31 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:09:40 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:11:55 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:17:09 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:25:08 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:36:31 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:45:49 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:46:50 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:51:15 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 07:52:27 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 08:09:57 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/membership/profile_activities.php"
+[Method: GET, Route: admin/profile-activities]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1203): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/MembershipController.php(230): view()
+ 4 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 5 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 08:10:28 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/membership/profile_activities.php"
+[Method: GET, Route: admin/profile-activities]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1203): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/MembershipController.php(230): view()
+ 4 SYSTEMPATH/CodeIgniter.php(936): App\Controllers\MembershipController->profileActivities()
+ 5 SYSTEMPATH/CodeIgniter.php(510): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 09:38:51 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-12 09:39:01 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:01 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:01 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:02 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:02 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:03 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:03 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:04 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:05 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:05 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:06 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 09:39:06 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+CRITICAL - 2026-05-12 09:42:51 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 09:44:22 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 09:44:36 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 09:46:59 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 09:53:05 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 09:53:21 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 09:56:23 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:01:09 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:01:24 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:02:54 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:04:07 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:08:13 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:09:45 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:10:16 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:16:48 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:25:09 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:25:12 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/loadActiveCountries]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-12 10:25:26 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:27 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:28 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:29 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:29 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:30 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:31 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:31 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:32 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:32 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:33 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:34 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+INFO - 2026-05-12 10:25:36 --> Shipping function started.
+DEBUG - 2026-05-12 10:25:36 --> Service payment session cleared.
+DEBUG - 2026-05-12 10:25:36 --> Cart Data: {"id":"238","user_id":"1","session_id":"","currency_code":"USD","currency_code_base":"USD","currency_exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","location_country_id":"99","location_state_id":"1218","coupon_code":"","payment_method":"","num_items":4,"has_physical_product":1,"has_digital_product":0,"is_valid":true,"items":[{"id":"347","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-04-17 05:47:10","item_hash":"e5cf0b769430543cca70f4ef7a0efaca","product_id":"41","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Gucci nylon fabric smart backpack","product_sku":"H1K1RGO137","quantity":"4","unit_price":"1","unit_price_base":"1","total_price":"4","product_vat":0,"product_vat_rate":0,"product_image_id":"8","product_image_data":"{\"path\":\"202511\/img_w480_692447fd4a3956-56362818.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"347","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/gucci-nylon-fabric-smart-backpack-7-41","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"348","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-04-24 10:39:37","item_hash":"2d26bbb949651493f3bc4788888e9f89","product_id":"36","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Handmade cute handbag","product_sku":"HYO1W2BP1","quantity":"2","unit_price":"30","unit_price_base":"30","total_price":"60","product_vat":0,"product_vat_rate":0,"product_image_id":"13","product_image_data":"{\"path\":\"202511\/img_w480_69244939e80046-20393244.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"348","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/handmade-cute-handbag-12-36","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"350","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-05-12 05:51:40","item_hash":"c58fd957258d7676d4913a8bda67c4e8","product_id":"70","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Traditional Dress 1","product_sku":"H201A5131Z6","quantity":"1","unit_price":"1","unit_price_base":"1","total_price":"1","product_vat":0,"product_vat_rate":0,"product_image_id":"46","product_image_data":"{\"path\":\"1\/202603\/img_w480_69a599149992c0-52637307.jpg\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"350","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/traditional-dress-1-70","chargeable_weight":"0.100","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"351","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-05-12 05:51:48","item_hash":"5adb704def55e44f9fafce94335a8042","product_id":"39","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Black gold fashion backpack","product_sku":"H1K1RJZ1K4","quantity":"1","unit_price":"0","unit_price_base":"0","total_price":"0","product_vat":0,"product_vat_rate":0,"product_image_id":"11","product_image_data":"{\"path\":\"202511\/img_w480_692448e8ce5142-17855112.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"351","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/black-gold-fashion-backpack-9-39","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"}],"totals":{"subtotal":65,"vat":0,"shipping_cost":"12.00","total_before_shipping":65,"total":77,"transaction_fee":0,"transaction_fee_rate":0,"affiliate_id":"","affiliate_referrer_id":"","affiliate_seller_id":"","affiliate_product_id":"","affiliate_commission_rate":0,"affiliate_commission":0,"affiliate_discount_rate":0,"affiliate_discount":0,"coupon_discount_products":"","coupon_discount_rate":0,"coupon_discount":0,"coupon_seller_id":0}}
+DEBUG - 2026-05-12 10:25:36 --> Cart Shipping Data: {"useSameAddressForBilling":1,"isGuest":0,"shippingAddressId":"16","shippingStateId":"1218","sTitle":"Temple street","sFirstName":"Sireesha","sLastName":"Raavuri","sEmail":"srisiree518@gmail.com","sPhoneNumber":"09177146174","sAddress":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","sCountryId":"99","sCountry":"India","sStateId":"1218","sState":"Andhra Pradesh","sCity":"Hyderabad","sZipCode":"500016","billingAddressId":0,"bTitle":"Temple street","bFirstName":"Sireesha","bLastName":"Raavuri","bEmail":"srisiree518@gmail.com","bPhoneNumber":"09177146174","bAddress":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","bCountryId":"99","bCountry":"India","bStateId":"1218","bState":"Andhra Pradesh","bCity":"Hyderabad","bZipCode":"500016"}
+INFO - 2026-05-12 10:25:36 --> Authenticated user ID: 1
+DEBUG - 2026-05-12 10:25:36 --> User Shipping Addresses: [{"id":"1","user_id":"1","title":"Home","first_name":"Kavya","last_name":"Reddy","email":"Kavya.reddy@example.com","phone_number":"9876543210","address":"Flat No. 302, Sri Sai Residency, Madhapur, Hyderabad","country_id":"99","state_id":"1252","city":"Hyderabad","zip_code":"500072","address_type":"shipping","created_at":"2025-12-09 05:55:51"},{"id":"16","user_id":"1","title":"Temple street","first_name":"Sireesha","last_name":"Raavuri","email":"srisiree518@gmail.com","phone_number":"09177146174","address":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","country_id":"99","state_id":"1218","city":"Hyderabad","zip_code":"500016","address_type":"shipping","created_at":"2026-04-16 11:51:54"}]
+DEBUG - 2026-05-12 10:25:36 --> Invalid shipping or billing address detected. Resetting.
+INFO - 2026-05-12 10:25:36 --> Default shipping address selected: 1
+INFO - 2026-05-12 10:25:36 --> Fetching shipping methods for State ID: 1252
+DEBUG - 2026-05-12 10:25:36 --> Shipping Methods: [{"shop_id":"1","total_shipping_cost":0,"shop_name":"induco solutions","methods":[{"method_db_id":"3","zone_id":"6","shop_id":"1","method":"flat_rate","name":"Flat Rate","cost":"12","is_selected":0,"order":3,"id":"c16a5320fa475530d9583c34fd356ef5"}]}]
+DEBUG - 2026-05-12 10:25:36 --> Selected Shipping Method IDs: []
+DEBUG - 2026-05-12 10:25:36 --> Cart Seller IDs: null
+INFO - 2026-05-12 10:25:36 --> Rendering shipping views.
+ERROR - 2026-05-12 10:25:37 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:37 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:38 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:38 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+INFO - 2026-05-12 10:25:38 --> Shipping function completed successfully.
+INFO - 2026-05-12 10:25:48 --> Shipping function started.
+DEBUG - 2026-05-12 10:25:48 --> Service payment session cleared.
+DEBUG - 2026-05-12 10:25:48 --> Cart Data: {"id":"238","user_id":"1","session_id":"","currency_code":"USD","currency_code_base":"USD","currency_exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","location_country_id":"99","location_state_id":"1218","coupon_code":"","payment_method":"","num_items":4,"has_physical_product":1,"has_digital_product":0,"is_valid":true,"items":[{"id":"347","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-04-17 05:47:10","item_hash":"e5cf0b769430543cca70f4ef7a0efaca","product_id":"41","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Gucci nylon fabric smart backpack","product_sku":"H1K1RGO137","quantity":"4","unit_price":"1","unit_price_base":"1","total_price":"4","product_vat":0,"product_vat_rate":0,"product_image_id":"8","product_image_data":"{\"path\":\"202511\/img_w480_692447fd4a3956-56362818.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"347","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/gucci-nylon-fabric-smart-backpack-7-41","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"348","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-04-24 10:39:37","item_hash":"2d26bbb949651493f3bc4788888e9f89","product_id":"36","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Handmade cute handbag","product_sku":"HYO1W2BP1","quantity":"2","unit_price":"30","unit_price_base":"30","total_price":"60","product_vat":0,"product_vat_rate":0,"product_image_id":"13","product_image_data":"{\"path\":\"202511\/img_w480_69244939e80046-20393244.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"348","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/handmade-cute-handbag-12-36","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"350","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-05-12 05:51:40","item_hash":"c58fd957258d7676d4913a8bda67c4e8","product_id":"70","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Traditional Dress 1","product_sku":"H201A5131Z6","quantity":"1","unit_price":"1","unit_price_base":"1","total_price":"1","product_vat":0,"product_vat_rate":0,"product_image_id":"46","product_image_data":"{\"path\":\"1\/202603\/img_w480_69a599149992c0-52637307.jpg\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"350","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/traditional-dress-1-70","chargeable_weight":"0.100","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"351","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-05-12 05:51:48","item_hash":"5adb704def55e44f9fafce94335a8042","product_id":"39","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Black gold fashion backpack","product_sku":"H1K1RJZ1K4","quantity":"1","unit_price":"0","unit_price_base":"0","total_price":"0","product_vat":0,"product_vat_rate":0,"product_image_id":"11","product_image_data":"{\"path\":\"202511\/img_w480_692448e8ce5142-17855112.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"351","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/black-gold-fashion-backpack-9-39","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"}],"totals":{"subtotal":65,"vat":0,"shipping_cost":"12.00","total_before_shipping":65,"total":77,"transaction_fee":0,"transaction_fee_rate":0,"affiliate_id":"","affiliate_referrer_id":"","affiliate_seller_id":"","affiliate_product_id":"","affiliate_commission_rate":0,"affiliate_commission":0,"affiliate_discount_rate":0,"affiliate_discount":0,"coupon_discount_products":"","coupon_discount_rate":0,"coupon_discount":0,"coupon_seller_id":0}}
+DEBUG - 2026-05-12 10:25:48 --> Cart Shipping Data: {"useSameAddressForBilling":1,"isGuest":0,"shippingAddressId":"16","shippingStateId":"1218","sTitle":"Temple street","sFirstName":"Sireesha","sLastName":"Raavuri","sEmail":"srisiree518@gmail.com","sPhoneNumber":"09177146174","sAddress":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","sCountryId":"99","sCountry":"India","sStateId":"1218","sState":"Andhra Pradesh","sCity":"Hyderabad","sZipCode":"500016","billingAddressId":0,"bTitle":"Temple street","bFirstName":"Sireesha","bLastName":"Raavuri","bEmail":"srisiree518@gmail.com","bPhoneNumber":"09177146174","bAddress":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","bCountryId":"99","bCountry":"India","bStateId":"1218","bState":"Andhra Pradesh","bCity":"Hyderabad","bZipCode":"500016"}
+INFO - 2026-05-12 10:25:48 --> Authenticated user ID: 1
+DEBUG - 2026-05-12 10:25:48 --> User Shipping Addresses: [{"id":"1","user_id":"1","title":"Home","first_name":"Kavya","last_name":"Reddy","email":"Kavya.reddy@example.com","phone_number":"9876543210","address":"Flat No. 302, Sri Sai Residency, Madhapur, Hyderabad","country_id":"99","state_id":"1252","city":"Hyderabad","zip_code":"500072","address_type":"shipping","created_at":"2025-12-09 05:55:51"},{"id":"16","user_id":"1","title":"Temple street","first_name":"Sireesha","last_name":"Raavuri","email":"srisiree518@gmail.com","phone_number":"09177146174","address":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","country_id":"99","state_id":"1218","city":"Hyderabad","zip_code":"500016","address_type":"shipping","created_at":"2026-04-16 11:51:54"}]
+DEBUG - 2026-05-12 10:25:48 --> Invalid shipping or billing address detected. Resetting.
+INFO - 2026-05-12 10:25:48 --> Default shipping address selected: 1
+INFO - 2026-05-12 10:25:48 --> Fetching shipping methods for State ID: 1252
+DEBUG - 2026-05-12 10:25:48 --> Shipping Methods: [{"shop_id":"1","total_shipping_cost":0,"shop_name":"induco solutions","methods":[{"method_db_id":"3","zone_id":"6","shop_id":"1","method":"flat_rate","name":"Flat Rate","cost":"12","is_selected":0,"order":3,"id":"c16a5320fa475530d9583c34fd356ef5"}]}]
+DEBUG - 2026-05-12 10:25:48 --> Selected Shipping Method IDs: []
+DEBUG - 2026-05-12 10:25:48 --> Cart Seller IDs: null
+INFO - 2026-05-12 10:25:48 --> Rendering shipping views.
+ERROR - 2026-05-12 10:25:49 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:50 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:50 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:25:51 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+INFO - 2026-05-12 10:25:51 --> Shipping function completed successfully.
+INFO - 2026-05-12 10:26:00 --> Shipping function started.
+DEBUG - 2026-05-12 10:26:00 --> Service payment session cleared.
+DEBUG - 2026-05-12 10:26:00 --> Cart Data: {"id":"238","user_id":"1","session_id":"","currency_code":"USD","currency_code_base":"USD","currency_exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","location_country_id":"99","location_state_id":"1218","coupon_code":"","payment_method":"","num_items":4,"has_physical_product":1,"has_digital_product":0,"is_valid":true,"items":[{"id":"347","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-04-17 05:47:10","item_hash":"e5cf0b769430543cca70f4ef7a0efaca","product_id":"41","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Gucci nylon fabric smart backpack","product_sku":"H1K1RGO137","quantity":"4","unit_price":"1","unit_price_base":"1","total_price":"4","product_vat":0,"product_vat_rate":0,"product_image_id":"8","product_image_data":"{\"path\":\"202511\/img_w480_692447fd4a3956-56362818.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"347","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/gucci-nylon-fabric-smart-backpack-7-41","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"348","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-04-24 10:39:37","item_hash":"2d26bbb949651493f3bc4788888e9f89","product_id":"36","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Handmade cute handbag","product_sku":"HYO1W2BP1","quantity":"2","unit_price":"30","unit_price_base":"30","total_price":"60","product_vat":0,"product_vat_rate":0,"product_image_id":"13","product_image_data":"{\"path\":\"202511\/img_w480_69244939e80046-20393244.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"348","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/handmade-cute-handbag-12-36","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"350","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-05-12 05:51:40","item_hash":"c58fd957258d7676d4913a8bda67c4e8","product_id":"70","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Traditional Dress 1","product_sku":"H201A5131Z6","quantity":"1","unit_price":"1","unit_price_base":"1","total_price":"1","product_vat":0,"product_vat_rate":0,"product_image_id":"46","product_image_data":"{\"path\":\"1\/202603\/img_w480_69a599149992c0-52637307.jpg\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"350","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/traditional-dress-1-70","chargeable_weight":"0.100","seller_username":"induco solutions","seller_slug":"induco-solutions"},{"id":"351","currency_code":"USD","currency_code_base":"USD","exchange_rate":"1","shipping_data":"{\"useSameAddressForBilling\":1,\"isGuest\":0,\"shippingAddressId\":\"16\",\"shippingStateId\":\"1218\",\"sTitle\":\"Temple street\",\"sFirstName\":\"Sireesha\",\"sLastName\":\"Raavuri\",\"sEmail\":\"srisiree518@gmail.com\",\"sPhoneNumber\":\"09177146174\",\"sAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"sCountryId\":\"99\",\"sCountry\":\"India\",\"sStateId\":\"1218\",\"sState\":\"Andhra Pradesh\",\"sCity\":\"Hyderabad\",\"sZipCode\":\"500016\",\"billingAddressId\":0,\"bTitle\":\"Temple street\",\"bFirstName\":\"Sireesha\",\"bLastName\":\"Raavuri\",\"bEmail\":\"srisiree518@gmail.com\",\"bPhoneNumber\":\"09177146174\",\"bAddress\":\"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081\",\"bCountryId\":\"99\",\"bCountry\":\"India\",\"bStateId\":\"1218\",\"bState\":\"Andhra Pradesh\",\"bCity\":\"Hyderabad\",\"bZipCode\":\"500016\"}","shipping_cost":"12.00","shipping_cost_data":"[{\"shop_id\":\"1\",\"shipping_method\":\"flat_rate\",\"shipping_cost\":\"12\"}]","coupon_code":"","payment_method":"","location_country_id":"99","location_state_id":"1218","updated_at":"2026-04-16 08:01:50","created_at":"2026-05-12 05:51:48","item_hash":"5adb704def55e44f9fafce94335a8042","product_id":"39","product_option_variants_id":"0","seller_id":"1","product_type":"physical","listing_type":"sell_on_site","product_title":"Black gold fashion backpack","product_sku":"H1K1RJZ1K4","quantity":"1","unit_price":"0","unit_price_base":"0","total_price":"0","product_vat":0,"product_vat_rate":0,"product_image_id":"11","product_image_data":"{\"path\":\"202511\/img_w480_692448e8ce5142-17855112.webp\",\"storage\":\"local\"}","purchase_type":"product","quote_request_id":"0","variant_hash":null,"extra_options":null,"extra_options_hash":"{}","product_options_snapshot":null,"product_options_summary":"","is_stock_available":1,"bid_id":null,"item_id":"351","seller_info":"induco solutions|||induco-solutions","product_url":"https:\/\/desibazars.com\/black-gold-fashion-backpack-9-39","chargeable_weight":"0.000","seller_username":"induco solutions","seller_slug":"induco-solutions"}],"totals":{"subtotal":65,"vat":0,"shipping_cost":"12.00","total_before_shipping":65,"total":77,"transaction_fee":0,"transaction_fee_rate":0,"affiliate_id":"","affiliate_referrer_id":"","affiliate_seller_id":"","affiliate_product_id":"","affiliate_commission_rate":0,"affiliate_commission":0,"affiliate_discount_rate":0,"affiliate_discount":0,"coupon_discount_products":"","coupon_discount_rate":0,"coupon_discount":0,"coupon_seller_id":0}}
+DEBUG - 2026-05-12 10:26:00 --> Cart Shipping Data: {"useSameAddressForBilling":1,"isGuest":0,"shippingAddressId":"16","shippingStateId":"1218","sTitle":"Temple street","sFirstName":"Sireesha","sLastName":"Raavuri","sEmail":"srisiree518@gmail.com","sPhoneNumber":"09177146174","sAddress":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","sCountryId":"99","sCountry":"India","sStateId":"1218","sState":"Andhra Pradesh","sCity":"Hyderabad","sZipCode":"500016","billingAddressId":0,"bTitle":"Temple street","bFirstName":"Sireesha","bLastName":"Raavuri","bEmail":"srisiree518@gmail.com","bPhoneNumber":"09177146174","bAddress":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","bCountryId":"99","bCountry":"India","bStateId":"1218","bState":"Andhra Pradesh","bCity":"Hyderabad","bZipCode":"500016"}
+INFO - 2026-05-12 10:26:00 --> Authenticated user ID: 1
+DEBUG - 2026-05-12 10:26:00 --> User Shipping Addresses: [{"id":"1","user_id":"1","title":"Home","first_name":"Kavya","last_name":"Reddy","email":"Kavya.reddy@example.com","phone_number":"9876543210","address":"Flat No. 302, Sri Sai Residency, Madhapur, Hyderabad","country_id":"99","state_id":"1252","city":"Hyderabad","zip_code":"500072","address_type":"shipping","created_at":"2025-12-09 05:55:51"},{"id":"16","user_id":"1","title":"Temple street","first_name":"Sireesha","last_name":"Raavuri","email":"srisiree518@gmail.com","phone_number":"09177146174","address":"9-119,Second floor,Ameerpet,Hyderabad,Telangana,500081","country_id":"99","state_id":"1218","city":"Hyderabad","zip_code":"500016","address_type":"shipping","created_at":"2026-04-16 11:51:54"}]
+DEBUG - 2026-05-12 10:26:00 --> Invalid shipping or billing address detected. Resetting.
+INFO - 2026-05-12 10:26:00 --> Default shipping address selected: 1
+INFO - 2026-05-12 10:26:00 --> Fetching shipping methods for State ID: 1252
+DEBUG - 2026-05-12 10:26:00 --> Shipping Methods: [{"shop_id":"1","total_shipping_cost":0,"shop_name":"induco solutions","methods":[{"method_db_id":"3","zone_id":"6","shop_id":"1","method":"flat_rate","name":"Flat Rate","cost":"12","is_selected":0,"order":3,"id":"c16a5320fa475530d9583c34fd356ef5"}]}]
+DEBUG - 2026-05-12 10:26:00 --> Selected Shipping Method IDs: []
+DEBUG - 2026-05-12 10:26:00 --> Cart Seller IDs: null
+INFO - 2026-05-12 10:26:00 --> Rendering shipping views.
+ERROR - 2026-05-12 10:26:01 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:26:01 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:26:02 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+ERROR - 2026-05-12 10:26:02 --> TaxJar Error: 406 Not Acceptable – to_country must be a two-letter ISO code.
+INFO - 2026-05-12 10:26:02 --> Shipping function completed successfully.
+CRITICAL - 2026-05-12 10:29:07 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:31:05 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:41:54 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 14:42:27 --> ErrorException: unlink(/home/ubuntu/desibazars/writable/debugbar/debugbar_1778596909.703195.json): No such file or directory
+[Method: GET, Route: /]
+in SYSTEMPATH/Debug/Toolbar/Collectors/History.php on line 82.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/Debug/Toolbar/Collectors/History.php(82): unlink()
+ 3 SYSTEMPATH/Debug/Toolbar.php(517): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles()
+ 4 SYSTEMPATH/Debug/Toolbar.php(496): CodeIgniter\Debug\Toolbar->format()
+ 5 APPPATH/Config/Events.php(100): CodeIgniter\Debug\Toolbar->respond()
+ 6 SYSTEMPATH/Events/Events.php(152): CodeIgniter\Events\Events::Config\{closure}()
+ 7 SYSTEMPATH/CodeIgniter.php(342): CodeIgniter\Events\Events::trigger()
+ 8 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:42:34 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-12 10:42:44 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: Ajax/getStates]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(357): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

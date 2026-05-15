@@ -1,0 +1,94 @@
+CRITICAL - 2025-12-29 04:57:19 --> ErrorException: Undefined variable $key
+[Method: GET, Route: wallet]
+in APPPATH/Views/wallet/_loyalty_points.php on line 12.
+ 1 APPPATH/Views/wallet/_loyalty_points.php(12): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(226): include('/home/u476517538/domains/desibazars.com/public_html/app/Views/wallet/_loyalty_points.php')
+ 3 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1203): CodeIgniter\View\View->render()
+ 5 APPPATH/Views/wallet/wallet.php(78): view()
+ 6 SYSTEMPATH/View/View.php(226): include('/home/u476517538/domains/desibazars.com/public_html/app/Views/wallet/wallet.php')
+ 7 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH/Common.php(1203): CodeIgniter\View\View->render()
+ 9 APPPATH/Controllers/ProfileController.php(288): view()
+10 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ProfileController->wallet()
+11 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2025-12-29 06:12:17 --> Error: Call to a member function addLoyaltyPoints() on null
+[Method: POST, Route: OrderAdmin/orderPaymentReceivedPost]
+in APPPATH/Models/OrderAdminModel.php on line 79.
+ 1 APPPATH/Controllers/OrderAdminController.php(73): App\Models\OrderAdminModel->updateOrderPaymentReceived()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\OrderAdminController->orderPaymentReceivedPost()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2025-12-29 06:17:06 --> ErrorException: Undefined property: stdClass::$grand_total
+[Method: POST, Route: OrderAdmin/updateOrderProductStatusPost]
+in APPPATH/Models/OrderModel.php on line 1172.
+ 1 APPPATH/Models/OrderModel.php(1172): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Models/OrderAdminModel.php(126): App\Models\OrderModel->processOrderCompletion()
+ 3 APPPATH/Controllers/OrderAdminController.php(128): App\Models\OrderAdminModel->updateOrderStatusIfCompleted()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\OrderAdminController->updateOrderProductStatusPost()
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2025-12-29 06:55:07 --> LOYALTY ▶ function called, orderId=61
+ERROR - 2025-12-29 06:55:07 --> LOYALTY ▶ order loaded | status=1 buyer_id=4 loyalty_given=0 price_total=55.95
+ERROR - 2025-12-29 06:55:07 --> LOYALTY ▶ items count=1
+ERROR - 2025-12-29 06:55:07 --> LOYALTY ▶ product points=0
+ERROR - 2025-12-29 06:55:07 --> LOYALTY ▶ order rule points=0
+ERROR - 2025-12-29 06:55:07 --> LOYALTY ▶ total points=0
+ERROR - 2025-12-29 06:55:07 --> LOYALTY ❌ totalPoints <= 0
+ERROR - 2025-12-29 06:58:26 --> LOYALTY ▶ function called, orderId=62
+ERROR - 2025-12-29 06:58:26 --> LOYALTY ▶ order loaded | status=1 buyer_id=4 loyalty_given=0 price_total=55.95
+ERROR - 2025-12-29 06:58:26 --> LOYALTY ▶ items count=1
+ERROR - 2025-12-29 06:58:26 --> LOYALTY ▶ product points=0
+ERROR - 2025-12-29 06:58:26 --> LOYALTY ▶ order rule points=0
+ERROR - 2025-12-29 06:58:26 --> LOYALTY ▶ total points=0
+ERROR - 2025-12-29 06:58:26 --> LOYALTY ❌ totalPoints <= 0
+ERROR - 2025-12-29 07:05:20 --> LOYALTY ▶ function called, orderId=63
+ERROR - 2025-12-29 07:05:20 --> LOYALTY ▶ order loaded | status=1 buyer_id=4 loyalty_given=0 price_total=55.95
+ERROR - 2025-12-29 07:05:20 --> LOYALTY ▶ items count=1
+ERROR - 2025-12-29 07:05:20 --> LOYALTY ▶ product points=0
+ERROR - 2025-12-29 07:05:20 --> LOYALTY ▶ order rule points=0
+ERROR - 2025-12-29 07:05:20 --> LOYALTY ▶ total points=0
+ERROR - 2025-12-29 07:05:20 --> 🔥🔥🔥 ENTERED ZERO POINTS BLOCK 🔥🔥🔥
+ERROR - 2025-12-29 07:05:20 --> 🔥🔥🔥 UPDATE RESULT=true
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ▶ function called, orderId=64
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ▶ order loaded | status=1 buyer_id=4 loyalty_given=0 price_total=55.95
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ▶ items count=1
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ▶ product points=0
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ▶ order rule points=2
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ▶ total points=2
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ✅ user wallet updated
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ✅ transaction inserted
+ERROR - 2025-12-29 07:11:46 --> LOYALTY ▶ order update result=true
+ERROR - 2025-12-29 07:41:09 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 07:41:13 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 07:41:18 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:04:24 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:04:26 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:04:27 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:04:28 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:12:17 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:13:03 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:18:05 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+ERROR - 2025-12-29 08:18:10 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=0
+CRITICAL - 2025-12-29 08:31:03 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ProductModel::getProductsWithCouponsCount
+[Method: GET, Route: coupons]
+in SYSTEMPATH/Model.php on line 927.
+ 1 APPPATH/Controllers/CouponController.php(39): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\CouponController->coupons()
+ 3 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2025-12-29 08:33:41 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=12
+ERROR - 2025-12-29 08:33:49 --> LOYALTY VIEW ▶ userPoints=26 requiredPoints=12

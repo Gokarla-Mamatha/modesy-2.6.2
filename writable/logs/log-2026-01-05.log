@@ -1,0 +1,56 @@
+ERROR - 2026-01-05 09:14:08 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\LoyaltyController.php(80): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\LoyaltyController->convert()
+#6 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoyaltyController))
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2026-01-05 09:14:21 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\LoyaltyController.php(80): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\LoyaltyController->convert()
+#6 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoyaltyController))
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2026-01-05 09:15:01 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\LoyaltyController.php(80): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\LoyaltyController->convert()
+#6 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoyaltyController))
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2026-01-05 09:15:17 --> mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 F:\xampp\htdocs\modesy-2.6.2\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 F:\xampp\htdocs\modesy-2.6.2\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 F:\xampp\htdocs\modesy-2.6.2\app\Controllers\LoyaltyController.php(80): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(933): App\Controllers\LoyaltyController->convert()
+#6 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoyaltyController))
+#7 F:\xampp\htdocs\modesy-2.6.2\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 F:\xampp\htdocs\modesy-2.6.2\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 F:\xampp\htdocs\modesy-2.6.2\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
