@@ -17,7 +17,7 @@
             </label>
         </div>
 
-        <p class="p-complete-payment"><?= trans("msg_complete_payment"); ?></p>
+        <p class="p-complete-payment"><?= esc(trans("msg_complete_payment")); ?></p>
 
         <div id="wallet_container"></div>
 
@@ -35,7 +35,7 @@
         <?php if (!empty($errorMessage)): ?>
             <?= esc($errorMessage); ?>
         <?php else: ?>
-            <?= trans("payment_option_load_error"); ?>
+            <?= esc(trans("payment_option_load_error")); ?>
         <?php endif; ?>
     </div>
 <?php endif; ?>

@@ -3,10 +3,10 @@
         <table class="table">
             <thead>
             <tr role="row">
-                <th scope="col"><?= trans("product"); ?></th>
-                <th scope="col"><?= trans("commission_rate"); ?></th>
-                <th scope="col"><?= trans("earned_amount"); ?></th>
-                <th scope="col"><?= trans("date"); ?></th>
+                <th scope="col"><?= esc(trans("product")); ?></th>
+                <th scope="col"><?= esc(trans("commission_rate")); ?></th>
+                <th scope="col"><?= esc(trans("earned_amount")); ?></th>
+                <th scope="col"><?= esc(trans("date")); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -18,7 +18,7 @@
                             <?php if (!empty($product)): ?>
                                 <a href="<?= generateProductUrl($product); ?>" class="a-hover-underline" target="_blank"><?= esc($product->title); ?></a>
                             <?php else: ?>
-                                <?= trans("product_id"); ?>:&nbsp;<?= $earning->product_id; ?>
+                                <?= esc(trans("product_id")); ?>:&nbsp;<?= $earning->product_id; ?>
                             <?php endif; ?>
                         </td>
                         <td><?= $earning->commission_rate . '%' ?></td>
@@ -32,7 +32,7 @@
     </div>
     <?php if (empty($earnings)): ?>
         <p class="text-center m-t-15">
-            <?= trans("no_records_found"); ?>
+            <?= esc(trans("no_records_found")); ?>
         </p>
     <?php endif; ?>
     <div class="d-flex justify-content-center m-t-30">

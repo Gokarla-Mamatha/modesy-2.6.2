@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans('product_details'); ?></h3>
+                <h3 class="box-title"><?= esc(trans('product_details')); ?></h3>
             </div>
             <div class="box-body">
                 <?php $images = getProductImages($product->id);
@@ -19,7 +19,7 @@
                 <?php endif; ?>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('seller'); ?></label>
+                        <label class="control-label"><?= esc(trans('seller')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php $user = getUser($product->user_id);
@@ -30,7 +30,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('link'); ?></label>
+                        <label class="control-label"><?= esc(trans('link')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <a href="<?= generateProductUrl($product); ?>" target="_blank"><?= generateProductUrl($product); ?></a>
@@ -38,52 +38,52 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('status'); ?></label>
+                        <label class="control-label"><?= esc(trans('status')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if ($product->status == 1): ?>
-                            <label class="label label-success"><?= trans("active"); ?></label>
+                            <label class="label label-success"><?= esc(trans("active")); ?></label>
                         <?php else: ?>
                             <?php if ($product->is_rejected == 1): ?>
-                                <label class="label label-danger"><?= trans("rejected"); ?></label>
-                                <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalReason"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;<?= trans("show_reason"); ?></button>
+                                <label class="label label-danger"><?= esc(trans("rejected")); ?></label>
+                                <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalReason"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;<?= esc(trans("show_reason")); ?></button>
                                 <div id="modalReason" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title"><?= trans("reason"); ?></h4>
+                                                <h4 class="modal-title"><?= esc(trans("reason")); ?></h4>
                                             </div>
                                             <div class="modal-body">
                                                 <p class="m-t-10"><?= esc($product->reject_reason); ?></p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal"><?= trans("close"); ?></button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal"><?= esc(trans("close")); ?></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <?php else: ?>
-                                <label class="label label-default"><?= trans("pending"); ?></label>
+                                <label class="label label-default"><?= esc(trans("pending")); ?></label>
                         <?php endif;
                         endif; ?>
                     </div>
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('visibility'); ?></label>
+                        <label class="control-label"><?= esc(trans('visibility')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if ($product->visibility == 1): ?>
-                            <label class="label label-success"><?= trans("visible"); ?></label>
+                            <label class="label label-success"><?= esc(trans("visible")); ?></label>
                         <?php else: ?>
-                            <label class="label label-danger"><?= trans("hidden"); ?></label>
+                            <label class="label label-danger"><?= esc(trans("hidden")); ?></label>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('id'); ?></label>
+                        <label class="control-label"><?= esc(trans('id')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= $product->id; ?>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('title'); ?></label>
+                        <label class="control-label"><?= esc(trans('title')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= esc(html_entity_decode($productDetails->title, ENT_QUOTES, 'UTF-8')); ?>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('slug'); ?></label>
+                        <label class="control-label"><?= esc(trans('slug')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= esc($product->slug); ?>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('short_description'); ?></label>
+                        <label class="control-label"><?= esc(trans('short_description')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= esc($productDetails->short_description); ?>
@@ -115,7 +115,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('sku'); ?></label>
+                        <label class="control-label"><?= esc(trans('sku')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= esc($product->sku); ?>
@@ -123,15 +123,15 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('product_type'); ?></label>
+                        <label class="control-label"><?= esc(trans('product_type')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
-                        <?= trans($product->product_type); ?>
+                        <?= esc(trans($product->product_type)); ?>
                     </div>
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('listing_type'); ?></label>
+                        <label class="control-label"><?= esc(trans('listing_type')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= getProductListingType($product); ?>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('category'); ?></label>
+                        <label class="control-label"><?= esc(trans('category')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php $i = 0;
@@ -157,7 +157,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('price'); ?></label>
+                        <label class="control-label"><?= esc(trans('price')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= priceFormatted($product->price, $product->currency) . ' ' . $product->currency; ?>
@@ -165,7 +165,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('discounted_price'); ?></label>
+                        <label class="control-label"><?= esc(trans('discounted_price')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= priceFormatted($product->price_discounted, $product->currency) . ' ' . $product->currency; ?>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('discount_rate'); ?></label>
+                        <label class="control-label"><?= esc(trans('discount_rate')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= $product->discount_rate; ?><?= $product->discount_rate > 0 ? '%' : ''; ?>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('vat'); ?></label>
+                        <label class="control-label"><?= esc(trans('vat')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= $product->vat_rate; ?><?= $product->vat_rate > 0 ? '%' : ''; ?>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('stock'); ?></label>
+                        <label class="control-label"><?= esc(trans('stock')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if ($product->product_type == 'digital'):
@@ -201,7 +201,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('location'); ?></label>
+                        <label class="control-label"><?= esc(trans('location')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= getLocation($product); ?>
@@ -209,23 +209,23 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('product_promotion'); ?></label>
+                        <label class="control-label"><?= esc(trans('product_promotion')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if ($product->is_promoted == 1): ?>
-                            <label class="label label-success"><?= trans("yes"); ?></label><br><br>
+                            <label class="label label-success"><?= esc(trans("yes")); ?></label><br><br>
                             <label><?= trans("purchased_plan") . ': ' . esc($product->promote_plan); ?></label><br>
-                            <label><?= trans("start"); ?>: &nbsp;<?= $product->promote_start_date; ?></label><br>
-                            <label><?= trans("end"); ?>: &nbsp;<?= $product->promote_end_date; ?></label><br>
-                            <label><?= trans("remaining_days"); ?>: &nbsp;<strong><?= dateDifference($product->promote_end_date, date('Y-m-d H:i:s')); ?></strong></label>
+                            <label><?= esc(trans("start")); ?>: &nbsp;<?= $product->promote_start_date; ?></label><br>
+                            <label><?= esc(trans("end")); ?>: &nbsp;<?= $product->promote_end_date; ?></label><br>
+                            <label><?= esc(trans("remaining_days")); ?>: &nbsp;<strong><?= dateDifference($product->promote_end_date, date('Y-m-d H:i:s')); ?></strong></label>
                         <?php else: ?>
-                            <label class="label label-danger"><?= trans("no"); ?></label>
+                            <label class="label label-danger"><?= esc(trans("no")); ?></label>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('reviews'); ?></label>
+                        <label class="control-label"><?= esc(trans('reviews')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= view('admin/includes/_review_stars', ['review' => $product->rating]); ?>
@@ -241,19 +241,19 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('special_offers'); ?></label>
+                        <label class="control-label"><?= esc(trans('special_offers')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if ($product->is_special_offer == 1): ?>
-                            <label class="label label-success"><?= trans("yes"); ?></label>
+                            <label class="label label-success"><?= esc(trans("yes")); ?></label>
                         <?php else: ?>
-                            <label class="label label-danger"><?= trans("no"); ?></label>
+                            <label class="label label-danger"><?= esc(trans("no")); ?></label>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('page_views'); ?></label>
+                        <label class="control-label"><?= esc(trans('page_views')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= $product->pageviews; ?>
@@ -261,7 +261,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('demo_url'); ?></label>
+                        <label class="control-label"><?= esc(trans('demo_url')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if (!empty($product->demo_url)): ?>
@@ -271,7 +271,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('external_link'); ?></label>
+                        <label class="control-label"><?= esc(trans('external_link')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if (!empty($product->external_link)): ?>
@@ -282,7 +282,7 @@
                 <?php if ($product->product_type == 'digital'): ?>
                     <div class="row row-product-details">
                         <div class="col-md-3 col-sm-12">
-                            <label class="control-label"><?= trans('files_included'); ?></label>
+                            <label class="control-label"><?= esc(trans('files_included')); ?></label>
                         </div>
                         <div class="col-md-9 col-sm-12 right">
                             <?= $product->files_included; ?>
@@ -291,19 +291,19 @@
                 <?php endif; ?>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('draft'); ?></label>
+                        <label class="control-label"><?= esc(trans('draft')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if ($product->is_draft == 1): ?>
-                            <label class="label label-success"><?= trans("yes"); ?></label>
+                            <label class="label label-success"><?= esc(trans("yes")); ?></label>
                         <?php else: ?>
-                            <label class="label label-danger"><?= trans("no"); ?></label>
+                            <label class="label label-danger"><?= esc(trans("no")); ?></label>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('video_preview'); ?></label>
+                        <label class="control-label"><?= esc(trans('video_preview')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if (!empty($video)): ?>
@@ -317,7 +317,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('audio_preview'); ?></label>
+                        <label class="control-label"><?= esc(trans('audio_preview')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if (!empty($audio)): ?>
@@ -331,7 +331,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('digital_files'); ?></label>
+                        <label class="control-label"><?= esc(trans('digital_files')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?php if (!empty($product->digital_file_download_link)): ?>
@@ -354,15 +354,15 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('description'); ?></label>
+                        <label class="control-label"><?= esc(trans('description')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right description">
-                        <?= $productDetails->description; ?>
+                        <?= purifyHtml($productDetails->description); ?>
                     </div>
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('updated'); ?></label>
+                        <label class="control-label"><?= esc(trans('updated')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= !empty($product->updated_at) ? timeAgo($product->updated_at) : ''; ?>
@@ -370,7 +370,7 @@
                 </div>
                 <div class="row row-product-details">
                     <div class="col-md-3 col-sm-12">
-                        <label class="control-label"><?= trans('date'); ?></label>
+                        <label class="control-label"><?= esc(trans('date')); ?></label>
                     </div>
                     <div class="col-md-9 col-sm-12 right">
                         <?= formatDate($product->created_at); ?>
@@ -378,13 +378,13 @@
                 </div>
             </div>
             <div class="box-footer">
-                <a href="<?= generateDashUrl('edit_product') . '/' . $product->id; ?>" target="_blank" class="btn btn-info pull-right"><i class="fa fa-edit"></i>&nbsp;&nbsp;<?= trans('edit'); ?></a>
-                <button type="button" class="btn btn-danger pull-right m-r-5" data-toggle="modal" data-target="#modalReject"><i class="fa fa-ban"></i>&nbsp;&nbsp;<?= trans('reject'); ?></button>
+                <a href="<?= generateDashUrl('edit_product') . '/' . $product->id; ?>" target="_blank" class="btn btn-info pull-right"><i class="fa fa-edit"></i>&nbsp;&nbsp;<?= esc(trans('edit')); ?></a>
+                <button type="button" class="btn btn-danger pull-right m-r-5" data-toggle="modal" data-target="#modalReject"><i class="fa fa-ban"></i>&nbsp;&nbsp;<?= esc(trans('reject')); ?></button>
                 <form action="<?= base_url('Product/approveProduct'); ?>" method="post" style="display: inline-block !important; float: right;">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $product->id; ?>">
                     <?php if ($product->status != 1): ?>
-                        <button type="submit" name="option" value="approve" class="btn btn-success pull-right m-r-5"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= trans('approve'); ?></button>
+                        <button type="submit" name="option" value="approve" class="btn btn-success pull-right m-r-5"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= esc(trans('approve')); ?></button>
                     <?php endif; ?>
                 </form>
             </div>
@@ -400,13 +400,13 @@
                 <input type="hidden" name="id" value="<?= $product->id; ?>">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><?= trans("reject"); ?></h4>
+                    <h4 class="modal-title"><?= esc(trans("reject")); ?></h4>
                 </div>
                 <div class="modal-body">
-                    <textarea name="reject_reason" class="form-control form-textarea" data-type="text" placeholder="<?= trans("reason"); ?>.." style="min-height: 150px;"></textarea>
+                    <textarea name="reject_reason" class="form-control form-textarea" data-type="text" placeholder="<?= esc(trans("reason")); ?>.." style="min-height: 150px;"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"><?= trans("submit"); ?></button>
+                    <button type="submit" class="btn btn-success"><?= esc(trans("submit")); ?></button>
                 </div>
             </form>
         </div>

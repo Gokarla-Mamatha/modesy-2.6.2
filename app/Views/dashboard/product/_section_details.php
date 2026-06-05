@@ -2,18 +2,18 @@
     <div class="section-product-details">
         <div class="form-box form-box-last" style="padding-bottom: 0;">
             <div class="form-box-head">
-                <h4 class="title"><?= trans('details'); ?></h4>
+                <h4 class="title"><?= esc(trans('details')); ?></h4>
             </div>
             <div class="form-box-body">
                 <div class="form-group">
                     <?php if ($productSettings->brand_status == 1 && !empty($brands) && !empty($brands['brands'])): ?>
                         <div class="row">
                             <div class="col-md-12 col-lg-6 col-custom-field m-b-30">
-                                <label><?= trans("brands"); ?><?= $productSettings->is_brand_optional == 1 ? '(' . trans("optional") . ')' : ''; ?></label>
+                                <label><?= esc(trans("brands")); ?><?= $productSettings->is_brand_optional == 1 ? '(' . trans("optional") . ')' : ''; ?></label>
                                 <div class="custom-options-container" style="border: 0 !important;">
                                     <div class="row">
                                         <select name="brand_id" class="select2 form-control" <?= $productSettings->is_brand_optional != 1 ? 'required' : ''; ?>>
-                                            <option value=""><?= trans('select'); ?></option>
+                                            <option value=""><?= esc(trans('select')); ?></option>
                                             <?php foreach ($brands['brands'] as $brand): ?>
                                                 <option value="<?= esc($brand->id); ?>" <?= $product->brand_id == $brand->id ? 'selected' : ''; ?>><?= esc($brand->brand_name); ?></option>
                                             <?php endforeach; ?>
@@ -61,7 +61,7 @@
                                         <div class="col-sm-12 col-sm-6 col-custom-field">
                                             <label><?= esc($customField->name); ?><?= $customField->is_required != 1 ? ' (' . trans("optional") . ')' : ''; ?></label>
                                             <select name="field_<?= $customField->id; ?>" class="select2 form-control custom-select" <?= $customField->is_required == 1 ? 'required' : ''; ?>>
-                                                <option value=""><?= trans('select'); ?></option>
+                                                <option value=""><?= esc(trans('select')); ?></option>
                                                 <?php $fieldOptions = getCustomFieldOptions($customField, $activeLang->id);
                                                 $fieldValues = getSelectedCustomFieldValuesForProduct($customField->id, $product->id, $activeLang->id);
                                                 $selectedOptionIds = is_array($fieldValues) ? array_column($fieldValues, 'selected_option_id') : [];
@@ -110,36 +110,36 @@
     <div class="section-product-details">
         <div class="form-box form-box-last" style="padding-bottom: 0;">
             <div class="form-box-head">
-                <h4 class="title"><?= trans('coupon_details'); ?></h4>
+                <h4 class="title"><?= esc(trans('coupon_details')); ?></h4>
             </div>
             <div class="form-box-body">
 
                 <div class="form-group">
-                    <label><?= trans("where_to_redeem"); ?> <small class="text-muted">(<?= trans("enter_full_address"); ?>)</small></label>
+                    <label><?= esc(trans("where_to_redeem")); ?> <small class="text-muted">(<?= esc(trans("enter_full_address")); ?>)</small></label>
                     <input type="text" name="coupon_redeem_place" class="form-control"
                            value="<?= esc($product->coupon_redeem_place ?? ''); ?>">
                 </div>
 
                 <div class="form-group">
-                    <label><?= trans("contact_phone"); ?></label>
+                    <label><?= esc(trans("contact_phone")); ?></label>
                     <input type="text" name="coupon_contact" class="form-control"
                            value="<?= esc($product->coupon_contact ?? ''); ?>" placeholder="+91 98765 43210" data-type="mobile">
                 </div>
                  <div class="form-group">
-                    <label><?= trans("coupon_expiry"); ?> <small class="text-muted">(DD/MM/YYYY)</small></label>
+                    <label><?= esc(trans("coupon_expiry")); ?> <small class="text-muted">(DD/MM/YYYY)</small></label>
                     <input type="date" name="coupon_expiry" class="form-control" required  
                            value="<?= !empty($product->coupon_expiry) ? esc(date('Y-m-d', strtotime($product->coupon_expiry))) : ''; ?>">
                 </div>
                 <div class="form-group">
-                    <label><?= trans("map_location"); ?></label>
+                    <label><?= esc(trans("map_location")); ?></label>
                     <input type="text" name="coupon_map_link" class="form-control"
                            value="<?= esc($product->coupon_map_link ?? ''); ?>" placeholder="https://maps.google.com/?q=location" data-type="url">
-                    <small class="text-muted"><?= trans("paste_google_map_link"); ?></small>
+                    <small class="text-muted"><?= esc(trans("paste_google_map_link")); ?></small>
                 </div>
 
                 <!-- Coupon Description (With Image & AI Button) -->
                 <div class="form-group m-b-15">
-                    <label class="control-label"><?= trans("coupon_description"); ?></label>
+                    <label class="control-label"><?= esc(trans("coupon_description")); ?></label>
                     <div class="row">
                         <div class="col-sm-12">
                             <button type="button"
@@ -148,7 +148,7 @@
                                     data-editor-id="<?= $couponEditorId; ?>"
                                     data-toggle="modal"
                                     data-target="#fileManagerModal">
-                                <i class="fa fa-image"></i>&nbsp;&nbsp;<?= trans("add_image"); ?>
+                                <i class="fa fa-image"></i>&nbsp;&nbsp;<?= esc(trans("add_image")); ?>
                             </button>
 
                             <?php if (aiWriter()->status && hasPermission('ai_writer')): ?>
@@ -157,7 +157,7 @@
                                         data-toggle="modal"
                                         data-target="#modalAiWriter"
                                         data-editor-id="<?= $couponEditorId; ?>">
-                                    <i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;<?= trans("ai_writer"); ?>
+                                    <i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;<?= esc(trans("ai_writer")); ?>
                                 </button>
                             <?php endif; ?>
                         </div>

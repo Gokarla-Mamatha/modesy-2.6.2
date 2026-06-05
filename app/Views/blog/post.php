@@ -5,8 +5,8 @@
                 <div class="blog-content">
                     <nav class="nav-breadcrumb" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                            <li class="breadcrumb-item"><a href="<?= generateUrl('blog'); ?>"><?= trans("blog"); ?></a></li>
+                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                            <li class="breadcrumb-item"><a href="<?= generateUrl('blog'); ?>"><?= esc(trans("blog")); ?></a></li>
                             <li class="breadcrumb-item"><a href="<?= generateUrl('blog') . '/' . esc($post->category_slug); ?>"><?= esc($post->category_name); ?></a></li>
                             <li class="breadcrumb-item active" aria-current="page"><?= esc($post->title); ?></li>
                         </ol>
@@ -31,7 +31,7 @@
                                 <?= view('partials/_ad_spaces', ['adSpace' => 'blog_1', 'class' => 'mt-2 mb-4']); ?>
                                 <div class="row-custom">
                                     <div class="post-text post-text-responsive">
-                                        <?= $post->content; ?>
+                                        <?= purifyHtml($post->content); ?>
                                     </div>
                                 </div>
                                 <div class="row-custom m-b-20">
@@ -49,20 +49,24 @@
                                 </div>
                                 <div class="row-custom">
                                     <div class="post-share">
-                                        <h4 class="title"><?= trans("share"); ?></h4>
-                                        <a href="javascript:void(0)" onclick='window.open("https://www.facebook.com/sharer/sharer.php?u=<?= generateUrl('blog') . '/' . esc($category->slug) . '/' . esc($post->slug); ?>", "Share This Post", "width=640,height=450");return false' class="btn btn-md btn-share facebook">
+                                        <?php $postUrl = generateUrl('blog') . '/' . $category->slug . '/' . $post->slug;
+                                        $encodedPostUrl = urlencode($postUrl);
+                                        $encodedPostTitle = urlencode($post->title);
+                                        $encodedPostImage = urlencode(getBlogImageURL($post, 'image_small')); ?>
+                                        <h4 class="title"><?= esc(trans("share")); ?></h4>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= esc($encodedPostUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-md btn-share facebook">
                                             <i class="icon-facebook"></i>
                                             <span>Facebook</span>
                                         </a>
-                                        <a href="javascript:void(0)" onclick='window.open("https://twitter.com/share?url=<?= generateUrl('blog') . '/' . esc($category->slug) . '/' . esc($post->slug); ?>&amp;text=<?= urlencode(esc($post->title)); ?>", "Share This Post", "width=640,height=450");return false' class="btn btn-md btn-share twitter">
+                                        <a href="https://twitter.com/share?url=<?= esc($encodedPostUrl, 'attr'); ?>&amp;text=<?= esc($encodedPostTitle, 'attr'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-md btn-share twitter">
                                             <i class="icon-twitter"></i>
                                             <span>X</span>
                                         </a>
-                                        <a href="https://api.whatsapp.com/send?text=<?= urlencode(esc($post->title)); ?> - <?= generateUrl('blog') . '/' . esc($category->slug) . '/' . esc($post->slug); ?>" target="_blank" class="btn btn-md btn-share whatsapp">
+                                        <a href="https://api.whatsapp.com/send?text=<?= esc($encodedPostTitle, 'attr'); ?> - <?= esc($encodedPostUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-md btn-share whatsapp">
                                             <i class="icon-whatsapp"></i>
                                             <span>Whatsapp</span>
                                         </a>
-                                        <a href="javascript:void(0)" onclick='window.open("http://pinterest.com/pin/create/button/?url=<?= generateUrl('blog') . '/' . esc($category->slug) . '/' . esc($post->slug); ?>&amp;media=<?= getBlogImageURL($post, 'image_small'); ?>", " Share This Post", "width=640,height=450");return false' class="btn btn-md btn-share pinterest">
+                                        <a href="http://pinterest.com/pin/create/button/?url=<?= esc($encodedPostUrl, 'attr'); ?>&amp;media=<?= esc($encodedPostImage, 'attr'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-md btn-share pinterest">
                                             <i class="icon-pinterest"></i>
                                             <span>Pinterest</span>
                                         </a>
@@ -71,7 +75,7 @@
                                 <?= view('partials/_ad_spaces', ['adSpace' => 'blog_2', 'class' => 'mb-4']); ?>
                                 <div class="row-custom">
                                     <div class="related-posts">
-                                        <h4 class="blog-section-title"><?= trans("related_posts"); ?></h4>
+                                        <h4 class="blog-section-title"><?= esc(trans("related_posts")); ?></h4>
                                         <div class="row">
                                             <?php if (!empty($relatedPosts)):
                                                 foreach ($relatedPosts as $item): ?>
@@ -88,13 +92,13 @@
                                         <ul class="nav nav-tabs">
                                             <?php if ($generalSettings->blog_comments == 1): ?>
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#comments"><?= trans("comments"); ?></a>
+                                                    <a class="nav-link active" data-toggle="tab" href="#comments"><?= esc(trans("comments")); ?></a>
                                                 </li>
                                             <?php endif;
                                             if ($generalSettings->facebook_comment_status == 1): ?>
                                                 <li class="nav-item">
                                                     <a class="nav-link <?= ($generalSettings->blog_comments != 1) ? 'active' : ''; ?>" data-toggle="tab" href="#facebook_comments">
-                                                        <?= trans("facebook_comments"); ?>
+                                                        <?= esc(trans("facebook_comments")); ?>
                                                     </a>
                                                 </li>
                                             <?php endif; ?>
@@ -117,7 +121,7 @@
                         </div>
                         <div class="col-sm-12 col-md-3">
                             <div class="latest-posts">
-                                <h4 class="blog-section-title"><?= trans("latest_posts"); ?></h4>
+                                <h4 class="blog-section-title"><?= esc(trans("latest_posts")); ?></h4>
                                 <div class="row">
                                     <?php if (!empty($latestPosts)):
                                         foreach ($latestPosts as $item): ?>
@@ -129,7 +133,7 @@
                                 </div>
                             </div>
                             <div class="blog-tags">
-                                <h4 class="blog-section-title"><?= trans("tags"); ?></h4>
+                                <h4 class="blog-section-title"><?= esc(trans("tags")); ?></h4>
                                 <ul>
                                     <?php if (!empty($randomTags)):
                                         foreach ($randomTags as $tag): ?>

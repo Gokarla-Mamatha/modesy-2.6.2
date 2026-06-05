@@ -4,11 +4,11 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= trans("contact"); ?></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("contact")); ?></li>
                     </ol>
                 </nav>
-                <h1 class="page-title"><?= trans("contact"); ?></h1>
+                <h1 class="page-title"><?= esc(trans("contact")); ?></h1>
             </div>
             <div class="col-12">
                 <div class="page-contact">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="contact-leave-message"><?= trans("leave_message"); ?></h2>
+                            <h2 class="contact-leave-message"><?= esc(trans("leave_message")); ?></h2>
                         </div>
                     </div>
                     <div class="row">
@@ -30,13 +30,13 @@
                                 <input type="hidden" name="recaptcha_token" id="recaptcha_token">
                                 <input type="text" name="contact_url" class="ctd">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-input" name="name" placeholder="<?= trans("name"); ?>" maxlength="199" minlength="1" pattern=".*\S+.*" value="<?= old('name'); ?>" data-type="name" required>
+                                    <input type="text" class="form-control form-input" name="name" placeholder="<?= esc(trans("name")); ?>" maxlength="199" minlength="1" pattern=".*\S+.*" value="<?= old('name'); ?>" data-type="name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-input" name="email" maxlength="199" placeholder="<?= trans("email_address"); ?>" value="<?= old('email'); ?>" data-type="email" required>
+                                    <input type="email" class="form-control form-input" name="email" maxlength="199" placeholder="<?= esc(trans("email_address")); ?>" value="<?= old('email'); ?>" data-type="email" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control form-input form-textarea" name="message" placeholder="<?= trans("message"); ?>" maxlength="4970" minlength="5" required data-type="text"><?= old('message'); ?></textarea>
+                                    <textarea class="form-control form-input form-textarea" name="message" placeholder="<?= esc(trans("message")); ?>" maxlength="4970" minlength="5" required data-type="text"><?= old('message'); ?></textarea>
                                 </div>
                                 
                                 <div class="form-group d-flex align-items-center">
@@ -51,7 +51,7 @@
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox custom-control-validate-input">
                                         <input type="checkbox" class="custom-control-input" name="terms" id="checkbox_terms" required>
-                                        <label for="checkbox_terms" class="custom-control-label"><?= trans("terms_conditions_exp"); ?>&nbsp;
+                                        <label for="checkbox_terms" class="custom-control-label"><?= esc(trans("terms_conditions_exp")); ?>&nbsp;
                                             <?php $pageTerms = getPageByDefaultName('terms_conditions', selectedLangId());
                                             if (!empty($pageTerms)): ?>
                                                 <a href="<?= generateUrl($pageTerms->page_default_name); ?>" class="link-terms" target="_blank"><strong><?= esc($pageTerms->title); ?></strong></a>
@@ -62,7 +62,7 @@
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-md btn-custom">
-                                        <?= trans("submit"); ?>
+                                        <?= esc(trans("submit")); ?>
                                     </button>
                                 </div>
                             </form>

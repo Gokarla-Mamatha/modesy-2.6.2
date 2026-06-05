@@ -19,7 +19,7 @@
                     <a href="<?= generateCategoryUrl($item); ?>">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="search-item-left"><?= esc($item->name); ?></div>
-                            <div class="search-item-right"><span><?= trans('category'); ?></span></div>
+                            <div class="search-item-right"><span><?= esc(trans('category')); ?></span></div>
                         </div>
                     </a>
                 </li>
@@ -32,7 +32,7 @@
                     <a href="<?= generateUrl('products') . "?brand=" . $item->id; ?>">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="search-item-left"><?= esc($item->name); ?></div>
-                            <div class="search-item-right"><span><?= trans('brand'); ?></span></div>
+                            <div class="search-item-right"><span><?= esc(trans('brand')); ?></span></div>
                         </div>
                     </a>
                 </li>
@@ -45,7 +45,7 @@
                     <a href="<?= generateProfileUrl($item->slug); ?>">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="search-item-left"><?= esc($item->username); ?></div>
-                            <div class="search-item-right"><span><?= trans('shop'); ?></span></div>
+                            <div class="search-item-right"><span><?= esc(trans('shop')); ?></span></div>
                         </div>
                     </a>
                 </li>

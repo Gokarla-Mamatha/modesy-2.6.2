@@ -6,11 +6,11 @@
                     <div class="circle-loader">
                         <div class="checkmark draw"></div>
                     </div>
-                    <h1 class="title text-success"><?= trans("msg_order_completed"); ?></h1>
-                    <p class="p-order-number"><?= trans("order"); ?>:&nbsp;#<?= esc($order->order_number); ?></p>
+                    <h1 class="title text-success"><?= esc(trans("msg_order_completed")); ?></h1>
+                    <p class="p-order-number"><?= esc(trans("order")); ?>:&nbsp;#<?= esc($order->order_number); ?></p>
                     <?php if($order->payment_method == 'bank_transfer'): ?>
-                        <p class="p-order-number"><?= trans("total"); ?>:&nbsp;<?= priceFormatted($order->price_total, $order->price_currency); ?></p>
-                        <p class="p-complete-payment"><?= trans("msg_bank_transfer_text_order_completed"); ?></p>
+                        <p class="p-order-number"><?= esc(trans("total")); ?>:&nbsp;<?= priceFormatted($order->price_total, $order->price_currency); ?></p>
+                        <p class="p-complete-payment"><?= esc(trans("msg_bank_transfer_text_order_completed")); ?></p>
                         <div class="bank-account-container">
                             <?= $paymentSettings->bank_transfer_accounts; ?>
                         </div>

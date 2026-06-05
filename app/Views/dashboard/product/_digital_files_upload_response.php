@@ -5,14 +5,14 @@
             <?= csrf_field(); ?>
             <input type="hidden" name="file_id" value="<?= $digitalFile->id; ?>">
             <div class="dm-uploaded-digital-file">
-                <a href="javascript:void(0)" class="pull-left link-uploaded-digital-file" onclick="$('#form_download_digital_file').submit();">
+                <a href="javascript:void(0)" class="pull-left link-uploaded-digital-file js-download-digital-file">
                     <i class="fa fa-file-zipper"></i>&nbsp;&nbsp;<strong><?= esc($digitalFile->file_name); ?></strong>
                 </a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-danger pull-right" onclick="deleteProductDigitalFile('<?= $digitalFile->id; ?>','<?= trans("confirm_delete", true) ?>');">
-                    <i class="fa fa-trash-can"></i>&nbsp;&nbsp;<?= trans("delete"); ?>
+                <a href="javascript:void(0)" class="btn btn-sm btn-danger pull-right js-delete-product-digital-file" data-file-id="<?= esc($digitalFile->id, 'attr'); ?>" data-msg="<?= esc(trans("confirm_delete", true), 'attr') ?>">
+                    <i class="fa fa-trash-can"></i>&nbsp;&nbsp;<?= esc(trans("delete")); ?>
                 </a>
                 <button type="submit" class="btn btn-sm btn-info color-white pull-right m-r-5">
-                    <i class="fa fa-download"></i>&nbsp;&nbsp;<?= trans("download"); ?>
+                    <i class="fa fa-download"></i>&nbsp;&nbsp;<?= esc(trans("download")); ?>
                 </button>
             </div>
         </form>
@@ -27,7 +27,7 @@
                         <path fill="currentColor" d="M19.226 35.769a.5.5 0 0 1-.5-.5V15.087a.5.5 0 0 1 1 0V35.27a.5.5 0 0 1-.5.499"/>
                     </svg>
                 </p>
-                <p class="dm-upload-text"><?= trans("drag_drop_file_here"); ?>&nbsp;<span style="text-decoration: underline"><?= trans('browse_files'); ?></span></p>
+                <p class="dm-upload-text"><?= esc(trans("drag_drop_file_here")); ?>&nbsp;<span style="text-decoration: underline"><?= esc(trans('browse_files')); ?></span></p>
                 <a class='btn btn-md dm-btn-select-files'>
                     <input type="file" name="file">
                 </a>

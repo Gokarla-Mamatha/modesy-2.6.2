@@ -8,12 +8,12 @@
                 <div class="row table-filter-container">
                     <div class="col-sm-12">
                         <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                         </button>
                         <div class="collapse navbar-collapse" id="collapseFilter">
                             <form action="<?= adminUrl('seller-balances'); ?>" method="get">
                                 <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                    <label><?= trans("show"); ?></label>
+                                    <label><?= esc(trans("show")); ?></label>
                                     <select name="show" class="form-control">
                                         <option value="15" <?= inputGet('show', true) == '15' ? 'selected' : ''; ?>>15</option>
                                         <option value="30" <?= inputGet('show', true) == '30' ? 'selected' : ''; ?>>30</option>
@@ -22,12 +22,12 @@
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("search"); ?></label>
-                                    <input name="q" class="form-control" placeholder="<?= trans("username"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                    <label><?= esc(trans("search")); ?></label>
+                                    <input name="q" class="form-control" placeholder="<?= esc(trans("username")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
                                 </div>
                                 <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                     <label style="display: block">&nbsp;</label>
-                                    <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                    <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                 </div>
                             </form>
                         </div>
@@ -37,11 +37,11 @@
                     <table class="table table-bordered table-striped" role="grid">
                         <thead>
                         <tr role="row">
-                            <th><?= trans('user_id'); ?></th>
-                            <th><?= trans('user'); ?></th>
-                            <th><?= trans('number_of_total_sales'); ?></th>
-                            <th><?= trans('balance'); ?></th>
-                            <th class="th-options"><?= trans('options'); ?></th>
+                            <th><?= esc(trans('user_id')); ?></th>
+                            <th><?= esc(trans('user')); ?></th>
+                            <th><?= esc(trans('number_of_total_sales')); ?></th>
+                            <th><?= esc(trans('balance')); ?></th>
+                            <th class="th-options"><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -69,12 +69,12 @@
                                     <td><strong class="font-600"><?= priceFormatted($item->balance, $paymentSettings->default_currency); ?></strong></td>
                                     <td style="width: 200px;">
                                         <div class="dropdown">
-                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?>
+                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?>
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu options-dropdown">
                                                 <li>
-                                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#modalBalance<?= $item->id; ?>"><i class="fa fa-edit option-icon"></i><?= trans('edit'); ?></a>
+                                                    <a href="javascript:void(0)" data-toggle="modal" data-bs-target="#modalBalance<?= $item->id; ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('edit')); ?></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -86,7 +86,7 @@
                     </table>
                     <?php if (empty($balances)): ?>
                         <p class="text-center">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                     <div class="col-sm-12 table-ft">
@@ -112,24 +112,24 @@
                         <input type="hidden" name="user_id" value="<?= $item->id; ?>">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><?= trans("update_seller_balance"); ?></h4>
+                            <h4 class="modal-title"><?= esc(trans("update_seller_balance")); ?></h4>
                         </div>
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="label-sitemap"><?= trans('user_id'); ?>:&nbsp;<?= esc($item->id); ?></label><br>
-                                <label class="label-sitemap"><?= trans('username'); ?>:&nbsp;<?= esc(getUsername($item)); ?></label>
+                                <label class="label-sitemap"><?= esc(trans('user_id')); ?>:&nbsp;<?= esc($item->id); ?></label><br>
+                                <label class="label-sitemap"><?= esc(trans('username')); ?>:&nbsp;<?= esc(getUsername($item)); ?></label>
                             </div>
                             <div class="form-group">
-                                <label class="label-sitemap"><?= trans('number_of_total_sales'); ?></label>
+                                <label class="label-sitemap"><?= esc(trans('number_of_total_sales')); ?></label>
                                 <input type="number" class="form-control" name="number_of_sales" value="<?= $item->number_of_sales; ?>" min="0" data-type="number" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans('balance'); ?></label>
+                                <label class="control-label"><?= esc(trans('balance')); ?></label>
                                 <?= renderPriceInput('balance', $item->balance, ['required' => true]); ?>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success"><?= trans("submit"); ?></button>
+                            <button type="submit" class="btn btn-success"><?= esc(trans("submit")); ?></button>
                         </div>
                     </form>
                 </div>

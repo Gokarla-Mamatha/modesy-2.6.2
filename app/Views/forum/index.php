@@ -153,10 +153,22 @@ $('#forumSearch').on('keyup', function () {
 }
 
 .category-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;      /* Ensures image fits perfectly */
-    border-radius: 50%;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 55px !important;
+    max-height: 55px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
+.forum-category-card img,
+#forumSearchResults img {
+    max-width: 55px !important;
+    max-height: 55px !important;
+    width: 55px !important;
+    height: 55px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
 }
 
 .forum-category-card:hover .category-icon {

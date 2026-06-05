@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg modal-file-manager" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><?= trans("images"); ?></h5>
+                <h5 class="modal-title"><?= esc(trans("images")); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                 </button>
@@ -26,15 +26,15 @@
                                         <path fill="currentColor" d="M19.226 35.769a.5.5 0 0 1-.5-.5V15.087a.5.5 0 0 1 1 0V35.27a.5.5 0 0 1-.5.499"/>
                                     </svg>
                                 </p>
-                                <p class="dm-upload-text"><?= trans("drag_drop_images_here"); ?></p>
+                                <p class="dm-upload-text"><?= esc(trans("drag_drop_images_here")); ?></p>
                                 <p class="text-center">
-                                    <button class="btn btn-default btn-browse-files"><?= trans('browse_files'); ?></button>
+                                    <button class="btn btn-default btn-browse-files"><?= esc(trans('browse_files')); ?></button>
                                 </p>
                                 <a class='btn btn-md dm-btn-select-files'>
                                     <input type="file" name="file" size="40" multiple="multiple">
                                 </a>
                                 <ul class="dm-uploaded-files" id="files-file-manager"></ul>
-                                <button type="button" id="btn_reset_upload_image" class="btn btn-reset-upload"><?= trans("reset"); ?></button>
+                                <button type="button" id="btn_reset_upload_image" class="btn btn-reset-upload"><?= esc(trans("reset")); ?></button>
                             </div>
                         </div>
                     </div>
@@ -61,9 +61,9 @@
             </div>
             <div class="modal-footer">
                 <div class="file-manager-footer">
-                    <button type="button" id="btn_fm_img_delete" class="btn btn-sm btn-danger color-white pull-left btn-file-delete m-r-3"><i class="fa fa-trash-can"></i>&nbsp;&nbsp;<?= trans('delete'); ?></button>
-                    <button type="button" id="btn_fm_img_select" class="btn btn-sm btn-info color-white btn-file-select"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= trans('select_image'); ?></button>
-                    <button type="button" class="btn btn-sm btn-secondary color-white" data-dismiss="modal"><?= trans('close'); ?></button>
+                    <button type="button" id="btn_fm_img_delete" class="btn btn-sm btn-danger color-white pull-left btn-file-delete m-r-3"><i class="fa fa-trash-can"></i>&nbsp;&nbsp;<?= esc(trans('delete')); ?></button>
+                    <button type="button" id="btn_fm_img_select" class="btn btn-sm btn-info color-white btn-file-select"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= esc(trans('select_image')); ?></button>
+                    <button type="button" class="btn btn-sm btn-secondary color-white" data-dismiss="modal"><?= esc(trans('close')); ?></button>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
         <img class="preview-img" alt="">
         <div class="media-body">
             <div class="progress">
-                <div class="dm-progress-waiting"><?= trans("waiting"); ?></div>
+                <div class="dm-progress-waiting"><?= esc(trans("waiting")); ?></div>
                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
@@ -140,14 +140,14 @@
             },
             onFileTypeError: function (file) {
                 Swal.fire({
-                    text: "<?= trans('invalid_file_type', true); ?>",
+                    text: "<?= esc(trans('invalid_file_type', true)); ?>",
                     icon: 'warning',
                     confirmButtonText: MdsConfig.text.ok
                 });
             },
             onFileExtError: function (file) {
                 Swal.fire({
-                    text: "<?= trans('invalid_file_type', true); ?>",
+                    text: "<?= esc(trans('invalid_file_type', true)); ?>",
                     icon: 'warning',
                     confirmButtonText: MdsConfig.text.ok
                 });

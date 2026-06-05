@@ -27,7 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
-    // EMAIL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    // US ZIP CODE (5 digits, optional +4 e.g. 90210 or 90210-1234)
+    document.querySelectorAll('[data-type="zip"]').forEach(input => {
+        input.addEventListener("input", () => {
+            // keep only digits and a single hyphen, max length 10 (00000-0000)
+            input.value = input.value.replace(/[^0-9-]/g, '').slice(0, 10);
+        });
+        input.addEventListener("blur", () => {
+            toggleError(input, /^\d{5}(-\d{4})?$/.test(input.value), "Enter a valid US ZIP code");
+        });
+    });
+
+    // EMAIL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     document.querySelectorAll('[data-type="email"]').forEach(input => {
         input.addEventListener("input", () => {
             toggleError(input, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value), "Enter valids email");
@@ -59,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //TITLE (letters, numbers, spaces)
     document.querySelectorAll('[data-type="title"]').forEach(input => {
         input.addEventListener("input", () => {
-            input.value = input.value.replace(/[^A-Za-z0-9\s?@]/g, '');
+            input.value = input.value.replace(/[^A-Za-z0-9\s&'-]/g, '');
         });
     });
 
@@ -253,6 +264,74 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+});
+
+$(document).on('click', '.js-delete-blog-comment', function () {
+    deleteBlogComment($(this).data('comment-id'), $(this).data('post-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-load-more-blog-comments', function () {
+    loadMoreBlogComments($(this).data('post-id'));
+});
+
+$(document).on('click', '.js-show-comment-form', function () {
+    showCommentForm($(this).data('comment-id'));
+});
+
+$(document).on('click', '.js-delete-product-comment', function () {
+    deleteComment($(this).data('comment-id'), $(this).data('type'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-report-product-comment', function () {
+    $('#report_comment_id').val($(this).data('comment-id'));
+});
+
+$(document).on('click', '.js-report-product-review', function () {
+    $('#report_review_id').val($(this).data('review-id'));
+});
+
+$(document).on('click', '.js-remove-from-cart', function () {
+    removeFromCart($(this).data('cart-item-id'));
+});
+
+$(document).on('click', '.js-remove-cart-discount-coupon', function () {
+    removeCartDiscountCoupon();
+});
+
+$(document).on('click', '.js-delete-quote-request', function () {
+    deleteQuoteRequest($(this).data('quote-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-delete-chat', function () {
+    deleteChat($(this).data('chat-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-cancel-order', function () {
+    cancelOrder($(this).data('order-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-approve-order-product', function () {
+    approveOrderProduct($(this).data('item-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-delete-product-video-preview', function () {
+    deleteProductVideoPreview($(this).data('product-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-delete-product-audio-preview', function () {
+    deleteProductAudioPreview($(this).data('product-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-download-digital-file', function () {
+    $('#form_download_digital_file').submit();
+});
+
+$(document).on('click', '.js-delete-product-digital-file', function () {
+    deleteProductDigitalFile($(this).data('file-id'), $(this).data('msg'));
+});
+
+$(document).on('click', '.js-delete-license-key', function () {
+    deleteLicenseKey($(this).data('license-key-id'), $(this).data('product-id'));
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -628,4 +707,9 @@ document.addEventListener("DOMContentLoaded", function () {
         $(this).hide();
     });
 
+});
+document.querySelectorAll('[data-type="quantity"]').forEach(input => {
+    input.addEventListener("input", () => {
+        input.value = input.value.replace(/[^0-9]/g, '');
+    });
 });

@@ -4,11 +4,11 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= trans("wallet"); ?></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("wallet")); ?></li>
                     </ol>
                 </nav>
-                <h1 class="page-title"><?= trans("wallet"); ?></h1>
+                <h1 class="page-title"><?= esc(trans("wallet")); ?></h1>
                 <?= view('partials/_messages'); ?>
             </div>
         </div>
@@ -20,10 +20,10 @@
                             <div class="card card-wallet-balance">
                                 <div class="card-body">
                                     <?php if ($paymentSettings->wallet_deposit == 1): ?>
-                                        <button type="button" class="btn btn-sm btn-light btn-add-funds" data-toggle="modal" data-target="#modalAddFunds">
+                                        <button type="button" class="btn btn-sm btn-light btn-add-funds" data-bs-toggle="modal" data-bs-target="#modalAddFunds">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
                                                 <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9.09a5.5 5.5 0 0 1-.09-1a6 6 0 0 1 6-6a5.9 5.9 0 0 1 3 .81V6a2 2 0 0 0-2-2m0 7H4V8h16m0 7v3h3v2h-3v3h-2v-3h-3v-2h3v-3Z"/>
-                                            </svg>&nbsp;&nbsp;<?= trans("add_funds"); ?>
+                                            </svg>&nbsp;&nbsp;<?= esc(trans("add_funds")); ?>
                                         </button>
                                     <?php endif; ?>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@
                                             <path fill="<?= esc($generalSettings->site_color); ?>" d="M5 6.5a.5.5 0 0 1 .5-.5H16a1 1 0 1 0 0-2H5.5A2.5 2.5 0 0 0 3 6.5V18a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H5.5a.5.5 0 0 1-.5-.5M15.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
                                         </g>
                                     </svg>
-                                    <div class="font-600 font-size-13"><?= trans("wallet_balance"); ?></div>
+                                    <div class="font-600 font-size-13"><?= esc(trans("wallet_balance")); ?></div>
                                     <strong class="total"><?= priceFormatted(user()->balance, $selectedCurrency->code, true); ?></strong>
                                 </div>
                             </div>
@@ -41,28 +41,28 @@
                     <ul class="nav nav-tabs nav-tabs-wallet" role="tablist">
                         <?php if (isVendor()): ?>
                             <li class="nav-item">
-                                <a class="nav-link <?= $activeTab == 'earnings' ? 'active' : ''; ?>" href="<?= generateUrl("wallet"); ?>"><?= trans("earnings"); ?></a>
+                                <a class="nav-link <?= $activeTab == 'earnings' ? 'active' : ''; ?>" href="<?= generateUrl("wallet"); ?>"><?= esc(trans("earnings")); ?></a>
                             </li>
                         <?php endif;
                         if ($affiliateSettings->status == 1): ?>
                             <li class="nav-item">
-                                <a class="nav-link <?= $activeTab == 'referral_earnings' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=referral-earnings'; ?>"><?= trans("referral_earnings"); ?></a>
+                                <a class="nav-link <?= $activeTab == 'referral_earnings' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=referral-earnings'; ?>"><?= esc(trans("referral_earnings")); ?></a>
                             </li>
                         <?php endif; ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $activeTab == 'deposits' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=deposits'; ?>"><?= trans("deposits"); ?></a>
+                            <a class="nav-link <?= $activeTab == 'deposits' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=deposits'; ?>"><?= esc(trans("deposits")); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $activeTab == 'expenses' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=expenses'; ?>"><?= trans("expenses"); ?></a>
+                            <a class="nav-link <?= $activeTab == 'expenses' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=expenses'; ?>"><?= esc(trans("expenses")); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $activeTab == 'payouts' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=payouts'; ?>"><?= trans("payouts"); ?></a>
+                            <a class="nav-link <?= $activeTab == 'payouts' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=payouts'; ?>"><?= esc(trans("payouts")); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $activeTab == 'set_payout_account' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=set-payout-account'; ?>"><?= trans("set_payout_account"); ?></a>
+                            <a class="nav-link <?= $activeTab == 'set_payout_account' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=set-payout-account'; ?>"><?= esc(trans("set_payout_account")); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $activeTab == 'loyalty_points' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=loyalty-points'; ?>"><?= trans("Loyalty Points"); ?></a>
+                            <a class="nav-link <?= $activeTab == 'loyalty_points' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=loyalty-points'; ?>"><?= esc(trans("Loyalty Points")); ?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?= $activeTab == 'redeem-history' ? 'active' : ''; ?>" href="<?= generateUrl("wallet") . '?tab=redeem-history'; ?>"> Redeem History </a>
@@ -102,7 +102,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-custom">
             <div class="modal-header">
-                <h5 class="modal-title"><?= trans("add_funds"); ?></h5>
+                <h5 class="modal-title"><?= esc(trans("add_funds")); ?></h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true"><i class="icon-close"></i> </span>
                 </button>
@@ -112,18 +112,18 @@
                     <?= csrf_field(); ?>
                     <input type="hidden" name="back_url" value="<?= getCurrentUrl(); ?>">
                     <div class="form-group">
-                        <label class="control-label"><?= trans("enter_amount"); ?></label>
+                        <label class="control-label"><?= esc(trans("enter_amount")); ?></label>
                         <div class="input-group">
                             <span class="input-group-addon"><?= $selectedCurrency->symbol; ?></span>
                             <input type="text" name="amount" id="product_discounted_price_input" class="form-control form-input input-price" maxlength="13" placeholder="<?= $defaultCurrency->currency_format == 'european' ? '0,00' : '0.00'; ?>"
                                    placeholder="<?= $defaultCurrency->currency_format == 'european' ? '0,00' : '0.00'; ?>" inputmode="decimal" required>
                         </div>
                         <?php if ($paymentSettings->wallet_min_deposit > 0): ?>
-                            <small class="display-block font-size-13 m-t-5"><?= trans("minimum_deposit_amount"); ?>:&nbsp;<strong><?= priceFormatted($paymentSettings->wallet_min_deposit, $selectedCurrency->code, true); ?></strong></small>
+                            <small class="display-block font-size-13 m-t-5"><?= esc(trans("minimum_deposit_amount")); ?>:&nbsp;<strong><?= priceFormatted($paymentSettings->wallet_min_deposit, $selectedCurrency->code, true); ?></strong></small>
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-md btn-custom btn-block"><?= trans("continue_to_checkout"); ?></button>
+                        <button type="submit" class="btn btn-md btn-custom btn-block"><?= esc(trans("continue_to_checkout")); ?></button>
                     </div>
                 </form>
             </div>

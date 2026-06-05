@@ -223,15 +223,23 @@
                     }
 
                     elements.sku.textContent = `${variant.sku}`;
-                    if (variant.quantity > 0) {
-                        elements.stockStatus.textContent = MESSAGES.inStock;
-                        elements.stockStatus.className = 'text-product-discounted';
-                        elements.addToCartButton.disabled = false;
-                    } else {
-                        elements.stockStatus.textContent = MESSAGES.outOfStock;
-                        elements.stockStatus.className = 'text-danger';
-                        elements.addToCartButton.disabled = true;
-                    }
+                       if (variant.quantity > 0) {
+                            if (elements.stockStatus) {
+                                elements.stockStatus.textContent = MESSAGES.inStock;
+                                elements.stockStatus.className = 'text-product-discounted';
+                            }
+                            if (elements.addToCartButton) {
+                                elements.addToCartButton.disabled = false;
+                            }
+                        } else {
+                            if (elements.stockStatus) {
+                                elements.stockStatus.textContent = MESSAGES.outOfStock;
+                                elements.stockStatus.className = 'text-danger';
+                            }
+                            if (elements.addToCartButton) {
+                                elements.addToCartButton.disabled = true;
+                            }
+                        }
                     elements.variantIdInput.value = variant.id;
                 }
             }

@@ -6,13 +6,13 @@ if (!empty($categoryIds)) {
 } ?>
 <div class="row">
     <div class="col-sm-12 title-section">
-        <h3><?= trans("select_products"); ?><br><span class="text-muted" style="font-size: 13px;"><?= trans("coupon"); ?>:&nbsp;<?= esc($coupon->coupon_code); ?></span></h3>
+        <h3><?= esc(trans("select_products")); ?><br><span class="text-muted" style="font-size: 13px;"><?= esc(trans("coupon")); ?>:&nbsp;<?= esc($coupon->coupon_code); ?></span></h3>
     </div>
     <div class="col-md-12 col-lg-4">
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("categories"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("categories")); ?></h3>
                 </div>
             </div>
             <div class="box-body">
@@ -22,8 +22,8 @@ if (!empty($categoryIds)) {
                             <table class="table table-bordered table-striped table-products" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th><?= trans('category'); ?></th>
-                                    <th class="max-width-120"><?= trans('select_for_coupon'); ?></th>
+                                    <th><?= esc(trans('category')); ?></th>
+                                    <th class="max-width-120"><?= esc(trans('select_for_coupon')); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +47,7 @@ if (!empty($categoryIds)) {
                         </div>
                         <?php if (empty($sellerCategories)): ?>
                             <p class="text-center">
-                                <?= trans("no_records_found"); ?>
+                                <?= esc(trans("no_records_found")); ?>
                             </p>
                         <?php endif; ?>
                     </div>
@@ -59,7 +59,7 @@ if (!empty($categoryIds)) {
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("products"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("products")); ?></h3>
                 </div>
             </div>
             <div class="box-body">
@@ -68,7 +68,7 @@ if (!empty($categoryIds)) {
                         <div class="row table-filter-container">
                             <div class="col-sm-12">
                                 <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                                 </button>
                                 <div class="collapse navbar-collapse" id="collapseFilter">
                                     <form action="<?= $currentPageLink; ?>" method="get" id="formVendorProducts">
@@ -76,9 +76,9 @@ if (!empty($categoryIds)) {
                                             <input type="hidden" name="st" value="<?= strSlug(inputGet('st')); ?>">
                                         <?php endif; ?>
                                         <div class="item-table-filter">
-                                            <label><?= trans('category'); ?></label>
+                                            <label><?= esc(trans('category')); ?></label>
                                             <select id="categories" name="category" class="form-control custom-select" onchange="getFilterSubCategoriesDashboard(this.value);">
-                                                <option value=""><?= trans("all"); ?></option>
+                                                <option value=""><?= esc(trans("all")); ?></option>
                                                 <?php if (!empty($parentCategories)):
                                                     foreach ($parentCategories as $item): ?>
                                                         <option value="<?= $item->id; ?>" <?= inputGet('category', true) == $item->id ? 'selected' : ''; ?>><?= esc($item->cat_name); ?></option>
@@ -87,9 +87,9 @@ if (!empty($categoryIds)) {
                                             </select>
                                         </div>
                                         <div class="item-table-filter">
-                                            <label class="control-label"><?= trans('subcategory'); ?></label>
+                                            <label class="control-label"><?= esc(trans('subcategory')); ?></label>
                                             <select id="subcategories" name="subcategory" class="form-control custom-select">
-                                                <option value=""><?= trans("all"); ?></option>
+                                                <option value=""><?= esc(trans("all")); ?></option>
                                                 <?php if (!empty(inputGet('category'))):
                                                     $subCategories = getSubCategories(inputGet('category'));
                                                     if (!empty($subCategories)):
@@ -101,10 +101,10 @@ if (!empty($categoryIds)) {
                                             </select>
                                         </div>
                                         <div class="item-table-filter item-table-filter-large">
-                                            <label><?= trans("search"); ?></label>
+                                            <label><?= esc(trans("search")); ?></label>
                                             <div class="item-table-filter-search">
-                                                <input name="q" class="form-control" placeholder="<?= trans("search"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
-                                                <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                                <input name="q" class="form-control" placeholder="<?= esc(trans("search")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                                <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                             </div>
                                         </div>
                                     </form>
@@ -115,10 +115,10 @@ if (!empty($categoryIds)) {
                             <table class="table table-bordered table-striped table-products" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th width="20"><?= trans('id'); ?></th>
-                                    <th><?= trans('product'); ?></th>
-                                    <th><?= trans('category'); ?></th>
-                                    <th class="max-width-120"><?= trans('select_for_coupon'); ?></th>
+                                    <th width="20"><?= esc(trans('id')); ?></th>
+                                    <th><?= esc(trans('product')); ?></th>
+                                    <th><?= esc(trans('category')); ?></th>
+                                    <th class="max-width-120"><?= esc(trans('select_for_coupon')); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -146,7 +146,7 @@ if (!empty($categoryIds)) {
                         </div>
                         <?php if (empty($products)): ?>
                             <p class="text-center">
-                                <?= trans("no_records_found"); ?>
+                                <?= esc(trans("no_records_found")); ?>
                             </p>
                         <?php endif; ?>
                     </div>
@@ -155,7 +155,7 @@ if (!empty($categoryIds)) {
                     <div class="col-sm-12">
                         <?php if (!empty($products)): ?>
                             <div class="number-of-entries">
-                                <span><?= trans("number_of_entries"); ?>:</span>&nbsp;&nbsp;<strong><?= $numRows; ?></strong>
+                                <span><?= esc(trans("number_of_entries")); ?>:</span>&nbsp;&nbsp;<strong><?= $numRows; ?></strong>
                             </div>
                         <?php endif; ?>
                         <div class="table-pagination">
@@ -173,11 +173,11 @@ if (!empty($categoryIds)) {
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title text-center" id="couponModalLabel"><?= trans("please_wait"); ?></h4>
+                <h4 class="modal-title text-center" id="couponModalLabel"><?= esc(trans("please_wait")); ?></h4>
             </div>
 
             <div class="modal-body text-center">
-                <p><?= trans("msg_processing_coupon_assignments"); ?></p>
+                <p><?= esc(trans("msg_processing_coupon_assignments")); ?></p>
 
                 <div class="spinner"></div>
             </div>

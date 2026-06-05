@@ -26,8 +26,6 @@ use App\Libraries\JsonLdGenerator;
 use App\Libraries\Turnstile;
 use App\Models\ForumCategoryModel;
 
-
-
 class HomeController extends BaseController
 {
     protected $blogModel;
@@ -647,56 +645,154 @@ class HomeController extends BaseController
         if (!authCheck()) {
             return redirect()->to(langBaseUrl());
         }
+ 
         if (isVendor()) {
             return redirect()->to(langBaseUrl());
         }
+ 
+        $db = \Config\Database::connect();
+        $db->transStart();
+ 
+        $mobile = inputPost('phone_number') ?: session('temp_mobile') ?: inputPost('mobile');
+ 
+        // =========================
+        // ✅ MAIN REQUEST
+        // =========================
         $data = [
-            'username' => removeSpecialCharacters(inputPost('username')),
             'first_name' => inputPost('first_name'),
             'last_name' => inputPost('last_name'),
-            'phone_number' => inputPost('phone_number'),
+            'phone_number' => inputPost('phone_number') ?? $mobile,
             'country_id' => inputPost('country_id'),
             'state_id' => inputPost('state_id'),
             'city_id' => inputPost('city_id'),
             'about_me' => inputPost('about_me'),
             'vendor_documents' => '',
             'is_active_shop_request' => 1,
-            'shop_request_date' => date('Y-m-d H:i:s')
+            'shop_request_date' => date('Y-m-d H:i:s'),
+            'business_name' => inputPost('business_name'),
+            'business_email' => inputPost('business_email'),
+            'business_phone' => inputPost('business_phone'),
+            'business_type' => inputPost('business_type'),
+            'is_used_free_plan' => 1,
+            'role_id' => 2,
         ];
-        //is shop name unique
-        if (!$this->authModel->isUniqueUsername($data['username'], user()->id)) {
-            setErrorMessage(trans("msg_shop_name_unique_error"));
-            redirectToBackUrl();
-        }
+ 
         $membershipModel = new MembershipModel();
-        //validate uploaded files
-        if ($this->generalSettings->request_documents_vendors == 1) {
-            $filesValid = true;
-            if (!empty($_FILES['file'])) {
-                for ($i = 0; $i < countItems($_FILES['file']['name']); $i++) {
-                    if ($_FILES['file']['size'][$i] > 5242880) {
-                        $filesValid = false;
-                    }
+        $requestId = $membershipModel->addShopOpeningRequest($data);
+ 
+        if (!$requestId) {
+            $db->transRollback();
+            setErrorMessage(trans("msg_error"));
+            return redirect()->back();
+        }
+ 
+        $userId = user()->id;
+        $type = inputPost('business_type');
+ 
+        // =========================
+        // ✅ GET ROLES
+        // =========================
+        $roles = $this->request->getPost('roles');
+ 
+        // =========================
+        // ✅ CLEAN STAKEHOLDERS
+        // =========================
+        $stakeholders = $this->request->getPost('stakeholders');
+        $cleanStakeholders = [];
+ 
+        if (!empty($stakeholders) && is_array($stakeholders)) {
+            foreach ($stakeholders as $s) {
+                $name = trim($s['name'] ?? '');
+                $role = trim($s['role'] ?? '');
+                if ($name !== '' || $role !== '') {
+                    $cleanStakeholders[] = [
+                        'name' => $name,
+                        'role' => $role,
+                    ];
                 }
             }
-            if ($filesValid == false) {
-                setErrorMessage(trans("file_too_large") . ' 5MB');
-                redirectToBackUrl();
-            }
-            $uploadModel = new UploadModel();
-            $vendorDocs = $uploadModel->uploadVendorDocuments();
-            if (!empty($vendorDocs)) {
-                $data['vendor_documents'] = serialize($vendorDocs);
-            }
         }
-        if ($membershipModel->addShopOpeningRequest($data)) {
-            //send email
-            $membershipModel->addShopOpeningEmail(user()->id);
-            $membershipModel->addShopOpeningEmailAdmin();
-            setSuccessMessage(trans("msg_start_selling"));
-        } else {
-            setErrorMessage(trans("msg_error"));
+ 
+        // =========================
+        // ✅ BUSINESS DATA
+        // =========================
+        $businessData = [
+            'user_id' => $userId,
+            'request_id' => $requestId,
+            'business_type' => $type,
+            'registered_business_type' => inputPost('registered_business_type'),
+ 
+            // ADDRESS (form posts: address_line1/address_line2/zip + cascading IDs)
+            'address_line1' => inputPost('address_line1'),
+            'address_line2' => inputPost('address_line2'),
+            'country_id' => inputPost('sole_country_id'),
+            'state_id' => inputPost('sole_state_id'),
+            'city_id' => inputPost('sole_city_id'),
+            'zip' => inputPost('zip'),
+            'contact_phone' => (inputPost('account_type') === 'personal' && !empty($mobile)) ? $mobile : inputPost('contact_phone'),
+
+            // PRIMARY CONTACT
+            'primary_first_name' => inputPost('primary_first_name'),
+            'primary_middle_name' => inputPost('primary_middle_name'),
+            'primary_last_name' => inputPost('primary_last_name'),
+            'dob' => inputPost('dob'),
+            'primary_nationality' => inputPost('primary_nationality'),
+            'ssn_last4' => inputPost('ssn_last4'),
+ 
+            'contact_address1' => inputPost('contact_address1'),
+            'contact_address2' => inputPost('contact_address2'),
+            'contact_city' => inputPost('contact_city'),
+            'contact_state' => inputPost('contact_state'),
+            'contact_zip' => inputPost('contact_zip'),
+ 
+            'roles' => is_array($roles) ? json_encode($roles) : $roles,
+            'account_number' => inputPost('account_number'),
+            'stakeholders' => !empty($cleanStakeholders)
+                ? json_encode($cleanStakeholders)
+                : null,
+        ];
+ 
+        // =========================
+        // ✅ SOLE BUSINESS
+        // =========================
+        if ($type == 'sole') {
+            $businessData['legal_first_name'] = inputPost('legal_first_name');
+            $businessData['legal_middle_name'] = inputPost('legal_middle_name');
+            $businessData['legal_last_name'] = inputPost('legal_last_name');
+            $businessData['nationality'] = inputPost('nationality');
         }
+ 
+        // =========================
+        // ✅ REGISTERED BUSINESS
+        // =========================
+        if ($type == 'registered') {
+            $businessData['legal_business_name'] = inputPost('legal_business_name');
+            $businessData['doing_business_as'] = inputPost('doing_business_as');
+            $businessData['ein_registered'] = inputPost('ein_registered');
+        }
+ 
+        // =========================
+        // ✅ INSERT BUSINESS
+        // =========================
+        $businessModel = new \App\Models\BusinessModel();
+ 
+        if (!$businessModel->insert($businessData)) {
+            echo "<pre>";
+            print_r($businessData);
+            print_r($businessModel->errors());
+            die();
+        }
+ 
+        $db->transComplete();
+ 
+        if ($db->transStatus() === false) {
+            setErrorMessage("Something went wrong");
+            redirectToBackUrl();
+        }
+ 
+        $membershipModel->addShopOpeningEmailAdmin();
+ 
+        setSuccessMessage(trans("msg_start_selling"));
         redirectToBackUrl();
     }
 
@@ -1399,48 +1495,360 @@ class HomeController extends BaseController
 
         exit;
     }
-     public function sendSmsOtp()
+
+    /**
+     * Send OTP
+     */
+    // public function sendOtp()
+    // {
+    //     $session = session();
+    //     $mobile = trim($this->request->getPost('mobile'));
+
+    //     if (!$mobile) {
+    //         return $this->jsonResponse(0, 'Mobile number required');
+    //     }
+
+    //     if (!preg_match('/^[6-9]\d{9}$/', $mobile)) {
+    //         return $this->jsonResponse(0, 'Invalid mobile number');
+    //     }
+
+    //     if ($session->get('last_otp_time') && (time() - $session->get('last_otp_time')) < 30) {
+    //         return $this->jsonResponse(0, 'Wait 30 seconds');
+    //     }
+
+    //     $otp = rand(100000, 999999);
+
+    //     try {
+    //         $sid   = env('TWILIO_SID');
+    //         $token = env('TWILIO_TOKEN');
+    //         $from  = env('TWILIO_FROM');
+
+    //         $client = new \Twilio\Rest\Client($sid, $token);
+
+    //         $message = $client->messages->create('+91' . $mobile, [
+    //             'from' => $from,
+    //             'body' => 'Your OTP is: ' . $otp
+    //         ]);
+
+    //         $session->set([
+    //             'mobile_otp'    => $otp,
+    //             'mobile_number' => $mobile,
+    //             'mobile_expiry' => time() + 300,
+    //             'last_otp_time' => time()
+    //         ]);
+
+    //         return $this->response->setJSON([
+    //             'status'   => 1,
+    //             'msg'      => 'OTP sent successfully',
+    //             'sid'      => $message->sid,
+    //             'token'    => csrf_hash(),
+    //             'csrfName' => csrf_token()
+    //         ]);
+
+    //     } catch (\Throwable $e) {
+    //         return $this->response->setJSON([
+    //             'status'   => 0,
+    //             'msg'      => $e->getMessage(),
+    //             'code'     => $e->getCode(),
+    //             'token'    => csrf_hash(),
+    //             'csrfName' => csrf_token()
+    //         ]);
+    //     }
+    // }
+    public function sendOtp()
     {
-        log_message('error', 'STEP 1: Function started');
- 
-        $phone = $this->request->getPost('mobile');
- 
-        log_message('error', 'STEP 2: Raw phone: ' . $phone);
- 
-        if (!$phone) {
-            log_message('error', 'STEP 3: Phone missing');
-            return $this->response->setJSON(['status' => 0, 'msg' => 'Phone required']);
+        $session = session();
+        $mobile = trim($this->request->getPost('mobile'));
+
+        if (!$mobile) {
+            return $this->response->setJSON([
+                'status' => 0,
+                'msg'    => 'Mobile number required',
+                'token'  => csrf_hash()
+            ]);
         }
- 
-        // ✅ format phone
-        $phone = '+91' . ltrim($phone, '0');
-        log_message('error', 'STEP 4: Formatted phone: ' . $phone);
- 
-        // ✅ rate limit
-        if (session()->get('last_otp_time') && (time() - session('last_otp_time')) < 30) {
-            log_message('error', 'STEP 5: Rate limit hit');
-            return $this->response->setJSON(['status' => 0, 'msg' => 'Wait 30 seconds']);
+
+        if (!preg_match('/^[6-9]\d{9}$/', $mobile)) {
+            return $this->response->setJSON([
+                'status' => 0,
+                'msg'    => 'Invalid mobile number',
+                'token'  => csrf_hash()
+            ]);
         }
- 
+
+        if ($session->get('last_otp_time') && (time() - $session->get('last_otp_time')) < 30) {
+            return $this->response->setJSON([
+                'status' => 0,
+                'msg'    => 'Wait 30 seconds',
+                'token'  => csrf_hash()
+            ]);
+        }
+
+        // TEST OTP
+        $otp = 123456;
+
+        // Store OTP in session
+        $session->set([
+            'mobile_otp'    => $otp,
+            'mobile_number' => $mobile,
+            'mobile_expiry' => time() + 300,
+            'last_otp_time' => time()
+        ]);
+
+        // No Twilio SMS sending in testing
+        return $this->response->setJSON([
+            'status' => 1,
+            'msg'    => 'Test OTP set successfully. Use 123456',
+            'token'  => csrf_hash()
+        ]);
+    }
+     private function jsonResponse($status, $msg)
+    {
+        return $this->response->setJSON([
+            'status'   => $status,
+            'msg'      => $msg,
+            'token'    => csrf_hash(),
+            'csrfName' => csrf_token()
+        ]);
+    }
+    public function verifyOtp()
+    {
+        $session = session();
+        $otp = trim($this->request->getPost('otp'));
+
+        if (!$session->get('mobile_otp')) {
+            return $this->jsonResponse(0, 'OTP not found');
+        }
+
+        if (time() > $session->get('mobile_expiry')) {
+            return $this->jsonResponse(0, 'OTP expired');
+        }
+
+        if ((string)$otp === (string)$session->get('mobile_otp')) {
+            $session->set('mobile_verified', true);
+            return $this->jsonResponse(1, 'Mobile verified');
+        }
+
+        return $this->jsonResponse(0, 'Invalid OTP');
+    }
+
+    public function resendOtp()
+    {
+        $session = session();
+        $mobile = $session->get('mobile_number');
+
+        if (!$mobile) {
+            return $this->jsonResponse(0, 'Session expired');
+        }
+
+        if ($session->get('last_otp_time') && (time() - $session->get('last_otp_time')) < 30) {
+            return $this->jsonResponse(0, 'Wait 30 seconds');
+        }
+
         $otp = rand(100000, 999999);
-        log_message('error', 'STEP 6: OTP generated: ' . 123456);
- 
+
+        try {
+            $sid   = env('TWILIO_SID');
+            $token = env('TWILIO_TOKEN');
+            $from  = env('TWILIO_FROM');
+
+            $client = new \Twilio\Rest\Client($sid, $token);
+
+            $client->messages->create('+91' . $mobile, [
+                'from' => $from,
+                'body' => 'Your OTP is: ' . $otp
+            ]);
+
+            $session->set([
+                'mobile_otp'    => $otp,
+                'mobile_expiry' => time() + 300,
+                'last_otp_time' => time()
+            ]);
+
+            return $this->jsonResponse(1, 'OTP resent successfully');
+
+        } catch (\Throwable $e) {
+            return $this->jsonResponse(0, $e->getMessage());
+        }
+    }
+
+    private function closeEmailConnection($emailService)
+    {
+        try {
+            $ref = new \ReflectionClass($emailService);
+            $prop = $ref->getProperty('SMTPConnect');
+            $prop->setAccessible(true);
+            $prop->setValue($emailService, null);
+        } catch (\Throwable $e) {
+            // ignore
+        }
+    }
+
+    public function sendEmailOtp()
+    {
+        $session = session();
+        $email = trim($this->request->getPost('email'));
+
+        if (!$email) {
+            return $this->jsonResponse(0, 'Email required');
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->jsonResponse(0, 'Invalid email address');
+        }
+
+        if ($session->get('last_email_otp') && (time() - $session->get('last_email_otp')) < 30) {
+            return $this->jsonResponse(0, 'Wait 30 seconds');
+        }
+
         $otp = rand(100000, 999999);
- 
-        session()->set('mobile_otp', 123456);
-        session()->set('mobile_expiry', time() + 300);
-        session()->set('last_otp_time', time());
- 
- 
- 
-        log_message('error', 'STEP 7: OTP stored in session');
- 
-        // 🔴 CHANGE THESE
-        $this->sendTwilioSms($phone, $otp);
- 
-        log_message('error', 'STEP 18: SMS SENT SUCCESS');
- 
-        return $this->response->setJSON(['status' => 1]);
+
+        $session->set([
+            'email_otp'      => $otp,
+            'email_address'  => $email,
+            'email_expiry'   => time() + 300,
+            'last_email_otp' => time()
+        ]);
+
+        try {
+            $settings = unserialize($this->generalSettings->email_settings);
+
+            $config = [
+                'protocol'   => $settings['mail_protocol'],
+                'SMTPHost'   => $settings['mail_host'],
+                'SMTPUser'   => $settings['mail_username'],
+                'SMTPPass'   => $settings['mail_password'],
+                'SMTPPort'   => (int) $settings['mail_port'],
+                'SMTPCrypto' => $settings['mail_encryption'],
+                'mailType'   => 'html',
+                'charset'    => 'utf-8',
+                'newline'    => "\r\n",
+                'CRLF'       => "\r\n",
+            ];
+
+            $emailService = \Config\Services::email(false);
+            $emailService->initialize($config);
+
+            $emailService->setFrom('desibazars@gmail.com', 'DesiBazars');
+            $emailService->setTo($email);
+            $emailService->setSubject('Your Email Verification OTP');
+            $emailService->setMessage('Your OTP is: <b>' . $otp . '</b>');
+
+            if (!$emailService->send(false)) {
+                $error = $emailService->printDebugger(['headers']);
+                $this->closeEmailConnection($emailService);
+                return $this->jsonResponse(0, $error);
+            }
+
+            $this->closeEmailConnection($emailService);
+
+            return $this->jsonResponse(1, 'Email OTP sent successfully');
+
+        } catch (\Throwable $e) {
+            return $this->jsonResponse(0, $e->getMessage());
+        }
+    }
+
+    public function verifyEmailOtp()
+    {
+        $session = session();
+        $otp = trim($this->request->getPost('otp'));
+
+        if (!$session->get('email_otp')) {
+            return $this->response->setJSON([
+                'status' => 0,
+                'msg' => 'OTP not found',
+                'token' => csrf_hash(),
+                'csrfName' => csrf_token()
+            ]);
+        }
+
+        if (time() > $session->get('email_expiry')) {
+            return $this->response->setJSON([
+                'status' => 0,
+                'msg' => 'OTP expired',
+                'token' => csrf_hash(),
+                'csrfName' => csrf_token()
+            ]);
+        }
+
+        if ((string)$otp === (string)$session->get('email_otp')) {
+            $session->set('email_verified', true);
+
+            return $this->response->setJSON([
+                'status' => 1,
+                'msg' => 'Email verified',
+                'token' => csrf_hash(),
+                'csrfName' => csrf_token()
+            ]);
+        }
+
+        return $this->response->setJSON([
+            'status' => 0,
+            'msg' => 'Invalid OTP',
+            'token' => csrf_hash(),
+            'csrfName' => csrf_token()
+        ]);
+    }
+
+    public function resendEmailOtp()
+    {
+        $session = session();
+        $email = $session->get('email_address');
+
+        if (!$email) {
+            return $this->jsonResponse(0, 'Email session expired');
+        }
+
+        if ($session->get('last_email_otp') && (time() - $session->get('last_email_otp')) < 30) {
+            return $this->jsonResponse(0, 'Wait 30 seconds');
+        }
+
+        $otp = rand(100000, 999999);
+
+        $session->set([
+            'email_otp'      => $otp,
+            'email_expiry'   => time() + 300,
+            'last_email_otp' => time()
+        ]);
+
+        try {
+            $settings = unserialize($this->generalSettings->email_settings);
+
+            $config = [
+                'protocol'   => $settings['mail_protocol'],
+                'SMTPHost'   => $settings['mail_host'],
+                'SMTPUser'   => $settings['mail_username'],
+                'SMTPPass'   => $settings['mail_password'],
+                'SMTPPort'   => (int) $settings['mail_port'],
+                'SMTPCrypto' => $settings['mail_encryption'],
+                'mailType'   => 'html',
+                'charset'    => 'utf-8',
+                'newline'    => "\r\n",
+                'CRLF'       => "\r\n",
+            ];
+
+            $emailService = \Config\Services::email(false);
+            $emailService->initialize($config);
+
+            $emailService->setFrom('desibazars@gmail.com', 'DesiBazars');
+            $emailService->setTo($email);
+            $emailService->setSubject('Your Email Verification OTP');
+            $emailService->setMessage('Your OTP is: <b>' . $otp . '</b>');
+
+            if (!$emailService->send(false)) {
+                $error = $emailService->printDebugger(['headers']);
+                $this->closeEmailConnection($emailService);
+                return $this->jsonResponse(0, $error);
+            }
+
+            $this->closeEmailConnection($emailService);
+
+            return $this->jsonResponse(1, 'Email OTP resent successfully');
+
+        } catch (\Throwable $e) {
+            return $this->jsonResponse(0, $e->getMessage());
+        }
     }
 
 }

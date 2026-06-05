@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="top-search-bar">
                                             <form action="<?= generateUrl('products'); ?>" method="get" id="form_validate_search" class="form_search_main">
-                                                <input type="text" name="search" maxlength="300" pattern=".*\S+.*" id="input_search_main" class="form-control input-search ajax-search-input" data-device="desktop" placeholder="<?= trans("search_products_categories_brands"); ?>" required autocomplete="off">
+                                                <input type="text" name="search" maxlength="300" pattern=".*\S+.*" id="input_search_main" class="form-control input-search ajax-search-input" data-device="desktop" placeholder="<?= esc(trans("search_products_categories_brands")); ?>" required autocomplete="off">
                                                 <button class="btn btn-default btn-search" aria-label="search"><i class="icon-search"></i></button>
                                                 <div id="response_search_results" class="search-results-ajax"></div>
                                             </form>
@@ -105,22 +105,22 @@
                                             <li class="nav-item nav-item-cart li-main-nav-right">
                                                 <a href="<?= generateUrl('cart'); ?>">
                                                     <i class="icon-cart"></i>
-                                                    <span class="label-nav-icon"><?= trans("cart"); ?></span>
+                                                    <span class="label-nav-icon"><?= esc(trans("cart")); ?></span>
                                                     <span class="notification span_cart_product_count <?= $cartItemCount <= 0 ? 'visibility-hidden' : ''; ?>"><?= esc($cartItemCount); ?></span>
                                                 </a>
                                             </li>
                                         <?php endif; ?>
-                                        <li class="nav-item li-main-nav-right"><a href="<?= generateUrl('wishlist'); ?>"><i class="icon-heart-o"></i><span class="label-nav-icon"><?= trans("wishlist"); ?></span></a></li>
+                                        <li class="nav-item li-main-nav-right"><a href="<?= generateUrl('wishlist'); ?>"><i class="icon-heart-o"></i><span class="label-nav-icon"><?= esc(trans("wishlist")); ?></span></a></li>
                                         <?php if (authCheck()): ?>
                                             <?php if ($generalSettings->multi_vendor_system == 1): ?>
                                                 <li class="nav-item m-r-0">
-                                                    <a href="<?= generateDashUrl("add_product"); ?>" class="btn btn-md btn-custom btn-sell-now m-r-0"><?= trans("sell_now"); ?></a>
+                                                    <a href="<?= generateDashUrl("add_product"); ?>" class="btn btn-md btn-custom btn-sell-now m-r-0"><?= esc(trans("sell_now")); ?></a>
                                                 </li>
                                             <?php endif;
                                         else: ?>
                                             <?php if ($generalSettings->multi_vendor_system == 1): ?>
                                                 <li class="nav-item m-r-0">
-                                                    <button type="button" class="btn btn-md btn-custom btn-sell-now m-r-0" data-toggle="modal" data-target="#loginModal" aria-label="sell-now"><?= trans("sell_now"); ?></button>
+                                                    <button type="button" class="btn btn-md btn-custom btn-sell-now m-r-0" data-toggle="modal" data-target="#loginModal" aria-label="sell-now"><?= esc(trans("sell_now")); ?></button>
                                                 </li>
                                         <?php endif;
                                         endif; ?>
@@ -159,7 +159,7 @@
                     <div class="row">
                         <div class="top-search-bar mobile-search-form">
                             <form action="<?= generateUrl('products'); ?>" method="get">
-                                <input type="text" id="input_search_mobile" name="search" maxlength="300" pattern=".*\S+.*" class="form-control input-search ajax-search-input" data-device="mobile" placeholder="<?= trans("search_products_categories_brands"); ?>" required autocomplete="off">
+                                <input type="text" id="input_search_mobile" name="search" maxlength="300" pattern=".*\S+.*" class="form-control input-search ajax-search-input" data-device="mobile" placeholder="<?= esc(trans("search_products_categories_brands")); ?>" required autocomplete="off">
                                 <button class="btn btn-default btn-search"><i class="icon-search"></i></button>
                                 <div id="response_search_results_mobile" class="search-results-ajax"></div>
                             </form>

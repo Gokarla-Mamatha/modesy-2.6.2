@@ -10,29 +10,29 @@
                 <form action="<?= base_url('shop-settings-post'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("shop_name"); ?></label>
-                        <input type="text" name="shop_name" class="form-control form-input" value="<?= esc(getUsername(user())); ?>" placeholder="<?= trans("shop_name"); ?>" maxlength="<?= $baseVars->usernameMaxlength; ?>" <?= !isAdmin() && $generalSettings->vendors_change_shop_name != 1 ? 'readonly' : ''; ?> data-type="name">
+                        <label class="control-label"><?= esc(trans("shop_name")); ?></label>
+                        <input type="text" name="shop_name" class="form-control form-input" value="<?= esc(getUsername(user())); ?>" placeholder="<?= esc(trans("shop_name")); ?>" maxlength="<?= $baseVars->usernameMaxlength; ?>" <?= !isAdmin() && $generalSettings->vendors_change_shop_name != 1 ? 'readonly' : ''; ?> data-type="name">
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("shop_description"); ?></label>
-                        <textarea name="about_me" class="form-control form-textarea" data-type="text" placeholder="<?= trans("shop_description"); ?>"><?= esc(user()->about_me); ?></textarea>
+                        <label class="control-label"><?= esc(trans("shop_description")); ?></label>
+                        <textarea name="about_me" class="form-control form-textarea" data-type="text" placeholder="<?= esc(trans("shop_description")); ?>"><?= esc(user()->about_me); ?></textarea>
                     </div>
                     <?php if ($generalSettings->rss_system == 1): ?>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <label><?= trans('rss_feeds'); ?></label>
+                                    <label><?= esc(trans('rss_feeds')); ?></label>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="show_rss_feeds" value="1" id="show_rss_feeds_1" class="custom-control-input" <?= user()->show_rss_feeds == 1 ? 'checked' : ''; ?>>
-                                        <label for="show_rss_feeds_1" class="custom-control-label"><?= trans("enable"); ?></label>
+                                        <label for="show_rss_feeds_1" class="custom-control-label"><?= esc(trans("enable")); ?></label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="show_rss_feeds" value="0" id="show_rss_feeds_2" class="custom-control-input" <?= user()->show_rss_feeds != 1 ? 'checked' : ''; ?>>
-                                        <label for="show_rss_feeds_2" class="custom-control-label"><?= trans("disable"); ?></label>
+                                        <label for="show_rss_feeds_2" class="custom-control-label"><?= esc(trans("disable")); ?></label>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                         <input type="hidden" name="show_rss_feeds" value="<?= user()->show_rss_feeds; ?>">
                     <?php endif; ?>
                     <div class="form-group text-right">
-                        <button type="submit" name="submit" value="update" class="btn btn-md btn-success"><?= trans("save_changes") ?></button>
+                        <button type="submit" name="submit" value="update" class="btn btn-md btn-success"><?= esc(trans("save_changes")) ?></button>
                     </div>
                 </form>
             </div>
@@ -50,34 +50,34 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="left">
-                        <h3 class="box-title"><?= trans('vat'); ?>&nbsp;(<?= trans("vat_exp"); ?>)</h3><br>
-                        <small><?= trans("vat_vendor_dashboard_exp"); ?></small>
+                        <h3 class="box-title mb-3"><?= esc(trans('Tax')); ?></h3><br>
+                        <h6> We are use <span class="text-info">TaxJar</span> for tax calculation.</h6>
                     </div>
                 </div>
-                <div class="box-body">
+                <!-- <div class="box-body">
                     <form action="<?= base_url('shop-settings-post'); ?>" method="post" id="formVAT">
                         <?= csrf_field(); ?>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" name="is_fixed_vat" id="set_fixed_vat_rate_all_countries" value="1" class="custom-control-input" <?= user()->is_fixed_vat == 1 ? 'checked' : ''; ?>>
-                                <label for="set_fixed_vat_rate_all_countries" class="custom-control-label"><?= trans("set_fixed_vat_rate_all_countries"); ?></label>
+                                <label for="set_fixed_vat_rate_all_countries" class="custom-control-label"><?= esc(trans("set_fixed_vat_rate_all_countries")); ?></label>
                             </div>
                         </div>
                         <div id="vendorFixedtVatRate" class="form-group" <?= user()->is_fixed_vat != 1 ? 'style="display: none;"' : ''; ?>>
-                            <label class="control-label"><?= trans("tax_rate"); ?>(%)</label>
+                            <label class="control-label"><?= esc(trans("tax_rate")); ?>(%)</label>
                             <input type="number" name="fixed_vat_rate" min="0" max="99.99" step="0.01" class="form-control w-200" value="<?= user()->fixed_vat_rate; ?>" placeholder="0.00" data-type="decimal">
                         </div>
                         <div id="vendorVatRates" class="m-t-30" <?= user()->is_fixed_vat == 1 ? 'style="display: none;"' : ''; ?>>
                             <div class="form-group">
-                                <input type="text" id="locationSearch" class="form-control max-400" placeholder="<?= trans("search"); ?>">
+                                <input type="text" id="locationSearch" class="form-control max-400" placeholder="<?= esc(trans("search")); ?>">
                             </div>
                             <div class="vendor-vat-rates m-0 m-b-5">
                                 <div class="vendor-vat-rate display-flex align-items-center">
                                     <div class="flex-item">
-                                        <strong><?= trans("location"); ?></strong>
+                                        <strong><?= esc(trans("location")); ?></strong>
                                     </div>
                                     <div class="flex-item">
-                                        <strong><?= trans("tax_rate"); ?>(%)</strong>
+                                        <strong><?= esc(trans("tax_rate")); ?>(%)</strong>
                                     </div>
                                 </div>
                             </div>
@@ -128,15 +128,15 @@
                             </div>
                         </div>
                         <div class="form-group text-right">
-                            <button type="submit" name="submit" value="vat" class="btn btn-md btn-success"><?= trans("save_changes") ?></button>
+                            <button type="submit" name="submit" value="vat" class="btn btn-md btn-success"><?= esc(trans("save_changes")) ?></button>
                         </div>
                         <div class="alert alert-info">
-                            <strong><?= trans("warning"); ?>!</strong>&nbsp;<?= trans("vendor_vat_rates_exp"); ?>
+                            <strong><?= esc(trans("warning")); ?>!</strong>&nbsp;<?= esc(trans("vendor_vat_rates_exp")); ?>
                         </div>
                         <input type="hidden" name="vat_data_country" id="vatDataCountry" value="<?= !empty($inputCountries) ? trim($inputCountries, ',') : ''; ?>">
                         <input type="hidden" name="vat_data_state" id="vatDataState" value="<?= !empty($inputStates) ? trim($inputStates, ',') : ''; ?>">
                     </form>
-                </div>
+                </div> -->
             </div>
         <?php endif; ?>
     </div>
@@ -146,20 +146,20 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="left">
-                        <h3 class="box-title"><?= trans("membership_plan"); ?></h3>
+                        <h3 class="box-title"><?= esc(trans("membership_plan")); ?></h3>
                     </div>
                 </div>
                 <?php if (isSuperAdmin()): ?>
                     <div class="box-body">
                         <div class="alert alert-info alert-large">
-                            <?= trans("warning_membership_admin_role"); ?>
+                            <?= esc(trans("warning_membership_admin_role")); ?>
                         </div>
                     </div>
                 <?php else: ?>
                     <div class="box-body">
                         <?php if (!empty($userPlan)): ?>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("current_plan"); ?></label><br>
+                                <label class="control-label"><?= esc(trans("current_plan")); ?></label><br>
                                 <?php $plan = null;
                                 if (!empty($userPlan->plan_id)) {
                                     $plan = getMembershipPlan($userPlan->plan_id);
@@ -171,35 +171,35 @@
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("plan_expiration_date"); ?></label><br>
+                                <label class="control-label"><?= esc(trans("plan_expiration_date")); ?></label><br>
                                 <?php if ($userPlan->is_unlimited_time): ?>
-                                    <p class="text-success"><?= trans("unlimited"); ?></p>
+                                    <p class="text-success"><?= esc(trans("unlimited")); ?></p>
                                 <?php else: ?>
                                     <p><?= formatDate($userPlan->plan_end_date); ?>&nbsp;<span class="text-danger">(<?= ucfirst(trans("days_left")); ?>:&nbsp;<?= $daysLeft < 0 ? 0 : $daysLeft; ?>)</span></p>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("number_remaining_ads"); ?></label><br>
+                                <label class="control-label"><?= esc(trans("number_remaining_ads")); ?></label><br>
                                 <?php if ($userPlan->is_unlimited_number_of_ads): ?>
-                                    <p class="text-success"><?= trans("unlimited"); ?></p>
+                                    <p class="text-success"><?= esc(trans("unlimited")); ?></p>
                                 <?php else: ?>
                                     <p><?= esc($adsLeft); ?></p>
                                 <?php endif; ?>
                             </div>
                             <?php if (user()->is_membership_plan_expired == 1): ?>
                                 <div class="form-group text-center">
-                                    <p class="label label-danger label-user-plan"><?= trans("msg_plan_expired"); ?></p>
+                                    <p class="label label-danger label-user-plan"><?= esc(trans("msg_plan_expired")); ?></p>
                                 </div>
                             <?php endif; ?>
                             <div class="form-group text-center">
-                                <a href="<?= generateUrl('select_membership_plan'); ?>" class="btn btn-md btn-block btn-slate m-t-30" style="padding: 10px 12px;"><?= trans("renew_your_plan") ?></a>
+                                <a href="<?= generateUrl('select_membership_plan'); ?>" class="btn btn-md btn-block btn-slate m-t-30" style="padding: 10px 12px;"><?= esc(trans("renew_your_plan")) ?></a>
                             </div>
                         <?php else: ?>
                             <div class="form-group">
-                                <p><?= trans("do_not_have_membership_plan"); ?></p>
+                                <p><?= esc(trans("do_not_have_membership_plan")); ?></p>
                             </div>
                             <div class="form-group text-center">
-                                <a href="<?= generateUrl('select_membership_plan'); ?>" class="btn btn-md btn-block btn-slate m-t-30" style="padding: 10px 12px;"><?= trans("select_your_plan") ?></a>
+                                <a href="<?= generateUrl('select_membership_plan'); ?>" class="btn btn-md btn-block btn-slate m-t-30" style="padding: 10px 12px;"><?= esc(trans("select_your_plan")) ?></a>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -207,7 +207,7 @@
             </div>
             <?php if (!empty($userPlan) && $userPlan->is_unlimited_time != 1): ?>
                 <div class="alert alert-info alert-large">
-                    <strong><?= trans("warning"); ?>!</strong>&nbsp;&nbsp;<?= trans("msg_expired_plan"); ?>
+                    <strong><?= esc(trans("warning")); ?>!</strong>&nbsp;&nbsp;<?= esc(trans("msg_expired_plan")); ?>
                 </div>
             <?php endif;
         endif; ?>
@@ -215,23 +215,23 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("vacation_mode"); ?></h3><br>
-                    <small><?= trans("vendor_on_vacation_vendor_exp"); ?></small>
+                    <h3 class="box-title"><?= esc(trans("vacation_mode")); ?></h3><br>
+                    <small><?= esc(trans("vendor_on_vacation_vendor_exp")); ?></small>
                 </div>
             </div>
             <div class="box-body">
                 <form action="<?= base_url('shop-settings-post'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="form-group">
-                        <label><?= trans("status"); ?></label>
+                        <label><?= esc(trans("status")); ?></label>
                         <?= formRadio('vacation_mode', 1, 0, trans("enable"), trans("disable"), user()->vacation_mode); ?>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("vacation_message"); ?></label>
+                        <label class="control-label"><?= esc(trans("vacation_message")); ?></label>
                         <textarea name="vacation_message" class="tinyMCEsmall"><?= esc(user()->vacation_message); ?></textarea>
                     </div>
                     <div class="form-group text-right">
-                        <button type="submit" name="submit" value="vacation_mode" class="btn btn-md btn-success"><?= trans("save_changes") ?></button>
+                        <button type="submit" name="submit" value="vacation_mode" class="btn btn-md btn-success"><?= esc(trans("save_changes")) ?></button>
                     </div>
                 </form>
             </div>

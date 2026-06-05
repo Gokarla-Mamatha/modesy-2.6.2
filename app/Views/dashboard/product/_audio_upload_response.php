@@ -7,7 +7,7 @@
                         <ul class="dm-uploaded-files dm-uploaded-media-file">
                             <li class="media li-dm-media-preview">
                                 <div class="audio-player audio-player-preview w-100">
-                                    <a href="javascript:void(0)" class="btn-img-delete btn-video-delete position-relative float-right m-l-5" onclick="deleteProductAudioPreview('<?= $product->id; ?>','<?= trans("confirm_product_audio", true) ?>');">
+                                    <a href="javascript:void(0)" class="btn-img-delete btn-video-delete position-relative float-right m-l-5 js-delete-product-audio-preview" data-product-id="<?= esc($product->id, 'attr'); ?>" data-msg="<?= esc(trans("confirm_product_audio", true), 'attr') ?>">
                                         <i class="fa-solid fa-xmark"></i>
                                     </a>
                                     <audio id="audio_player" controls>
@@ -29,7 +29,7 @@
                                 <path fill="currentColor" d="M19.226 35.769a.5.5 0 0 1-.5-.5V15.087a.5.5 0 0 1 1 0V35.27a.5.5 0 0 1-.5.499"/>
                             </svg>
                         </p>
-                        <p class="dm-upload-text"><?= trans("drag_drop_file_here"); ?>&nbsp;<span style="text-decoration: underline"><?= trans('browse_files'); ?></span></p>
+                        <p class="dm-upload-text"><?= esc(trans("drag_drop_file_here")); ?>&nbsp;<span style="text-decoration: underline"><?= esc(trans('browse_files')); ?></span></p>
                         <a class='btn btn-md dm-btn-select-files'>
                             <input type="file" name="file">
                         </a>

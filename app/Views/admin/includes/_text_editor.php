@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-sm-12 m-b-10">
             <?php if (!empty($editorFileManager)): ?>
-                <button type="button" class="btn btn-default btn-file-manager" data-image-type="editor" data-toggle="modal" data-target="#imageFileManagerModal"><i class="fa fa-image"></i>&nbsp;&nbsp;<?= trans("add_image"); ?></button>
+                <button type="button" class="btn btn-default btn-file-manager" data-image-type="editor" data-toggle="modal" data-target="#imageFileManagerModal"><i class="fa fa-image"></i>&nbsp;&nbsp;<?= esc(trans("add_image")); ?></button>
             <?php endif; ?>
             &nbsp;
             <?php if (aiWriter()->status && !empty($editorAiWriter) && hasPermission('ai_writer')): ?>
-                <button type="button" class="btn btn-md btn-default btn-open-ai-writer" data-toggle="modal" data-target="#modalAiWriter"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;<?= trans("ai_writer"); ?></button>
+                <button type="button" class="btn btn-md btn-default btn-open-ai-writer" data-toggle="modal" data-target="#modalAiWriter"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;<?= esc(trans("ai_writer")); ?></button>
             <?php endif; ?>
         </div>
     </div>

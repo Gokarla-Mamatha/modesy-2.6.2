@@ -9,7 +9,7 @@
                                 <video id="player" playsinline controls>
                                     <source src="<?= getProductVideoUrl($productVideo); ?>" type="video/mp4">
                                 </video>
-                                <a href="javascript:void(0)" class="btn-img-delete btn-video-delete" onclick="deleteProductVideoPreview('<?= $product->id; ?>','<?= trans("confirm_product_video", true) ?>');">
+                                <a href="javascript:void(0)" class="btn-img-delete btn-video-delete js-delete-product-video-preview" data-product-id="<?= esc($product->id, 'attr'); ?>" data-msg="<?= esc(trans("confirm_product_video", true), 'attr') ?>">
                                     <i class="fa-solid fa-xmark"></i>
                                 </a>
                             </li>
@@ -27,7 +27,7 @@
                                 <path fill="currentColor" d="M19.226 35.769a.5.5 0 0 1-.5-.5V15.087a.5.5 0 0 1 1 0V35.27a.5.5 0 0 1-.5.499"/>
                             </svg>
                         </p>
-                        <p class="dm-upload-text"><?= trans("drag_drop_file_here"); ?>&nbsp;<span style="text-decoration: underline"><?= trans('browse_files'); ?></span></p>
+                        <p class="dm-upload-text"><?= esc(trans("drag_drop_file_here")); ?>&nbsp;<span style="text-decoration: underline"><?= esc(trans('browse_files')); ?></span></p>
                         <a class='btn btn-md dm-btn-select-files'>
                             <input type="file" name="file">
                         </a>

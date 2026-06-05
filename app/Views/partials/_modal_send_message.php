@@ -8,9 +8,9 @@
                 <?php endif; ?>
                 <div class="modal-header">
                     <?php if (authCheck()): ?>
-                        <h4 class="title"><?= trans("send_message"); ?></h4>
+                        <h4 class="title"><?= esc(trans("send_message")); ?></h4>
                     <?php else: ?>
-                        <h4 class="title"><?= trans("contact_seller"); ?></h4>
+                        <h4 class="title"><?= esc(trans("contact_seller")); ?></h4>
                     <?php endif; ?>
                     <button type="button" class="close" data-dismiss="modal"><i class="icon-close"></i></button>
                 </div>
@@ -30,7 +30,7 @@
                                                 <?php if ($generalSettings->show_vendor_contact_information == 1):
                                                     if (!empty($user->phone_number) && $user->show_phone == 1): ?>
                                                         <p class="info">
-                                                            <i class="icon-phone"></i><button type="button" class="button-link" id="show_phone_number" aria-label="show-phone"><?= trans("show"); ?></button>
+                                                            <i class="icon-phone"></i><button type="button" class="button-link" id="show_phone_number" aria-label="show-phone"><?= esc(trans("show")); ?></button>
                                                             <a href="tel:<?= esc($user->phone_number); ?>" id="phone_number" class="display-none"><?= esc($user->phone_number); ?></a>
                                                         </p>
                                                     <?php endif;
@@ -45,12 +45,12 @@
                             </div>
                             <?php if (authCheck()): ?>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans("subject"); ?></label>
-                                    <input type="text" name="subject" value="<?= !empty($subject) ? esc($subject) : ''; ?>" class="form-control form-input" placeholder="<?= trans("subject"); ?>" required>
+                                    <label class="control-label"><?= esc(trans("subject")); ?></label>
+                                    <input type="text" name="subject" value="<?= !empty($subject) ? esc($subject) : ''; ?>" class="form-control form-input" placeholder="<?= esc(trans("subject")); ?>" required>
                                 </div>
                                 <div class="form-group m-b-sm-0">
-                                    <label class="control-label"><?= trans("message"); ?></label>
-                                    <textarea name="message" class="form-control form-textarea" data-type="text" placeholder="<?= trans("write_a_message"); ?>" required></textarea>
+                                    <label class="control-label"><?= esc(trans("message")); ?></label>
+                                    <textarea name="message" class="form-control form-textarea" data-type="text" placeholder="<?= esc(trans("write_a_message")); ?>" required></textarea>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -59,7 +59,7 @@
                 <div class="modal-footer">
                     <?php if (authCheck()): ?>
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-md btn-custom"><?= trans("send"); ?>&nbsp;&nbsp;<i class="icon-send m-0"></i></button>
+                            <button type="submit" class="btn btn-md btn-custom"><?= esc(trans("send")); ?>&nbsp;&nbsp;<i class="icon-send m-0"></i></button>
                         </div>
                     <?php endif; ?>
                 </div>

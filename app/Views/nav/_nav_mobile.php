@@ -5,9 +5,9 @@
                 <div class="col-sm-12 mobile-nav-buttons">
                     <?php if ($generalSettings->multi_vendor_system == 1):
                         if (authCheck()): ?>
-                            <a href="<?= generateDashUrl("add_product"); ?>" class="btn btn-md btn-custom btn-block" onclick="handleSellNowClick()"><?= trans("sell_now"); ?></a>
+                            <a href="<?= generateDashUrl("add_product"); ?>" class="btn btn-md btn-custom btn-block" onclick="handleSellNowClick()"><?= esc(trans("sell_now")); ?></a>
                         <?php else: ?>
-                            <button type="button" class="btn btn-md btn-custom btn-block close-menu-click" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="mobile-sell-now"><?= trans("sell_now"); ?></button>
+                            <button type="button" class="btn btn-md btn-custom btn-block close-menu-click" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="mobile-sell-now"><?= esc(trans("sell_now")); ?></button>
                     <?php endif;
                     endif; ?>
                 </div>
@@ -15,8 +15,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="nav nav-tabs nav-tabs-mobile-menu" id="nav-tab">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabMobileMainMenu" type="button" aria-label="button-open-main-menu"><?= trans("main_menu"); ?></button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#tabMobileCategories" type="button" aria-label="button-open-categories"><?= trans("categories"); ?></button>
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabMobileMainMenu" type="button" aria-label="button-open-main-menu"><?= esc(trans("main_menu")); ?></button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#tabMobileCategories" type="button" aria-label="button-open-categories"><?= esc(trans("categories")); ?></button>
                     </div>
                     <div class="tab-content tab-content-mobile-menu nav-mobile-links">
                         <div class="tab-pane fade show active" id="tabMobileMainMenu" role="tabpanel">
@@ -35,8 +35,8 @@
                                         </ul>
                                     </li>
                                 <?php endif; ?>
-                                <li class="nav-item"><a href="<?= langBaseUrl(); ?>" class="nav-link"><?= trans("home"); ?></a></li>
-                                <li class="nav-item"><a href="<?= generateUrl('wishlist'); ?>" class="nav-link"><?= trans("wishlist"); ?></a></li>
+                                <li class="nav-item"><a href="<?= langBaseUrl(); ?>" class="nav-link"><?= esc(trans("home")); ?></a></li>
+                                <li class="nav-item"><a href="<?= generateUrl('wishlist'); ?>" class="nav-link"><?= esc(trans("wishlist")); ?></a></li>
                                 <?php if (!empty($menuLinks)):
                                     foreach ($menuLinks as $menuLink):
                                         if ($menuLink->page_default_name == 'blog' || $menuLink->page_default_name == 'contact' || $menuLink->location == 'top_menu'):
@@ -50,9 +50,9 @@
                                 endif;
                                 if (!authCheck()): ?>
                                     <li class="nav-item">
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal" class="nav-link close-menu-click button-link" aria-label="nav-login-menu"><?= trans("login"); ?></button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal" class="nav-link close-menu-click button-link" aria-label="nav-login-menu"><?= esc(trans("login")); ?></button>
                                     </li>
-                                    <li class="nav-item"><a href="<?= generateUrl('register'); ?>" class="nav-link"><?= trans("register"); ?></a></li>
+                                    <li class="nav-item"><a href="<?= generateUrl('register'); ?>" class="nav-link"><?= esc(trans("register")); ?></a></li>
                                 <?php endif;
                                 if ($generalSettings->location_search_header == 1 && countItems($activeCountries) > 0): ?>
                                     <li class="nav-item nav-item-messages">
@@ -62,7 +62,7 @@
                                         <?php if (!empty($baseVars->defaultLocationInput)): ?>
                                             <form action="<?= base_url('Home/setDefaultLocationPost'); ?>" method="post" class="display-inline-block m-b-10">
                                                 <?= csrf_field(); ?>
-                                                <button type="submit" name="submit" value="reset" class="btn-reset-location"><?= trans("reset"); ?></button>
+                                                <button type="submit" name="submit" value="reset" class="btn-reset-location"><?= esc(trans("reset")); ?></button>
                                             </form>
                                         <?php endif; ?>
                                     </li>

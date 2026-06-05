@@ -35,7 +35,7 @@ class ContentSecurityPolicy extends BaseConfig
      * HTTP to HTTPS. This directive is for websites with
      * large numbers of old URLs that need to be rewritten.
      */
-    public bool $upgradeInsecureRequests = false;
+    public bool $upgradeInsecureRequests = true;
 
     // -------------------------------------------------------------------------
     // Sources allowed
@@ -47,37 +47,71 @@ class ContentSecurityPolicy extends BaseConfig
      *
      * @var list<string>|string|null
      */
-    public $defaultSrc;
+    public $defaultSrc = 'self';
 
     /**
      * Lists allowed scripts' URLs.
+     * Inline <script> blocks must be tagged with <?= csp_script_nonce() ?>.
      *
      * @var list<string>|string
      */
-    public $scriptSrc = 'self';
+    public $scriptSrc = [
+        'self',
+        'https://code.jquery.com',
+        'https://ajax.googleapis.com',
+        'https://cdn.jsdelivr.net',
+        'https://cdnjs.cloudflare.com',
+        'https://cdn.ckeditor.com',
+        'https://www.googletagmanager.com',
+        'https://www.google-analytics.com',
+        'https://static.cloudflareinsights.com',
+        'https://www.google.com',
+        'https://www.gstatic.com',
+        'https://challenges.cloudflare.com',
+        'https://js.stripe.com',
+        'https://www.paypal.com',
+        'https://www.paypalobjects.com',
+        'https://js.paystack.co',
+        'https://checkout.razorpay.com',
+        'https://checkout.flutterwave.com',
+        'https://sdk.mercadopago.com',
+        'https://app.sandbox.midtrans.com',
+        'https://app.midtrans.com',
+        'https://secure.payu.in',
+        'https://secure.payu.com',
+    ];
 
     /**
      * Lists allowed stylesheets' URLs.
+     * 'unsafe-inline' is retained because Modesy uses many inline `style` attributes;
+     * removing it would require a templating-level refactor.
      *
      * @var list<string>|string
      */
-    public $styleSrc = 'self';
+    public $styleSrc = [
+        'self',
+        "'unsafe-inline'",
+        'https://fonts.googleapis.com',
+        'https://cdn.jsdelivr.net',
+        'https://cdnjs.cloudflare.com',
+        'https://cdn.ckeditor.com',
+    ];
 
     /**
      * Defines the origins from which images can be loaded.
+     * https: is required because vendors/users can store external product/avatar URLs.
      *
      * @var list<string>|string
      */
-    public $imageSrc = 'self';
+    public $imageSrc = ['self', 'data:', 'blob:', 'https:'];
 
     /**
      * Restricts the URLs that can appear in a page's `<base>` element.
-     *
-     * Will default to self if not overridden
+     * Mitigates DOM-clobbering / <base href> hijacking.
      *
      * @var list<string>|string|null
      */
-    public $baseURI;
+    public $baseURI = 'self';
 
     /**
      * Lists the URLs for workers and embedded frame contents
@@ -92,31 +126,47 @@ class ContentSecurityPolicy extends BaseConfig
      *
      * @var list<string>|string
      */
-    public $connectSrc = 'self';
+    public $connectSrc = [
+        'self',
+        'https://www.google-analytics.com',
+        'https://api.stripe.com',
+        'https://checkout.razorpay.com',
+        'https://api.razorpay.com',
+        'https://cdn.jsdelivr.net',
+    ];
 
     /**
      * Specifies the origins that can serve web fonts.
      *
      * @var list<string>|string
      */
-    public $fontSrc;
+    public $fontSrc = [
+        'self',
+        'data:',
+        'https://fonts.gstatic.com',
+        'https://cdnjs.cloudflare.com',
+        'https://cdn.jsdelivr.net',
+    ];
 
     /**
      * Lists valid endpoints for submission from `<form>` tags.
      *
      * @var list<string>|string
      */
-    public $formAction = 'self';
+    public $formAction = [
+        'self',
+        'https://checkout.stripe.com',
+        'https://www.paypal.com',
+        'https://www.sandbox.paypal.com',
+    ];
 
     /**
      * Specifies the sources that can embed the current page.
-     * This directive applies to `<frame>`, `<iframe>`, `<embed>`,
-     * and `<applet>` tags. This directive can't be used in
-     * `<meta>` tags and applies only to non-HTML resources.
+     * 'none' = no parent frame may embed us (clickjacking-proof).
      *
      * @var list<string>|string|null
      */
-    public $frameAncestors;
+    public $frameAncestors = "'none'";
 
     /**
      * The frame-src directive restricts the URLs which may
@@ -124,21 +174,36 @@ class ContentSecurityPolicy extends BaseConfig
      *
      * @var list<string>|string|null
      */
-    public $frameSrc;
+    public $frameSrc = [
+        'self',
+        'https://js.stripe.com',
+        'https://hooks.stripe.com',
+        'https://checkout.stripe.com',
+        'https://www.paypal.com',
+        'https://www.sandbox.paypal.com',
+        'https://www.google.com',
+        'https://www.gstatic.com',
+        'https://challenges.cloudflare.com',
+        'https://checkout.razorpay.com',
+        'https://api.razorpay.com',
+        'https://www.youtube.com',
+        'https://www.youtube-nocookie.com',
+        'https://player.vimeo.com',
+    ];
 
     /**
      * Restricts the origins allowed to deliver video and audio.
      *
      * @var list<string>|string|null
      */
-    public $mediaSrc;
+    public $mediaSrc = ['self', 'data:', 'blob:', 'https:'];
 
     /**
-     * Allows control over Flash and other plugins.
+     * Disable plugins (Flash, Java, etc.) — modern browsers ignore but VAPT scanners check.
      *
      * @var list<string>|string
      */
-    public $objectSrc = 'self';
+    public $objectSrc = "'none'";
 
     /**
      * @var list<string>|string|null

@@ -13,7 +13,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg><?= trans("joined_affiliate_program"); ?>
+                                </svg><?= esc(trans("joined_affiliate_program")); ?>
                             </div>
                         <?php elseif (user()->is_affiliate == 2): ?>
                             <div class="alert alert-danger alert-message">
@@ -21,13 +21,13 @@
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <line x1="12" y1="8" x2="12" y2="12"></line>
                                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                                </svg><?= trans("removed_from_affiliate_program"); ?>
+                                </svg><?= esc(trans("removed_from_affiliate_program")); ?>
                             </div>
                         <?php else: ?>
-                            <button type="button" class="btn btn-custom btn-affiliate m-b-15" data-toggle="modal" data-target="#modalAffiliate"><?= trans("join_program"); ?></button>
+                            <button type="button" class="btn btn-custom btn-affiliate m-b-15" data-toggle="modal" data-target="#modalAffiliate"><?= esc(trans("join_program")); ?></button>
                         <?php endif; ?>
                     <?php else: ?>
-                        <button type="button" class="btn btn-custom btn-affiliate m-b-15" data-toggle="modal" data-target="#loginModal"><?= trans("join_program"); ?></button>
+                        <button type="button" class="btn btn-custom btn-affiliate m-b-15" data-toggle="modal" data-target="#loginModal"><?= esc(trans("join_program")); ?></button>
                     <?php endif; ?>
                 </div>
                 <div class="col-md-12 col-lg-6">
@@ -45,7 +45,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="title"><?= trans("how_it_works"); ?></h2>
+                            <h2 class="title"><?= esc(trans("how_it_works")); ?></h2>
                         </div>
                         <div class="col-12 col-lg-4">
                             <div class="feature-box">
@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 section-affiliate">
-                <h2 class="title"><?= trans("frequently_asked_questions"); ?></h2>
+                <h2 class="title"><?= esc(trans("frequently_asked_questions")); ?></h2>
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <?php if (!empty($affFaq)):
@@ -139,46 +139,46 @@
                 <form action="<?= base_url('Auth/joinAffiliateProgramPost'); ?>" method="post" class="validate_terms validate-form">
                     <?= csrf_field(); ?>
                     <div class="modal-header">
-                        <h5 class="modal-title"><?= trans("affiliate_program"); ?></h5>
+                        <h5 class="modal-title"><?= esc(trans("affiliate_program")); ?></h5>
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true"><i class="icon-close"></i> </span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label><?= trans("first_name"); ?></label>
-                            <input type="text" name="first_name" class="form-control auth-form-input" placeholder="<?= trans("first_name"); ?>" value="<?= esc(user()->first_name); ?>" maxlength="255" data-type="name" required>
+                            <label><?= esc(trans("first_name")); ?></label>
+                            <input type="text" name="first_name" class="form-control auth-form-input" placeholder="<?= esc(trans("first_name")); ?>" value="<?= esc(user()->first_name); ?>" maxlength="255" data-type="name" required>
                         </div>
                         <div class="form-group">
-                            <label><?= trans("last_name"); ?></label>
-                            <input type="text" name="last_name" class="form-control auth-form-input" placeholder="<?= trans("last_name"); ?>" value="<?= esc(user()->last_name); ?>" maxlength="255" data-type="name" required>
+                            <label><?= esc(trans("last_name")); ?></label>
+                            <input type="text" name="last_name" class="form-control auth-form-input" placeholder="<?= esc(trans("last_name")); ?>" value="<?= esc(user()->last_name); ?>" maxlength="255" data-type="name" required>
                         </div>
                         <div class="form-group">
-                            <label><?= trans("email_address"); ?></label>
-                            <input type="email" name="email" class="form-control auth-form-input" placeholder="<?= trans("email_address"); ?>" value="<?= esc(user()->email); ?>" maxlength="255" readonly>
+                            <label><?= esc(trans("email_address")); ?></label>
+                            <input type="email" name="email" class="form-control auth-form-input" placeholder="<?= esc(trans("email_address")); ?>" value="<?= esc(user()->email); ?>" maxlength="255" readonly>
                         </div>
                         <div class="form-group">
-                            <label><?= trans("phone_number"); ?></label>
-                            <input type="text" name="phone_number" class="form-control form-input" value="<?= esc(user()->phone_number); ?>" placeholder="<?= trans("phone_number"); ?>" maxlength="100" data-type="mobile" required>
+                            <label><?= esc(trans("phone_number")); ?></label>
+                            <input type="text" name="phone_number" class="form-control form-input" value="<?= esc(user()->phone_number); ?>" placeholder="<?= esc(trans("phone_number")); ?>" maxlength="100" data-type="mobile" required>
                         </div>
                         <div class="form-group m-b-0">
-                            <label><?= trans("location"); ?></label>
+                            <label><?= esc(trans("location")); ?></label>
                             <?= view('partials/_location', ['countries' => getCountries(), 'countryId' => user()->country_id, 'stateId' => user()->state_id, 'cityId' => user()->city_id, 'isLocationOptional' => false, 'isFullWidth' => true]); ?>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="row">
                                 <div class="col-sm-12 col-lg-9 m-b-15">
-                                    <input type="text" name="address" id="address_input" class="form-control form-input" value="<?= esc(user()->address); ?>" placeholder="<?= trans("address") ?>" maxlength="490">
+                                    <input type="text" name="address" id="address_input" class="form-control form-input" value="<?= esc(user()->address); ?>" placeholder="<?= esc(trans("address")) ?>" maxlength="490">
                                 </div>
                                 <div class="col-sm-12 col-lg-3 m-b-15">
-                                    <input type="text" name="zip_code" id="zip_code_input" class="form-control form-input" value="<?= esc(user()->zip_code); ?>" placeholder="<?= trans("zip_code") ?>" maxlength="90">
+                                    <input type="text" name="zip_code" id="zip_code_input" class="form-control form-input" value="<?= esc(user()->zip_code); ?>" placeholder="<?= esc(trans("zip_code")) ?>" maxlength="90">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox custom-control-validate-input">
                                 <input type="checkbox" class="custom-control-input" name="terms" id="checkbox_terms" required>
-                                <label for="checkbox_terms" class="custom-control-label"><?= trans("terms_conditions_exp"); ?>&nbsp;
+                                <label for="checkbox_terms" class="custom-control-label"><?= esc(trans("terms_conditions_exp")); ?>&nbsp;
                                     <?php $pageTerms = getPageByDefaultName('terms_conditions', selectedLangId());
                                     if (!empty($pageTerms)): ?>
                                         <a href="<?= generateUrl($pageTerms->page_default_name); ?>" class="link-terms" target="_blank"><strong><?= esc($pageTerms->title); ?></strong></a>
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                     <div class="modal-footer text-right">
-                        <button type="submit" class="btn btn-custom btn-block"><?= trans("join_program"); ?></button>
+                        <button type="submit" class="btn btn-custom btn-block"><?= esc(trans("join_program")); ?></button>
                     </div>
                 </form>
             </div>

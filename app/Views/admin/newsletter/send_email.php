@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-sm-12 title-section">
-        <h3><?= trans('newsletter'); ?></h3>
+        <h3><?= esc(trans('newsletter')); ?></h3>
     </div>
 </div>
 <div class="row" style="margin-bottom: 15px;">
     <div class="col-sm-12">
         <div class="alert alert-success alert-large m-t-10">
-            <strong><?= trans("warning"); ?>!</strong>&nbsp;&nbsp;<?= trans("newsletter_send_many_exp"); ?>
+            <strong><?= esc(trans("warning")); ?>!</strong>&nbsp;&nbsp;<?= esc(trans("newsletter_send_many_exp")); ?>
         </div>
     </div>
 </div>
@@ -15,12 +15,12 @@
     <div class="col-sm-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans('send_email'); ?></h3>
+                <h3 class="box-title"><?= esc(trans('send_email')); ?></h3>
             </div>
             <form id="formSendEmail">
                 <div class="box-body">
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label><?= trans('to'); ?></label>
+                        <label><?= esc(trans('to')); ?></label>
                         <?php if (!empty($emails)): ?>
                             <p style="max-height: 150px; overflow-y: auto">
                                 <?php foreach ($emails as $email): ?>
@@ -30,8 +30,8 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
-                        <label><?= trans('subject'); ?></label>
-                        <input type="text" name="subject" id="newsletter_subject" class="form-control" placeholder="<?= trans('subject'); ?>" maxlength="255" required>
+                        <label><?= esc(trans('subject')); ?></label>
+                        <input type="text" name="subject" id="newsletter_subject" class="form-control" placeholder="<?= esc(trans('subject')); ?>" maxlength="255" required>
                     </div>
 
                     <div class="form-group">
@@ -40,14 +40,14 @@
 
                 </div>
                 <div class="box-footer">
-                    <a href="<?= adminUrl('newsletter'); ?>" id="btn_newsletter_back" class="btn btn-danger"><?= trans("back"); ?></a>
-                    <button type="submit" id="btn_send_newsletter" class="btn btn-primary pull-right"><?= trans('send_email'); ?>&nbsp;&nbsp;<i class="fa fa-send"></i></button>
+                    <a href="<?= adminUrl('newsletter'); ?>" id="btn_newsletter_back" class="btn btn-danger"><?= esc(trans("back")); ?></a>
+                    <button type="submit" id="btn_send_newsletter" class="btn btn-primary pull-right"><?= esc(trans('send_email')); ?>&nbsp;&nbsp;<i class="fa fa-send"></i></button>
 
                     <div class="col-sm-12 m-t-30">
                         <div class="row">
                             <div id="newsletter_spinner" class="newsletter-spinner">
-                                <strong class="newsletter-sending"><?= trans("mail_is_being_sent"); ?></strong>
-                                <strong class="text-newsletter-completed"><?= trans("completed"); ?>!</strong>
+                                <strong class="newsletter-sending"><?= esc(trans("mail_is_being_sent")); ?></strong>
+                                <strong class="text-newsletter-completed"><?= esc(trans("completed")); ?>!</strong>
                                 <div class="m-t-15">
                                     <div class="spinner">
                                         <div class="bounce1"></div>

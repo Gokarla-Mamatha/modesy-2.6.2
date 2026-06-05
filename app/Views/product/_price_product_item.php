@@ -25,9 +25,9 @@ if (!empty($product->price)) {
 
 <div class="<?= implode(' ', $priceContainerClasses) ?>">
     <?php if ($product->is_free_product == 1): ?>
-        <span class="price-free price-green"><?= trans("free"); ?></span>
+        <span class="price-free price-green"><?= esc(trans("free")); ?></span>
     <?php elseif ($product->listing_type == 'bidding'): ?>
-        <a href="<?= generateProductUrl($product); ?>" class="a-meta-request-quote"><?= trans("request_a_quote") ?></a>
+        <a href="<?= generateProductUrl($product); ?>" class="a-meta-request-quote"><?= esc(trans("request_a_quote")) ?></a>
     <?php elseif (!empty($product->price) && $product->price > 0): ?>
         <?php if ($baseVars->isPriceSingleLine): ?>
             <?= $discountedPriceHtml ?>

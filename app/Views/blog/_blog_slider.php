@@ -1,7 +1,7 @@
 <?php if ($generalSettings->index_blog_slider == 1 && !empty($blogSliderPosts)): ?>
     <div class="col-12 section section-blog">
         <div class="section-header">
-            <h3 class="title"><a href="<?= generateUrl('blog'); ?>"><?= trans("latest_blog_posts"); ?></a></h3>
+            <h3 class="title"><a href="<?= generateUrl('blog'); ?>"><?= esc(trans("latest_blog_posts")); ?></a></h3>
         </div>
         <div class="swiper swiper-carousel swiper-carousel-blog" <?= $baseVars->rtl == true ? 'dir="rtl"' : ''; ?>>
             <div class="swiper-wrapper">

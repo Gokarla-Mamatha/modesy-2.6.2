@@ -4,7 +4,7 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= esc($title); ?></li>
                     </ol>
                 </nav>
@@ -19,8 +19,8 @@
                             <div class="row row-mx-2-gutter">
                                 <div class="col-6 px-2">
                                     <select id="affiliate-select" name="affiliate" class="form-control custom-select custom-select-shops">
-                                        <option value="" <?= empty(inputGet('affiliate')) ? 'selected' : ''; ?>><?= trans("all_sellers"); ?></option>
-                                        <option value="1" <?= inputGet('affiliate') == '1' ? 'selected' : ''; ?>><?= trans("only_affiliate_sellers"); ?></option>
+                                        <option value="" <?= empty(inputGet('affiliate')) ? 'selected' : ''; ?>><?= esc(trans("all_sellers")); ?></option>
+                                        <option value="1" <?= inputGet('affiliate') == '1' ? 'selected' : ''; ?>><?= esc(trans("only_affiliate_sellers")); ?></option>
                                     </select>
                                 </div>
                                 <div class="col-6 px-2">
@@ -66,18 +66,18 @@
                                                         <input type="hidden" name="user_id" value="<?= $shop->id; ?>">
                                                         <?php if (isUserFollows($shop->id, user()->id)): ?>
                                                             <p>
-                                                                <button class="btn btn-md btn-outline-gray"><i class="icon-user-minus"></i>&nbsp;&nbsp;<?= trans("unfollow"); ?></button>
+                                                                <button class="btn btn-md btn-outline-gray"><i class="icon-user-minus"></i>&nbsp;&nbsp;<?= esc(trans("unfollow")); ?></button>
                                                             </p>
                                                         <?php else: ?>
                                                             <p>
-                                                                <button class="btn btn-md btn-outline-gray"><i class="icon-user-plus"></i>&nbsp;&nbsp;<?= trans("follow"); ?></button>
+                                                                <button class="btn btn-md btn-outline-gray"><i class="icon-user-plus"></i>&nbsp;&nbsp;<?= esc(trans("follow")); ?></button>
                                                             </p>
                                                         <?php endif; ?>
                                                     </form>
                                                 <?php endif;
                                             else: ?>
                                                 <p>
-                                                    <button class="btn btn-md btn-outline" data-toggle="modal" data-target="#loginModal"><i class="icon-user-plus"></i><?= trans("follow"); ?></button>
+                                                    <button class="btn btn-md btn-outline" data-toggle="modal" data-target="#loginModal"><i class="icon-user-plus"></i><?= esc(trans("follow")); ?></button>
                                                 </p>
                                             <?php endif; ?>
                                         </div>
@@ -88,7 +88,7 @@
                     else: ?>
                         <div class="col-12">
                             <p class="no-records-found">
-                                <?= trans("no_records_found"); ?>
+                                <?= esc(trans("no_records_found")); ?>
                             </p>
                         </div>
                     <?php endif; ?>

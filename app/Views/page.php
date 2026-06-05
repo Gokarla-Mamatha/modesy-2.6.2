@@ -5,7 +5,7 @@
                 <div class="blog-content">
                     <nav class="nav-breadcrumb" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
+                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
                             <li class="breadcrumb-item active" aria-current="page"><?= esc($page->title); ?></li>
                         </ol>
                     </nav>

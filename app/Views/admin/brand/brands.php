@@ -3,11 +3,11 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('brands'); ?></h3>
+                    <h3 class="box-title"><?= esc(trans('brands')); ?></h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('add-brand'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_brand'); ?>
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_brand')); ?>
                     </a>
                 </div>
             </div>
@@ -17,12 +17,12 @@
                         <div class="row table-filter-container">
                             <div class="col-sm-12">
                                 <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                                 </button>
                                 <div class="collapse navbar-collapse" id="collapseFilter">
                                     <form action="<?= adminUrl('brands'); ?>" method="get">
                                         <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                            <label><?= trans("show"); ?></label>
+                                            <label><?= esc(trans("show")); ?></label>
                                             <select name="show" class="form-control">
                                                 <option value="15" <?= inputGet('show', true) == '15' ? 'selected' : ''; ?>>15</option>
                                                 <option value="30" <?= inputGet('show', true) == '30' ? 'selected' : ''; ?>>30</option>
@@ -31,12 +31,12 @@
                                             </select>
                                         </div>
                                         <div class="item-table-filter">
-                                            <label><?= trans("search"); ?></label>
-                                            <input name="q" class="form-control" placeholder="<?= trans("search") ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
+                                            <label><?= esc(trans("search")); ?></label>
+                                            <input name="q" class="form-control" placeholder="<?= esc(trans("search")) ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
                                         </div>
                                         <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                             <label style="display: block">&nbsp;</label>
-                                            <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                            <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                         </div>
                                     </form>
                                 </div>
@@ -46,12 +46,12 @@
                             <table class="table table-bordered table-striped cs_datatable_lang" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th width="20"><?= trans('id'); ?></th>
-                                    <th><?= trans('name'); ?></th>
-                                    <th><?= trans('logo'); ?></th>
-                                    <th><?= trans('categories'); ?></th>
-                                    <th><?= trans('date'); ?></th>
-                                    <th class="th-options"><?= trans('options'); ?></th>
+                                    <th width="20"><?= esc(trans('id')); ?></th>
+                                    <th><?= esc(trans('name')); ?></th>
+                                    <th><?= esc(trans('logo')); ?></th>
+                                    <th><?= esc(trans('categories')); ?></th>
+                                    <th><?= esc(trans('date')); ?></th>
+                                    <th class="th-options"><?= esc(trans('options')); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -80,15 +80,15 @@
                                             <td style="width: 200px;"><?= formatDate($brand->created_at); ?></td>
                                             <td style="width: 200px;">
                                                 <div class="dropdown">
-                                                    <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?>
+                                                    <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?>
                                                         <span class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu options-dropdown">
-                                                        <li><a href="<?= adminUrl('edit-brand/' . $brand->id); ?>"><i class="fa fa-edit option-icon"></i><?= trans('edit'); ?></a></li>
+                                                        <li><a href="<?= adminUrl('edit-brand/' . $brand->id); ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('edit')); ?></a></li>
                                                         <li>
-                                                            <!-- <a href="javascript:void(0)" onclick="deleteItem('Category/deleteBrandPost','<?= $brand->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                            <a href="#" class="btn-item-delete" data-url="Category/deleteBrandPost" data-id="<?= $brand->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
-                                                                <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?>
+                                                            <!-- <a href="javascript:void(0)" onclick="deleteItem('Category/deleteBrandPost','<?= $brand->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                            <a href="#" class="btn-item-delete" data-url="Category/deleteBrandPost" data-id="<?= $brand->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
+                                                                <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -102,7 +102,7 @@
                             </table>
                             <?php if (empty($brands)): ?>
                                 <p class="text-center">
-                                    <?= trans("no_records_found"); ?>
+                                    <?= esc(trans("no_records_found")); ?>
                                 </p>
                             <?php endif; ?>
                             <div class="col-sm-12 table-ft">
@@ -123,65 +123,65 @@
             <div class="col-sm-12 col-md-8">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?= trans("settings"); ?></h3>
+                        <h3 class="box-title"><?= esc(trans("settings")); ?></h3>
                     </div>
                     <form action="<?= base_url('Category/brandSettingsPost'); ?>" method="post">
                         <?= csrf_field(); ?>
                         <div class="box-body">
                             <div class="form-group">
-                                <label><?= trans("status"); ?></label>
+                                <label><?= esc(trans("status")); ?></label>
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="brand_status" value="1" id="brand_status_1" class="custom-control-input" <?= $productSettings->brand_status == 1 ? 'checked' : ''; ?>>
-                                            <label for="brand_status_1" class="custom-control-label"><?= trans("enable"); ?></label>
+                                            <label for="brand_status_1" class="custom-control-label"><?= esc(trans("enable")); ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="brand_status" value="0" id="brand_status_2" class="custom-control-input" <?= $productSettings->brand_status != 1 ? 'checked' : ''; ?>>
-                                            <label for="brand_status_2" class="custom-control-label"><?= trans("disable"); ?></label>
+                                            <label for="brand_status_2" class="custom-control-label"><?= esc(trans("disable")); ?></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label><?= trans("optional"); ?></label>
+                                <label><?= esc(trans("optional")); ?></label>
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="is_brand_optional" value="1" id="is_brand_optional_1" class="custom-control-input" <?= $productSettings->is_brand_optional == 1 ? 'checked' : ''; ?>>
-                                            <label for="is_brand_optional_1" class="custom-control-label"><?= trans("yes"); ?></label>
+                                            <label for="is_brand_optional_1" class="custom-control-label"><?= esc(trans("yes")); ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="is_brand_optional" value="0" id="is_brand_optional_2" class="custom-control-input" <?= $productSettings->is_brand_optional != 1 ? 'checked' : ''; ?>>
-                                            <label for="is_brand_optional_2" class="custom-control-label"><?= trans("no"); ?></label>
+                                            <label for="is_brand_optional_2" class="custom-control-label"><?= esc(trans("no")); ?></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label><?= trans("where_to_display"); ?></label>
+                                <label><?= esc(trans("where_to_display")); ?></label>
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="brand_where_to_display" value="2" id="where_to_display_1" class="custom-control-input" <?= $productSettings->brand_where_to_display != 1 ? 'checked' : ''; ?>>
-                                            <label for="where_to_display_1" class="custom-control-label"><?= trans("additional_information"); ?></label>
+                                            <label for="where_to_display_1" class="custom-control-label"><?= esc(trans("additional_information")); ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="brand_where_to_display" value="1" id="where_to_display_2" class="custom-control-input" <?= $productSettings->brand_where_to_display == 1 ? 'checked' : ''; ?>>
-                                            <label for="where_to_display_2" class="custom-control-label"><?= trans("product_details"); ?></label>
+                                            <label for="where_to_display_2" class="custom-control-label"><?= esc(trans("product_details")); ?></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary pull-right"><?= trans("save_changes"); ?></button>
+                            <button type="submit" class="btn btn-primary pull-right"><?= esc(trans("save_changes")); ?></button>
                         </div>
                     </form>
                 </div>

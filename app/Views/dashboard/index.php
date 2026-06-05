@@ -4,7 +4,7 @@
 
 <?php if ($generalSettings->membership_plans_system == 1 && user()->is_membership_plan_expired == 1): ?>
     <div class="alert alert-danger alert-large">
-        <strong><i class="fa fa-info-circle"></i></strong>&nbsp;&nbsp;<?= trans("msg_vendor_membership_plan_expired"); ?>&nbsp;<a href="<?= generateUrl('select_membership_plan'); ?>" class="text-danger font-600"><?= trans("renew_your_plan") ?></a>
+        <strong><i class="fa fa-info-circle"></i></strong>&nbsp;&nbsp;<?= esc(trans("msg_vendor_membership_plan_expired")); ?>&nbsp;<a href="<?= generateUrl('select_membership_plan'); ?>" class="text-danger font-600"><?= esc(trans("renew_your_plan")) ?></a>
     </div>
 <?php endif; ?>
 <div class="row m-b-30">
@@ -14,7 +14,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 p-0">
                     <div class="small-box-dashboard small-box-dashboard-first">
                         <h3 class="total"><?= !empty($totalSalesCount) ? $totalSalesCount : 0; ?></h3>
-                        <span class="text-muted"><?= trans("number_of_total_sales"); ?></span>
+                        <span class="text-muted"><?= esc(trans("number_of_total_sales")); ?></span>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                             <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -24,7 +24,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 p-0">
                     <div class="small-box-dashboard">
                         <h3 class="total"><?= !empty($balance) ? $balance : 0; ?></h3>
-                        <span class="text-muted"><?= trans("balance"); ?></span>
+                        <span class="text-muted"><?= esc(trans("balance")); ?></span>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 3H1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1h-1z"/>
                             <path fill-rule="evenodd" d="M15 5H1v8h14V5zM1 4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H1z"/>
@@ -37,7 +37,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 p-0">
                     <div class="small-box-dashboard" <?= !$baseVars->isSaleActive ? 'style="border-radius: 4px 0 0 4px;"' : ''; ?>>
                         <h3 class="total"><?= !empty($productsCount) ? $productsCount : 0; ?></h3>
-                        <span class="text-muted"><?= trans("products"); ?></span>
+                        <span class="text-muted"><?= esc(trans("products")); ?></span>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-basket" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
                         </svg>
@@ -46,7 +46,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 p-0">
                     <div class="small-box-dashboard small-box-dashboard-last">
                         <h3 class="total"><?= !empty($pendingProductsCount) ? $pendingProductsCount : 0; ?></h3>
-                        <span class="text-muted"><?= trans("pending_products"); ?></span>
+                        <span class="text-muted"><?= esc(trans("pending_products")); ?></span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-hourglass" viewBox="0 0 16 16">
                             <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5m2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702c0 .7-.478 1.235-1.011 1.491A3.5 3.5 0 0 0 4.5 13v1h7v-1a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351v-.702c0-.7.478-1.235 1.011-1.491A3.5 3.5 0 0 0 11.5 3V2z"/>
                         </svg>
@@ -62,7 +62,7 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <div class="box box-primary box-sm index-box">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?= trans("sales"); ?></h3>
+                        <h3 class="box-title"><?= esc(trans("sales")); ?></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -79,7 +79,7 @@
             <div class="col-lg-8 col-sm-12 col-xs-12">
                 <div class="box box-primary box-sm index-box">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?= trans("monthly_sales"); ?></h3>
+                        <h3 class="box-title"><?= esc(trans("monthly_sales")); ?></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -103,7 +103,7 @@
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm index-box">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_comments"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_comments")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -114,10 +114,10 @@
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("id"); ?></th>
-                                <th><?= trans("comment"); ?></th>
-                                <th><?= trans("product"); ?></th>
-                                <th><?= trans("date"); ?></th>
+                                <th><?= esc(trans("id")); ?></th>
+                                <th><?= esc(trans("comment")); ?></th>
+                                <th><?= esc(trans("product")); ?></th>
+                                <th><?= esc(trans("date")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="box-footer clearfix text-right">
-                    <a href="<?= generateDashUrl("comments"); ?>" class="btn btn-sm btn-default"><?= trans("view_all"); ?></a>
+                    <a href="<?= generateDashUrl("comments"); ?>" class="btn btn-sm btn-default"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
@@ -148,7 +148,7 @@
     <div class="col-lg-6 col-sm-12 col-xs-12">
         <div class="box box-primary box-sm index-box">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans("latest_reviews"); ?></h3>
+                <h3 class="box-title"><?= esc(trans("latest_reviews")); ?></h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -159,10 +159,10 @@
                     <table class="table no-margin">
                         <thead>
                         <tr>
-                            <th><?= trans("id"); ?></th>
-                            <th><?= trans("comment"); ?></th>
-                            <th><?= trans("product"); ?></th>
-                            <th><?= trans("date"); ?></th>
+                            <th><?= esc(trans("id")); ?></th>
+                            <th><?= esc(trans("comment")); ?></th>
+                            <th><?= esc(trans("product")); ?></th>
+                            <th><?= esc(trans("date")); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -190,7 +190,7 @@
                 </div>
             </div>
             <div class="box-footer clearfix text-right">
-                <a href="<?= generateDashUrl('reviews'); ?>" class="btn btn-sm btn-default"><?= trans("view_all"); ?></a>
+                <a href="<?= generateDashUrl('reviews'); ?>" class="btn btn-sm btn-default"><?= esc(trans("view_all")); ?></a>
             </div>
         </div>
     </div>
@@ -202,7 +202,7 @@
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm index-box">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_sales"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_sales")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -213,11 +213,11 @@
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("sale"); ?></th>
-                                <th><?= trans("status"); ?></th>
-                                <th><?= trans("payment"); ?></th>
-                                <th><?= trans("date"); ?></th>
-                                <th><?= trans("options"); ?></th>
+                                <th><?= esc(trans("sale")); ?></th>
+                                <th><?= esc(trans("status")); ?></th>
+                                <th><?= esc(trans("payment")); ?></th>
+                                <th><?= esc(trans("date")); ?></th>
+                                <th><?= esc(trans("options")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -247,7 +247,7 @@
                                         </td>
                                         <td><?= formatDate($item->created_at); ?></td>
                                         <td style="width: 10%">
-                                            <a href="<?= generateDashUrl('sale') . '/' . esc($item->order_number); ?>" class="btn btn-xs btn-info"><?= trans('details'); ?></a>
+                                            <a href="<?= generateDashUrl('sale') . '/' . esc($item->order_number); ?>" class="btn btn-xs btn-info"><?= esc(trans('details')); ?></a>
                                         </td>
                                     </tr>
                                 <?php endforeach;
@@ -257,7 +257,7 @@
                     </div>
                 </div>
                 <div class="box-footer clearfix text-right">
-                    <a href="<?= generateDashUrl('sales'); ?>" class="btn btn-sm btn-default"><?= trans("view_all"); ?></a>
+                    <a href="<?= generateDashUrl('sales'); ?>" class="btn btn-sm btn-default"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
@@ -272,8 +272,8 @@
             type: 'pie',
             data: {
                 labels: [
-                    '<?= trans("active_sales"); ?> (<?= !empty($activeSalesCount) ? $activeSalesCount : 0; ?>)',
-                    '<?= trans("completed_sales"); ?> (<?= !empty($completedSalesCount) ? $completedSalesCount : 0; ?>)'
+                    '<?= esc(trans("active_sales")); ?> (<?= !empty($activeSalesCount) ? $activeSalesCount : 0; ?>)',
+                    '<?= esc(trans("completed_sales")); ?> (<?= !empty($completedSalesCount) ? $completedSalesCount : 0; ?>)'
                 ],
                 datasets: [{
                     data: [<?= !empty($activeSalesCount) ? $activeSalesCount : 0; ?>, <?= !empty($completedSalesCount) ? $completedSalesCount : 0; ?>],
@@ -301,7 +301,7 @@
 
 <script <?= csp_script_nonce() ?>>
     //monthly sales
-    var months = ["<?= trans("january");?>", "<?= trans("february");?>", "<?= trans("march");?>", "<?= trans("april");?>", "<?= trans("may");?>", "<?= trans("june");?>", "<?= trans("july");?>", "<?= trans("august");?>", "<?= trans("september");?>", "<?= trans("october");?>", "<?= trans("november");?>", "<?= trans("december");?>"];
+    var months = ["<?= esc(trans("january"));?>", "<?= esc(trans("february"));?>", "<?= esc(trans("march"));?>", "<?= esc(trans("april"));?>", "<?= esc(trans("may"));?>", "<?= esc(trans("june"));?>", "<?= esc(trans("july"));?>", "<?= esc(trans("august"));?>", "<?= esc(trans("september"));?>", "<?= esc(trans("october"));?>", "<?= esc(trans("november"));?>", "<?= esc(trans("december"));?>"];
     var i;
     for (i = 0; i < months.length; i++) {
         months[i] = months[i].substr(0, 3);
@@ -376,7 +376,7 @@
                         endif;
                         echo numToDecimal($total);
                     }?>],
-                    label: "<?= trans("sales"); ?> (<?= date("Y") ?>)"
+                    label: "<?= esc(trans("sales")); ?> (<?= date("Y") ?>)"
                 }]
             },
             options: Chart.helpers.merge(options, {

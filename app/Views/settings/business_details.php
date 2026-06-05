@@ -4,12 +4,12 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= trans("profile_settings"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= esc(trans("profile_settings")); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= $title; ?></li>
                     </ol>
                 </nav>
-                <h1 class="page-title"><?= trans("profile_settings"); ?></h1>
+                <h1 class="page-title"><?= esc(trans("profile_settings")); ?></h1>
             </div>
         </div>
         <div class="row">
@@ -23,329 +23,205 @@
                     <div class="sidebar-tabs-content">
                         <?= view('partials/_messages'); ?>
                         <?php
-                        $bd = $business_details ?? null;
-                        $type = $bd['business_type'] ?? '';
+                        $user = user();
+                        $bd = $business_details ?? [];
+                        $type = $bd['business_type'] ?? ($user->business_type ?? '');
                         $stakeholders = json_decode($bd['stakeholders'] ?? '[]', true);
+                        $stakeholders = is_array($stakeholders) ? $stakeholders : [];
                         ?>
                         <!-- <?php if (!empty($business_details)) : ?>
                             <pre><?php print_r($business_details); ?></pre>
                         <?php else : ?>
                             <p>No business details found</p>
                         <?php endif; ?> -->
+                        <?php if (empty($bd)): ?>
+                            <p class="m-t-10">No details found.</p>
+                        <?php else: ?>
                         <form action="<?= base_url('business-details-post'); ?>" method="post" id="form_validate">
                             <?= csrf_field(); ?>
 
-                            <?php if ($type == 'sole'): ?>
+                            <?php $isBusinessAccount = !empty($user->business_name) || !empty($user->business_email); ?>
+                            <?php if ($isBusinessAccount): ?>
+                                <h4>Business Account</h4>
                                 <div class="form-group">
-                                    <label class="control-label">Legal First Name</label>
-                                    <input type="text" class="form-control form-input" name="legal_first_name" value="<?= $bd->legal_first_name ?? '' ?>" placeholder="First name">
+                                    <label class="control-label">Business Name</label>
+                                    <input type="text" class="form-control form-input" value="<?= esc($user->business_name ?? '') ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans("legal_middle_name"); ?></label>
-                                    <input type="text" class="form-control form-input" name="legal_middle_name" value="<?= $bd->legal_middle_name ?? '' ?>" placeholder="Middle name">
+                                    <label class="control-label">Business Email <small>(verified)</small></label>
+                                    <input type="email" class="form-control form-input" value="<?= esc($user->business_email ?? '') ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans("legal_last_name"); ?></label>
-                                    <input type="text" class="form-control form-input" name="legal_last_name" value="<?= $bd->legal_last_name ?? '' ?>" placeholder="Last name">
-                                </div>
-                                <div class="form-group">
-                                    <select name="nationality" class="select2 form-control">
-                                        <option value=""><?= trans('country'); ?></option>
-                                        <?php foreach ($countries as $item):
-                                            if ($item->status == 1):
-                                                if (!empty($countryId)): ?>
-                                                    <option value="<?= $item->id; ?>" <?= $item->id == $countryId ? 'selected' : ''; ?>><?= esc($item->name); ?></option>
-                                                <?php else: ?>
-                                                    <option value="<?= $item->id; ?>"><?= esc($item->name); ?></option>
-                                        <?php endif;
-                                            endif;
-                                        endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="address_line1" class="control-label">Street Address</label>
-                                    <input type="text" class="form-control form-input" name="address_line1" value="<?= $bd->address_line1 ?? '' ?>" placeholder="Street address">
-                                </div>
-                                <div class="form-group">
-                                    <label for="address_line2" class="control-label">Street Address 2</label>
-                                    <input type="text" class="form-control form-input" name="address_line2" value="<?= $bd->address_line2 ?? '' ?>" placeholder="Street address 2">
-                                </div>
-                                <div class="form-group">
-                                    <label for="city" class="control-label">City</label>
-                                    <input type="text" class="form-control form-input" name="city" value="<?= $bd->city ?? '' ?>" placeholder="City">
-                                </div>
-                                <div class="form-group">
-                                    <label for="state" class="control-label">State</label>
-                                    <input type="text" class="form-control form-input" name="state" value="<?= $bd->state ?? '' ?>" placeholder="State">
-                                </div>
-                                <div class="form-group">
-                                    <label for="zip" class="control-label">ZIP Code</label>
-                                    <input type="text" class="form-control form-input" name="zip" value="<?= $bd->zip ?? '' ?>" placeholder="ZIP Code">
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact_phone" class="control-label">Phone number</label>
-                                    <input type="text" class="form-control form-input" name="contact_phone" value="<?= $bd->contact_phone ?? '' ?>" placeholder="Phone number">
+                                    <label class="control-label">Business Phone <small>(verified)</small></label>
+                                    <input type="text" class="form-control form-input" value="<?= esc($user->business_phone ?? '') ?>" readonly>
                                 </div>
                             <?php endif; ?>
-                            <?php if ($type == 'registered'): ?>
-                                <h4>Business details</h4>
+
+                            <?php if (!$isBusinessAccount): ?>
                                 <div class="form-group">
-                                    <label class="control-label">Legal Business Name</label>
-                                    <input type="text" class="form-control form-input" name="legal_business_name" value="<?= old('legal_business_name', $bd['legal_business_name'] ?? '') ?>" placeholder="Legal business name">
+                                    <label class="control-label">First Name</label>
+                                    <input type="text"
+                                        class="form-control form-input"
+                                        value="<?= esc($user->first_name ?? '') ?>"
+                                        readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Last Name</label>
+                                    <input type="text"
+                                        class="form-control form-input"
+                                        value="<?= esc($user->last_name ?? '') ?>"
+                                        readonly>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    <input type="text"
+                                        class="form-control form-input"
+                                        value="<?= esc($user->email ?? '') ?>"
+                                        readonly>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ($type == 'sole'): ?>
+                                <h4>Legal details</h4>
+                                <div class="form-group">
+                                    <label class="control-label">Legal First Name</label>
+                                    <input type="text" class="form-control form-input" name="legal_first_name" value="<?= old('legal_first_name', $bd['legal_first_name'] ?? '') ?>" placeholder="First name" data-type="name">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Doing Business As</label>
-                                    <input type="text" class="form-control form-input" name="doing_business_as" value="<?= old('doing_business_as', $bd['doing_business_as'] ?? '') ?>" placeholder="Doing business as">
+                                    <label class="control-label">Legal Middle Name</label>
+                                    <input type="text" class="form-control form-input" name="legal_middle_name" value="<?= old('legal_middle_name', $bd['legal_middle_name'] ?? '') ?>" placeholder="Middle name" data-type="name">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">EIN (9 digits)</label>
-                                    <input type="text" class="form-control form-input" name="ein_registered" id="ein_registered" value="<?= old('ein_registered', $bd['ein_registered'] ?? '') ?>" placeholder="EIN (9 digits)">
+                                    <label class="control-label">Legal Last Name</label>
+                                    <input type="text" class="form-control form-input" name="legal_last_name" value="<?= old('legal_last_name', $bd['legal_last_name'] ?? '') ?>" placeholder="Last name" data-type="name">
                                 </div>
-                                <h5>Business address</h5>
+
+                                <h5>Address</h5>
                                 <div class="form-group">
                                     <label class="control-label">Street address</label>
-                                    <input type="text" class="form-control form-input" name="business_address_line1" value="<?= old('business_address_line1', $bd['business_address_line1'] ?? '') ?>" placeholder="Street address">
+                                    <input type="text" class="form-control form-input" name="address_line1" value="<?= old('address_line1', $bd['address_line1'] ?? '') ?>" placeholder="Street address" data-type="text">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Street address 2</label>
-                                    <input type="text" class="form-control form-input" name="business_address_line2" value="<?= old('business_address_line2', $bd['business_address_line2'] ?? '') ?>" placeholder="Street address 2">
+                                    <input type="text" class="form-control form-input" name="address_line2" value="<?= old('address_line2', $bd['address_line2'] ?? '') ?>" placeholder="Street address 2" data-type="text">
                                 </div>
+                                <?php $savedCountry = old('sole_country_id', $bd['country_id'] ?? '');
+                                $savedState = old('sole_state_id', $bd['state_id'] ?? '');
+                                $savedCity = old('sole_city_id', $bd['city_id'] ?? ''); ?>
                                 <div class="form-group">
-                                    <label class="control-label">City</label>
-                                    <input type="text" class="form-control form-input" name="business_city" value="<?= old('business_city', $bd['business_city'] ?? '') ?>" placeholder="City">
+                                    <label class="control-label">Country</label>
+                                    <select id="select_countries_sole" name="sole_country_id" class="form-control form-input">
+                                        <option value=""><?= esc(trans('country')); ?></option>
+                                        <?php foreach (($countries ?? []) as $country): ?>
+                                            <option value="<?= $country->id; ?>" <?= $savedCountry == $country->id ? 'selected' : ''; ?>><?= esc($country->name); ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
-                                <div class="form-group">
+                                <div id="get_states_container_sole" class="form-group <?= empty($states) ? 'display-none' : ''; ?>">
                                     <label class="control-label">State</label>
-                                    <input type="text" class="form-control form-input" name="business_state" value="<?= old('business_state', $bd['business_state'] ?? '') ?>" placeholder="State">
+                                    <select id="select_states_sole" name="sole_state_id" class="form-control form-input">
+                                        <option value=""><?= esc(trans('state')); ?></option>
+                                        <?php foreach (($states ?? []) as $state): ?>
+                                            <option value="<?= $state->id; ?>" <?= $savedState == $state->id ? 'selected' : ''; ?>><?= esc($state->name); ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label">ZIP Code</label>
-                                    <input type="text" class="form-control form-input" name="business_zip" value="<?= old('business_zip', $bd['business_zip'] ?? '') ?>" placeholder="ZIP Code">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Phone number</label>
-                                    <input type="text" class="form-control form-input" name="contact_phone" value="<?= old('contact_phone', $bd['contact_phone'] ?? '') ?>" placeholder="Phone number">
-                                </div>
-
-
-                                <h5>Primary Contact</h5>
-                                <div class="form-group">
-                                    <label class="control-label">Primary First Name</label>
-                                    <input type="text" class="form-control form-input" name="primary_first_name" value="<?= old('primary_first_name', $bd['primary_first_name'] ?? '') ?>" placeholder="First name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Primary Middle Name</label>
-                                    <input type="text" class="form-control form-input" name="primary_middle_name" value="<?= old('primary_middle_name', $bd['primary_middle_name'] ?? '') ?>" placeholder="Middle name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Primary Last Name</label>
-                                    <input type="text" class="form-control form-input" name="primary_last_name" value="<?= old('primary_last_name', $bd['primary_last_name'] ?? '') ?>" placeholder="Last name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Primary Date of Birth</label>
-                                    <input type="date" class="form-control form-input" name="primary_dob" value="<?= old('primary_dob', $bd['primary_dob'] ?? '') ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Primary Nationality</label>
-                                    <select name="primary_nationality" class="select2 form-control">
-                                        <option value=""><?= trans('country'); ?></option>
-                                        <?php foreach ($countries as $country): ?>
-                                            <option value="<?= $country->id; ?>"
-                                                <?= old('primary_nationality', $bd['primary_nationality'] ?? '') == $country->id ? 'selected' : ''; ?>>
-                                                <?= esc($country->name); ?>
-                                            </option>
+                                <div id="get_cities_container_sole" class="form-group <?= empty($cities) ? 'display-none' : ''; ?>">
+                                    <label class="control-label">City</label>
+                                    <select id="select_cities_sole" name="sole_city_id" class="form-control form-input">
+                                        <option value=""><?= esc(trans('city')); ?></option>
+                                        <?php foreach (($cities ?? []) as $city): ?>
+                                            <option value="<?= $city->id; ?>" <?= $savedCity == $city->id ? 'selected' : ''; ?>><?= esc($city->name); ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Primary SSN / ITIN</label>
-                                    <input type="text" class="form-control form-input" name="ssn_last4" value="<?= old('ssn_last4', $bd['ssn_last4'] ?? '') ?>" placeholder="Last 4 digits of SSN / ITIN">
-                                </div>
-                                <!-- ✅ ADDRESS -->
-                                <h5>Address</h5>
-                                <div class="form-group">
-                                    <label class="control-label">Contact Address 1</label>
-                                    <input type="text" class="form-control form-input" name="contact_address1" value="<?= old('contact_address1', $bd['contact_address1'] ?? '') ?>" placeholder="Street address">
+                                    <label class="control-label">ZIP Code</label>
+                                    <input type="text" class="form-control form-input" name="zip" value="<?= old('zip', $bd['zip'] ?? '') ?>" placeholder="ZIP Code" data-type="number">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Contact Address 2</label>
-                                    <input type="text" class="form-control form-input" name="contact_address2" value="<?= old('contact_address2', $bd['contact_address2'] ?? '') ?>" placeholder="Street address 2">
+                                    <label class="control-label">Phone number</label>
+                                    <input type="text" class="form-control form-input" name="contact_phone" value="<?= old('contact_phone', $bd['contact_phone'] ?? '') ?>" placeholder="Phone number" data-type="mobile">
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($type == 'registered' || $type == 'nonprofit'): ?>
+                                <h4>Business details</h4>
+                                <div class="form-group">
+                                    <label class="control-label">Legal Business Name</label>
+                                    <input type="text" class="form-control form-input" name="legal_business_name" value="<?= old('legal_business_name', $bd['legal_business_name'] ?? '') ?>" placeholder="Legal business name" data-type="name">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Contact City</label>
-                                    <input type="text" class="form-control form-input" name="contact_city" value="<?= old('contact_city', $bd['contact_city'] ?? '') ?>" placeholder="City">
+                                    <label class="control-label">Doing Business As</label>
+                                    <input type="text" class="form-control form-input" name="doing_business_as" value="<?= old('doing_business_as', $bd['doing_business_as'] ?? '') ?>" placeholder="Doing business as" data-type="name">
+                                </div>
+                                <?php $einVal = (string)($bd['ein_registered'] ?? '');
+                                $einMasked = strlen($einVal) > 4 ? str_repeat('*', strlen($einVal) - 4) . substr($einVal, -4) : $einVal; ?>
+                                <div class="form-group">
+                                    <label class="control-label">EIN</label>
+                                    <input type="text" class="form-control form-input" value="<?= esc($einMasked) ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Contact State</label>
-                                    <input type="text" class="form-control form-input" name="contact_state" value="<?= old('contact_state', $bd['contact_state'] ?? '') ?>" placeholder="State">
+                                    <label class="control-label">Phone number</label>
+                                    <input type="text" class="form-control form-input" name="contact_phone" value="<?= old('contact_phone', $bd['contact_phone'] ?? '') ?>" placeholder="Phone number" data-type="mobile">
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label">Contact ZIP Code</label>
-                                    <input type="text" class="form-control form-input" name="contact_zip" value="<?= old('contact_zip', $bd['contact_zip'] ?? '') ?>" placeholder="ZIP Code">
-                                </div>
+                            <?php endif; ?>
 
-                                <?php
-                                $roles = json_decode($bd['roles'] ?? '[]', true);
-                                $roles = is_array($roles) ? $roles : [];
-                                ?>
-
-                                <h5>Role with company</h5>
-
-                                <div class="checkbox-group">
-
-                                    <label>
-                                        <input type="checkbox" name="roles[]" value="primary_contact"
-                                            <?= in_array('primary_contact', $roles) ? 'checked' : '' ?>>
-                                        Primary Contact
-                                    </label>
-
-                                    <label>
-                                        <input type="checkbox" name="roles[]" value="beneficial_owner"
-                                            <?= in_array('beneficial_owner', $roles) ? 'checked' : '' ?>>
-                                        Beneficial Owner
-                                    </label>
-
-                                    <label>
-                                        <input type="checkbox" name="roles[]" value="director"
-                                            <?= in_array('director', $roles) ? 'checked' : '' ?>>
-                                        Director
-                                    </label>
-
-                                </div>
+                            <?php if ($type == 'registered' || $type == 'nonprofit'): ?>
                                 <h5>Additional Stakeholders</h5>
 
                                 <div id="stakeholderList">
                                     <?php if (!empty($stakeholders)): ?>
                                         <?php foreach ($stakeholders as $index => $s): ?>
-                                            <div class="stakeholder-box"
-                                                data-first="<?= esc($s['first_name']) ?>"
-                                                data-middle="<?= esc($s['middle_name'] ?? '') ?>"
-                                                data-last="<?= esc($s['last_name']) ?>"
-                                                data-dob="<?= esc($s['dob'] ?? '') ?>"
-                                                data-nationality="<?= esc($s['nationality'] ?? '') ?>"
-                                                data-id="<?= esc($s['id_number'] ?? '') ?>"
-                                                data-address="<?= esc($s['address1'] ?? '') ?>"
-                                                data-city="<?= esc($s['city'] ?? '') ?>"
-                                                data-state="<?= esc($s['state'] ?? '') ?>"
-                                                data-zip="<?= esc($s['zip'] ?? '') ?>"
-                                                data-roles="<?= implode(',', $s['role'] ?? []) ?>">
-
-                                                <strong><?= esc($s['first_name']) ?> <?= esc($s['last_name']) ?></strong>
+                                            <div class="stakeholder-box">
+                                                <strong><?= esc($s['name'] ?? '') ?></strong>
                                                 <div class="meta">
-                                                    Role: <?= implode(', ', $s['role'] ?? []) ?><br>
-                                                    City: <?= esc($s['city'] ?? '') ?>
+                                                    Role: <?= esc($s['role'] ?? '') ?>
                                                 </div>
 
-                                                <button type="button" onclick="viewStakeholder(this)">View</button>
-                                                <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                                                <button type="button" class="stakeholder-remove">Remove</button>
 
                                                 <!-- Hidden inputs -->
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][first_name]" value="<?= esc($s['first_name']) ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][middle_name]" value="<?= esc($s['middle_name'] ?? '') ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][last_name]" value="<?= esc($s['last_name']) ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][dob]" value="<?= esc($s['dob'] ?? '') ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][nationality]" value="<?= esc($s['nationality'] ?? '') ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][id_number]" value="<?= esc($s['id_number'] ?? '') ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][address1]" value="<?= esc($s['address1'] ?? '') ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][city]" value="<?= esc($s['city'] ?? '') ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][state]" value="<?= esc($s['state'] ?? '') ?>">
-                                                <input type="hidden" name="stakeholders[<?= $index ?>][zip]" value="<?= esc($s['zip'] ?? '') ?>">
-
-                                                <?php foreach (($s['role'] ?? []) as $r): ?>
-                                                    <input type="hidden" name="stakeholders[<?= $index ?>][role][]" value="<?= esc($r) ?>">
-                                                <?php endforeach; ?>
-
+                                                <input type="hidden" name="stakeholders[<?= $index ?>][name]" value="<?= esc($s['name'] ?? '') ?>">
+                                                <input type="hidden" name="stakeholders[<?= $index ?>][role]" value="<?= esc($s['role'] ?? '') ?>">
                                             </div>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 </div>
 
-                                <button type="button" class="add-btn" onclick="openForm()">+ Add Stakeholder</button>
+                                <button type="button" class="add-btn" id="addStakeholderBtn">+ Add Stakeholder</button>
 
                                 <div id="stakeholderForm" style="display:none; margin-top:15px;">
                                     <div class="form-group m-b-0">
                                         <div class="row">
                                             <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">First Name</label>
-                                                <input type="text" class="form-control form-input" name="first_name" id="sh_first_name" placeholder="First name">
+                                                <label class="control-label">Name</label>
+                                                <input type="text" class="form-control form-input" id="sh_name" data-type="title" placeholder="Name" data-type="title">
                                             </div>
                                             <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">Middle Name</label>
-                                                <input type="text" class="form-control form-input" name="middle_name" id="sh_middle_name" placeholder="Middle name">
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">Last Name</label>
-                                                <input type="text" class="form-control form-input" name="last_name" id="sh_last_name" placeholder="Last name">
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">Date of Birth</label>
-                                                <input type="date" class="form-control form-input" id="sh_dob" name="dob">
-
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">Nationality</label>
-                                                <select id="sh_nationality" class="select2 form-control">
-                                                    <option value="">Select Country</option>
-                                                    <?php foreach ($countries as $country): ?>
-                                                        <option value="<?= $country->id; ?>"><?= esc($country->name); ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">ID Number</label>
-                                                <input type="text" class="form-control form-input" id="sh_id_number" placeholder="ID Number">
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">Address</label>
-                                                <input type="text" class="form-control form-input" id="sh_address1" placeholder="Address">
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">City</label>
-                                                <input type="text" class="form-control form-input" id="sh_city" placeholder="City">
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">State</label>
-                                                <input type="text" class="form-control form-input" id="sh_state" placeholder="State">
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">ZIP</label>
-                                                <input type="text" class="form-control form-input" id="sh_zip" placeholder="ZIP">
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6 m-b-15">
-                                                <label for="control-label">Roles</label>
-                                                <div class="checkbox-group">
-
-                                                    <label>
-                                                        <input type="checkbox" name="stakeholder_roles[]" value="owner">
-                                                        Beneficial Owner
-                                                    </label>
-
-                                                    <label>
-                                                        <input type="checkbox" name="stakeholder_roles[]" value="director">
-                                                        Director
-                                                    </label>
-
-                                                </div>
+                                                <label class="control-label">Role</label>
+                                                <input type="text" class="form-control form-input" id="sh_role" data-type="title" placeholder="Role" data-type="title">
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-md btn-custom" onclick="addStakeholder()">Save Stakeholder</button>
+                                    <button type="button" class="btn btn-md btn-custom" id="saveStakeholderBtn">Save Stakeholder</button>
                                 </div>
+                            <?php endif; ?>
+
+                            <?php if ($type == 'sole' || $type == 'registered' || $type == 'nonprofit'): ?>
                                 <h4>Payout Information</h4>
+                                <?php $accVal = (string)($bd['account_number'] ?? '');
+                                $accMasked = strlen($accVal) > 4 ? str_repeat('*', strlen($accVal) - 4) . substr($accVal, -4) : $accVal; ?>
                                 <div class="form-group">
                                     <label class="control-label">Account Number</label>
-                                    <input type="text" class="form-control form-input" value="<?= old('account_number', $bd['account_number'] ?? '') ?>" name="account_number" placeholder="Account Number">
+                                    <input type="text" class="form-control form-input" value="<?= esc($accMasked) ?>" readonly>
                                 </div>
-                                <div class="form-group">
-                                    <label for="control-label">IFSC Code</label>
-                                    <input type="text" class="form-control form-input" value="<?= old('ifsc_code', $bd['ifsc_code'] ?? '') ?>" name="ifsc_code" placeholder="IFSC Code">
-                                </div>
-
                             <?php endif; ?>
                             <button type="submit" class="btn btn-md btn-custom m-t-10">
-                                <?= trans("save_changes") ?>
+                                <?= esc(trans("save_changes")) ?>
                             </button>
                         </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -354,124 +230,174 @@
 </div>
 
 <style <?= csp_style_nonce() ?>>
-    .btn-group {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        display: flex;
-        gap: 6px;
+    /* ---- Simple, clean business details form ---- */
+    #form_validate {
+        max-width: 620px;
     }
 
-    .view-btn {
-        background: #007bff;
-        color: #fff;
-        border: none;
-        padding: 4px 8px;
-        font-size: 12px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .remove-btn {
-        background: #ff4d4f;
-        color: #fff;
-        border: none;
-        padding: 4px 8px;
-        font-size: 12px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    /* FORM LAYOUT */
-    .form-section {
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #eee;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-label {
-        font-weight: 600;
-        margin-bottom: 5px;
+    #form_validate .control-label {
         display: block;
-    }
-
-    .form-input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-    }
-
-    /* SECTION HEADINGS */
-    h4,
-    h5 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-
-    /* CHECKBOX GROUP */
-    .checkbox-group label {
-        margin-right: 15px;
+        font-size: 13px;
         font-weight: 500;
+        color: #555;
+        margin-bottom: 6px;
     }
 
-    /* STAKEHOLDER CARD */
-    .stakeholder-box {
-        background: #f9fafb;
-        border: 1px solid #ddd;
+    #form_validate .form-input {
+        width: 100%;
+        padding: 11px 14px;
+        font-size: 14px;
+        color: #222;
+        background: #fff;
+        border: 1px solid #e2e5ea;
         border-radius: 8px;
-        padding: 12px;
+        transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    #form_validate .form-input:focus {
+        outline: none;
+        border-color: #4a7cff;
+        box-shadow: 0 0 0 3px rgba(74, 124, 255, .12);
+    }
+
+    #form_validate .form-input[readonly] {
+        background: #f6f7f9;
+        color: #888;
+    }
+
+    #form_validate textarea.form-input {
+        min-height: 90px;
+        resize: vertical;
+    }
+
+    #form_validate .form-group {
+        margin-bottom: 16px;
+    }
+
+    /* Section headings */
+    #form_validate h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1d2330;
+        margin: 26px 0 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eceef2;
+    }
+
+    #form_validate h5 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #3a4151;
+        margin: 20px 0 12px;
+    }
+
+    /* Checkboxes */
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .checkbox-group label {
+        font-size: 13px;
+        font-weight: 500;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0;
+    }
+
+    /* Stakeholder card */
+    .stakeholder-box {
+        background: #fafbfc;
+        border: 1px solid #e2e5ea;
+        border-radius: 10px;
+        padding: 14px 16px;
         margin-bottom: 12px;
         position: relative;
     }
 
     .stakeholder-box strong {
-        font-size: 15px;
-        color: #333;
+        font-size: 14px;
+        color: #1d2330;
     }
 
     .stakeholder-box .meta {
-        font-size: 13px;
-        color: #666;
-    }
-
-    /* REMOVE BUTTON */
-    .stakeholder-box button {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        background: #ff4d4f;
-        color: #fff;
-        border: none;
-        padding: 4px 8px;
         font-size: 12px;
-        border-radius: 4px;
-        cursor: pointer;
+        color: #7a808c;
+        margin-top: 4px;
     }
 
-    /* ADD BUTTON */
-    .add-btn {
-        background: #007bff;
-        color: #fff;
-        padding: 8px 14px;
+    .stakeholder-box button {
+        background: none;
         border: none;
-        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
         cursor: pointer;
+        padding: 2px 6px;
+        margin-left: 6px;
+        color: #4a7cff;
+    }
+
+    .stakeholder-box button:last-child {
+        color: #e5484d;
+    }
+
+    /* Add stakeholder */
+    .add-btn {
+        background: #fff;
+        color: #4a7cff;
+        border: 1px dashed #b9c6ff;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background .15s ease;
     }
 
     .add-btn:hover {
-        background: #0056b3;
+        background: #f3f6ff;
+    }
+
+    #stakeholderForm {
+        background: #fafbfc;
+        border: 1px solid #e2e5ea;
+        border-radius: 10px;
+        padding: 16px;
+        margin-top: 14px;
+    }
+
+    /* Save button */
+    #form_validate .btn-custom {
+        margin-top: 8px;
     }
 </style>
 <script <?= csp_script_nonce() ?>>
     let stakeholderIndex = <?= !empty($stakeholders) ? count($stakeholders) : 0 ?>;
+
+    // Cascading country -> state -> city (uses global getStates/getCities)
+    document.addEventListener('change', function (e) {
+        if (e.target && e.target.id === 'select_countries_sole') {
+            getStates(e.target.value, 'sole');
+        } else if (e.target && e.target.id === 'select_states_sole') {
+            getCities(e.target.value, 'sole');
+        }
+    });
+
+    // CSP-safe stakeholder actions (inline onclick is blocked by CSP)
+    document.addEventListener('click', function (e) {
+        if (!e.target) return;
+        if (e.target.id === 'addStakeholderBtn') {
+            openForm();
+        } else if (e.target.id === 'saveStakeholderBtn') {
+            addStakeholder();
+        } else if (e.target.classList.contains('stakeholder-remove')) {
+            let box = e.target.closest('.stakeholder-box');
+            if (box) box.remove();
+        }
+    });
 
     function openForm() {
         let form = document.getElementById("stakeholderForm");
@@ -512,97 +438,72 @@
             .replace(/'/g, '&#039;');
     }
 
-    function viewStakeholder(btn) {
-        let box = btn.closest('.stakeholder-box');
+    // function viewStakeholder(btn) {
+    //     let box = btn.closest('.stakeholder-box');
 
-        let details = `
-        Name: ${box.dataset.first} ${box.dataset.middle} ${box.dataset.last}
-        DOB: ${box.dataset.dob}
-        Nationality: ${box.dataset.nationality}
-        ID Number: ${box.dataset.id}
-        Address: ${box.dataset.address}
-        City: ${box.dataset.city}
-        State: ${box.dataset.state}
-        ZIP: ${box.dataset.zip}
-        Roles: ${box.dataset.roles}
-    `;
+    //     let details = `
+    //     Name: ${box.dataset.first} ${box.dataset.middle} ${box.dataset.last}
+    //     DOB: ${box.dataset.dob}
+    //     Nationality: ${box.dataset.nationality}
+    //     ID Number: ${box.dataset.id}
+    //     Address: ${box.dataset.address}
+    //     City: ${box.dataset.city}
+    //     State: ${box.dataset.state}
+    //     ZIP: ${box.dataset.zip}
+    //     Roles: ${box.dataset.roles}
+    // `;
 
-        alert(details);
-    }
+    //     alert(details);
+    // }
 
     function addStakeholder() {
 
         let list = document.getElementById("stakeholderList");
         let index = stakeholderIndex++;
 
-        let first = document.getElementById("sh_first_name").value.trim();
-        let middle = document.getElementById("sh_middle_name").value.trim();
-        let last = document.getElementById("sh_last_name").value.trim();
-        let dob = document.getElementById("sh_dob").value;
-        let nationality = document.getElementById("sh_nationality").value;
-        let id_number = document.getElementById("sh_id_number").value.trim();
-        let address1 = document.getElementById("sh_address1").value.trim();
-        let city = document.getElementById("sh_city").value.trim();
-        let state = document.getElementById("sh_state").value.trim();
-        let zip = document.getElementById("sh_zip").value.trim();
+        let name = document.getElementById("sh_name").value.trim();
+        let role = document.getElementById("sh_role").value.trim();
 
-        let roles = [];
-        document.querySelectorAll('#stakeholderForm input[name="stakeholder_roles[]"]:checked')
-            .forEach(el => roles.push(el.value));
-
-        if (!first || !city) {
-            alert("First name and city required");
+        if (!name || !role) {
+            alert("Name and role required");
             return;
         }
 
-        first = escapeHtml(first);
-        middle = escapeHtml(middle);
-        last = escapeHtml(last);
+        let box = document.createElement("div");
+        box.className = "stakeholder-box";
 
-        let html = `
-    <div class="stakeholder-box"
-         data-first="${first}"
-         data-middle="${middle}"
-         data-last="${last}"
-         data-dob="${dob}"
-         data-nationality="${nationality}"
-         data-id="${id_number}"
-         data-address="${address1}"
-         data-city="${city}"
-         data-state="${state}"
-         data-zip="${zip}"
-         data-roles="${roles.join(',')}">
+        let strong = document.createElement("strong");
+        strong.textContent = name;
 
-        <strong>${first} ${last}</strong>
-        <div class="meta">
-            Role: ${roles.join(', ')}<br>
-            City: ${city}
-        </div>
+        let meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = "Role: " + role;
 
-        <button type="button" onclick="viewStakeholder(this)">View</button>
-        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+        let removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "stakeholder-remove";
+        removeBtn.textContent = "Remove";
 
-        <input type="hidden" name="stakeholders[${index}][first_name]" value="${first}">
-        <input type="hidden" name="stakeholders[${index}][middle_name]" value="${middle}">
-        <input type="hidden" name="stakeholders[${index}][last_name]" value="${last}">
-        <input type="hidden" name="stakeholders[${index}][dob]" value="${dob}">
-        <input type="hidden" name="stakeholders[${index}][nationality]" value="${nationality}">
-        <input type="hidden" name="stakeholders[${index}][id_number]" value="${id_number}">
-        <input type="hidden" name="stakeholders[${index}][address1]" value="${address1}">
-        <input type="hidden" name="stakeholders[${index}][city]" value="${city}">
-        <input type="hidden" name="stakeholders[${index}][state]" value="${state}">
-        <input type="hidden" name="stakeholders[${index}][zip]" value="${zip}">
-    `;
+        let nameInput = document.createElement("input");
+        nameInput.type = "hidden";
+        nameInput.name = "stakeholders[" + index + "][name]";
+        nameInput.value = name;
 
-        roles.forEach(r => {
-            html += `<input type="hidden" name="stakeholders[${index}][role][]" value="${r}">`;
-        });
+        let roleInput = document.createElement("input");
+        roleInput.type = "hidden";
+        roleInput.name = "stakeholders[" + index + "][role]";
+        roleInput.value = role;
 
-        html += `</div>`;
+        box.appendChild(strong);
+        box.appendChild(meta);
+        box.appendChild(removeBtn);
+        box.appendChild(nameInput);
+        box.appendChild(roleInput);
 
-        list.insertAdjacentHTML("beforeend", html);
+        list.appendChild(box);
 
-        document.getElementById("stakeholderForm").reset();
+        document.getElementById("sh_name").value = "";
+        document.getElementById("sh_role").value = "";
         document.getElementById("stakeholderForm").style.display = "none";
     }
 </script>

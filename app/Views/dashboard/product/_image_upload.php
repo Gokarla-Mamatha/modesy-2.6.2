@@ -1,4 +1,4 @@
-﻿<div class="dm-uploader-container">
+<div class="dm-uploader-container">
     <div id="drag-and-drop-zone" class="dm-uploader text-center" style="padding: 20p">
         <p class="dm-upload-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
@@ -8,7 +8,7 @@
                 <path fill="currentColor" d="M19.226 35.769a.5.5 0 0 1-.5-.5V15.087a.5.5 0 0 1 1 0V35.27a.5.5 0 0 1-.5.499"/>
             </svg>
         </p>
-        <p class="dm-upload-text"><?= trans("drag_drop_images_here"); ?>&nbsp;<span style="text-decoration: underline"><?= trans('browse_files'); ?></span></p>
+        <p class="dm-upload-text"><?= esc(trans("drag_drop_images_here")); ?>&nbsp;<span style="text-decoration: underline"><?= esc(trans('browse_files')); ?></span></p>
         <a class='btn btn-md dm-btn-select-files'>
             <input type="file" name="file" size="40" multiple="multiple">
         </a>
@@ -21,9 +21,9 @@
                         <img src="<?= base_url('uploads/temp/' . $image->image_small); ?>" alt="">
                         <a href="javascript:void(0)" class="btn-img-delete btn-delete-product-img-session" data-file-id="<?= $image->file_id; ?>"><i class="fa-solid fa-xmark"></i></a>
                         <?php if ($image->is_main == 1): ?>
-                            <a href="javascript:void(0)" class="btn btn-xs btn-success btn-is-image-main btn-set-image-main-session"><?= trans("main"); ?></a>
+                            <a href="javascript:void(0)" class="btn btn-xs btn-success btn-is-image-main btn-set-image-main-session"><?= esc(trans("main")); ?></a>
                         <?php else: ?>
-                            <a href="javascript:void(0)" class="btn btn-xs btn-secondary btn-is-image-main btn-set-image-main-session" data-file-id="<?= $image->file_id; ?>"><?= trans("main"); ?></a>
+                            <a href="javascript:void(0)" class="btn btn-xs btn-secondary btn-is-image-main btn-set-image-main-session" data-file-id="<?= $image->file_id; ?>"><?= esc(trans("main")); ?></a>
                         <?php endif; ?>
                     </li>
                 <?php endforeach;
@@ -32,14 +32,14 @@
     </div>
 </div>
 <div class="row-custom">
-    <p class="images-exp"><i class="fa fa-exclamation-circle"></i><?= trans("warning_product_main_image"); ?></p>
+    <p class="images-exp"><i class="fa fa-exclamation-circle"></i><?= esc(trans("warning_product_main_image")); ?></p>
 </div>
 <script type="text/html" id="files-template-image">
     <li class="media">
         <img class="preview-img" alt="bg">
         <div class="media-body">
             <div class="progress">
-                <div class="dm-progress-waiting"><?= trans("waiting"); ?></div>
+                <div class="dm-progress-waiting"><?= esc(trans("waiting")); ?></div>
                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
@@ -65,7 +65,7 @@
             onNewFile: function (id, file) {
                 if (imageUploadCount >= MdsConfig.imageUploadLimit) {
                     Swal.fire({
-                        text: "<?= trans('error_image_limit', true); ?>",
+                        text: "<?= esc(trans('error_image_limit', true)); ?>",
                         icon: 'warning',
                         confirmButtonText: MdsConfig.text.ok
                     });
@@ -103,14 +103,14 @@
             },
             onFileTypeError: function (file) {
                 Swal.fire({
-                    text: "<?= trans('invalid_file_type', true); ?>",
+                    text: "<?= esc(trans('invalid_file_type', true)); ?>",
                     icon: 'warning',
                     confirmButtonText: MdsConfig.text.ok
                 });
             },
             onFileExtError: function (file) {
                 Swal.fire({
-                    text: "<?= trans('invalid_file_type', true); ?>",
+                    text: "<?= esc(trans('invalid_file_type', true)); ?>",
                     icon: 'warning',
                     confirmButtonText: MdsConfig.text.ok
                 });
@@ -122,9 +122,9 @@
         initImageUploader();
     });
 
-    $(document).ajaxStop(function () {
-        initImageUploader();
-    });
+    // $(document).ajaxStop(function () {
+    //     initImageUploader();
+    // });
 
     function loadImagePreview(id, fileId) {
         $.ajax({

@@ -1,36 +1,37 @@
 <?php $productUrl = urlencode(generateProductUrl($product));
-$productTitle = urlencode($title); ?>
+$productTitle = urlencode($title);
+$productImage = urlencode($ogImage); ?>
 <div class="row-custom product-share">
     <ul>
         <li>
-            <button type="button" class="button-link" onclick='window.open("https://www.facebook.com/sharer/sharer.php?u=<?= $productUrl; ?>", "Share This Post", "width=640,height=450");return false' aria-label="share-facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= esc($productUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer" aria-label="share-facebook">
                 <i class="icon-facebook"></i>
-            </button>
+            </a>
         </li>
         <li>
-            <button type="button" class="button-link" onclick='window.open("https://twitter.com/share?url=<?= $productUrl; ?>&amp;text=<?= $productTitle; ?>", "Share This Post", "width=640,height=450");return false' aria-label="share-twitter">
+            <a href="https://twitter.com/share?url=<?= esc($productUrl, 'attr'); ?>&amp;text=<?= esc($productTitle, 'attr'); ?>" target="_blank" rel="noopener noreferrer" aria-label="share-twitter">
                 <i class="icon-twitter"></i>
-            </button>
+            </a>
         </li>
         <li>
-            <a href="https://api.whatsapp.com/send?text=<?= $productTitle; ?> - <?= $productUrl; ?>" target="_blank" title="share-whatsapp">
+            <a href="https://api.whatsapp.com/send?text=<?= esc($productTitle, 'attr'); ?> - <?= esc($productUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer" title="share-whatsapp">
                 <i class="icon-whatsapp"></i>
             </a>
         </li>
         <li>
-            <button type="button" class="button-link" onclick='window.open("http://pinterest.com/pin/create/button/?url=<?= $productUrl; ?>&amp;media=<?= $ogImage; ?>", "Share This Post", "width=640,height=450");return false' aria-label="share-pinterest">
+            <a href="http://pinterest.com/pin/create/button/?url=<?= esc($productUrl, 'attr'); ?>&amp;media=<?= esc($productImage, 'attr'); ?>" target="_blank" rel="noopener noreferrer" aria-label="share-pinterest">
                 <i class="icon-pinterest"></i>
-            </button>
+            </a>
         </li>
         <li>
-            <button type="button" class="button-link" onclick='window.open("http://www.linkedin.com/shareArticle?mini=true&amp;url=<?= $productUrl; ?>", "Share This Post", "width=640,height=450");return false' aria-label="share-linkedin">
+            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=<?= esc($productUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer" aria-label="share-linkedin">
                 <i class="icon-linkedin"></i>
-            </button>
+            </a>
         </li>
         <li>
-            <button type="button" class="button-link" onclick='window.open("https://t.me/share/url?url=<?= $productUrl; ?>&text=<?= $productTitle; ?>", "Share This Post", "width=640,height=450");return false' aria-label="share-telegram">
+            <a href="https://t.me/share/url?url=<?= esc($productUrl, 'attr'); ?>&amp;text=<?= esc($productTitle, 'attr'); ?>" target="_blank" rel="noopener noreferrer" aria-label="share-telegram">
                 <i class="icon-telegram"></i>
-            </button>
+            </a>
         </li>
     </ul>
 </div>

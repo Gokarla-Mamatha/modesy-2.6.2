@@ -36,7 +36,8 @@
                                                     <div class="nav-category-image">
                                                         <a href="<?= generateCategoryUrl($imageCategory); ?>">
                                                             <img data-src="<?= getStorageFileUrl($imageCategory->image, $imageCategory->storage); ?>" alt="<?= esc($imageCategory->cat_name); ?>" class="lazyload img-fluid" width="194" height="194">
-                                                            <span><?= characterLimiter(esc($imageCategory->cat_name), 20, '..'); ?></span>
+                                                            <!-- <span><?= characterLimiter(esc($imageCategory->cat_name), 20, '..'); ?></span> -->
+                                                             <span><?= esc($imageCategory->cat_name); ?></span>
                                                         </a>
                                                     </div>
                                                 <?php endforeach; ?>
@@ -51,7 +52,7 @@
                 endforeach;
                 if (countItems($menuCategories) > $limit): ?>
                     <li class="nav-item dropdown" data-category-id="more">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?= trans("more"); ?>&nbsp;<i class="icon-arrow-down"></i></a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?= esc(trans("more")); ?>&nbsp;<i class="icon-arrow-down"></i></a>
                         <div id="mega_menu_content_more" class="dropdown-menu mega-menu-content mega-menu-content-more mds-scrollbar">
                             <div class="row">
                                 <div class="col-12 menu-subcategories">
@@ -91,3 +92,9 @@
         <button class="scroll-btn scroll-btn-right"><i class="icon-arrow-right"></i></button>
     </div>
 </div>
+<style <?= csp_style_nonce() ?>>
+    .mega-menu-content .second-category,
+    .mega-menu-content .nav-main-category {
+        white-space: nowrap;
+        }
+</style>

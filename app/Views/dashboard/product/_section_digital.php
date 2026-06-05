@@ -7,14 +7,14 @@
             <div class="form-box form-box-last">
                 <div class="form-box-head">
                     <h4 class="title">
-                        <?= trans('digital_file'); ?>
-                        <small><?= trans("allowed_file_extensions"); ?>:&nbsp;<strong class="font-500"><?= $exts; ?></strong></small>
+                        <?= esc(trans('digital_file')); ?>
+                        <small><?= esc(trans("allowed_file_extensions")); ?>:&nbsp;<strong class="font-500"><?= $exts; ?></strong></small>
                     </h4>
                 </div>
                 <?php if ($productSettings->digital_external_link == 1): ?>
                     <ul class="nav nav-tabs nav-tabs-digital-file">
-                        <li <?= empty($product->digital_file_download_link) ? 'class="active"' : ''; ?>><a data-toggle="tab" href="#tabContentUploadFile"><?= trans("upload_file"); ?></a></li>
-                        <li <?= !empty($product->digital_file_download_link) ? 'class="active"' : ''; ?>><a data-toggle="tab" href="#tabContentAddUrl"><?= trans("add_external_download_link"); ?></a></li>
+                        <li <?= empty($product->digital_file_download_link) ? 'class="active"' : ''; ?>><a data-toggle="tab" href="#tabContentUploadFile"><?= esc(trans("upload_file")); ?></a></li>
+                        <li <?= !empty($product->digital_file_download_link) ? 'class="active"' : ''; ?>><a data-toggle="tab" href="#tabContentAddUrl"><?= esc(trans("add_external_download_link")); ?></a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="tabContentUploadFile" class="tab-pane fade<?= empty($product->digital_file_download_link) ? ' in active' : ''; ?>">
@@ -31,9 +31,9 @@
                         </div>
                         <div id="tabContentAddUrl" class="tab-pane fade<?= !empty($product->digital_file_download_link) ? ' in active' : ''; ?>">
                             <div class="form-box-body">
-                                <input type="text" name="digital_file_download_link" class="form-control form-input" value="<?= esc($product->digital_file_download_link); ?>" placeholder="<?= trans("external_download_link"); ?>" maxlength="499" onchange="$('#inputDigitalFileLink').val($(this).val());">
+                                <input type="text" name="digital_file_download_link" class="form-control form-input" value="<?= esc($product->digital_file_download_link); ?>" placeholder="<?= esc(trans("external_download_link")); ?>" maxlength="499" onchange="$('#inputDigitalFileLink').val($(this).val());">
                             </div>
-                            <p class="images-exp m-t-10"><i class="fa fa-exclamation-circle"></i><?= trans("warning_external_download_link"); ?></p>
+                            <p class="images-exp m-t-10"><i class="fa fa-exclamation-circle"></i><?= esc(trans("warning_external_download_link")); ?></p>
                         </div>
                     </div>
                 <?php else: ?>
@@ -94,7 +94,7 @@ endif; ?>
                 }
             },
             onFileExtError: function (file) {
-                $(".error-message-file-upload").html("<?= trans('invalid_file_type'); ?>");
+                $(".error-message-file-upload").html("<?= esc(trans('invalid_file_type')); ?>");
                 setTimeout(function () {
                     $(".error-message-file-upload").empty();
                 }, 4000);

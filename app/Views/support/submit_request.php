@@ -5,15 +5,15 @@
                 <div class="support">
                     <nav class="nav-breadcrumb" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= langBaseUrl() ?>"><?= trans('home') ?></a></li>
+                            <li class="breadcrumb-item"><a href="<?= langBaseUrl() ?>"><?= esc(trans('home')) ?></a></li>
                             <li class="breadcrumb-item"><a
-                                    href="<?= generateUrl('help_center') ?>"><?= trans('help_center') ?></a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= trans('submit_a_request') ?></li>
+                                    href="<?= generateUrl('help_center') ?>"><?= esc(trans('help_center')) ?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= esc(trans('submit_a_request')) ?></li>
                         </ol>
                     </nav>
                     <div class="row justify-content-center">
                         <div class="col-lg-10 col-sm-12 m-t-15">
-                            <h1 class="page-title text-center m-b-30"><?= trans('submit_a_request') ?></h1>
+                            <h1 class="page-title text-center m-b-30"><?= esc(trans('submit_a_request')) ?></h1>
                         </div>
                         <div class="col-lg-10 col-sm-12">
                             <?= view('partials/_messages') ?>
@@ -21,37 +21,37 @@
                                 <?= csrf_field() ?>
                                 <?php if (!authCheck()): ?>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans('name') ?></label>
+                                    <label class="control-label"><?= esc(trans('name')) ?></label>
                                     <input type="text" class="form-control form-input" name="name"
-                                      data-type="name"  value="<?= old('name') ?>" placeholder="<?= trans('name') ?>" maxlength="255"
+                                      data-type="name"  value="<?= old('name') ?>" placeholder="<?= esc(trans('name')) ?>" maxlength="255"
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans('email') ?></label>
+                                    <label class="control-label"><?= esc(trans('email')) ?></label>
                                     <input type="email" class="form-control form-input" name="email"
-                                      data-type="email"  value="<?= old('email') ?>" placeholder="<?= trans('email') ?>" maxlength="255"
+                                      data-type="email"  value="<?= old('email') ?>" placeholder="<?= esc(trans('email')) ?>" maxlength="255"
                                         required>
                                 </div>
                                 <?php endif; ?>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans('subject') ?></label>
+                                    <label class="control-label"><?= esc(trans('subject')) ?></label>
                                     <input type="text" class="form-control form-input" name="subject"
-                                        value="<?= old('subject') ?>" placeholder="<?= trans('subject') ?>"
+                                        value="<?= old('subject') ?>" placeholder="<?= esc(trans('subject')) ?>"
                                         maxlength="500" required>
                                 </div>
                                 <div class="form-group m-0">
-                                    <label class="control-label"><?= trans('message') ?></label>
+                                    <label class="control-label"><?= esc(trans('message')) ?></label>
                                 </div>
                                 <div class="form-group" style="min-height: 320px">
                                     <textarea name="message" class="tinyMCEticket" aria-hidden="true"><?= old('message') ?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans('attachments') ?></label>
+                                    <label class="control-label"><?= esc(trans('attachments')) ?></label>
                                     <div class="dm-uploader-container">
                                         <div id="drag-and-drop-zone" class="dm-uploader text-center mb-2">
                                             <p class="dm-upload-text">
-                                                <?= trans('drag_drop_file_here') ?>&nbsp;<span
-                                                    style="text-decoration: underline; font-weight: 600;"><?= trans('browse_files') ?>
+                                                <?= esc(trans('drag_drop_file_here')) ?>&nbsp;<span
+                                                    style="text-decoration: underline; font-weight: 600;"><?= esc(trans('browse_files')) ?>
                                             </p>
                                             <a class='btn btn-md dm-btn-select-files'>
                                                 <input type="file" name="file" size="40" multiple="multiple">
@@ -77,8 +77,7 @@
                                         <div class="item">
                                             <div class="item-inner">
                                                 <?= esc($file->name) ?>
-                                                <a href="javascript:void(0)"
-                                                    onclick="deleteSupportAttachment('<?= esc($file->fileId) ?>')"><i
+                                                <a href="javascript:void(0)" class="js-delete-support-attachment" data-file-id="<?= esc($file->fileId, 'attr') ?>"><i
                                                         class="icon-times"></i></a>
                                             </div>
                                         </div>
@@ -104,7 +103,7 @@
 
                                 <div class="text-right m-t-20">
                                     <button type="submit"
-                                        class="btn btn-md btn-custom"><?= trans('send_message') ?></button>
+                                        class="btn btn-md btn-custom"><?= esc(trans('send_message')) ?></button>
                                 </div>
                             </form>
                         </div>
@@ -119,6 +118,10 @@ function refreshSupportCaptcha() {
     document.getElementById('captcha_img_support').src =
         "<?= base_url('captcha/math'); ?>?t=" + new Date().getTime();
 }
+
+$(document).on('click', '.js-delete-support-attachment', function () {
+    deleteSupportAttachment($(this).data('file-id'));
+});
 </script>
 <style <?= csp_style_nonce() ?>>
      .captcha-refresh {

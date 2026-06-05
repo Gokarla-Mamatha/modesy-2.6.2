@@ -34,7 +34,7 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
                                             endforeach;
                                             if ($generalSettings->rss_system == 1) : ?>
                                                 <li><a href="<?= generateUrl('rss_feeds'); ?>" class="rss" target="_blank"
-                                                        title="<?= trans("rss_feeds"); ?>"><i class="icon-rss"></i></a></li>
+                                                        title="<?= esc(trans("rss_feeds")); ?>"><i class="icon-rss"></i></a></li>
                                             <?php endif; ?>
                                         </ul>
                                     <?php endif; ?>
@@ -48,7 +48,7 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
                                         <div class="col-12 col-sm-6 col-lg-6 footer-widget">
                                             <div class="nav-footer">
                                                 <div class="row-custom">
-                                                    <h4 class="footer-title"><?= trans("categories"); ?></h4>
+                                                    <h4 class="footer-title"><?= esc(trans("categories")); ?></h4>
                                                 </div>
                                                 <div class="row-custom">
                                                     <?php $i = 0;
@@ -70,11 +70,11 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
                                         <div class="col-12 col-sm-6 col-lg-6 footer-widget">
                                             <div class="nav-footer">
                                                 <div class="row-custom">
-                                                    <h4 class="footer-title"><?= trans("footer_quick_links"); ?></h4>
+                                                    <h4 class="footer-title"><?= esc(trans("footer_quick_links")); ?></h4>
                                                 </div>
                                                 <div class="row-custom">
                                                     <ul>
-                                                        <li><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a>
+                                                        <li><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a>
                                                         </li>
                                                         <?php if (! empty($menuLinks)) :
                                                             foreach ($menuLinks as $menuLink) :
@@ -91,18 +91,18 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
                                                         endif;
                                                         if (getSettingsUnserialized('affiliate')->status == 1) : ?>
                                                             <li><a
-                                                                    href="<?= generateUrl('affiliate-program'); ?>"><?= trans("affiliate_program"); ?></a>
+                                                                    href="<?= generateUrl('affiliate-program'); ?>"><?= esc(trans("affiliate_program")); ?></a>
                                                             </li>
                                                         <?php endif; ?>
                                                         <li><a
-                                                                href="<?= generateUrl('help_center'); ?>"><?= trans("help_center"); ?></a>
+                                                                href="<?= generateUrl('help_center'); ?>"><?= esc(trans("help_center")); ?></a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                             <div class="nav-footer">
                                                 <div class="row-custom m-t-15">
-                                                    <h4 class="footer-title"><?= trans("footer_information"); ?></h4>
+                                                    <h4 class="footer-title"><?= esc(trans("footer_information")); ?></h4>
                                                 </div>
                                                 <div class="row-custom">
                                                     <ul>
@@ -129,14 +129,14 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
                                     <div class="footer-widget">
                                         <?php if ($newsletterSettings->status == 1) : ?>
                                             <div class="newsletter-footer">
-                                                <h4 class="footer-title"><?= trans("newsletter"); ?></h4>
-                                                <p class="title-desc"><?= trans("newsletter_desc"); ?></p>
+                                                <h4 class="footer-title"><?= esc(trans("newsletter")); ?></h4>
+                                                <p class="title-desc"><?= esc(trans("newsletter_desc")); ?></p>
                                                 <form id="form_newsletter_footer" class="form-newsletter-footer">
                                                     <input type="email" name="email" class="form-input" maxlength="249"
-                                                        placeholder="<?= trans("enter_email"); ?>" required
+                                                        placeholder="<?= esc(trans("enter_email")); ?>" required
                                                         data-type="email">
                                                     <button type="submit" name="submit" value="form"
-                                                        class="btn btn-custom"><?= trans("subscribe"); ?></button>
+                                                        class="btn btn-custom"><?= esc(trans("subscribe")); ?></button>
                                                     <input type="text" name="url">
                                                 </form>
                                             </div>
@@ -198,7 +198,7 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
             <?= $baseSettings->cookies_warning_text; ?>
         </div>
         <button type="button" class="btn btn-md btn-block" aria-label="close"
-            onclick="hideCookiesWarning();"><?= trans("accept_cookies"); ?></button>
+            onclick="hideCookiesWarning();"><?= esc(trans("accept_cookies")); ?></button>
     </div>
 <?php endif; ?>
 <button type="button" class="scrollup" aria-label="scroll-up"><i class="icon-arrow-up"></i></button>
@@ -206,7 +206,7 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
 <script src="<?= base_url('assets/js/jquery.overlayScrollbars.min.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" <?= csp_script_nonce() ?>></script>
 <!-- <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script> -->
-<script src="<?= base_url('assets/admin/vendor/bootstrap/js/bootstrap.min.5.3.8.js'); ?>" <?= csp_script_nonce() ?>></script>
+<script src="<?= base_url('assets/admin/vendor/bootstrap/js/bootstrap.v5.3.min.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/js/plugins-2.6.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/js/script.js?v='.time()); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/common/js/utils.min.js'); ?>" <?= csp_script_nonce() ?>></script>
@@ -215,6 +215,7 @@ echo view("partials/_modals", ['newsletterSettings' => $newsletterSettings]);
 <script src="<?= base_url('assets/admin/js/admin-2.6.js'); ?>?time=<?= time(); ?>" <?= csp_script_nonce() ?>></script>
 <!-- <script src="<?= base_url('assets/js/script-2.6.2.js'); ?>?time=<?= time(); ?>" <?= csp_script_nonce() ?>></script> -->
 <script src="<?= base_url('assets/js/inline.js'); ?>?time=<?= time(); ?>" <?= csp_script_nonce() ?>></script>
+<script src="<?= base_url('assets/js/script.js'); ?>?time=<?= time(); ?>" <?= csp_script_nonce() ?>></script>
 <script <?= csp_script_nonce() ?>>
     $('<input>').attr({
         type: 'hidden',

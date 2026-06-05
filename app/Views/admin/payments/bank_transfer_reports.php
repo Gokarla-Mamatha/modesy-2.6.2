@@ -8,12 +8,12 @@
                 <div class="row table-filter-container">
                     <div class="col-sm-12">
                         <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                         </button>
                         <div class="collapse navbar-collapse" id="collapseFilter">
                             <form action="<?= adminUrl('bank-transfer-reports'); ?>" method="get">
                                 <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                    <label><?= trans("show"); ?></label>
+                                    <label><?= esc(trans("show")); ?></label>
                                     <select name="show" class="form-control">
                                         <option value="15" <?= inputGet('show') == '15' ? 'selected' : ''; ?>>15</option>
                                         <option value="30" <?= inputGet('show') == '30' ? 'selected' : ''; ?>>30</option>
@@ -22,21 +22,21 @@
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("status"); ?></label>
+                                    <label><?= esc(trans("status")); ?></label>
                                     <select name="status" class="form-control">
-                                        <option value="" selected><?= trans("all"); ?></option>
-                                        <option value="pending" <?= inputGet('status') == 'pending' ? 'selected' : ''; ?>><?= trans("pending"); ?></option>
-                                        <option value="approved" <?= inputGet('status') == 'approved' ? 'selected' : ''; ?>><?= trans("approved"); ?></option>
-                                        <option value="declined" <?= inputGet('status') == 'declined' ? 'selected' : ''; ?>><?= trans("declined"); ?></option>
+                                        <option value="" selected><?= esc(trans("all")); ?></option>
+                                        <option value="pending" <?= inputGet('status') == 'pending' ? 'selected' : ''; ?>><?= esc(trans("pending")); ?></option>
+                                        <option value="approved" <?= inputGet('status') == 'approved' ? 'selected' : ''; ?>><?= esc(trans("approved")); ?></option>
+                                        <option value="declined" <?= inputGet('status') == 'declined' ? 'selected' : ''; ?>><?= esc(trans("declined")); ?></option>
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("search"); ?></label>
-                                    <input name="q" class="form-control" placeholder="<?= trans("order_number"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                    <label><?= esc(trans("search")); ?></label>
+                                    <input name="q" class="form-control" placeholder="<?= esc(trans("order_number")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
                                 </div>
                                 <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                     <label style="display: block">&nbsp;</label>
-                                    <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                    <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                 </div>
                             </form>
                         </div>
@@ -46,15 +46,15 @@
                     <table class="table table-bordered table-striped" role="grid">
                         <thead>
                         <tr role="row">
-                            <th><?= trans('id'); ?></th>
-                            <th><?= trans('report_type'); ?></th>
-                            <th><?= trans('user'); ?></th>
-                            <th><?= trans('receipt'); ?></th>
-                            <th><?= trans('payment_note'); ?></th>
-                            <th><?= trans('status'); ?></th>
-                            <th><?= trans('ip_address'); ?></th>
-                            <th><?= trans('date'); ?></th>
-                            <th class="max-width-120"><?= trans('options'); ?></th>
+                            <th><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('report_type')); ?></th>
+                            <th><?= esc(trans('user')); ?></th>
+                            <th><?= esc(trans('receipt')); ?></th>
+                            <th><?= esc(trans('payment_note')); ?></th>
+                            <th><?= esc(trans('status')); ?></th>
+                            <th><?= esc(trans('ip_address')); ?></th>
+                            <th><?= esc(trans('date')); ?></th>
+                            <th class="max-width-120"><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -63,7 +63,7 @@
                                 <tr>
                                     <td><?= $item->id; ?></td>
                                     <td>
-                                        <?= trans($item->report_type); ?>
+                                        <?= esc(trans($item->report_type)); ?>
                                         <?php if ($item->report_type == 'order'):
                                             $order = getOrderByOrderNumber($item->order_number);
                                             if (!empty($order)): ?>
@@ -75,7 +75,7 @@
                                     </td>
                                     <td>
                                         <?php if ($item->user_id == 0): ?>
-                                            <label class="label bg-olive"><?= trans("guest"); ?></label>
+                                            <label class="label bg-olive"><?= esc(trans("guest")); ?></label>
                                         <?php else: ?>
                                             <a href="<?= generateProfileUrl($item->user_slug); ?>" target="_blank" class="table-link">
                                                 <?= esc($item->user_username); ?>
@@ -86,7 +86,7 @@
                                         <?php $receiptPath = getStorageFileUrl($item->receipt_path, $item->storage);
                                         if (!empty($receiptPath)):
                                             if (pathinfo($receiptPath, PATHINFO_EXTENSION) === 'pdf'):?>
-                                                <a href="<?= esc($receiptPath); ?>" target="_blank"><?= trans("view_pdf_file"); ?></a>
+                                                <a href="<?= esc($receiptPath); ?>" target="_blank"><?= esc(trans("view_pdf_file")); ?></a>
                                             <?php else: ?>
                                                 <a class="magnific-image-popup" href="<?= esc($receiptPath); ?>">
                                                     <img data-src="<?= esc($receiptPath); ?>" alt="" class="lazyload img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
@@ -97,18 +97,18 @@
                                     <td style="max-width: 300px;"><?= esc($item->payment_note); ?></td>
                                     <td>
                                         <?php if ($item->status == 'pending'): ?>
-                                            <label class="label label-default"><?= trans("pending"); ?></label>
+                                            <label class="label label-default"><?= esc(trans("pending")); ?></label>
                                         <?php elseif ($item->status == 'approved'): ?>
-                                            <label class="label label-success"><?= trans("approved"); ?></label>
+                                            <label class="label label-success"><?= esc(trans("approved")); ?></label>
                                         <?php elseif ($item->status == 'declined'): ?>
-                                            <label class="label label-danger"><?= trans("declined"); ?></label>
+                                            <label class="label label-danger"><?= esc(trans("declined")); ?></label>
                                         <?php endif; ?>
                                     </td>
                                     <td><?= $item->ip_address; ?></td>
                                     <td><?= formatDate($item->created_at); ?></td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?>
+                                            <button class="btn bg-purple dropdown-bs-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?>
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu options-dropdown">
@@ -118,12 +118,12 @@
                                                         $deposit = getDepositTransaction($item->report_item_id);
                                                         if (!empty($deposit)):?>
                                                             <li>
-                                                                <button type="button" class="btn-list-button" data-toggle="modal" data-target="#modalApprovePayment<?= $item->id; ?>"><i class="fa fa-check option-icon"></i>&nbsp;<?= trans("approve"); ?></button>
+                                                                <button type="button" class="btn-list-button" data-toggle="modal" data-target="#modalApprovePayment<?= $item->id; ?>"><i class="fa fa-check option-icon"></i>&nbsp;<?= esc(trans("approve")); ?></button>
                                                             </li>
                                                         <?php endif;
                                                     else: ?>
                                                         <li>
-                                                            <a href="javascript:void(0)" onclick="approveBankTransfer('<?= $item->id; ?>','<?= trans("confirm_action", true); ?>');"><i class="fa fa-check option-icon"></i><?= trans('approve'); ?></a>
+                                                            <a href="javascript:void(0)" onclick="approveBankTransfer('<?= $item->id; ?>','<?= esc(trans("confirm_action", true)); ?>');"><i class="fa fa-check option-icon"></i><?= esc(trans('approve')); ?></a>
                                                         </li>
                                                     <?php endif; ?>
 
@@ -131,14 +131,14 @@
                                                         <form action="<?= base_url('Admin/bankTransferOptionsPost'); ?>" method="post">
                                                             <?= csrf_field(); ?>
                                                             <input type="hidden" name="report_id" value="<?= $item->id; ?>">
-                                                            <button type="submit" name="option" value="declined" class="btn-list-button"><i class="fa fa-times option-icon"></i><?= trans('decline'); ?></button>
+                                                            <button type="submit" name="option" value="declined" class="btn-list-button"><i class="fa fa-times option-icon"></i><?= esc(trans('decline')); ?></button>
                                                         </form>
                                                     </li>
                                                 <?php endif; ?>
                                                 <li>
-                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteBankTransferPost','<?= $item->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                        <a href="#" class="btn-item-delete" data-url="Admin/deleteBankTransferPost" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_user', true); ?>">
-                                                        <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?></a>
+                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteBankTransferPost','<?= $item->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                        <a href="#" class="btn-item-delete" data-url="Admin/deleteBankTransferPost" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_user', true)); ?>">
+                                                        <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -150,7 +150,7 @@
                     </table>
                     <?php if (empty($bankTransfers)): ?>
                         <p class="text-center">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                     <div class="col-sm-12 table-ft">
@@ -180,7 +180,7 @@
                                 <input type="hidden" name="bank_transfer_id" value="<?= esc($item->id); ?>">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title"><?= trans("wallet_deposit"); ?></h4>
+                                    <h4 class="modal-title"><?= esc(trans("wallet_deposit")); ?></h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="input-group">
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success m-t-5"><i class="fa fa-check"></i>&nbsp;<?= trans("approve"); ?></button>
+                                    <button type="submit" class="btn btn-success m-t-5"><i class="fa fa-check"></i>&nbsp;<?= esc(trans("approve")); ?></button>
                                 </div>
                             </form>
                         </div>

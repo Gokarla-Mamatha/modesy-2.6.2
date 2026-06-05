@@ -1,20 +1,20 @@
 <div class="box">
     <div class="box-header with-border">
         <div class="left">
-            <h3 class="box-title"><?= trans('categories'); ?></h3>
+            <h3 class="box-title"><?= esc(trans('categories')); ?></h3>
         </div>
         <div class="right">
             <a href="<?= adminUrl('add-category'); ?>" class="btn btn-success btn-add-new">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_category'); ?>
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_category')); ?>
             </a>
             <?php if (isAdmin()): ?>
                 <a href="<?= adminUrl('bulk-category-upload'); ?>" class="btn btn-info btn-add-new">
-                    <i class="fa fa-upload"></i>&nbsp;&nbsp;<?= trans('bulk_category_upload'); ?>
+                    <i class="fa fa-upload"></i>&nbsp;&nbsp;<?= esc(trans('bulk_category_upload')); ?>
                 </a>
                 <div class="display-inline-block">
                     <form action="<?= base_url('Category/categorySettingsPost'); ?>" method="post">
                         <?= csrf_field(); ?>
-                        <button type="submit" class="btn btn-danger" name="submit" value="buildPaths"><i class="fa fa-refresh"></i>&nbsp;&nbsp;<?= trans("rebuild_category_paths"); ?></button>
+                        <button type="submit" class="btn btn-danger" name="submit" value="buildPaths"><i class="fa fa-refresh"></i>&nbsp;&nbsp;<?= esc(trans("rebuild_category_paths")); ?></button>
                     </form>
                 </div>
             <?php endif; ?>
@@ -25,12 +25,12 @@
             <div class="col-sm-12">
                 <form action="<?= adminUrl('categories'); ?>" method="get">
                     <div class="item-table-filter" style="width: 220px;">
-                        <label><?= trans("search"); ?></label>
-                        <input name="q" class="form-control" placeholder="<?= trans("search") ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
+                        <label><?= esc(trans("search")); ?></label>
+                        <input name="q" class="form-control" placeholder="<?= esc(trans("search")) ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
                     </div>
                     <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                         <label style="display: block">&nbsp;</label>
-                        <button type="submit" class="btn bg-purple" style="height: 36px;"><?= trans("filter"); ?></button>
+                        <button type="submit" class="btn bg-purple" style="height: 36px;"><?= esc(trans("filter")); ?></button>
                     </div>
                 </form>
             </div>
@@ -54,36 +54,36 @@
     <div class="col-lg-8 col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans('settings'); ?></h3>
+                <h3 class="box-title"><?= esc(trans('settings')); ?></h3>
             </div>
             <form action="<?= base_url('Category/categorySettingsPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label><?= trans("sort_categories"); ?></label>
+                        <label><?= esc(trans("sort_categories")); ?></label>
                         <div class="row">
                             <div class="col-md-3 col-sm-12">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" name="sort_categories" value="category_order" id="sort_categories_1" class="custom-control-input" <?= $generalSettings->sort_categories == 'category_order' ? 'checked' : ''; ?>>
-                                    <label for="sort_categories_1" class="custom-control-label"><?= trans("by_category_order"); ?></label>
+                                    <label for="sort_categories_1" class="custom-control-label"><?= esc(trans("by_category_order")); ?></label>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-12">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" name="sort_categories" value="date" id="sort_categories_2" class="custom-control-input" <?= $generalSettings->sort_categories == 'date' ? 'checked' : ''; ?>>
-                                    <label for="sort_categories_2" class="custom-control-label"><?= trans("by_date"); ?></label>
+                                    <label for="sort_categories_2" class="custom-control-label"><?= esc(trans("by_date")); ?></label>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-12">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" name="sort_categories" value="date_desc" id="sort_categories_3" class="custom-control-input" <?= $generalSettings->sort_categories == 'date_desc' ? 'checked' : ''; ?>>
-                                    <label for="sort_categories_3" class="custom-control-label"><?= trans("by_date"); ?>&nbsp;(DESC)</label>
+                                    <label for="sort_categories_3" class="custom-control-label"><?= esc(trans("by_date")); ?>&nbsp;(DESC)</label>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-12">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" name="sort_categories" value="alphabetically" id="sort_categories_4" class="custom-control-input" <?= $generalSettings->sort_categories == 'alphabetically' ? 'checked' : ''; ?>>
-                                    <label for="sort_categories_4" class="custom-control-label"><?= trans("alphabetically"); ?></label>
+                                    <label for="sort_categories_4" class="custom-control-label"><?= esc(trans("alphabetically")); ?></label>
                                 </div>
                             </div>
                         </div>
@@ -93,16 +93,39 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>
         <div class="alert alert-info alert-large">
-            <strong><?= trans("warning"); ?>!</strong>&nbsp;&nbsp;<?= trans("warning_category_sort"); ?>
+            <strong><?= esc(trans("warning")); ?>!</strong>&nbsp;&nbsp;<?= esc(trans("warning_category_sort")); ?>
         </div>
     </div>
 </div>
 <script <?= csp_script_nonce() ?>>
+    $(document).on("click", ".panel .panel-heading .btn-delete, .btn-delete", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = $(this).attr('data-item-id');
+        if (id && confirm("<?= esc(trans("confirm_delete", true)); ?>")) {
+            // Use fetch API with redirect handling
+            fetch('<?= base_url('Category/deleteCategoryPost'); ?>', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'id=' + encodeURIComponent(id) + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
+            }).then(function(response) {
+                // After delete, reload the categories page without filter
+                window.location.href = '<?= adminUrl('categories'); ?>';
+            }).catch(function(error) {
+                // If error, still reload
+                window.location.href = '<?= adminUrl('categories'); ?>';
+            });
+        }
+    });
+    
+
     $(document).on("click", ".panel .panel-heading-parent", function (e) {
         if ($(e.target).is('div') || $(e.target).is('span') || $(e.target).is('.fa-caret-right') || $(e.target).is('.fa-caret-down')) {
             var id = $(this).attr('data-item-id');
@@ -112,7 +135,7 @@
     });
     $(document).on("click", ".panel .panel-heading .btn-delete", function (e) {
         var id = $(this).attr('data-item-id');
-        deleteItem("Category/deleteCategoryPost", id, "<?= trans("confirm_delete", true);?>");
+        deleteItem("Category/deleteCategoryPost", id, "<?= esc(trans("confirm_delete", true));?>");
     });
 
     $(document).on('click', '.panel-heading-parent', function (e) {

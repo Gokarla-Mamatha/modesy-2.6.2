@@ -23,7 +23,7 @@
                 </div>
             </div>
             <?php if (authCheck() && user()->id == $product->user_id): ?>
-                <button type="button" class="button-link text-muted link-abuse-report" data-toggle="modal" data-target="#reportReviewModal" onclick="$('#report_review_id').val('<?= $review->id; ?>');"><?= trans("report"); ?></button>
+                <button type="button" class="button-link text-muted link-abuse-report js-report-product-review" data-bs-toggle="modal" data-bs-target="#reportReviewModal" data-review-id="<?= esc($review->id, 'attr'); ?>"><?= esc(trans("report")); ?></button>
             <?php endif; ?>
         </li>
     <?php endforeach;

@@ -1,0 +1,6 @@
+/vendor/
+/node_modules/
+.env
+
+# Runtime logs should never be committed (they can leak secrets/PII)
+writable/logs/*.log

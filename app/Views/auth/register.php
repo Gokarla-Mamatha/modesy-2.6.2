@@ -4,8 +4,8 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= trans("register"); ?></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("register")); ?></li>
                     </ol>
                 </nav>
             </div>
@@ -14,7 +14,7 @@
             <div class="auth-box">
                 <div class="row">
                     <div class="col-12">
-                        <h1 class="title"><?= trans("register"); ?></h1>
+                        <h1 class="title"><?= esc(trans("register")); ?></h1>
                         <form action="<?= base_url('register-post'); ?>" method="post" id="form_validate" class="validate_terms">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="recaptcha_token" class="recaptcha_token">
@@ -30,10 +30,10 @@
                                 <div class="bounce3"></div>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="first_name" class="form-control auth-form-input" placeholder="<?= trans("first_name"); ?>" value="<?= old("first_name"); ?>" data-type="name" maxlength="255"  required>
+                                <input type="text" name="first_name" class="form-control auth-form-input" placeholder="<?= esc(trans("first_name")); ?>" value="<?= old("first_name"); ?>" data-type="name" maxlength="255"  required>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="last_name" class="form-control auth-form-input" placeholder="<?= trans("last_name"); ?>" value="<?= old("last_name"); ?>" data-type="name" maxlength="255" required>
+                                <input type="text" name="last_name" class="form-control auth-form-input" placeholder="<?= esc(trans("last_name")); ?>" value="<?= old("last_name"); ?>" data-type="name" maxlength="255" required>
                             </div>
                             <?php $errors = session()->getFlashdata('errors') ?? []; ?>
 
@@ -42,7 +42,7 @@
                                     type="email"
                                     name="email"
                                     class="form-control auth-form-input <?= isset($errors['email']) ? 'is-invalid' : ''; ?>"
-                                    placeholder="<?= trans("email_address"); ?>"
+                                    placeholder="<?= esc(trans("email_address")); ?>"
                                     value="<?= old("email"); ?>"
                                     maxlength="255"
                                     data-type="email"
@@ -56,15 +56,15 @@
                                 <?php endif; ?>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control auth-form-input" placeholder="<?= trans("password"); ?>" minlength="4"maxlength="255" required>
+                                <input type="password" name="password" class="form-control auth-form-input" placeholder="<?= esc(trans("password")); ?>" minlength="4"maxlength="255" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="confirm_password" class="form-control auth-form-input" placeholder="<?= trans("password_confirm"); ?>" data-match="password" maxlength="255" required>
+                                <input type="password" name="confirm_password" class="form-control auth-form-input" placeholder="<?= esc(trans("password_confirm")); ?>" data-match="password" maxlength="255" required>
                             </div>
                             <div class="form-group m-t-5 m-b-15">
                                 <div class="custom-control custom-checkbox custom-control-validate-input">
                                     <input type="checkbox" class="custom-control-input" name="terms" id="checkbox_terms" required>
-                                    <label for="checkbox_terms" class="custom-control-label"><?= trans("terms_conditions_exp"); ?>&nbsp;
+                                    <label for="checkbox_terms" class="custom-control-label"><?= esc(trans("terms_conditions_exp")); ?>&nbsp;
                                         <?php $pageTerms = getPageByDefaultName("terms_conditions", selectedLangId());
                                         if (!empty($pageTerms)): ?>
                                             <a href="<?= generateUrl($pageTerms->page_default_name); ?>" class="link-terms" target="_blank"><strong><?= esc($pageTerms->title); ?></strong></a>
@@ -76,9 +76,9 @@
                             <?= view('partials/_cf_turnstile', ['turnstileCenter' => true]); ?>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-custom btn-block"><?= trans("register"); ?></button>
+                                <button type="submit" class="btn btn-custom btn-block"><?= esc(trans("register")); ?></button>
                             </div>
-                            <p class="p-social-media m-0 m-t-15"><?= trans("have_account"); ?>&nbsp;<a href="javascript:void(0)" class="link font-600" data-bs-toggle="modal" data-bs-target="#loginModal"><?= trans("login"); ?></a></p>
+                            <p class="p-social-media m-0 m-t-15"><?= esc(trans("have_account")); ?>&nbsp;<a href="javascript:void(0)" class="link font-600" data-bs-toggle="modal" data-bs-target="#loginModal"><?= esc(trans("login")); ?></a></p>
                         </form> 
                     </div>
                 </div>

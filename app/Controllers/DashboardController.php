@@ -510,22 +510,27 @@ class DashboardController extends BaseController
     public function getSubCategories()
     {
         $parentId = inputPost('parent_id');
-        $data = ['result' => 0];
+        $options = '';
+
         if (!empty($parentId)) {
             $subCategories = $this->categoryModel->getSubCategoriesByParentId($parentId);
-            $options = '';
+
             if (!empty($subCategories)) {
                 foreach ($subCategories as $item) {
-                    $options .= '<option value="' . $item->id . '">' . esc($item->cat_name) . '</option>';
+                    $id = is_array($item) ? $item['id'] : $item->id;
+                    $name = is_array($item) ? ($item['cat_name'] ?? $item['name'] ?? $item['title'] ?? '') : ($item->cat_name ?? $item->name ?? $item->title ?? '');
+
+                    if ($name != '') {
+                        $options .= '<option value="' . esc($id) . '">' . esc($name) . '</option>';
+                    }
                 }
             }
         }
-        if (!empty($options)) {
-            $data = ['result' => 1, 'options' => $options];
-        }
-        return jsonResponse($data);
+        return jsonResponse([
+            'result' => !empty($options) ? 1 : 0,
+            'options' => $options
+        ]);
     }
-
     /*
      * --------------------------------------------------------------------
      * License Keys
@@ -1574,7 +1579,16 @@ class DashboardController extends BaseController
     public function deleteShippingZonePost()
     {
         $id = inputPost('id');
+
+        $shippingZone = $this->shippingModel->getShippingZone($id);
+        if (empty($shippingZone) || user()->id != $shippingZone->user_id) {
+            return jsonResponse(['status' => 0, 'message' => trans("msg_error")]);
+        }
+
         $this->shippingModel->deleteShippingZone($id);
+
+        setSuccessMessage(trans("msg_deleted"));
+        return jsonResponse(['status' => 1]);
     }
 
     //set meta data

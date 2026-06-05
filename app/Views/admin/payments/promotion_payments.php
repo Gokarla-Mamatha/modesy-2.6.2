@@ -8,12 +8,12 @@
                 <div class="row table-filter-container">
                     <div class="col-sm-12">
                         <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                         </button>
                         <div class="collapse navbar-collapse" id="collapseFilter">
                             <form action="<?= adminUrl('promotion-payments'); ?>" method="get">
                                 <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                    <label><?= trans("show"); ?></label>
+                                    <label><?= esc(trans("show")); ?></label>
                                     <select name="show" class="form-control">
                                         <option value="15" <?= inputGet('show', true) == '15' ? 'selected' : ''; ?>>15</option>
                                         <option value="30" <?= inputGet('show', true) == '30' ? 'selected' : ''; ?>>30</option>
@@ -22,20 +22,20 @@
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans('payment_status'); ?></label>
+                                    <label><?= esc(trans('payment_status')); ?></label>
                                     <select name="payment_status" class="form-control custom-select">
-                                        <option value="" selected><?= trans("all"); ?></option>
-                                        <option value="payment_received" <?= inputGet('payment_status') == 'payment_received' ? 'selected' : ''; ?>><?= trans("payment_received"); ?></option>
-                                        <option value="pending_payment" <?= inputGet('payment_status') == 'pending_payment' ? 'selected' : ''; ?>><?= trans("pending_payment"); ?></option>
+                                        <option value="" selected><?= esc(trans("all")); ?></option>
+                                        <option value="payment_received" <?= inputGet('payment_status') == 'payment_received' ? 'selected' : ''; ?>><?= esc(trans("payment_received")); ?></option>
+                                        <option value="pending_payment" <?= inputGet('payment_status') == 'pending_payment' ? 'selected' : ''; ?>><?= esc(trans("pending_payment")); ?></option>
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("search"); ?></label>
-                                    <input name="q" class="form-control" placeholder="<?= trans("payment_id"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                    <label><?= esc(trans("search")); ?></label>
+                                    <input name="q" class="form-control" placeholder="<?= esc(trans("payment_id")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
                                 </div>
                                 <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                     <label style="display: block">&nbsp;</label>
-                                    <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                    <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                 </div>
                             </form>
                         </div>
@@ -45,17 +45,17 @@
                     <table class="table table-bordered table-striped" role="grid">
                         <thead>
                         <tr role="row">
-                            <th><?= trans('id'); ?></th>
-                            <th><?= trans('payment_id'); ?></th>
-                            <th><?= trans('payment_method'); ?></th>
-                            <th><?= trans('payment_amount'); ?></th>
-                            <th><?= trans('payment_status'); ?></th>
-                            <th><?= trans('user'); ?></th>
-                            <th><?= trans('product_id'); ?></th>
-                            <th><?= trans('purchased_plan'); ?></th>
-                            <th><?= trans('ip_address'); ?></th>
-                            <th><?= trans('date'); ?></th>
-                            <th class="max-width-120"><?= trans('options'); ?></th>
+                            <th><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('payment_id')); ?></th>
+                            <th><?= esc(trans('payment_method')); ?></th>
+                            <th><?= esc(trans('payment_amount')); ?></th>
+                            <th><?= esc(trans('payment_status')); ?></th>
+                            <th><?= esc(trans('user')); ?></th>
+                            <th><?= esc(trans('product_id')); ?></th>
+                            <th><?= esc(trans('purchased_plan')); ?></th>
+                            <th><?= esc(trans('ip_address')); ?></th>
+                            <th><?= esc(trans('date')); ?></th>
+                            <th class="max-width-120"><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -76,7 +76,7 @@
                                             <form action="<?= base_url('Admin/approvePromotionPaymentPost'); ?>" method="post">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="transaction_id" value="<?= $item->id; ?>">
-                                                <button type="submit" class="btn btn-sm btn-success m-t-5"><i class="fa fa-check"></i>&nbsp;<?= trans("approve"); ?></button>
+                                                <button type="submit" class="btn btn-sm btn-success m-t-5"><i class="fa fa-check"></i>&nbsp;<?= esc(trans("approve")); ?></button>
                                             </form>
                                         <?php endif; ?>
                                     </td>
@@ -91,9 +91,9 @@
                                     <td><?= formatDate($item->created_at); ?></td>
                                     <td>
                                         <div class="btn-group btn-group-option">
-                                            <a href="<?= base_url('invoice-promotion/' . $item->id); ?>" class="btn btn-sm btn-default btn-edit" target="_blank"><i class="fa fa-file-text"></i>&nbsp;&nbsp;<?= trans("view_invoice"); ?></a>
-                                            <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" onclick="deleteItem('Admin/deletePromotionPaymentsPost','<?= $item->id; ?>','<?= trans("confirm_delete"); ?>');"> -->
-                                                <a href="#" class="btn-item-delete" data-url="Admin/deletePromotionPaymentsPost" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
+                                            <a href="<?= base_url('invoice-promotion/' . $item->id); ?>" class="btn btn-sm btn-default btn-edit" target="_blank"><i class="fa fa-file-text"></i>&nbsp;&nbsp;<?= esc(trans("view_invoice")); ?></a>
+                                            <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" onclick="deleteItem('Admin/deletePromotionPaymentsPost','<?= $item->id; ?>','<?= esc(trans("confirm_delete")); ?>');"> -->
+                                                <a href="#" class="btn-item-delete" data-url="Admin/deletePromotionPaymentsPost" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
                                                 <i class="fa fa-trash-can"></i></a>
                                         </div>
                                     </td>
@@ -104,7 +104,7 @@
                     </table>
                     <?php if (empty($transactions)): ?>
                         <p class="text-center">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                     <div class="col-sm-12 table-ft">

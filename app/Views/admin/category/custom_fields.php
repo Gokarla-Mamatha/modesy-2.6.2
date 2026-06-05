@@ -3,15 +3,15 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('custom_fields'); ?></h3>
+                    <h3 class="box-title"><?= esc(trans('custom_fields')); ?></h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('add-custom-field'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_custom_field'); ?>
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_custom_field')); ?>
                     </a>
                     <?php if (isAdmin()): ?>
                         <a href="<?= adminUrl('bulk-custom-field-upload'); ?>" class="btn btn-info btn-add-new">
-                            <i class="fa fa-upload"></i>&nbsp;&nbsp;<?= trans('bulk_custom_field_upload'); ?>
+                            <i class="fa fa-upload"></i>&nbsp;&nbsp;<?= esc(trans('bulk_custom_field_upload')); ?>
                         </a>
                     <?php endif; ?>
                 </div>
@@ -23,12 +23,12 @@
                         <div class="row table-filter-container">
                             <div class="col-sm-12">
                                 <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                                 </button>
                                 <div class="collapse navbar-collapse" id="collapseFilter">
                                     <form action="<?= adminUrl('custom-fields'); ?>" method="get">
                                         <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                            <label><?= trans("show"); ?></label>
+                                            <label><?= esc(trans("show")); ?></label>
                                             <select name="show" class="form-control">
                                                 <option value="15" <?= inputGet('show') == '15' ? 'selected' : ''; ?>>15</option>
                                                 <option value="30" <?= inputGet('show') == '30' ? 'selected' : ''; ?>>30</option>
@@ -37,10 +37,10 @@
                                             </select>
                                         </div>
                                         <div class="item-table-filter" style="width: 320px;">
-                                            <label><?= trans("search"); ?></label>
+                                            <label><?= esc(trans("search")); ?></label>
                                             <div class="item-table-filter-search">
                                                 <input name="q" class="form-control" placeholder="<?= esc(trans("search")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
-                                                <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                                <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                             </div>
                                         </div>
                                     </form>
@@ -51,14 +51,14 @@
                             <table class="table table-bordered table-striped" role="grid" aria-describedby="example1_info">
                                 <thead>
                                 <tr role="row">
-                                    <th width="20"><?= trans('id'); ?></th>
-                                    <th><?= trans('name'); ?></th>
-                                    <th><?= trans('type'); ?></th>
+                                    <th width="20"><?= esc(trans('id')); ?></th>
+                                    <th><?= esc(trans('name')); ?></th>
+                                    <th><?= esc(trans('type')); ?></th>
                                     <th>&nbsp;</th>
-                                    <th><?= trans('required'); ?></th>
-                                    <th><?= trans('order'); ?></th>
-                                    <th><?= trans('status'); ?></th>
-                                    <th class="th-options"><?= trans('options'); ?></th>
+                                    <th><?= esc(trans('required')); ?></th>
+                                    <th><?= esc(trans('order')); ?></th>
+                                    <th><?= esc(trans('status')); ?></th>
+                                    <th class="th-options"><?= esc(trans('options')); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,16 +67,16 @@
                                         <tr>
                                             <td><?= esc($item->id); ?></td>
                                             <td><?= esc($item->field_name); ?></td>
-                                            <td><?= trans($item->field_type); ?></td>
+                                            <td><?= esc(trans($item->field_type)); ?></td>
                                             <td>
                                                 <form action="<?= base_url('Category/addRemoveCustomFieldFiltersPost'); ?>" method="post">
                                                     <?= csrf_field(); ?>
                                                     <input type="hidden" name="id" value="<?= $item->id; ?>">
                                                     <?php if ($item->field_type == 'single_select' || $item->field_type == 'multi_select'):
                                                         if ($item->is_product_filter == 1):?>
-                                                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i>&nbsp;<?= trans('remove_from_product_filters'); ?></button>
+                                                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i>&nbsp;<?= esc(trans('remove_from_product_filters')); ?></button>
                                                         <?php else: ?>
-                                                            <button class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;<?= trans('add_to_product_filters'); ?></button>
+                                                            <button class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;<?= esc(trans('add_to_product_filters')); ?></button>
                                                         <?php endif;
                                                     endif; ?>
                                                 </form>
@@ -85,22 +85,22 @@
                                             <td><?= esc($item->field_order); ?></td>
                                             <td>
                                                 <?php if ($item->status == 1): ?>
-                                                    <label class="label bg-olive label-table"><?= trans('active'); ?></label>
+                                                    <label class="label bg-olive label-table"><?= esc(trans('active')); ?></label>
                                                 <?php else: ?>
-                                                    <label class="label bg-danger label-table"><?= trans('inactive'); ?></label>
+                                                    <label class="label bg-danger label-table"><?= esc(trans('inactive')); ?></label>
                                                 <?php endif; ?>
                                             </td>
                                             <td style="width: 200px;">
                                                 <div class="dropdown">
-                                                    <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?>
+                                                    <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?>
                                                         <span class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu options-dropdown">
-                                                        <li><a href="<?= adminUrl('edit-custom-field/' . $item->id); ?>"><i class="fa fa-edit option-icon"></i><?= trans('edit'); ?></a></li>
+                                                        <li><a href="<?= adminUrl('edit-custom-field/' . $item->id); ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('edit')); ?></a></li>
                                                         <li>
-                                                            <!-- <a href="javascript:void(0)" onclick="deleteItem('Category/deleteCustomFieldPost','<?= $item->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                            <a href="#" class="btn-item-delete" data-url="Category/deleteCustomFieldPost" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
-                                                                <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?>
+                                                            <!-- <a href="javascript:void(0)" onclick="deleteItem('Category/deleteCustomFieldPost','<?= $item->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                            <a href="#" class="btn-item-delete" data-url="Category/deleteCustomFieldPost" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
+                                                                <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -112,7 +112,7 @@
                                 </tbody>
                             </table>
                             <?php if (empty($fields)): ?>
-                                <p class="text-center"><?= trans("no_records_found"); ?></p>
+                                <p class="text-center"><?= esc(trans("no_records_found")); ?></p>
                             <?php endif; ?>
                         </div>
                         <div class="col-sm-12">

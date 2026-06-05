@@ -14,14 +14,14 @@
 </head>
 <body>
 <div class="container" style="width: 898px; max-width: 898px;min-width: 898px;">
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12">
             <div class="container-invoice">
                 <div id="content" class="card">
                     <div class="card-body invoice p-0">
                         <div class="row">
                             <div class="col-12">
-                                <h1 style="text-align: center; font-size: 36px;font-weight: 400;margin-top: 20px;"><?= trans("invoice"); ?></h1>
+                                <h1 style="text-align: center; font-size: 36px;font-weight: 400;margin-top: 20px;"><?= esc(trans("invoice")); ?></h1>
                             </div>
                         </div>
                         <div class="row" style="padding: 45px 30px;">
@@ -40,15 +40,15 @@
                             </div>
                             <div class="col-6">
                                 <div class="float-right">
-                                    <p class="font-weight-bold mb-1"><span style="display: inline-block;width: 100px;"><?= trans("invoice"); ?>:</span>#INVE<?= $transaction->id; ?></p>
-                                    <p class="font-weight-bold"><span style="display: inline-block;width: 100px;"><?= trans("date"); ?>:</span><?= formatDate($transaction->created_at); ?></p>
+                                    <p class="font-weight-bold mb-1"><span style="display: inline-block;width: 100px;"><?= esc(trans("invoice")); ?>:</span>#INVE<?= $transaction->id; ?></p>
+                                    <p class="font-weight-bold"><span style="display: inline-block;width: 100px;"><?= esc(trans("date")); ?>:</span><?= formatDate($transaction->created_at); ?></p>
                                 </div>
                             </div>
                         </div>
                         <?php $currency = getCurrencyByCode($transaction->currency); ?>
                         <div class="row" style="padding: 45px 30px;">
                             <div class="col-6">
-                                <p class="font-weight-bold mb-3"><?= trans("client_information"); ?></p>
+                                <p class="font-weight-bold mb-3"><?= esc(trans("client_information")); ?></p>
                                 <p class="mb-1"><?= esc($user->first_name); ?>&nbsp;<?= esc($user->last_name); ?>&nbsp;(<?= getUsername($user); ?>)</p>
                                 <?php if (!empty($user->address)): ?>
                                     <p class="mb-1"><?= esc($user->address); ?></p>
@@ -66,15 +66,15 @@
                                     <p class="mb-1"><?= esc($user->phone_number); ?></p>
                                 <?php endif;
                                 if (!empty($user->tax_registration_number)): ?>
-                                    <p class="mb-1"><?= trans("tax_registration_number"); ?>:&nbsp;<?= esc($user->tax_registration_number); ?></p>
+                                    <p class="mb-1"><?= esc(trans("tax_registration_number")); ?>:&nbsp;<?= esc($user->tax_registration_number); ?></p>
                                 <?php endif; ?>
                             </div>
                             <div class="col-6">
                                 <div class="float-right">
-                                    <p class="font-weight-bold mb-3"><?= trans("payment_details"); ?></p>
-                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= trans("payment_status"); ?>:</span><?= trans("payment_received"); ?></p>
-                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= trans("payment_method"); ?>:</span><?= trans("wallet_balance"); ?></p>
-                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= trans("currency"); ?>:</span><?= $transaction->currency; ?></p>
+                                    <p class="font-weight-bold mb-3"><?= esc(trans("payment_details")); ?></p>
+                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= esc(trans("payment_status")); ?>:</span><?= esc(trans("payment_received")); ?></p>
+                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= esc(trans("payment_method")); ?>:</span><?= esc(trans("wallet_balance")); ?></p>
+                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= esc(trans("currency")); ?>:</span><?= $transaction->currency; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -84,8 +84,8 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th class="border-0 font-weight-bold"><?= trans("description"); ?></th>
-                                            <th class="border-0 font-weight-bold"><?= trans("total"); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("description")); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("total")); ?></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -103,7 +103,7 @@
                                 <div class="order-total float-right">
                                     <div class="row mb-2">
                                         <div class="col-7 col-left">
-                                            <?= trans("subtotal"); ?>
+                                            <?= esc(trans("subtotal")); ?>
                                         </div>
                                         <div class="col-5 col-right">
                                             <strong class="font-600"><?= priceFormatted($transaction->expense_amount, $transaction->currency); ?></strong>
@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-7 col-left">
-                                            <?= trans("total"); ?>
+                                            <?= esc(trans("total")); ?>
                                         </div>
                                         <div class="col-5 col-right">
                                             <strong class="font-600"><?= priceFormatted($transaction->expense_amount, $transaction->currency); ?></strong>
@@ -163,6 +163,10 @@
                         #btn_print {
                             min-width: 180px;
                         }
+                        
+                        .card-body.invoice {
+                            padding: 40px 35px !important;
+                        }
 
                         @media print {
                             .hidden-print {
@@ -183,7 +187,7 @@
                 <svg id="i-print" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="margin-top: -4px;">
                     <path d="M7 25 L2 25 2 9 30 9 30 25 25 25 M7 19 L7 30 25 30 25 19 Z M25 9 L25 2 7 2 7 9 M22 14 L25 14"/>
                 </svg>
-                &nbsp;&nbsp;<?= trans("print"); ?></button>
+                &nbsp;&nbsp;<?= esc(trans("print")); ?></button>
         </div>
     </div>
 </div>

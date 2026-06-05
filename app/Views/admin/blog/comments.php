@@ -1,6 +1,6 @@
 <div class="row" style="margin-bottom: 15px;">
     <div class="col-sm-12">
-        <h3 style="font-size: 18px; font-weight: 600;"><?= trans('blog_comments'); ?></h3>
+        <h3 style="font-size: 18px; font-weight: 600;"><?= esc(trans('blog_comments')); ?></h3>
     </div>
 </div>
 <div class="box">
@@ -22,14 +22,14 @@
                         <thead>
                         <tr role="row">
                             <th width="20" class="table-no-sort" style="text-align: center !important;"><input type="checkbox" class="checkbox-table" id="checkAll"></th>
-                            <th width="20"><?= trans('id'); ?></th>
-                            <th><?= trans('name'); ?></th>
-                            <th><?= trans('email'); ?></th>
-                            <th><?= trans('comment'); ?></th>
-                            <th style="min-width: 20%"><?= trans('url'); ?></th>
-                            <th><?= trans('ip_address'); ?></th>
-                            <th style="min-width: 10%"><?= trans('date'); ?></th>
-                            <th class="max-width-120"><?= trans('options'); ?></th>
+                            <th width="20"><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('name')); ?></th>
+                            <th><?= esc(trans('email')); ?></th>
+                            <th><?= esc(trans('comment')); ?></th>
+                            <th style="min-width: 20%"><?= esc(trans('url')); ?></th>
+                            <th><?= esc(trans('ip_address')); ?></th>
+                            <th style="min-width: 10%"><?= esc(trans('date')); ?></th>
+                            <th class="max-width-120"><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,15 +57,15 @@
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="id" value="<?= $item->id; ?>">
                                             <div class="dropdown">
-                                                <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?><span class="caret"></span></button>
+                                                <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?><span class="caret"></span></button>
                                                 <ul class="dropdown-menu options-dropdown">
                                                     <?php if ($item->status != 1): ?>
-                                                        <li><button type="submit"><i class="fa fa-check option-icon"></i><?= trans("approve"); ?></button></li>
+                                                        <li><button type="submit"><i class="fa fa-check option-icon"></i><?= esc(trans("approve")); ?></button></li>
                                                     <?php endif; ?>
                                                     <li>
-                                                        <!-- <a href="javascript:void(0)" onclick="deleteItem('Blog/deleteComment','<?= $item->id; ?>','<?= trans("confirm_comment", true); ?>');"> -->
-                                                        <a href="#" class="btn-item-delete" data-url="Blog/deleteComment" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_comment', true); ?>">
-                                                            <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?>
+                                                        <!-- <a href="javascript:void(0)" onclick="deleteItem('Blog/deleteComment','<?= $item->id; ?>','<?= esc(trans("confirm_comment", true)); ?>');"> -->
+                                                        <a href="#" class="btn-item-delete" data-url="Blog/deleteComment" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_comment', true)); ?>">
+                                                            <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -81,11 +81,11 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="pull-left">
-                            <!-- <button class="btn btn-sm btn-danger btn-table-delete" onclick="deleteSelectedBlogComments('<?= trans("confirm_comments", true); ?>');"><?= trans('delete'); ?></button> -->
-                            <button class="btn btn-sm btn-danger btn-delete-selected-comments" data-msg="<?= trans('confirm_comments', true); ?>"data-fn="deleteSelectedBlogComments"> <?= trans('delete'); ?> </button>
+                            <!-- <button class="btn btn-sm btn-danger btn-table-delete" onclick="deleteSelectedBlogComments('<?= esc(trans("confirm_comments", true)); ?>');"><?= esc(trans('delete')); ?></button> -->
+                            <button class="btn btn-sm btn-danger btn-delete-selected-comments" data-msg="<?= esc(trans('confirm_comments', true)); ?>"data-fn="deleteSelectedBlogComments"> <?= esc(trans('delete')); ?> </button>
                             <?php if ($showApproveButton == true): ?>
-                                <!-- <button class="btn btn-sm btn-success btn-table-delete" onclick="approveSelectedBlogComments();"><?= trans('approve'); ?></button> -->
-                                  <button class="btn btn-sm btn-success btn-approve-selected-comments" data-fn="approveSelectedBlogComments"> <?= trans('approve'); ?> </button>
+                                <!-- <button class="btn btn-sm btn-success btn-table-delete" onclick="approveSelectedBlogComments();"><?= esc(trans('approve')); ?></button> -->
+                                  <button class="btn btn-sm btn-success btn-approve-selected-comments" data-fn="approveSelectedBlogComments"> <?= esc(trans('approve')); ?> </button>
                             <?php endif; ?>
                         </div>
                     </div>

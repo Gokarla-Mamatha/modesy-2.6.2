@@ -3,11 +3,11 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("update_currency"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("update_currency")); ?></h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('currency-settings'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= trans("currencies"); ?>
+                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= esc(trans("currencies")); ?>
                     </a>
                 </div>
             </div>
@@ -16,36 +16,36 @@
                 <div class="box-body">
                     <input type="hidden" name="id" value="<?= $currency->id; ?>">
                     <div class="form-group">
-                        <label><?= trans("currency_name"); ?></label>
+                        <label><?= esc(trans("currency_name")); ?></label>
                         <input type="text" class="form-control" name="name" value="<?= esc($currency->name); ?>" placeholder="Ex: US Dollar" maxlength="200" data-type="name" required>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("currency_code"); ?></label>
+                        <label><?= esc(trans("currency_code")); ?></label>
                         <input type="text" class="form-control" name="code" value="<?= esc($currency->code); ?>" placeholder="Ex: USD" maxlength="99" data-type="text" required>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("currency_symbol"); ?></label>
+                        <label><?= esc(trans("currency_symbol")); ?></label>
                         <input type="text" class="form-control" name="symbol" value="<?= esc($currency->symbol); ?>" placeholder="Ex: $" maxlength="99" data-type="text" required>
                     </div>
                     <div class="form-group">
-                        <label><?= trans('currency_format'); ?> (<?= trans("decimal_seperator"); ?>)</label>
+                        <label><?= esc(trans('currency_format')); ?> (<?= esc(trans("decimal_seperator")); ?>)</label>
                         <?= formRadio('currency_format', 'us', 'european', '1,234,567.89','1.234.567,89', $currency->currency_format); ?>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("currency_symbol_format"); ?></label>
+                        <label><?= esc(trans("currency_symbol_format")); ?></label>
                         <?= formRadio('symbol_direction', 'left', 'right', '$100 ('.trans("left").')', '100$ ('.trans("right").')', $currency->symbol_direction); ?>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("add_space_between_money_currency"); ?></label>
+                        <label><?= esc(trans("add_space_between_money_currency")); ?></label>
                         <?= formRadio('space_money_symbol', 1, 0, trans("yes"), trans("no"), $currency->space_money_symbol); ?>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("status"); ?></label>
+                        <label><?= esc(trans("status")); ?></label>
                         <?= formRadio('status', 1, 0, trans("active"), trans("inactive"), $currency->status); ?>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>

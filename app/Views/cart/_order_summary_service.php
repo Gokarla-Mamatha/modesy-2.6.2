@@ -1,5 +1,5 @@
 <div class="col-sm-12 col-lg-4 order-summary-container">
-    <h2 class="cart-section-title"><?= trans("summary"); ?></h2>
+    <h2 class="cart-section-title"><?= esc(trans("summary")); ?></h2>
     <div class="right">
         <?php if (!empty($servicePayment)): ?>
             <div class="row-custom m-b-15"><strong><?= esc($servicePayment->paymentName); ?></strong></div>
@@ -15,11 +15,11 @@
                         <div class="item">
                             <div class="item-right">
                                 <div class="list-item m-t-15">
-                                    <label><?= trans("membership_plan"); ?>:</label>
+                                    <label><?= esc(trans("membership_plan")); ?>:</label>
                                     <strong class="lbl-price"><?= getMembershipPlanName($plan->title_array, selectedLangId()); ?></strong>
                                 </div>
                                 <div class="list-item">
-                                    <label><?= trans("price"); ?>:</label>
+                                    <label><?= esc(trans("price")); ?>:</label>
                                     <strong class="lbl-price"><?= priceDecimal($servicePayment->subtotal, $selectedCurrency->code, true); ?></strong>
                                 </div>
                             </div>
@@ -52,11 +52,11 @@
                             <div class="item">
                                 <div class="item-right">
                                     <div class="list-item m-t-15">
-                                        <label><?= trans("promote_plan"); ?>:</label>
+                                        <label><?= esc(trans("promote_plan")); ?>:</label>
                                         <strong class="lbl-price"><?= esc($serviceData->purchasedPlan); ?></strong>
                                     </div>
                                     <div class="list-item">
-                                        <label><?= trans("price"); ?>:</label>
+                                        <label><?= esc(trans("price")); ?>:</label>
                                         <strong class="lbl-price"><?= priceDecimal($servicePayment->subtotal, $selectedCurrency->code, true); ?></strong>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                     <div class="item">
                         <div class="item-right">
                             <div class="list-item">
-                                <label><?= trans("deposit_amount"); ?>:</label>
+                                <label><?= esc(trans("deposit_amount")); ?>:</label>
                                 <strong class="lbl-price"><?= priceDecimal($servicePayment->grandTotal, $selectedCurrency->code, true); ?></strong>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
             <?php endif;
         endif; ?>
         <div class="row-custom m-t-30 m-b-10">
-            <strong><?= trans("subtotal"); ?><span class="float-right"><?= priceDecimal($servicePayment->subtotal, $selectedCurrency->code, true); ?></span></strong>
+            <strong><?= esc(trans("subtotal")); ?><span class="float-right"><?= priceDecimal($servicePayment->subtotal, $selectedCurrency->code, true); ?></span></strong>
         </div>
         <?php if (!empty($servicePayment->globalTaxesArray)):
             foreach ($servicePayment->globalTaxesArray as $taxItem):?>
@@ -91,7 +91,7 @@
             <p class="line-seperator"></p>
         </div>
         <div class="row-custom">
-            <strong><?= trans("total"); ?><span class="float-right"><?= priceDecimal($servicePayment->grandTotal, $selectedCurrency->code, true); ?></span></strong>
+            <strong><?= esc(trans("total")); ?><span class="float-right"><?= priceDecimal($servicePayment->grandTotal, $selectedCurrency->code, true); ?></span></strong>
         </div>
     </div>
 </div>

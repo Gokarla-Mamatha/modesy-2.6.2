@@ -5,7 +5,7 @@
         </div>
         <div class="right">
             <a href="<?= adminUrl('language-settings'); ?>" class="btn btn-success btn-add-new">
-                <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= trans('languages'); ?>
+                <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= esc(trans('languages')); ?>
             </a>
         </div>
     </div>
@@ -16,7 +16,7 @@
                     <div class="col-sm-12">
                         <form action="<?= adminUrl('edit-translations/' . $language->id); ?>" method="get">
                             <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                <label><?= trans("show"); ?></label>
+                                <label><?= esc(trans("show")); ?></label>
                                 <select name="show" class="form-control">
                                     <option value="50" <?= inputGet('show') == '50' ? 'selected' : ''; ?>>50</option>
                                     <option value="100" <?= inputGet('show') == '100' ? 'selected' : ''; ?>>100</option>
@@ -26,12 +26,12 @@
                                 </select>
                             </div>
                             <div class="item-table-filter item-table-filter-long">
-                                <label><?= trans("search"); ?></label>
-                                <input name="q" class="form-control" placeholder="<?= trans("search"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                <label><?= esc(trans("search")); ?></label>
+                                <input name="q" class="form-control" placeholder="<?= esc(trans("search")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
                             </div>
                             <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                 <label style="display: block">&nbsp;</label>
-                                <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                             </div>
                         </form>
                     </div>
@@ -44,8 +44,8 @@
                             <thead>
                             <tr role="row">
                                 <th>#</th>
-                                <th><?= trans('phrase'); ?></th>
-                                <th><?= trans('label'); ?></th>
+                                <th><?= esc(trans('phrase')); ?></th>
+                                <th><?= esc(trans('label')); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,12 +70,12 @@
                             endif; ?>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary pull-right"><?= trans("save_changes"); ?></button>
+                        <button type="submit" class="btn btn-primary pull-right"><?= esc(trans("save_changes")); ?></button>
                     </form>
                 </div>
                 <?php if (empty($translations)): ?>
                     <p class="text-center">
-                        <?= trans("no_records_found"); ?>
+                        <?= esc(trans("no_records_found")); ?>
                     </p>
                 <?php endif; ?>
                 <div class="col-sm-12 table-ft">

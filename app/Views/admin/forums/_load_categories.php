@@ -25,12 +25,12 @@ if (!empty($categories)):
                     <div class="right">
                         <?php  
                         if ($category->is_active == 1): ?>
-                            <label class="label bg-olive"><?= trans("active"); ?></label>
+                            <label class="label bg-olive"><?= esc(trans("active")); ?></label>
                         <?php else: ?>
-                            <label class="label bg-danger"><?= trans("inactive"); ?></label>
+                            <label class="label bg-danger"><?= esc(trans("inactive")); ?></label>
                         <?php endif; ?>
                         <div class="btn-group">
-                            <a href="<?= adminUrl('edit-forums-category/' . $category->id); ?>" class="btn btn-sm btn-default btn-edit"><?= trans("edit"); ?></a>
+                            <a href="<?= adminUrl('edit-forums-category/' . $category->id); ?>" class="btn btn-sm btn-default btn-edit"><?= esc(trans("edit")); ?></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" data-item-id="<?= $category->id; ?>"><i class="fa fa-trash-can"></i></a>
                         </div>
                     </div>
@@ -52,5 +52,5 @@ if (!empty($categories)):
 endif; ?>
 
 <?php if (empty($categories)): ?>
-    <p class="text-muted text-center"><?= trans("no_records_found"); ?></p>
+    <p class="text-muted text-center"><?= esc(trans("no_records_found")); ?></p>
 <?php endif; ?>

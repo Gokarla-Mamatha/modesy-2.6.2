@@ -3,10 +3,10 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("tags"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("tags")); ?></h3>
                 </div>
                 <div class="right">
-                    <button type="button" class="btn btn-success btn-add-new" data-toggle="modal" data-target="#modalAddTag"><i class="fa fa-plus"></i><?= trans("add_tag"); ?></button>
+                    <button type="button" class="btn btn-success btn-add-new" data-toggle="modal" data-target="#modalAddTag"><i class="fa fa-plus"></i><?= esc(trans("add_tag")); ?></button>
                 </div>
             </div>
             <div class="box-body">
@@ -16,7 +16,7 @@
                             <div class="col-sm-12">
                                 <form action="<?= adminUrl('tags'); ?>" method="get">
                                     <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                        <label><?= trans("show"); ?></label>
+                                        <label><?= esc(trans("show")); ?></label>
                                         <select name="show" class="form-control">
                                             <option value="15" <?= inputGet('show', true) == '15' ? 'selected' : ''; ?>>15</option>
                                             <option value="30" <?= inputGet('show', true) == '30' ? 'selected' : ''; ?>>30</option>
@@ -25,21 +25,21 @@
                                         </select>
                                     </div>
                                     <div class="item-table-filter">
-                                        <label><?= trans("language"); ?></label>
+                                        <label><?= esc(trans("language")); ?></label>
                                         <select name="lang_id" class="form-control">
-                                            <option value=""><?= trans("all"); ?></option>
+                                            <option value=""><?= esc(trans("all")); ?></option>
                                             <?php foreach ($activeLanguages as $language): ?>
                                                 <option value="<?= $language->id; ?>" <?= inputGet('lang_id') == $language->id ? 'selected' : ''; ?>><?= esc($language->name); ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class="item-table-filter">
-                                        <label><?= trans("search"); ?></label>
-                                        <input name="q" class="form-control" placeholder="<?= trans("search") ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
+                                        <label><?= esc(trans("search")); ?></label>
+                                        <input name="q" class="form-control" placeholder="<?= esc(trans("search")) ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
                                     </div>
                                     <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                         <label style="display: block">&nbsp;</label>
-                                        <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                        <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                     </div>
                                 </form>
                             </div>
@@ -48,11 +48,11 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr role="row">
-                                    <th width="20"><?= trans('id'); ?></th>
-                                    <th><?= trans('tag'); ?></th>
-                                    <th><?= trans('language'); ?></th>
-                                    <th><?= trans('posts'); ?></th>
-                                    <th class="max-width-120"><?= trans('options'); ?></th>
+                                    <th width="20"><?= esc(trans('id')); ?></th>
+                                    <th><?= esc(trans('tag')); ?></th>
+                                    <th><?= esc(trans('language')); ?></th>
+                                    <th><?= esc(trans('posts')); ?></th>
+                                    <th class="max-width-120"><?= esc(trans('options')); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,8 +67,8 @@
                                             <td><?= $tag->count; ?></td>
                                             <td style="width: 150px;">
                                                 <div class="btn-group btn-group-option">
-                                                    <button type="button" class="btn btn-default btn-edit-tag" data-id="<?= $tag->id; ?>" data-tag="<?= esc($tag->tag); ?>" data-lang="<?= esc($tag->lang_id); ?>" data-toggle="modal" data-target="#modalEditTag"><?= trans("edit"); ?></button>
-                                                    <button type="button" class="btn btn-default" onclick='deleteItem("Category/deleteTagPost","<?= $tag->id; ?>","<?= trans("confirm_delete"); ?>");'><i class="fa fa-trash-can"></i></button>
+                                                    <button type="button" class="btn btn-default btn-edit-tag" data-id="<?= $tag->id; ?>" data-tag="<?= esc($tag->tag); ?>" data-lang="<?= esc($tag->lang_id); ?>" data-toggle="modal" data-target="#modalEditTag"><?= esc(trans("edit")); ?></button>
+                                                    <button type="button" class="btn btn-default" onclick='deleteItem("Category/deleteTagPost","<?= $tag->id; ?>","<?= esc(trans("confirm_delete")); ?>");'><i class="fa fa-trash-can"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -77,7 +77,7 @@
                                 </tbody>
                             </table>
                             <?php if (empty($tags)): ?>
-                                <p class="text-center text-muted"><?= trans("no_results_found"); ?></p>
+                                <p class="text-center text-muted"><?= esc(trans("no_results_found")); ?></p>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -95,13 +95,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><?= trans("add_tag"); ?></h4>
+                <h4 class="modal-title"><?= esc(trans("add_tag")); ?></h4>
             </div>
             <form action="<?= base_url('Category/addTagPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label><?= trans("language"); ?></label>
+                        <label><?= esc(trans("language")); ?></label>
                         <select name="lang_id" class="form-control" required>
                             <?php foreach ($activeLanguages as $language): ?>
                                 <option value="<?= $language->id; ?>" <?= $activeLang->id == $language->id ? 'selected' : ''; ?>><?= esc($language->name); ?></option>
@@ -109,12 +109,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("tag"); ?></label>
-                        <input type="text" name="tag" value="" class="form-control" placeholder="<?= trans("tag"); ?>" data-type="title" required>
+                        <label><?= esc(trans("tag")); ?></label>
+                        <input type="text" name="tag" value="" class="form-control" placeholder="<?= esc(trans("tag")); ?>" data-type="title" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"><?= trans("add_tag"); ?></button>
+                    <button type="submit" class="btn btn-success"><?= esc(trans("add_tag")); ?></button>
                 </div>
             </form>
         </div>
@@ -126,14 +126,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><?= trans("edit"); ?></h4>
+                <h4 class="modal-title"><?= esc(trans("edit")); ?></h4>
             </div>
             <form action="<?= base_url('Category/editTagPost'); ?>" method="post" id="formEditTag">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id" value="">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label><?= trans("language"); ?></label>
+                        <label><?= esc(trans("language")); ?></label>
                         <select name="lang_id" class="form-control" required>
                             <?php foreach ($activeLanguages as $language): ?>
                                 <option value="<?= $language->id; ?>" <?= $activeLang->id == $language->id ? 'selected' : ''; ?>><?= esc($language->name); ?></option>
@@ -141,12 +141,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("tag"); ?></label>
+                        <label><?= esc(trans("tag")); ?></label>
                         <input type="text" name="tag" value="" class="form-control" data-type="name" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"><?= trans("save_changes"); ?></button>
+                    <button type="submit" class="btn btn-success"><?= esc(trans("save_changes")); ?></button>
                 </div>
             </form>
         </div>

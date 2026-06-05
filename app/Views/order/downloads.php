@@ -4,7 +4,7 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= $title; ?></li>
                     </ol>
                 </nav>
@@ -47,7 +47,7 @@
                                             <?php if ($generalSettings->reviews == 1 && $item->seller_id != $item->buyer_id): ?>
                                                 <div class="rate-product rate-product-downloads">
                                                     <?php $review = getReview($item->product_id, user()->id); ?>
-                                                    <p class="p-rate-product font-600 m-b-5"><?= trans("rate_this_product"); ?>:</p>
+                                                    <p class="p-rate-product font-600 m-b-5"><?= esc(trans("rate_this_product")); ?>:</p>
                                                     <div class="rating-widget" data-product-id="<?= esc($item->product_id); ?>" data-widget-id="product_<?= esc($item->id); ?>">
                                                         <div class="rating-stars">
                                                             <i class="icon-star-o" data-rating="1"></i>
@@ -69,24 +69,24 @@
                                                 <?php if ($product->listing_type == 'license_key'): ?>
                                                     <div class="btn-group w-100" role="group">
                                                         <button id="btnGroupDrop1" type="button" class="btn btn-md btn-custom dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="icon-download-solid"></i>&nbsp;<?= trans("download"); ?>
+                                                            <i class="icon-download-solid"></i>&nbsp;<?= esc(trans("download")); ?>
                                                         </button>
                                                         <div class="dropdown-menu digital-download-dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                            <button type="submit" name="submit" value="license_certificate" class="dropdown-item"><?= trans("license_certificate"); ?></button>
+                                                            <button type="submit" name="submit" value="license_certificate" class="dropdown-item"><?= esc(trans("license_certificate")); ?></button>
                                                         </div>
                                                     </div>
                                                 <?php else: ?>
                                                     <div class="btn-group w-100" role="group">
                                                         <button id="btnGroupDrop2" type="button" class="btn btn-md btn-custom dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="icon-download-solid"></i>&nbsp;<?= trans("download"); ?>
+                                                            <i class="icon-download-solid"></i>&nbsp;<?= esc(trans("download")); ?>
                                                         </button>
                                                         <div class="dropdown-menu digital-download-dropdown-menu" aria-labelledby="btnGroupDrop2">
                                                             <?php if (!empty($product->digital_file_download_link)): ?>
-                                                                <a href="<?= esc($product->digital_file_download_link); ?>" class="dropdown-item" target="_blank"><?= trans("main_files"); ?></a>
+                                                                <a href="<?= esc($product->digital_file_download_link); ?>" class="dropdown-item" target="_blank"><?= esc(trans("main_files")); ?></a>
                                                             <?php else: ?>
-                                                                <button type="submit" name="submit" value="main_files" class="dropdown-item"><?= trans("main_files"); ?></button>
+                                                                <button type="submit" name="submit" value="main_files" class="dropdown-item"><?= esc(trans("main_files")); ?></button>
                                                             <?php endif; ?>
-                                                            <button type="submit" name="submit" value="license_certificate" class="dropdown-item"><?= trans("license_certificate"); ?></button>
+                                                            <button type="submit" name="submit" value="license_certificate" class="dropdown-item"><?= esc(trans("license_certificate")); ?></button>
                                                         </div>
                                                     </div>
                                                 <?php endif; ?>
@@ -115,7 +115,7 @@
                             <?php endif;
                         endforeach;
                     else:?>
-                        <p class="text-center text-muted"><?= trans("msg_dont_have_downloadable_files"); ?></p>
+                        <p class="text-center text-muted"><?= esc(trans("msg_dont_have_downloadable_files")); ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="d-flex justify-content-center m-t-15">

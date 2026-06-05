@@ -653,6 +653,8 @@ class ProfileController extends BaseController
 
         $data["activeTab"] = 'shipping_address';
         $data['shippingAddresses'] = $this->profileModel->getShippingAddresses(user()->id);
+        $data['address'] = !empty($data['shippingAddresses']) ? $data['shippingAddresses'][0] : null;
+
         $data['states'] = $this->locationModel->getStatesByCountry(1);
         $data['userSession'] = getUserSession();
 
@@ -764,6 +766,12 @@ class ProfileController extends BaseController
 
         $data['countries'] = $this->locationModel->getActiveCountries();
         $data['business_details'] = $this->businessModel->getBusinessDetails(user()->id);
+
+        // preload saved location so the dropdowns show the selected names
+        $bd = $data['business_details'];
+        $data['states'] = !empty($bd['country_id']) ? $this->locationModel->getStatesByCountry($bd['country_id']) : [];
+        $data['cities'] = !empty($bd['state_id']) ? $this->locationModel->getCitiesByState($bd['state_id']) : [];
+
         echo view('partials/_header', $data);
         echo view('settings/business_details', $data);
         echo view('partials/_footer');
@@ -792,24 +800,15 @@ class ProfileController extends BaseController
             'nationality' => $post['nationality'] ?? null,
             'address_line1' => $post['address_line1'] ?? null,
             'address_line2' => $post['address_line2'] ?? null,
-            'city' => $post['city'] ?? null,
-            'state' => $post['state'] ?? null,
+            'country_id' => $post['sole_country_id'] ?? null,
+            'state_id' => $post['sole_state_id'] ?? null,
+            'city_id' => $post['sole_city_id'] ?? null,
             'zip' => $post['zip'] ?? null,
             'contact_phone' => $post['contact_phone'] ?? null,
 
             // BUSINESS
             'legal_business_name' => $post['legal_business_name'] ?? null,
-            'business_address_line1' => $post['business_address_line1'] ?? null,
-            'business_address_line2' => $post['business_address_line2'] ?? null,
-            'business_city' => $post['business_city'] ?? null,
-            'business_state' => $post['business_state'] ?? null,
-            'business_zip' => $post['business_zip'] ?? null,
             'doing_business_as' => $post['doing_business_as'] ?? null,
-            'ein_registered' => $post['ein_registered'] ?? null,
-       
-            // BANK
-            'account_number' => $post['account_number'] ?? null,
-            'ifsc_code' => $post['ifsc_code'] ?? null,
 
             // PRIMARY
             'primary_first_name' => $post['primary_first_name'] ?? null,

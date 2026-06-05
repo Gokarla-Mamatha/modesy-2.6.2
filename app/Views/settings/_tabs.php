@@ -11,7 +11,7 @@
                         </g>
                     </svg>
                 </div>
-                <?= trans("update_profile"); ?>
+                <?= esc(trans("update_profile")); ?>
             </a>
         </li>
         <li class="nav-item <?= $activeTab == 'location' ? 'active' : ''; ?>">
@@ -24,7 +24,7 @@
                         </g>
                     </svg>
                 </div>
-                <?= trans("location"); ?>
+                <?= esc(trans("location")); ?>
             </a>
         </li>
         <?php if (isSaleActive()): ?>
@@ -38,7 +38,7 @@
                             </g>
                         </svg>
                     </div>
-                    <?= trans("shipping_address"); ?>
+                    <?= esc(trans("shipping_address")); ?>
                 </a>
             </li>
         <?php endif;
@@ -53,7 +53,7 @@
                             </g>
                         </svg>
                     </div>
-                    <?= trans("affiliate_links"); ?>
+                    <?= esc(trans("affiliate_links")); ?>
                 </a>
             </li>
         <?php endif; ?>
@@ -67,7 +67,7 @@
                         </g>
                     </svg>
                 </div>
-                <?= trans("social_media"); ?>
+                <?= esc(trans("social_media")); ?>
             </a>
         </li>
         <li class="nav-item <?= $activeTab == 'change_password' ? 'active' : ''; ?>">
@@ -80,7 +80,7 @@
                         </g>
                     </svg>
                 </div>
-                <?= trans("change_password"); ?>
+                <?= esc(trans("change_password")); ?>
             </a>
         </li>
     <li class="nav-item <?= $activeTab == 'business_details' ? 'active' : ''; ?>">
@@ -92,7 +92,7 @@
             </svg>
         </div>
 
-        <?= trans("Business Details"); ?>
+        <?= esc(trans("Business Details")); ?>
     </a>
 </li>
         <li class="nav-item <?= $activeTab == 'delete_account' ? 'active' : ''; ?>">
@@ -105,7 +105,7 @@
                         </g>
                     </svg>
                 </div>
-                <?= trans("delete_account"); ?>
+                <?= esc(trans("delete_account")); ?>
             </a>
         </li>
     </ul>

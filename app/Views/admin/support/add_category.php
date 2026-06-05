@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12 title-section">
-        <h3><?= trans('knowledge_base'); ?></h3>
+        <h3><?= esc(trans('knowledge_base')); ?></h3>
     </div>
 </div>
 <div class="row">
@@ -12,7 +12,7 @@
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('knowledge-base?lang=' . clrNum(inputGet('lang'))); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= trans('knowledge_base'); ?>
+                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= esc(trans('knowledge_base')); ?>
                     </a>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label><?= trans("language"); ?></label>
+                        <label><?= esc(trans("language")); ?></label>
                         <select name="lang_id" class="form-control" required>
                             <?php foreach ($activeLanguages as $language): ?>
                                 <option value="<?= $language->id; ?>" <?= inputGet('lang') == $language->id ? 'selected' : ''; ?>><?= esc($language->name); ?></option>
@@ -28,22 +28,22 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans('name'); ?></label>
-                        <input type="text" class="form-control" name="name" placeholder="<?= trans('name'); ?>" value="<?= old('name'); ?>" data-type="title" required>
+                        <label class="control-label"><?= esc(trans('name')); ?></label>
+                        <input type="text" class="form-control" name="name" placeholder="<?= esc(trans('name')); ?>" value="<?= old('name'); ?>" data-type="title" required>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("slug"); ?>
-                            <small>(<?= trans("slug_exp"); ?>)</small>
+                        <label class="control-label"><?= esc(trans("slug")); ?>
+                            <small>(<?= esc(trans("slug_exp")); ?>)</small>
                         </label>
-                        <input type="text" class="form-control" name="slug" placeholder="<?= trans("slug"); ?>" value="<?= old('slug'); ?>" data-type="slug">
+                        <input type="text" class="form-control" name="slug" placeholder="<?= esc(trans("slug")); ?>" value="<?= old('slug'); ?>" data-type="slug">
                     </div>
                     <div class="form-group">
-                        <label><?= trans('order'); ?></label>
-                        <input type="number" class="form-control" name="category_order" placeholder="<?= trans('order'); ?>" value="1" min="1" style="max-width: 300px;" data-type="number">
+                        <label><?= esc(trans('order')); ?></label>
+                        <input type="number" class="form-control" name="category_order" placeholder="<?= esc(trans('order')); ?>" value="1" min="1" style="max-width: 300px;" data-type="number">
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('add_category'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('add_category')); ?></button>
                 </div>
             </form>
         </div>

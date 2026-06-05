@@ -25,15 +25,15 @@ if (!empty($categories)):
                             &nbsp;&nbsp;<label class="label bg-warning""><i class="fa fa-hand-holding-dollar"></i>&nbsp;<?= esc(formatDecimalClean($category->commission_rate)); ?>%</label>
                         <?php endif;
                         if ($category->is_featured == 1): ?>
-                            <label class="label bg-teal"><?= trans("featured"); ?></label>
+                            <label class="label bg-teal"><?= esc(trans("featured")); ?></label>
                         <?php endif;
                         if ($category->status == 1): ?>
-                            <label class="label bg-olive"><?= trans("active"); ?></label>
+                            <label class="label bg-olive"><?= esc(trans("active")); ?></label>
                         <?php else: ?>
-                            <label class="label bg-danger"><?= trans("inactive"); ?></label>
+                            <label class="label bg-danger"><?= esc(trans("inactive")); ?></label>
                         <?php endif; ?>
                         <div class="btn-group">
-                            <a href="<?= adminUrl('edit-category/' . $category->id); ?>" class="btn btn-sm btn-default btn-edit"><?= trans("edit"); ?></a>
+                            <a href="<?= adminUrl('edit-category/' . $category->id); ?>" class="btn btn-sm btn-default btn-edit"><?= esc(trans("edit")); ?></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" data-item-id="<?= $category->id; ?>"><i class="fa fa-trash-can"></i></a>
                         </div>
                     </div>
@@ -55,5 +55,5 @@ if (!empty($categories)):
 endif; ?>
 
 <?php if (empty($categories)): ?>
-    <p class="text-muted text-center"><?= trans("no_records_found"); ?></p>
+    <p class="text-muted text-center"><?= esc(trans("no_records_found")); ?></p>
 <?php endif; ?>

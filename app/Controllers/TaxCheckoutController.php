@@ -6,6 +6,25 @@ use App\Libraries\TaxJarService;
 
 class TaxCheckoutController extends BaseController
 {
+
+    public function getStateCode($state)
+    {
+
+        $db = \Config\Database::connect();
+        $stateCode = '';
+
+        $state = $db->table('location_states')
+            ->select('state_code')
+            ->where('name', $state)
+            ->get()
+            ->getRow();
+
+        if ($state) {
+             return $stateCode = $state->state_code;
+        }
+
+        return $stateCode;
+    }
     public function tax($cart_items)
 {
     $taxJar = new TaxJarService();
@@ -27,9 +46,9 @@ class TaxCheckoutController extends BaseController
             : ($shippingData['sCountry'] ?? ''),
             'to_zip' => $shippingData['sZipCode'] ?? '',
             //'to_zip' => '90002',
-            'to_state' => $shippingData['sState'] ?? '',
+            'to_state' => $this->getStateCode($shippingData['sState'] ?? ''),
             //'to_state' =>  'CA',
-            ' ' => $shippingData['sCity'] ?? '',
+            'to_city' => $shippingData['sCity'] ?? '',
             //'to_city' => 'Los Angeles',
             'to_street' => $shippingData['sAddress'] ?? '',
 
@@ -47,12 +66,16 @@ class TaxCheckoutController extends BaseController
             ]
         ];
 
-        // print_r($data);exit;
+        //print_r($data);
+        log_message('debug', 'TaxJar Request: ' . json_encode($data));
         $tax = $taxJar->calculateTax($data);
+        log_message('debug', 'TaxJar Response: ' . json_encode($tax));
         // echo "<pre>";
         // print_r($tax);
         // exit;
-
+        if ($tax == null) {
+            return 0;
+        }
         $totalTax += $tax->amount_to_collect ?? 0;
     }
 

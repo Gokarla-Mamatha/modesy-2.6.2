@@ -6,19 +6,19 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-8">
                             <div class="left">
-                                <h1 class="cart-section-title"><?= trans("checkout"); ?></h1>
+                                <h1 class="cart-section-title"><?= esc(trans("checkout")); ?></h1>
                                 <?php if (!authCheck()): ?>
                                     <p class="font-600 text-center m-b-30">
-                                        <?= trans("checking_out_as_guest"); ?>.&nbsp;<?= trans("have_account"); ?>&nbsp;
+                                        <?= esc(trans("checking_out_as_guest")); ?>.&nbsp;<?= esc(trans("have_account")); ?>&nbsp;
                                         <a href="javascript:void(0)" class="link" data-toggle="modal" data-target="#loginModal">
-                                            <strong class="link-underlined"><?= trans("login"); ?></strong>
+                                            <strong class="link-underlined"><?= esc(trans("login")); ?></strong>
                                         </a>
                                     </p>
                                 <?php endif; ?>
                                 <?php if (!empty($cart->has_physical_product) && $productSettings->marketplace_shipping == 1 && $checkout->checkout_type == 'product'): ?>
                                     <div class="tab-checkout tab-checkout-closed">
-                                        <a href="<?= generateUrl('cart', 'shipping'); ?>"><h2 class=" title">1.&nbsp;&nbsp;<?= trans("shipping_information"); ?></h2></a>
-                                        <a href="<?= generateUrl('cart', 'shipping'); ?>" class="link-underlined"><?= trans("edit"); ?></a>
+                                        <a href="<?= generateUrl('cart', 'shipping'); ?>"><h2 class=" title">1.&nbsp;&nbsp;<?= esc(trans("shipping_information")); ?></h2></a>
+                                        <a href="<?= generateUrl('cart', 'shipping'); ?>" class="link-underlined"><?= esc(trans("edit")); ?></a>
                                     </div>
                                 <?php endif; ?>
                                 <div class="tab-checkout tab-checkout-closed">
@@ -26,24 +26,24 @@
                                         <a href="<?= generateUrl('cart', 'payment_method'); ?>">
                                             <h2 class="title">
                                                 <?= !empty($cart->has_physical_product) && $checkout->checkout_type == 'product' ? '2. ' : '1. '; ?>
-                                                &nbsp;<?= trans("payment_method"); ?>
+                                                &nbsp;<?= esc(trans("payment_method")); ?>
                                             </h2>
                                         </a>
-                                        <a href="<?= generateUrl('cart', 'payment_method'); ?>" class="link-underlined"><?= trans("edit"); ?></a>
+                                        <a href="<?= generateUrl('cart', 'payment_method'); ?>" class="link-underlined"><?= esc(trans("edit")); ?></a>
                                     <?php else: ?>
                                         <a href="<?= generateUrl('cart', 'payment_method'); ?>">
                                             <h2 class=" title">
                                                 <?= !empty($cart->has_physical_product) && $productSettings->marketplace_shipping == 1 && $checkout->checkout_type == 'product' ? '2. ' : '1. '; ?>
-                                                &nbsp;<?= trans("payment_method"); ?>
+                                                &nbsp;<?= esc(trans("payment_method")); ?>
                                             </h2>
                                         </a>
-                                        <a href="<?= generateUrl('cart', 'payment_method'); ?>" class="link-underlined"><?= trans("edit"); ?></a>
+                                        <a href="<?= generateUrl('cart', 'payment_method'); ?>" class="link-underlined"><?= esc(trans("edit")); ?></a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="tab-checkout tab-checkout-open">
                                     <h2 class="title">
                                         <?= !empty($cart->has_physical_product) && $productSettings->marketplace_shipping == 1 && $checkout->checkout_type == 'product' ? '3. ' : '2. '; ?>
-                                        <?= trans("payment"); ?>
+                                        <?= esc(trans("payment")); ?>
                                     </h2>
                                     <div class="row">
                                         <div class="col-12">

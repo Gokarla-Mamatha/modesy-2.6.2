@@ -3,7 +3,7 @@
         <?php $payoutOptions = getActivePayoutOptions();
         if (!empty($payoutOptions)):
             foreach ($payoutOptions as $option):?>
-                <li><a class="btn btn-md <?= $payoutTab == $option ? 'active' : ''; ?>" data-toggle="pill" href="#tab_<?= $option; ?>"><?= trans($option); ?></a></li>
+                <li><a class="btn btn-md <?= $payoutTab == $option ? 'active' : ''; ?>" data-toggle="pill" href="#tab_<?= $option; ?>"><?= esc(trans($option)); ?></a></li>
             <?php endforeach;
         endif; ?>
     </ul>
@@ -13,11 +13,11 @@
                 <?= csrf_field(); ?>
                 <input type="hidden" name="back_url" value="<?= esc(getCurrentUrl()); ?>">
                 <div class="form-group">
-                    <label class="control-label"><?= trans("paypal_email_address"); ?>*</label>
+                    <label class="control-label"><?= esc(trans("paypal_email_address")); ?>*</label>
                     <input type="email" name="paypal_email" class="form-control form-input" value="<?= esc($userPayout->paypal_email); ?>" data-type="email" required>
                 </div>
                 <div class="form-group text-right">
-                    <button type="submit" name="submit" value="paypal" class="btn btn-md btn-custom"><?= trans("save_changes"); ?></button>
+                    <button type="submit" name="submit" value="paypal" class="btn btn-md btn-custom"><?= esc(trans("save_changes")); ?></button>
                 </div>
             </form>
         </div>
@@ -25,11 +25,11 @@
             <form action="<?= base_url('wallet/set-payout-account-post'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("btc_address"); ?>*</label>
+                    <label class="control-label"><?= esc(trans("btc_address")); ?>*</label>
                     <input type="text" name="btc_address" class="form-control form-input" value="<?= esc($userPayout->btc_address); ?>" data-type="text" required>
                 </div>
                 <div class="form-group text-right">
-                    <button type="submit" name="submit" value="bitcoin" class="btn btn-md btn-custom"><?= trans("save_changes"); ?></button>
+                    <button type="submit" name="submit" value="bitcoin" class="btn btn-md btn-custom"><?= esc(trans("save_changes")); ?></button>
                 </div>
             </form>
         </div>
@@ -37,32 +37,32 @@
             <form action="<?= base_url('wallet/set-payout-account-post'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("full_name"); ?>*</label>
+                    <label class="control-label"><?= esc(trans("full_name")); ?>*</label>
                     <input type="text" name="iban_full_name" class="form-control form-input" value="<?= esc($userPayout->iban_full_name); ?>" required>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 m-b-sm-15">
-                            <label class="control-label"><?= trans("country"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("country")); ?>*</label>
                             <select name="iban_country_id" class="select2 form-control" required>
-                                <option value="" selected><?= trans("select_country"); ?></option>
+                                <option value="" selected><?= esc(trans("select_country")); ?></option>
                                 <?php foreach ($activeCountries as $item): ?>
                                     <option value="<?= $item->id; ?>" <?= $userPayout->iban_country_id == $item->id ? 'selected' : ''; ?>><?= esc($item->name); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <label class="control-label"><?= trans("bank_name"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("bank_name")); ?>*</label>
                             <input type="text" name="iban_bank_name" class="form-control form-input" value="<?= esc($userPayout->iban_bank_name); ?>" data-type="text" required>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("iban_long"); ?>(<?= trans("iban"); ?>)*</label>
+                    <label class="control-label"><?= esc(trans("iban_long")); ?>(<?= esc(trans("iban")); ?>)*</label>
                     <input type="text" name="iban_number" class="form-control form-input" value="<?= esc($userPayout->iban_number); ?>" data-type="text" required>
                 </div>
                 <div class="form-group text-right">
-                    <button type="submit" name="submit" value="iban" class="btn btn-md btn-custom"><?= trans("save_changes"); ?></button>
+                    <button type="submit" name="submit" value="iban" class="btn btn-md btn-custom"><?= esc(trans("save_changes")); ?></button>
                 </div>
             </form>
         </div>
@@ -70,22 +70,22 @@
             <form action="<?= base_url('wallet/set-payout-account-post'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("full_name"); ?>*</label>
+                    <label class="control-label"><?= esc(trans("full_name")); ?>*</label>
                     <input type="text" name="swift_full_name" class="form-control form-input" value="<?= esc($userPayout->swift_full_name); ?>" data-type="text" required>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 m-b-sm-15">
-                            <label class="control-label"><?= trans("country"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("country")); ?>*</label>
                             <select name="swift_country_id" class="select2 form-control" required>
-                                <option value="" selected><?= trans("select_country"); ?></option>
+                                <option value="" selected><?= esc(trans("select_country")); ?></option>
                                 <?php foreach ($activeCountries as $item): ?>
                                     <option value="<?= $item->id; ?>" <?= $userPayout->swift_country_id == $item->id ? 'selected' : ''; ?>><?= esc($item->name); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <label class="control-label"><?= trans("state"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("state")); ?>*</label>
                             <input type="text" name="swift_state" class="form-control form-input" value="<?= esc($userPayout->swift_state); ?>" data-type="text" required>
                         </div>
                     </div>
@@ -93,27 +93,27 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 m-b-sm-15">
-                            <label class="control-label"><?= trans("city"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("city")); ?>*</label>
                             <input type="text" name="swift_city" class="form-control form-input" value="<?= esc($userPayout->swift_city); ?>" data-type="text" required>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <label class="control-label"><?= trans("postcode"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("postcode")); ?>*</label>
                             <input type="text" name="swift_postcode" class="form-control form-input" value="<?= esc($userPayout->swift_postcode); ?>" data-type="text" required>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("address"); ?>*</label>
+                    <label class="control-label"><?= esc(trans("address")); ?>*</label>
                     <input type="text" name="swift_address" class="form-control form-input" value="<?= esc($userPayout->swift_address); ?>" data-type="text" required>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 m-b-sm-15">
-                            <label class="control-label"><?= trans("bank_account_holder_name"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("bank_account_holder_name")); ?>*</label>
                             <input type="text" name="swift_bank_account_holder_name" class="form-control form-input" value="<?= esc($userPayout->swift_bank_account_holder_name); ?>" data-type="text" required>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <label class="control-label"><?= trans("bank_name"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("bank_name")); ?>*</label>
                             <input type="text" name="swift_bank_name" class="form-control form-input" value="<?= esc($userPayout->swift_bank_name); ?>" data-type="text" required>
                         </div>
                     </div>
@@ -121,30 +121,30 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 m-b-sm-15">
-                            <label class="control-label"><?= trans("bank_branch_country"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("bank_branch_country")); ?>*</label>
                             <select name="swift_bank_branch_country_id" class="select2 form-control" required>
-                                <option value="" selected><?= trans("select_country"); ?></option>
+                                <option value="" selected><?= esc(trans("select_country")); ?></option>
                                 <?php foreach ($activeCountries as $item): ?>
                                     <option value="<?= $item->id; ?>" <?= $userPayout->swift_bank_branch_country_id == $item->id ? 'selected' : ''; ?>><?= esc($item->name); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <label class="control-label"><?= trans("bank_branch_city"); ?>*</label>
+                            <label class="control-label"><?= esc(trans("bank_branch_city")); ?>*</label>
                             <input type="text" name="swift_bank_branch_city" class="form-control form-input" value="<?= esc($userPayout->swift_bank_branch_city); ?>" data-type="text" required>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("swift_iban"); ?>*</label>
+                    <label class="control-label"><?= esc(trans("swift_iban")); ?>*</label>
                     <input type="text" name="swift_iban" class="form-control form-input" value="<?= esc($userPayout->swift_iban); ?>" data-type="text" required>
                 </div>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("swift_code"); ?>*</label>
+                    <label class="control-label"><?= esc(trans("swift_code")); ?>*</label>
                     <input type="text" name="swift_code" class="form-control form-input" value="<?= esc($userPayout->swift_code); ?>" data-type="text" required>
                 </div>
                 <div class="form-group text-right">
-                    <button type="submit" name="submit" value="swift" class="btn btn-md btn-custom"><?= trans("save_changes"); ?></button>
+                    <button type="submit" name="submit" value="swift" class="btn btn-md btn-custom"><?= esc(trans("save_changes")); ?></button>
                 </div>
             </form>
         </div>

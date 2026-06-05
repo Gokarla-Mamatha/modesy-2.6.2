@@ -11,7 +11,7 @@
                         <div class="col-12 col-md-12">
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="start-selling-description text-muted"><?= trans("select_your_plan_exp"); ?></p>
+                                    <p class="start-selling-description text-muted"><?= esc(trans("select_your_plan_exp")); ?></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -19,8 +19,6 @@
                                     <?= view('partials/_messages'); ?>
                                 </div>
                             </div>
-                            <form action="<?= base_url('Home/selectMembershipPlanPost'); ?>" method="post">
-                                <?= csrf_field(); ?>
                                 <?php if (!empty($membershipPlans)): ?>
                                     <div class="row">
                                         <div class="col-12">
@@ -35,7 +33,7 @@
                                                     } ?>
                                                     <div class="price-box">
                                                         <?php if ($plan->is_popular == 1): ?>
-                                                            <div class="ribbon ribbon-top-right"><span><?= trans("popular"); ?></span></div>
+                                                            <div class="ribbon ribbon-top-right"><span><?= esc(trans("popular")); ?></span></div>
                                                         <?php endif; ?>
                                                         <div class="price-box-inner">
                                                             <div class="pricing-name text-center">
@@ -64,13 +62,17 @@
                                                             </div>
                                                             <div class="text-center btn-plan-pricing-container">
                                                                 <?php if ($validPlan == 1): ?>
-                                                                    <button type="submit" name="plan_id" value="<?= $plan->id; ?>" class="btn btn-md btn-custom"><?= trans("choose_plan"); ?></button>
+                                                                    <form action="<?= base_url('home/select-membership-plan-post'); ?>" method="post">
+                                                                        <?= csrf_field(); ?>
+                                                                        <input type="hidden" name="plan_id" value="<?= $plan->id; ?>">
+                                                                        <button type="submit" class="btn btn-md btn-custom"><?= esc(trans("choose_plan")); ?></button>
+                                                                    </form>
                                                                 <?php else: ?>
-                                                                    <button type="button" class="btn btn-md btn-custom btn-pricing-table-disabled"><?= trans("choose_plan"); ?></button>
+                                                                    <button type="button" class="btn btn-md btn-custom btn-pricing-table-disabled"><?= esc(trans("choose_plan")); ?></button>
                                                                     <?php if ($plan->is_free == 1 && user()->is_used_free_plan == 1): ?>
-                                                                        <span class="warning-pricing-table-plan text-muted"><?= trans("warning_plan_used"); ?></span>
+                                                                        <span class="warning-pricing-table-plan text-muted"><?= esc(trans("warning_plan_used")); ?></span>
                                                                     <?php else: ?>
-                                                                        <span class="warning-pricing-table-plan text-muted"><?= trans("warning_cannot_choose_plan"); ?></span>
+                                                                        <span class="warning-pricing-table-plan text-muted"><?= esc(trans("warning_cannot_choose_plan")); ?></span>
                                                                     <?php endif;
                                                                 endif; ?>
                                                             </div>
@@ -81,7 +83,6 @@
                                         </div>
                                     </div>
                                 <?php endif; ?>
-                            </form>
                         </div>
                     </div>
                 </div>

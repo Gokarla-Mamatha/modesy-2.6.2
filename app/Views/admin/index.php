@@ -17,7 +17,7 @@ endif; ?>
             <div class="small-box admin-small-box bg-success">
                 <div class="inner">
                     <h3 class="increase-count"><?= $orderCount; ?></h3>
-                    <a href="<?= adminUrl('orders'); ?>"><p><?= trans("orders"); ?></p></a>
+                    <a href="<?= adminUrl('orders'); ?>"><p><?= esc(trans("orders")); ?></p></a>
                 </div>
                 <div class="icon">
                     <a href="<?= adminUrl('orders'); ?>"><i class="fa fa-shopping-cart"></i></a>
@@ -30,7 +30,7 @@ endif; ?>
             <div class="small-box admin-small-box bg-purple">
                 <div class="inner">
                     <h3 class="increase-count"><?= $productsCount; ?></h3>
-                    <a href="<?= adminUrl('products'); ?>"><p><?= trans("products"); ?></p></a>
+                    <a href="<?= adminUrl('products'); ?>"><p><?= esc(trans("products")); ?></p></a>
                 </div>
                 <div class="icon">
                     <a href="<?= adminUrl('products'); ?>"><i class="fa fa-shopping-basket"></i></a>
@@ -42,7 +42,7 @@ endif; ?>
                 <div class="inner">
                     <h3 class="increase-count"><?= $pendingProductCount; ?></h3>
                     <a href="<?= adminUrl('products'); ?>?list=pending">
-                        <p><?= trans("pending_products"); ?></p>
+                        <p><?= esc(trans("pending_products")); ?></p>
                     </a>
                 </div>
                 <div class="icon">
@@ -56,7 +56,7 @@ endif; ?>
             <div class="small-box admin-small-box bg-warning">
                 <div class="inner">
                     <h3 class="increase-count"><?= $membersCount; ?></h3>
-                    <a href="<?= adminUrl('users'); ?>"><p><?= trans("members"); ?></p></a>
+                    <a href="<?= adminUrl('users'); ?>"><p><?= esc(trans("members")); ?></p></a>
                 </div>
                 <div class="icon">
                     <a href="<?= adminUrl('users'); ?>"><i class="fa fa-user-group"></i></a>
@@ -71,7 +71,7 @@ endif; ?>
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_orders"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_orders")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -82,11 +82,11 @@ endif; ?>
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("order"); ?></th>
-                                <th><?= trans("total"); ?></th>
-                                <th><?= trans("status"); ?></th>
-                                <th><?= trans("date"); ?></th>
-                                <th><?= trans("details"); ?></th>
+                                <th><?= esc(trans("order")); ?></th>
+                                <th><?= esc(trans("total")); ?></th>
+                                <th><?= esc(trans("status")); ?></th>
+                                <th><?= esc(trans("date")); ?></th>
+                                <th><?= esc(trans("details")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -106,7 +106,7 @@ endif; ?>
                                         </td>
                                         <td><?= formatDate($item->created_at); ?></td>
                                         <td style="width: 10%">
-                                            <a href="<?= adminUrl('order-details') . '/' . esc($item->id); ?>" class="btn btn-xs btn-info"><?= trans('details'); ?></a>
+                                            <a href="<?= adminUrl('order-details') . '/' . esc($item->id); ?>" class="btn btn-xs btn-info"><?= esc(trans('details')); ?></a>
                                         </td>
                                     </tr>
                                 <?php endforeach;
@@ -116,14 +116,14 @@ endif; ?>
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <a href="<?= adminUrl('orders'); ?>" class="btn btn-sm btn-default pull-right"><?= trans("view_all"); ?></a>
+                    <a href="<?= adminUrl('orders'); ?>" class="btn btn-sm btn-default pull-right"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_transactions"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_transactions")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -134,12 +134,12 @@ endif; ?>
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("id"); ?></th>
-                                <th><?= trans("order"); ?></th>
-                                <th><?= trans("payment_amount"); ?></th>
-                                <th><?= trans('payment_method'); ?></th>
-                                <th><?= trans('status'); ?></th>
-                                <th><?= trans("date"); ?></th>
+                                <th><?= esc(trans("id")); ?></th>
+                                <th><?= esc(trans("order")); ?></th>
+                                <th><?= esc(trans("payment_amount")); ?></th>
+                                <th><?= esc(trans('payment_method')); ?></th>
+                                <th><?= esc(trans('status')); ?></th>
+                                <th><?= esc(trans("date")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -150,7 +150,7 @@ endif; ?>
                                         <td style="white-space: nowrap">#<?= $item->order_id + 10000; ?></td>
                                         <td><?= priceCurrencyFormat($item->payment_amount, $item->currency); ?></td>
                                         <td><?= getPaymentMethod($item->payment_method); ?></td>
-                                        <td><?= trans($item->payment_status); ?></td>
+                                        <td><?= esc(trans($item->payment_status)); ?></td>
                                         <td><?= formatDate($item->created_at); ?></td>
                                     </tr>
                                 <?php endforeach;
@@ -160,7 +160,7 @@ endif; ?>
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <a href="<?= adminUrl('transactions'); ?>" class="btn btn-sm btn-default pull-right"><?= trans("view_all"); ?></a>
+                    <a href="<?= adminUrl('transactions'); ?>" class="btn btn-sm btn-default pull-right"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
@@ -171,7 +171,7 @@ if (hasPermission('products')): ?>
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_products"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_products")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -182,9 +182,9 @@ if (hasPermission('products')): ?>
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("id"); ?></th>
-                                <th><?= trans("name"); ?></th>
-                                <th><?= trans("details"); ?></th>
+                                <th><?= esc(trans("id")); ?></th>
+                                <th><?= esc(trans("name")); ?></th>
+                                <th><?= esc(trans("details")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -203,7 +203,7 @@ if (hasPermission('products')): ?>
                                             <div class="table-sm-meta"><?= timeAgo($item->created_at); ?></div>
                                         </td>
                                         <td style="width: 10%">
-                                            <a href="<?= adminUrl('product-details') . '/' . esc($item->id); ?>" class="btn btn-xs btn-info"><?= trans('details'); ?></a>
+                                            <a href="<?= adminUrl('product-details') . '/' . esc($item->id); ?>" class="btn btn-xs btn-info"><?= esc(trans('details')); ?></a>
                                         </td>
                                     </tr>
                                 <?php endforeach;
@@ -213,14 +213,14 @@ if (hasPermission('products')): ?>
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <a href="<?= adminUrl('products'); ?>" class="btn btn-sm btn-default pull-right"><?= trans("view_all"); ?></a>
+                    <a href="<?= adminUrl('products'); ?>" class="btn btn-sm btn-default pull-right"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_pending_products"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_pending_products")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -231,9 +231,9 @@ if (hasPermission('products')): ?>
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("id"); ?></th>
-                                <th><?= trans("name"); ?></th>
-                                <th><?= trans("details"); ?></th>
+                                <th><?= esc(trans("id")); ?></th>
+                                <th><?= esc(trans("name")); ?></th>
+                                <th><?= esc(trans("details")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -254,7 +254,7 @@ if (hasPermission('products')): ?>
                                             </div>
                                         </td>
                                         <td style="width: 10%;vertical-align: center !important;">
-                                            <a href="<?= adminUrl('product-details') . '/' . esc($item->id); ?>" class="btn btn-xs btn-info"><?= trans('details'); ?></a>
+                                            <a href="<?= adminUrl('product-details') . '/' . esc($item->id); ?>" class="btn btn-xs btn-info"><?= esc(trans('details')); ?></a>
                                         </td>
                                     </tr>
                                 <?php endforeach;
@@ -264,7 +264,7 @@ if (hasPermission('products')): ?>
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <a href="<?= adminUrl('products'); ?>?list=pending" class="btn btn-sm btn-default pull-right"><?= trans("view_all"); ?></a>
+                    <a href="<?= adminUrl('products'); ?>?list=pending" class="btn btn-sm btn-default pull-right"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
@@ -275,7 +275,7 @@ if (hasPermission('products')): ?>
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_transactions"); ?>&nbsp;<small style="font-size: 13px;">(<?= trans("featured_products"); ?>)</small>
+                    <h3 class="box-title"><?= esc(trans("latest_transactions")); ?>&nbsp;<small style="font-size: 13px;">(<?= esc(trans("featured_products")); ?>)</small>
                     </h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -287,11 +287,11 @@ if (hasPermission('products')): ?>
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("id"); ?></th>
-                                <th><?= trans('payment_method'); ?></th>
-                                <th><?= trans("payment_amount"); ?></th>
-                                <th><?= trans('status'); ?></th>
-                                <th><?= trans("date"); ?></th>
+                                <th><?= esc(trans("id")); ?></th>
+                                <th><?= esc(trans('payment_method')); ?></th>
+                                <th><?= esc(trans("payment_amount")); ?></th>
+                                <th><?= esc(trans('status')); ?></th>
+                                <th><?= esc(trans("date")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -301,7 +301,7 @@ if (hasPermission('products')): ?>
                                         <td style="width: 10%"><?= esc($item->id); ?></td>
                                         <td><?= getPaymentMethod($item->payment_method); ?></td>
                                         <td><?= priceCurrencyFormat($item->payment_amount, $item->currency); ?></td>
-                                        <td><?= trans($item->payment_status); ?></td>
+                                        <td><?= esc(trans($item->payment_status)); ?></td>
                                         <td><?= formatDate($item->created_at); ?></td>
                                     </tr>
                                 <?php endforeach;
@@ -311,7 +311,7 @@ if (hasPermission('products')): ?>
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <a href="<?= adminUrl('promotion-payments'); ?>" class="btn btn-sm btn-default pull-right"><?= trans("view_all"); ?></a>
+                    <a href="<?= adminUrl('promotion-payments'); ?>" class="btn btn-sm btn-default pull-right"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
@@ -320,7 +320,7 @@ if (hasPermission('products')): ?>
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_reviews"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_reviews")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -331,9 +331,9 @@ if (hasPermission('products')): ?>
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("id"); ?></th>
-                                <th><?= trans("username"); ?></th>
-                                <th style="width: 60%"><?= trans("review"); ?></th>
+                                <th><?= esc(trans("id")); ?></th>
+                                <th><?= esc(trans("username")); ?></th>
+                                <th style="width: 60%"><?= esc(trans("review")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -355,7 +355,7 @@ if (hasPermission('products')): ?>
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <a href="<?= adminUrl('reviews'); ?>" class="btn btn-sm btn-default pull-right"><?= trans("view_all"); ?></a>
+                    <a href="<?= adminUrl('reviews'); ?>" class="btn btn-sm btn-default pull-right"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
@@ -367,7 +367,7 @@ if (hasPermission('products')): ?>
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="box box-primary box-sm">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= trans("latest_comments"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("latest_comments")); ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -378,9 +378,9 @@ if (hasPermission('products')): ?>
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th><?= trans("id"); ?></th>
-                                <th><?= trans("user"); ?></th>
-                                <th style="width: 60%"><?= trans("comment"); ?></th>
+                                <th><?= esc(trans("id")); ?></th>
+                                <th><?= esc(trans("user")); ?></th>
+                                <th style="width: 60%"><?= esc(trans("comment")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -401,7 +401,7 @@ if (hasPermission('products')): ?>
                     </div>
                 </div>
                 <div class="box-footer clearfix">
-                    <a href="<?= adminUrl('product-comments'); ?>" class="btn btn-sm btn-default pull-right"><?= trans("view_all"); ?></a>
+                    <a href="<?= adminUrl('product-comments'); ?>" class="btn btn-sm btn-default pull-right"><?= esc(trans("view_all")); ?></a>
                 </div>
             </div>
         </div>
@@ -411,7 +411,7 @@ if (hasPermission('products')): ?>
             <div class="col-lg-6 col-sm-12 col-xs-12">
                 <div class="box box-primary box-sm">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?= trans("latest_members"); ?></h3>
+                        <h3 class="box-title"><?= esc(trans("latest_members")); ?></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -433,7 +433,7 @@ if (hasPermission('products')): ?>
                         </ul>
                     </div>
                     <div class="box-footer text-center">
-                        <a href="<?= adminUrl('users'); ?>" class="btn btn-sm btn-default btn-flat pull-right"><?= trans("view_all"); ?></a>
+                        <a href="<?= adminUrl('users'); ?>" class="btn btn-sm btn-default btn-flat pull-right"><?= esc(trans("view_all")); ?></a>
                     </div>
                 </div>
             </div>

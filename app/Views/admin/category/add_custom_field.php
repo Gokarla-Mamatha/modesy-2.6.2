@@ -3,11 +3,11 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('add_custom_field'); ?></h3>
+                    <h3 class="box-title"><?= esc(trans('add_custom_field')); ?></h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('custom-fields'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= trans('custom_fields'); ?>
+                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= esc(trans('custom_fields')); ?>
                     </a>
                 </div>
             </div>
@@ -18,32 +18,32 @@
                         <div class="col-sm-12">
 
                             <div class="form-group">
-                                <label><?= trans("field_name"); ?></label>
+                                <label><?= esc(trans("field_name")); ?></label>
                                 <?php foreach ($activeLanguages as $language): ?>
                                     <input type="text" class="form-control m-b-5" name="name_<?= $language->id; ?>" placeholder="<?= esc($language->name); ?>" maxlength="255" data-type="title" required>
                                 <?php endforeach; ?>
                             </div>
 
                             <div class="form-group">
-                                <label><?= trans('type'); ?></label>
+                                <label><?= esc(trans('type')); ?></label>
                                 <select class="form-control" name="field_type">
-                                    <option value="text"><?= trans('text'); ?></option>
-                                    <option value="textarea"><?= trans('textarea'); ?></option>
-                                    <option value="number"><?= trans('number'); ?></option>
-                                    <option value="date"><?= trans('date'); ?></option>
-                                    <option value="single_select"><?= trans("single_select"); ?></option>
-                                    <option value="multi_select"><?= trans("multi_select"); ?></option>
+                                    <option value="text"><?= esc(trans('text')); ?></option>
+                                    <option value="textarea"><?= esc(trans('textarea')); ?></option>
+                                    <option value="number"><?= esc(trans('number')); ?></option>
+                                    <option value="date"><?= esc(trans('date')); ?></option>
+                                    <option value="single_select"><?= esc(trans("single_select")); ?></option>
+                                    <option value="multi_select"><?= esc(trans("multi_select")); ?></option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label><?= trans("where_to_display"); ?></label>
+                                <label><?= esc(trans("where_to_display")); ?></label>
                                 <?= formRadio('where_to_display', 2, 1, trans("additional_information"), trans("product_details"), 2); ?>
                             </div>
 
                             <div class="form-group">
-                                <label><?= trans('order'); ?></label>
-                                <input type="number" class="form-control max-400" name="field_order" placeholder="<?= trans('order'); ?>" min="1" max="99999" value="1" data-type="number" required>
+                                <label><?= esc(trans('order')); ?></label>
+                                <input type="number" class="form-control max-400" name="field_order" placeholder="<?= esc(trans('order')); ?>" min="1" max="99999" value="1" data-type="number" required>
                             </div>
 
                             <div class="form-group">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_and_continue'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_and_continue')); ?></button>
                 </div>
             </form>
         </div>

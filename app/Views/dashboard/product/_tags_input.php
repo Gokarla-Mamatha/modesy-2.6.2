@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-sm-12 m-b-5">
-        <label class="control-label"><?= trans('tags'); ?>&nbsp;<small>(<?= trans("tags_product_exp"); ?>)</small></label>
+        <label class="control-label"><?= esc(trans('tags')); ?>&nbsp;<small>(<?= esc(trans("tags_product_exp")); ?>)</small></label>
     </div>
     <div class="col-sm-12">
         <input name="tags_<?= $language->id; ?>" id="tagsInput<?= $language->id; ?>" class="form-control form-input tags-input" value="<?= !empty($tags) ? esc($tags) : ''; ?>" data-lang-id="<?= $language->id ?>" placeholder="<?= esc(trans('type_tag')); ?>"/>

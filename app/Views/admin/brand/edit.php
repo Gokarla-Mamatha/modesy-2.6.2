@@ -3,11 +3,11 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('edit_brand'); ?></h3>
+                    <h3 class="box-title"><?= esc(trans('edit_brand')); ?></h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl("brands"); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= trans('brands'); ?>
+                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= esc(trans('brands')); ?>
                     </a>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <div class="box-body">
 
                     <div class="form-group">
-                        <label><?= trans("name"); ?></label>
+                        <label><?= esc(trans("name")); ?></label>
                         <?php foreach ($activeLanguages as $language): ?>
                             <input type="text" class="form-control m-b-5" name="name_<?= $language->id; ?>" value="<?= !empty($brandNamesArray[$language->id]) ? esc($brandNamesArray[$language->id]) : ''; ?>" placeholder="<?= esc($language->name); ?>" maxlength="255" data-type="title" required>
                         <?php endforeach; ?>
@@ -27,11 +27,11 @@
                         <?= view("admin/includes/_category_picker", ['brandCategoryIdsArray' => $brandCategoryIdsArray]); ?>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("show_on_slider"); ?></label>
+                        <label><?= esc(trans("show_on_slider")); ?></label>
                         <?= formRadio('show_on_slider', 1, 0, trans("yes"), trans("no"), $brand->show_on_slider, 'col-lg-4'); ?>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans('logo'); ?>&nbsp;(<?= trans("optional"); ?>)</label>
+                        <label class="control-label"><?= esc(trans('logo')); ?>&nbsp;(<?= esc(trans("optional")); ?>)</label>
                         <?php if (!empty($brand->image_path)): ?>
                             <div class="display-block m-b-10">
                                 <img src="<?= getStorageFileUrl($brand->image_path, $brand->storage); ?>" width="128">
@@ -39,7 +39,7 @@
                         <?php endif; ?>
                         <div class="display-block">
                             <a class='btn btn-success btn-sm btn-file-upload'>
-                                <?= trans('select_logo'); ?>
+                                <?= esc(trans('select_logo')); ?>
                                 <input type="file" name="file" size="40" accept=".png, .jpg, .jpeg, .gif, .webp" onchange="$('#upload-file-info<?= $brand->id; ?>').html($(this).val().replace(/.*[\/\\]/, ''));">
                             </a>
                         </div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>

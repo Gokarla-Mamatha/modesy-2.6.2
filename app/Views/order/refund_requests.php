@@ -4,7 +4,7 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= $title; ?></li>
                     </ol>
                 </nav>
@@ -19,10 +19,10 @@
                 <div class="sidebar-tabs-content">
                     <?= view('partials/_messages'); ?>
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-md btn-info color-white m-b-15" data-toggle="modal" data-target="#modalRefundRequest">
+                        <button type="button" class="btn btn-md btn-info color-white m-b-15" data-bs-toggle="modal" data-bs-target="#modalRefundRequest">
                             <svg width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" fill="#fff">
                                 <path d="M1600 736v192q0 40-28 68t-68 28h-416v416q0 40-28 68t-68 28h-192q-40 0-68-28t-28-68v-416h-416q-40 0-68-28t-28-68v-192q0-40 28-68t68-28h416v-416q0-40 28-68t68-28h192q40 0 68 28t28 68v416h416q40 0 68 28t28 68z"/>
-                            </svg>&nbsp;<?= trans("submit_refund_request"); ?>
+                            </svg>&nbsp;<?= esc(trans("submit_refund_request")); ?>
                         </button>
                     </div>
                     <?php if (!empty($refundRequests)): ?>
@@ -44,7 +44,7 @@
                                                 <div class="flex-item">
                                                     <div class="m-b-5">
                                                         <a href="<?= generateUrl("order_details") . '/' . esc($request->order_number); ?>">
-                                                            <strong><?= trans("order"); ?>:&nbsp;#<?= $request->order_number; ?></strong>
+                                                            <strong><?= esc(trans("order")); ?>:&nbsp;#<?= $request->order_number; ?></strong>
                                                         </a>
                                                     </div>
                                                     <h3 class="title">
@@ -55,11 +55,11 @@
                                         </div>
                                         <div class="col-12 col-lg-2 m-t-15-mobile">
                                             <?php if ($request->status == 1): ?>
-                                                <span class="badge badge-success-light"><?= trans("approved"); ?></span>
+                                                <span class="badge badge-success-light"><?= esc(trans("approved")); ?></span>
                                             <?php elseif ($request->status == 2): ?>
-                                                <span class="badge badge-danger-light"><?= trans("declined"); ?></span>
+                                                <span class="badge badge-danger-light"><?= esc(trans("declined")); ?></span>
                                             <?php else: ?>
-                                                <span class="badge badge-secondary-light"><?= trans("order_processing"); ?></span>
+                                                <span class="badge badge-secondary-light"><?= esc(trans("order_processing")); ?></span>
                                             <?php endif; ?>
                                         </div>
                                         <div class="col-12 col-lg-4 font-size-13 m-t-15-mobile">
@@ -73,7 +73,7 @@
                                                     <a href="<?= generateUrl("refund_requests") . '/' . $request->id; ?>" class="btn btn-sm btn-light">
                                                         <svg width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" fill="#5E6173">
                                                             <path d="M1152 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zm-128-896v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zm640 416q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/>
-                                                        </svg>&nbsp;<?= trans("details"); ?>
+                                                        </svg>&nbsp;<?= esc(trans("details")); ?>
                                                     </a>
                                                 </div>
                                             </div>
@@ -85,7 +85,7 @@
                     endif; ?>
                     <?php if (empty($refundRequests)): ?>
                         <p class="text-center text-muted">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                 </div>
@@ -103,16 +103,16 @@
             <form action="<?= base_url('submit-refund-request'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="modal-header">
-                    <h5 class="modal-title"><?= trans("submit_refund_request"); ?></h5>
+                    <h5 class="modal-title"><?= esc(trans("submit_refund_request")); ?></h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true"><i class="icon-close"></i> </span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="control-label"><?= trans("product"); ?></label>
+                        <label class="control-label"><?= esc(trans("product")); ?></label>
                         <select class="form-control custom-select" name="order_product_id" required>
-                            <option value=""><?= trans("select"); ?></option>
+                            <option value=""><?= esc(trans("select")); ?></option>
                             <?php if (!empty($userOrders)):
                                 foreach ($userOrders as $order):
                                     $hideProducts = false;
@@ -135,11 +135,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("refund_reason_explain"); ?></label>
+                        <label class="control-label"><?= esc(trans("refund_reason_explain")); ?></label>
                         <textarea name="message" class="form-control" aria-hidden="true" required><?= old('message'); ?></textarea>
                     </div>
                     <div class="form-group text-right m-0">
-                        <button type="submit" class="btn btn-md btn-custom"><?= trans("submit"); ?></button>
+                        <button type="submit" class="btn btn-md btn-custom"><?= esc(trans("submit")); ?></button>
                     </div>
                 </div>
             </form>

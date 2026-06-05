@@ -1,0 +1,7 @@
+   .product-img {
+    width: 60px !important;
+    height: 60px !important;
+    max-width: 60px !important;
+    object-fit: cover !important;
+    border-radius: 3px;
+}

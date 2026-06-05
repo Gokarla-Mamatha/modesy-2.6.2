@@ -5,7 +5,7 @@
                 <?= csrf_field(); ?>
                 <input type="hidden" name="back_url" value="<?= getCurrentUrl(); ?>">
                 <div class="modal-header">
-                    <h5 class="modal-title"><?= trans("report_bank_transfer"); ?></h5>
+                    <h5 class="modal-title"><?= esc(trans("report_bank_transfer")); ?></h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true"><i class="icon-close"></i> </span>
                     </button>
@@ -18,24 +18,24 @@
 
                     <?php if (empty($hideBankAccounts)): ?>
                         <div class="form-group m-b-0">
-                            <p class="text-muted"><?= trans("bank_accounts_exp"); ?></p>
+                            <p class="text-muted"><?= esc(trans("bank_accounts_exp")); ?></p>
                             <?= $paymentSettings->bank_transfer_accounts; ?>
                             <hr>
                         </div>
                     <?php endif; ?>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("payment_note"); ?></label>
-                        <textarea name="payment_note" class="form-control form-textarea" maxlength="499" style="min-height: 60px;" placeholder="<?= trans("payment_note"); ?>" data-type="text"></textarea>
+                        <label class="control-label"><?= esc(trans("payment_note")); ?></label>
+                        <textarea name="payment_note" class="form-control form-textarea" maxlength="499" style="min-height: 60px;" placeholder="<?= esc(trans("payment_note")); ?>" data-type="text"></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("receipt"); ?>
+                        <label class="control-label"><?= esc(trans("receipt")); ?>
                             <small>(.png, .jpg, .jpeg, .pdf)</small>
                         </label>
                         <div>
                             <a class='btn btn-md btn-secondary btn-file-upload'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
                                     <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2m5.5 1.5v2a1 1 0 0 0 1 1h2z"/>
-                                </svg>&nbsp;&nbsp;<?= trans('select_file'); ?>
+                                </svg>&nbsp;&nbsp;<?= esc(trans('select_file')); ?>
                                 <input type="file" name="file" size="40" accept=".png, .jpg, .jpeg, .pdf" onchange="$('#upload-file-info').html($(this).val().replace(/.*[\/\\]/, ''));">
                             </a>
                             <br>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-md btn-custom btn-submit-bank-transfer float-right"><?= trans("submit"); ?></button>
+                    <button type="submit" class="btn btn-md btn-custom btn-submit-bank-transfer float-right"><?= esc(trans("submit")); ?></button>
                 </div>
             </form>
         </div>

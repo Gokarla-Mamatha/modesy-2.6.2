@@ -4,12 +4,12 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= trans("profile_settings"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= esc(trans("profile_settings")); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= $title; ?></li>
                     </ol>
                 </nav>
-                <h1 class="page-title"><?= trans("profile_settings"); ?></h1>
+                <h1 class="page-title"><?= esc(trans("profile_settings")); ?></h1>
             </div>
         </div>
         <div class="row">
@@ -26,20 +26,20 @@
                             <?= csrf_field(); ?>
                             <?php if (!empty(user()->password)): ?>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans("old_password"); ?></label>
-                                    <input type="password" name="old_password" class="form-control form-input" value="<?= old("old_password"); ?>" placeholder="<?= trans("old_password"); ?>" maxlength="255" required>
+                                    <label class="control-label"><?= esc(trans("old_password")); ?></label>
+                                    <input type="password" name="old_password" class="form-control form-input" value="<?= old("old_password"); ?>" placeholder="<?= esc(trans("old_password")); ?>" maxlength="255" required>
                                 </div>
                             <?php endif; ?>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("password"); ?></label>
-                                <input type="password" name="password" class="form-control form-input" placeholder="<?= trans("password"); ?>" minlength="8" maxlength="255" required>
+                                <label class="control-label"><?= esc(trans("password")); ?></label>
+                                <input type="password" name="password" class="form-control form-input" placeholder="<?= esc(trans("password")); ?>" minlength="8" maxlength="255" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("password_confirm"); ?></label>
-                                <input type="password" name="password_confirm" class="form-control form-input" value="<?= old("password_confirm"); ?>" placeholder="<?= trans("password_confirm"); ?>" maxlength="255" required>
+                                <label class="control-label"><?= esc(trans("password_confirm")); ?></label>
+                                <input type="password" name="password_confirm" class="form-control form-input" value="<?= old("password_confirm"); ?>" placeholder="<?= esc(trans("password_confirm")); ?>" maxlength="255" required>
                             </div>
                             <button type="submit" class="btn btn-md btn-custom m-t-10">
-                                <?= trans("change_password") ?>
+                                <?= esc(trans("change_password")) ?>
                             </button>
                         </form>
                     </div>

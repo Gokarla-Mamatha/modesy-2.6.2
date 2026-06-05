@@ -11,13 +11,13 @@
                     <table class="table table-striped" role="grid">
                         <thead>
                         <tr role="row">
-                            <th scope="col"><?= trans("product"); ?></th>
-                            <th scope="col"><?= trans("total"); ?></th>
-                            <th scope="col"><?= trans("buyer"); ?></th>
-                            <th scope="col"><?= trans("status"); ?></th>
-                            <th scope="col"><?= trans("updated"); ?></th>
-                            <th scope="col"><?= trans("date"); ?></th>
-                            <th scope="col"><?= trans("options"); ?></th>
+                            <th scope="col"><?= esc(trans("product")); ?></th>
+                            <th scope="col"><?= esc(trans("total")); ?></th>
+                            <th scope="col"><?= esc(trans("buyer")); ?></th>
+                            <th scope="col"><?= esc(trans("status")); ?></th>
+                            <th scope="col"><?= esc(trans("updated")); ?></th>
+                            <th scope="col"><?= esc(trans("date")); ?></th>
+                            <th scope="col"><?= esc(trans("options")); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,17 +40,17 @@
                                         </td>
                                         <td>
                                             <?php if ($request->status == 1): ?>
-                                                <label class="label label-success"><?= trans("approved"); ?></label>
+                                                <label class="label label-success"><?= esc(trans("approved")); ?></label>
                                             <?php elseif ($request->status == 2): ?>
-                                                <label class="label label-danger"><?= trans("declined"); ?></label>
+                                                <label class="label label-danger"><?= esc(trans("declined")); ?></label>
                                             <?php else: ?>
-                                                <label class="label label-default"><?= trans("order_processing"); ?></label>
+                                                <label class="label label-default"><?= esc(trans("order_processing")); ?></label>
                                             <?php endif; ?>
                                         </td>
                                         <td><?= timeAgo($request->updated_at); ?></td>
                                         <td><?= formatDate($request->created_at); ?></td>
                                         <td>
-                                            <a href="<?= generateDashUrl('refund_requests'); ?>/<?= $request->id; ?>" class="btn btn-sm btn-default btn-details"><i class="fa fa-info-circle" aria-hidden="true"></i><?= trans("details"); ?></a>
+                                            <a href="<?= generateDashUrl('refund_requests'); ?>/<?= $request->id; ?>" class="btn btn-sm btn-default btn-details"><i class="fa fa-info-circle" aria-hidden="true"></i><?= esc(trans("details")); ?></a>
                                         </td>
                                     </tr>
                                 <?php endif;
@@ -61,7 +61,7 @@
                 </div>
                 <?php if (empty($refundRequests)): ?>
                     <p class="text-center">
-                        <?= trans("no_records_found"); ?>
+                        <?= esc(trans("no_records_found")); ?>
                     </p>
                 <?php endif; ?>
             </div>
@@ -70,7 +70,7 @@
             <div class="col-sm-12">
                 <?php if (!empty($refundRequests)): ?>
                     <div class="number-of-entries">
-                        <span><?= trans("number_of_entries"); ?>:</span>&nbsp;&nbsp;<strong><?= $numRows; ?></strong>
+                        <span><?= esc(trans("number_of_entries")); ?>:</span>&nbsp;&nbsp;<strong><?= $numRows; ?></strong>
                     </div>
                 <?php endif; ?>
                 <div class="table-pagination">

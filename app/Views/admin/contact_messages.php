@@ -1,7 +1,7 @@
 <div class="box">
     <div class="box-header with-border">
         <div class="left">
-            <h3 class="box-title"><?= trans('contact_messages'); ?></h3>
+            <h3 class="box-title"><?= esc(trans('contact_messages')); ?></h3>
         </div>
     </div>
     <div class="box-body">
@@ -12,12 +12,12 @@
                            aria-describedby="example1_info">
                         <thead>
                         <tr role="row">
-                            <th width="20"><?= trans('id'); ?></th>
-                            <th><?= trans('name'); ?></th>
-                            <th><?= trans('email'); ?></th>
-                            <th><?= trans('message'); ?></th>
-                            <th><?= trans('date'); ?></th>
-                            <th class="max-width-120"><?= trans('options'); ?></th>
+                            <th width="20"><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('name')); ?></th>
+                            <th><?= esc(trans('email')); ?></th>
+                            <th><?= esc(trans('message')); ?></th>
+                            <th><?= esc(trans('date')); ?></th>
+                            <th class="max-width-120"><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,12 +31,12 @@
                                     <td><?= formatDate($item->created_at); ?></td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?><span class="caret"></span></button>
+                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?><span class="caret"></span></button>
                                             <ul class="dropdown-menu options-dropdown">
                                                 <li>
-                                                <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteContactMessagePost','<?= $item->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                <a href="#" class="btn-item-delete" data-url="Admin/deleteContactMessagePost" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
-                                                <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?></a></li>
+                                                <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteContactMessagePost','<?= $item->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                <a href="#" class="btn-item-delete" data-url="Admin/deleteContactMessagePost" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
+                                                <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?></a></li>
                                             </ul>
                                         </div>
                                     </td>

@@ -2,13 +2,13 @@
     <div class="col-lg-5 col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans("site_font"); ?></h3>
+                <h3 class="box-title"><?= esc(trans("site_font")); ?></h3>
             </div>
             <form action="<?= base_url('Admin/setSiteFontPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label><?= trans("language"); ?></label>
+                        <label><?= esc(trans("language")); ?></label>
                         <select name="lang_id" class="form-control" onchange="window.location.href = '<?= adminUrl('font-settings'); ?>?lang='+this.value;">
                             <?php foreach ($activeLanguages as $language): ?>
                                 <option value="<?= $language->id; ?>" <?= $langId == $language->id ? 'selected' : ''; ?>><?= esc($language->name); ?></option>
@@ -16,7 +16,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="label-sitemap"><?= trans('site_font'); ?></label>
+                        <label class="label-sitemap"><?= esc(trans('site_font')); ?></label>
                         <select name="site_font" class="form-control custom-select">
                             <?php foreach ($fonts as $font): ?>
                                 <option value="<?= $font->id; ?>" <?= $settings->site_font == $font->id ? 'selected' : ''; ?>><?= esc($font->font_name); ?></option>
@@ -24,7 +24,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="label-sitemap"><?= trans('dashboard_font'); ?></label>
+                        <label class="label-sitemap"><?= esc(trans('dashboard_font')); ?></label>
                         <select name="dashboard_font" class="form-control custom-select">
                             <?php foreach ($fonts as $font): ?>
                                 <option value="<?= $font->id; ?>" <?= $settings->dashboard_font == $font->id ? 'selected' : ''; ?>><?= esc($font->font_name); ?></option>
@@ -33,37 +33,37 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>
 
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans("add_font"); ?></h3>
+                <h3 class="box-title"><?= esc(trans("add_font")); ?></h3>
                 <a href="https://fonts.google.com/" target="_blank" style="float: right;font-size: 16px;"><strong>Google Fonts&nbsp;<i class="icon-arrow-right"></i></strong></a>
             </div>
             <form action="<?= base_url('Admin/addFontPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label><?= trans("name"); ?></label>
-                        <input type="text" class="form-control" name="font_name" placeholder="<?= trans("name"); ?>" maxlength="200" data-type="title" required>
+                        <label><?= esc(trans("name")); ?></label>
+                        <input type="text" class="form-control" name="font_name" placeholder="<?= esc(trans("name")); ?>" maxlength="200" data-type="title" required>
                         <small>(E.g: Open Sans)</small>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("url"); ?> </label>
-                        <textarea name="font_url" class="form-control" placeholder="<?= trans("url"); ?>" data-type="url" required></textarea>
+                        <label class="control-label"><?= esc(trans("url")); ?> </label>
+                        <textarea name="font_url" class="form-control" placeholder="<?= esc(trans("url")); ?>" data-type="url" required></textarea>
                         <small>(E.g: <?= esc('<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">'); ?>)</small>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("font_family"); ?> </label>
-                        <input type="text" class="form-control" name="font_family" placeholder="<?= trans("font_family"); ?>" maxlength="500" data-type="text" required>
+                        <label class="control-label"><?= esc(trans("font_family")); ?> </label>
+                        <input type="text" class="form-control" name="font_family" placeholder="<?= esc(trans("font_family")); ?>" maxlength="500" data-type="text" required>
                         <small>(E.g: font-family: "Open Sans", Helvetica, sans-serif)</small>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('add_font'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('add_font')); ?></button>
                 </div>
             </form>
         </div>
@@ -73,7 +73,7 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="pull-left">
-                    <h3 class="box-title"><?= trans('fonts'); ?></h3>
+                    <h3 class="box-title"><?= esc(trans('fonts')); ?></h3>
                 </div>
             </div>
             <div class="box-body">
@@ -83,10 +83,10 @@
                             <table class="table table-bordered table-striped data_table" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th width="20"><?= trans('id'); ?></th>
-                                    <th><?= trans("name"); ?></th>
-                                    <th><?= trans("font_family"); ?></th>
-                                    <th class="max-width-120"><?= trans("options"); ?></th>
+                                    <th width="20"><?= esc(trans('id')); ?></th>
+                                    <th><?= esc(trans("name")); ?></th>
+                                    <th><?= esc(trans("font_family")); ?></th>
+                                    <th class="max-width-120"><?= esc(trans("options")); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -98,13 +98,13 @@
                                             <td><?= esc($font->font_family); ?></td>
                                             <td>
                                                 <div class="dropdown">
-                                                    <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?><span class="caret"></span></button>
+                                                    <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?><span class="caret"></span></button>
                                                     <ul class="dropdown-menu options-dropdown">
-                                                        <li><a href="<?= adminUrl('edit-font/' . $font->id); ?>"><i class="fa fa-edit option-icon"></i><?= trans('edit'); ?></a></li>
+                                                        <li><a href="<?= adminUrl('edit-font/' . $font->id); ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('edit')); ?></a></li>
                                                         <li>
-                                                            <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteFontPost','<?= $font->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                                <a href="#" class="btn-item-delete" data-url="Admin/deleteFontPost" data-id="<?= $font->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
-                                                                    <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?>
+                                                            <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteFontPost','<?= $font->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                                <a href="#" class="btn-item-delete" data-url="Admin/deleteFontPost" data-id="<?= $font->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
+                                                                    <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?>
                                                                 </a>
                                                             </li>
                                                     </ul>

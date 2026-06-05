@@ -53,12 +53,15 @@ class ShippingModel extends BaseModel
             ];
 
             $zone = $this->getSellerShippingZoneByState($seller->id, $stateId);
+            //print_r($zone);
             if (empty($zone)) {
                 $sellerShippingMethods[] = $item;
                 continue;
             }
 
             $methodsInZone = $this->getShippingZoneMethodsBySeller($zone->id, $seller->id);
+            // echo "<pre>";
+            // print_r($methodsInZone);exit;
             if (empty($methodsInZone)) {
                 $sellerShippingMethods[] = $item;
                 continue;
@@ -119,6 +122,7 @@ class ShippingModel extends BaseModel
                         );
 
                         // Only add the method if a valid cost was calculated.
+                         
                         if (isset($cost)) {
                             $method = (object)[
                                 'method_db_id' => $methodRecord->id,

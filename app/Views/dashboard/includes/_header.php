@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title><?= escMeta($title); ?> - <?= trans("dashboard"); ?> - <?= escMeta($generalSettings->application_name); ?></title>
+<title><?= escMeta($title); ?> - <?= esc(trans("dashboard")); ?> - <?= escMeta($generalSettings->application_name); ?></title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link rel="shortcut icon" type="image/png" href="<?= getFavicon(); ?>"/>
 <?= csrf_meta(); ?>
@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="<?= base_url('assets/vendor/file-manager/file-manager.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('assets/admin/css/main-2.6.min.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('assets/admin/css/dashboard-2.6.min.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>" />
 <?php if ($baseVars->rtl == true): ?>
 <link rel="stylesheet" href="<?= base_url('assets/admin/css/rtl-2.6.css'); ?>">
 <?php endif; ?>
@@ -30,7 +31,7 @@
 <script src="<?= base_url('assets/vendor/file-uploader/js/jquery.dm-uploader.min.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/vendor/file-uploader/js/ui.js'); ?>" <?= csp_script_nonce() ?>></script>
 <?= view("admin/includes/_js_config"); ?>
-<style <?= csp_style_nonce() ?>>@media (max-width: 768px) {input {font-size: 16px !important;} input::placeholder {font-size: 14px !important;}}.main-header .sidebar-toggle {display: inline-block;color: #757a89 !important;font-size: 18px;line-height: 18px;}</style>
+<style <?= csp_style_nonce() ?>>@media (max-width: 768px) {input {font-size: 16px !important;} input::placeholder {font-size: 14px !important;}}.main-header .sidebar-toggle {display: inline-block;color: #757a89 !important;font-size: 18px;line-height: 18px;}.mds-fallback-editor{border:1px solid #d2d6de;background:#fff;max-width:100%;}.mds-fallback-toolbar{display:flex;flex-wrap:wrap;gap:4px;padding:6px;border-bottom:1px solid #d2d6de;background:#f8f9fb;}.mds-fallback-toolbar button{height:30px;min-width:32px;padding:4px 8px;border:1px solid #c7ccd4;background:#fff;color:#333;font-size:12px;line-height:1;border-radius:3px;}.mds-fallback-toolbar button:hover{background:#eef3f7;}.mds-fallback-content{min-height:280px;padding:12px;font-size:14px;line-height:1.6;outline:none;overflow:auto;}.mds-fallback-content img{max-width:100%;height:auto;}</style>
 </head>
 <body class="hold-transition skin-black-light sidebar-mini">
 <div class="wrapper" style="overflow-x: hidden;">
@@ -43,7 +44,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a class="btn btn-sm btn-success pull-left btn-site-prev" target="_blank" href="<?= langBaseUrl(); ?>"><i class="fa fa-eye"></i> &nbsp;<span class="btn-site-prev-text"><?= trans("view_site"); ?></span></a>
+                            <a class="btn btn-sm btn-success pull-left btn-site-prev" target="_blank" href="<?= langBaseUrl(); ?>"><i class="fa fa-eye"></i> &nbsp;<span class="btn-site-prev-text"><?= esc(trans("view_site")); ?></span></a>
                         </li>
                         <?php if ($generalSettings->multilingual_system == 1 && countItems($activeLanguages) > 1): ?>
                             <li class="nav-item dropdown language-dropdown">
@@ -92,53 +93,53 @@
                 </div>
                 <?php if (isVendor()): ?>
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header"><?= trans("navigation"); ?></li>
+                        <li class="header"><?= esc(trans("navigation")); ?></li>
                         <li class="nav-home">
                             <a href="<?= dashboardUrl(); ?>">
-                                <i class="fa fa-home"></i> <span><?= trans("dashboard"); ?></span>
+                                <i class="fa fa-home"></i> <span><?= esc(trans("dashboard")); ?></span>
                             </a>
                         </li>
-                        <li class="header"><?= trans("products"); ?></li>
+                        <li class="header"><?= esc(trans("products")); ?></li>
                         <li class="nav-add-product">
                             <a href="<?= generateDashUrl('add_product'); ?>">
                                 <i class="fa fa-file"></i>
-                                <span><?= trans("add_product"); ?></span>
+                                <span><?= esc(trans("add_product")); ?></span>
                             </a>
                         </li>
                         <?php if (hasPermission('products') || (!hasPermission('products') && $generalSettings->vendor_bulk_product_upload == 1)): ?>
                             <li class="nav-bulk-product-upload">
                                 <a href="<?= generateDashUrl("bulk_product_upload"); ?>">
                                     <i class="fa fa-cloud-upload"></i>
-                                    <span><?= trans("bulk_product_upload"); ?></span>
+                                    <span><?= esc(trans("bulk_product_upload")); ?></span>
                                 </a>
                             </li>
                         <?php endif; ?>
                         <li class="treeview<?php isAdminNavActive(['products', 'pending-products', 'hidden-products', 'sold-products', 'drafts']); ?>">
                             <a href="#">
                                 <i class="fa fa-shopping-basket"></i>
-                                <span><?= trans("products"); ?></span>
+                                <span><?= esc(trans("products")); ?></span>
                                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="nav-products"><a href="<?= generateDashUrl('products'); ?>"><?= trans("products"); ?></a></li>
-                                <li class="nav-pending-products"><a href="<?= generateDashUrl('products'); ?>?st=pending"><?= trans("pending_products"); ?></a></li>
-                                <li class="nav-hidden-products"><a href="<?= generateDashUrl('products'); ?>?st=hidden"><?= trans("hidden_products"); ?></a></li>
-                                <li class="nav-sold-products"><a href="<?= generateDashUrl('products'); ?>?st=sold"><?= trans("sold_products"); ?></a></li>
-                                <li class="nav-drafts"><a href="<?= generateDashUrl('products'); ?>?st=draft"><?= trans("drafts"); ?></a></li>
+                                <li class="nav-products"><a href="<?= generateDashUrl('products'); ?>"><?= esc(trans("products")); ?></a></li>
+                                <li class="nav-pending-products"><a href="<?= generateDashUrl('products'); ?>?st=pending"><?= esc(trans("pending_products")); ?></a></li>
+                                <li class="nav-hidden-products"><a href="<?= generateDashUrl('products'); ?>?st=hidden"><?= esc(trans("hidden_products")); ?></a></li>
+                                <li class="nav-sold-products"><a href="<?= generateDashUrl('products'); ?>?st=sold"><?= esc(trans("sold_products")); ?></a></li>
+                                <li class="nav-drafts"><a href="<?= generateDashUrl('products'); ?>?st=draft"><?= esc(trans("drafts")); ?></a></li>
                             </ul>
                         </li>
                         <?php if ($baseVars->isSaleActive): ?>
-                            <li class="header"><?= trans("sales"); ?></li>
+                            <li class="header"><?= esc(trans("sales")); ?></li>
                             <li class="treeview<?php isAdminNavActive(['sales', 'completed-sales', 'cancelled-sales', 'sale']); ?>">
                                 <a href="#">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <span><?= trans("sales"); ?></span>
+                                    <span><?= esc(trans("sales")); ?></span>
                                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li class="nav-sales"><a href="<?= generateDashUrl('sales'); ?>"><?= trans("active_sales"); ?></a></li>
-                                    <li class="nav-completed-sales"><a href="<?= generateDashUrl('sales'); ?>?st=completed"><?= trans("completed_sales"); ?></a></li>
-                                    <li class="nav-cancelled-sales"><a href="<?= generateDashUrl('sales'); ?>?st=cancelled"><?= trans("cancelled_sales"); ?></a></li>
+                                    <li class="nav-sales"><a href="<?= generateDashUrl('sales'); ?>"><?= esc(trans("active_sales")); ?></a></li>
+                                    <li class="nav-completed-sales"><a href="<?= generateDashUrl('sales'); ?>?st=completed"><?= esc(trans("completed_sales")); ?></a></li>
+                                    <li class="nav-cancelled-sales"><a href="<?= generateDashUrl('sales'); ?>?st=cancelled"><?= esc(trans("cancelled_sales")); ?></a></li>
                                 </ul>
                             </li>
                         <?php endif;
@@ -146,7 +147,7 @@
                             <li class="nav-quote-requests">
                                 <a href="<?= generateDashUrl('quote_requests'); ?>">
                                     <i class="fa fa-tag"></i>
-                                    <span><?= trans("quote_requests"); ?></span>
+                                    <span><?= esc(trans("quote_requests")); ?></span>
                                     <?php $newQuoteCount = getNewQuoteRequestsCount(user()->id);
                                     if (!empty($newQuoteCount)):?>
                                         <span class="pull-right-container">
@@ -160,7 +161,7 @@
                             <li class="nav-productbid-requests">
                                 <a href="<?= generateDashUrl('productbid_requests'); ?>">
                                     <i class="fa fa-gavel"></i>
-                                    <span><?= trans("Bidding Requests"); ?></span>
+                                    <span><?= esc(trans("Bidding Requests")); ?></span>
 
                                     <?php $newBidCount = getNewProductBidRequestsCount(user()->id);
                                     if (!empty($newBidCount)): ?>
@@ -175,14 +176,14 @@
                             <li class="nav-coupons">
                                 <a href="<?= generateDashUrl("coupons"); ?>">
                                     <i class="fa fa-ticket"></i>
-                                    <span><?= trans("coupons"); ?></span>
+                                    <span><?= esc(trans("coupons")); ?></span>
                                 </a>
                             </li>
                             <?php if ($generalSettings->refund_system == 1): ?>
                                 <li class="nav-refund-requests">
                                     <a href="<?= generateDashUrl("refund_requests"); ?>">
                                         <i class="fa fa-flag"></i>
-                                        <span><?= trans("refund_requests"); ?></span>
+                                        <span><?= esc(trans("refund_requests")); ?></span>
                                         <?php $refundCount = getSellerActiveRefundRequestCount(user()->id);
                                         if (!empty($refundCount)):?>
                                             <span class="pull-right-container">
@@ -197,41 +198,41 @@
                             <li class="nav-cash-on-delivery">
                                 <a href="<?= generateDashUrl('cash_on_delivery'); ?>">
                                     <i class="fa fa-money-bill-wave"></i>
-                                    <span><?= trans("cash_on_delivery"); ?></span>
+                                    <span><?= esc(trans("cash_on_delivery")); ?></span>
                                 </a>
                             </li>
                         <?php endif; ?>
-                        <li class="header"><?= trans("payments"); ?></li>
+                        <li class="header"><?= esc(trans("payments")); ?></li>
                         <li class="treeview<?php isAdminNavActive(['payments']); ?>">
                             <a href="#">
                                 <i class="fa fa-credit-card"></i>
-                                <span><?= trans("payments"); ?></span>
+                                <span><?= esc(trans("payments")); ?></span>
                                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                             </a>
                             <ul class="treeview-menu">
                                 <?php if ($generalSettings->membership_plans_system == 1): ?>
-                                    <li class="nav-payment-history"><a href="<?= generateDashUrl('payments'); ?>?payment=membership"><?= trans("membership_payments"); ?></a></li>
+                                    <li class="nav-payment-history"><a href="<?= generateDashUrl('payments'); ?>?payment=membership"><?= esc(trans("membership_payments")); ?></a></li>
                                 <?php endif; ?>
-                                <li class="nav-payment-history"><a href="<?= generateDashUrl('payments'); ?>?payment=promotion"><?= trans("promotion_payments"); ?></a></li>
+                                <li class="nav-payment-history"><a href="<?= generateDashUrl('payments'); ?>?payment=promotion"><?= esc(trans("promotion_payments")); ?></a></li>
                             </ul>
                         </li>
-                         <li class="header"><?= trans("forums"); ?></li>
+                         <li class="header"><?= esc(trans("forums")); ?></li>
                             <li class="nav-categories">
                                 <a href="<?= generateDashUrl('threads'); ?>"><i class="fa fa-folder-open"></i> <span>Threads</span></a>
                             </li>
                         <?php if ($affiliateSettings->status == 1 && $affiliateSettings->type == 'seller_based'): ?>
-                            <li class="header"><?= trans("affiliate_program"); ?></li>
+                            <li class="header"><?= esc(trans("affiliate_program")); ?></li>
                             <li class="nav-affiliate-program">
-                                <a href="<?= generateDashUrl('affiliate-program'); ?>"><i class="fa fa-link" aria-hidden="true"></i><span><?= trans("affiliate_program"); ?></span></a>
+                                <a href="<?= generateDashUrl('affiliate-program'); ?>"><i class="fa fa-link" aria-hidden="true"></i><span><?= esc(trans("affiliate_program")); ?></span></a>
                             </li>
                         <?php endif; ?>
                         <?php if ($generalSettings->product_comments == 1 || $generalSettings->reviews == 1): ?>
-                            <li class="header"><?= trans("comments"); ?></li>
+                            <li class="header"><?= esc(trans("comments")); ?></li>
                             <?php if ($generalSettings->product_comments == 1): ?>
                                 <li class="nav-comments">
                                     <a href="<?= generateDashUrl('comments'); ?>">
                                         <i class="fa fa-comments"></i>
-                                        <span><?= trans("comments"); ?></span>
+                                        <span><?= esc(trans("comments")); ?></span>
                                     </a>
                                 </li>
                             <?php endif; ?>
@@ -239,28 +240,28 @@
                                 <li class="nav-reviews">
                                     <a href="<?= generateDashUrl('reviews'); ?>">
                                         <i class="fa fa-star"></i>
-                                        <span><?= trans("reviews"); ?></span>
+                                        <span><?= esc(trans("reviews")); ?></span>
                                     </a>
                                 </li>
                             <?php endif; ?>
                         <?php endif; ?>
-                        <li class="header"><?= trans("settings"); ?></li>
+                        <li class="header"><?= esc(trans("settings")); ?></li>
                         <li class="nav-shop-settings">
                             <a href="<?= generateDashUrl('shop_settings'); ?>">
                                 <i class="fa fa-cog"></i>
-                                <span><?= trans("shop_settings"); ?></span>
+                                <span><?= esc(trans("shop_settings")); ?></span>
                             </a>
                         </li>
                         <li class="nav-shop-policies">
                             <a href="<?= generateDashUrl('shop_policies'); ?>">
                                 <i class="fa fa-file-text"></i>
-                                <span><?= trans("shop_policies"); ?></span></a>
+                                <span><?= esc(trans("shop_policies")); ?></span></a>
                         </li>
                         <?php if ($baseVars->isSaleActive && $generalSettings->physical_products_system == 1): ?>
                             <li class="nav-shipping-settings">
                                 <a href="<?= generateDashUrl('shipping_settings'); ?>">
                                     <i class="fa fa-truck"></i>
-                                    <span><?= trans("shipping_settings"); ?></span>
+                                    <span><?= esc(trans("shipping_settings")); ?></span>
                                 </a>
                             </li>
                         <?php endif; ?>

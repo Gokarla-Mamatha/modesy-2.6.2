@@ -69,6 +69,17 @@ $routes->get('captcha/math', 'CaptchaController::math');
 /*tax collection
  */
 $routes->get('tax-calculation', 'TaxCheckoutController::tax');
+$routes->post('get-state-code', 'TaxCheckoutController::getStateCode');
+
+//Stripe
+$routes->get('stripe-payment', 'StripeController::index');
+$routes->post('stripe-checkout', 'StripeController::checkout');
+
+$routes->get('payment-success', 'StripeController::success');
+$routes->get('payment-cancel', 'StripeController::cancel');
+
+// $routes->get('stripe/verify-bank-account', 'StripeController::bankAccountVerifyForm');
+// $routes->post('stripe/verify-bank-account', 'StripeController::verifyBankAccount');
 /**
  * 
  */
@@ -242,6 +253,7 @@ $routes->get('bids', 'OrderController::productBids');
 $routes->post('order/delete-bid', 'OrderController::deleteBid');
 //cart
 $routes->post('cart/add-to-cart', 'CartController::addToCart');
+$routes->post('cart/remove-from-cart', 'CartController::removeFromCart');
 $routes->post('add-to-cart', 'CartController::addToCart');
 $routes->post('add-to-cart-quote', 'CartController::addToCartQuote');
 $routes->post('add-to-cart-bid', 'CartController::addToCartBid');
@@ -327,8 +339,9 @@ $routes->get('ajax/run-queue-worker', 'AjaxController::runQueueWorker');
 $routes->post('ajax/save-loyalty-points', 'AjaxController::saveLoyaltyPoints');
 $routes->get('ajax/get-loyalty-points', 'AjaxController::getLoyaltyPoints');
 $routes->post('ajax/delete-loyalty-points', 'AjaxController::deleteLoyaltyPoints');
-
-
+$routes->post('dashboard/get-sub-categories', 'DashboardController::getSubCategories');
+$routes->post('home/select-membership-plan-post', 'HomeController::selectMembershipPlanPost');
+$routes->post('cart/saveShippingAddress', 'CartController::saveShippingAddress');
 //forums
 $routes->get($rtAdmin . '/forums-categories', 'AdminForumCategoryController::categories');
 $routes->get($rtAdmin . '/add-forums-category', 'AdminForumCategoryController::addCategory');
@@ -341,7 +354,7 @@ $routes->post($rtAdmin . '/edit-thread-post', 'AdminForumController::editThreadP
 $routes->get($rtAdmin . '/delete-thread/(:num)', 'AdminForumController::deleteThread/$1');
 $routes->get($rtAdmin . '/invite-thread-users/(:num)', 'AdminForumController::inviteUsers/$1');
 $routes->post($rtAdmin . '/invite-thread-users-post', 'AdminForumController::inviteUsersPost');
-
+    
 
 $postArray = [
     //Admin
@@ -488,7 +501,7 @@ $postArray = [
     'Bulk/downloadCsvFilesPost',
     //Cart
     'Cart/removeCartDiscountCoupon',
-    'Cart/removeFromCart',
+    // 'Cart/removeFromCart',
     'Cart/getShippingMethodsByLocation',
     'Cart/shippingPost',
     //Category
@@ -537,7 +550,7 @@ $postArray = [
     'Dashboard/addLicenseKeys',
     'Dashboard/deleteLicenseKey',
     'Dashboard/loadLicenseKeysList',
-    'Dashboard/getSubCategories',
+    // 'Dashboard/getSubCategories',
     'Dashboard/affiliateProgramPost',
     'Dashboard/addRemoveAffiliateProductPost',
     'Dashboard/exportTableDataPost',
@@ -579,7 +592,7 @@ $postArray = [
     'File/loadUploadedOptionImages',
     'File/deleteOptionImage',
     //Home
-    'Home/selectMembershipPlanPost',
+    // 'Home/selectMembershipPlanPost',
     'Home/setDefaultLocationPost',
     'Home/bankTransferPaymentReportPost',
     //Language
@@ -737,15 +750,16 @@ if (!empty($languages)) {
         // EMAIL OTP
         $routes->post('seller/send-email-otp', 'HomeController::sendEmailOtp');
         $routes->post('seller/verify-email-otp', 'HomeController::verifyEmailOtp');
-
+        $routes->post('seller/resend-email-otp', 'HomeController::resendEmailOtp');
+        
         // PHONE OTP
-        $routes->post('seller/send-phone-otp', 'HomeController::sendPhoneOtp');
-        $routes->post('seller/verify-phone-otp', 'HomeController::verifyPhoneOtp');
-        $routes->post('seller/resend-otp', 'HomeController::resendOtp');
+        // $routes->post('seller/send-phone-otp', 'HomeController::sendOtp');
+        // $routes->post('seller/verify-phone-otp', 'HomeController::verifyOtp');
+        // $routes->post('seller/resend-phone-otp', 'HomeController::resendPhoneOtp');
         // PERSONAL (mobile)
-        $routes->post('seller/send-otp', 'HomeController::sendSmsOtp');
+        $routes->post('seller/send-otp', 'HomeController::sendOtp');
         $routes->post('seller/verify-otp', 'HomeController::verifyOtp');
-        $routes->post('seller/resend-phone-otp', 'HomeController::resendPhoneOtp');
+        $routes->post('seller/resend-otp', 'HomeController::resendOtp');
 
         $routes->get($key . $csrt->search, 'HomeController::search');
         $routes->get($key . $csrt->products, 'HomeController::products');

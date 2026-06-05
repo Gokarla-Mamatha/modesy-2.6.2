@@ -3,11 +3,11 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
 <div class="box">
     <div class="box-header with-border">
         <div class="left">
-            <h3 class="box-title"><?= trans("users"); ?></h3>
+            <h3 class="box-title"><?= esc(trans("users")); ?></h3>
         </div>
         <div class="right">
             <a href="<?= adminUrl('add-user'); ?>" class="btn btn-success btn-add-new">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_user'); ?>
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_user')); ?>
             </a>
         </div>
     </div>
@@ -17,12 +17,12 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                 <div class="row table-filter-container">
                     <div class="col-sm-12">
                         <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false">
-                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                         </button>
                         <div class="collapse navbar-collapse" id="collapseFilter">
                             <form action="<?= adminUrl('users'); ?>" method="get">
                                 <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                    <label><?= trans("show"); ?></label>
+                                    <label><?= esc(trans("show")); ?></label>
                                     <select name="show" class="form-control">
                                         <option value="15" <?= inputGet('show') == '15' ? 'selected' : ''; ?>>15</option>
                                         <option value="30" <?= inputGet('show') == '30' ? 'selected' : ''; ?>>30</option>
@@ -31,9 +31,9 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("role"); ?></label>
+                                    <label><?= esc(trans("role")); ?></label>
                                     <select name="role" class="form-control">
-                                        <option value=""><?= trans("all"); ?></option>
+                                        <option value=""><?= esc(trans("all")); ?></option>
                                         <?php if (!empty($roles)):
                                             foreach ($roles as $item):?>
                                                 <option value="<?= $item->id; ?>" <?= inputGet('role') == $item->id ? 'selected' : ''; ?>><?= esc(getRoleName($item)); ?></option>
@@ -42,28 +42,28 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("status"); ?></label>
+                                    <label><?= esc(trans("status")); ?></label>
                                     <select name="status" class="form-control">
-                                        <option value=""><?= trans("all"); ?></option>
-                                        <option value="active" <?= inputGet('status') == 'active' ? 'selected' : ''; ?>><?= trans("active"); ?></option>
-                                        <option value="banned" <?= inputGet('status') == 'banned' ? 'selected' : ''; ?>><?= trans("banned"); ?></option>
+                                        <option value=""><?= esc(trans("all")); ?></option>
+                                        <option value="active" <?= inputGet('status') == 'active' ? 'selected' : ''; ?>><?= esc(trans("active")); ?></option>
+                                        <option value="banned" <?= inputGet('status') == 'banned' ? 'selected' : ''; ?>><?= esc(trans("banned")); ?></option>
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("email_status"); ?></label>
+                                    <label><?= esc(trans("email_status")); ?></label>
                                     <select name="email_status" class="form-control">
-                                        <option value=""><?= trans("all"); ?></option>
-                                        <option value="confirmed" <?= inputGet('email_status') == 'confirmed' ? 'selected' : ''; ?>><?= trans("confirmed"); ?></option>
-                                        <option value="unconfirmed" <?= inputGet('email_status') == 'unconfirmed' ? 'selected' : ''; ?>><?= trans("unconfirmed"); ?></option>
+                                        <option value=""><?= esc(trans("all")); ?></option>
+                                        <option value="confirmed" <?= inputGet('email_status') == 'confirmed' ? 'selected' : ''; ?>><?= esc(trans("confirmed")); ?></option>
+                                        <option value="unconfirmed" <?= inputGet('email_status') == 'unconfirmed' ? 'selected' : ''; ?>><?= esc(trans("unconfirmed")); ?></option>
                                     </select>
                                 </div>
                                 <div class="item-table-filter item-table-filter-long">
-                                    <label><?= trans("search"); ?></label>
-                                    <input name="q" class="form-control" placeholder="<?= trans("search") ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                    <label><?= esc(trans("search")); ?></label>
+                                    <input name="q" class="form-control" placeholder="<?= esc(trans("search")) ?>" type="search" value="<?= esc(inputGet('q')); ?>">
                                 </div>
                                 <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                     <label style="display: block">&nbsp;</label>
-                                    <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                    <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                 </div>
                             </form>
                         </div>
@@ -73,15 +73,15 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr role="row">
-                            <th width="20"><?= trans("id"); ?></th>
-                            <th><?= trans("user"); ?></th>
-                            <th><?= trans("email"); ?></th>
-                            <th><?= trans("membership_plan"); ?></th>
-                            <th><?= trans("Refered By");?></th>
-                            <th><?= trans("status"); ?></th>
+                            <th width="20"><?= esc(trans("id")); ?></th>
+                            <th><?= esc(trans("user")); ?></th>
+                            <th><?= esc(trans("email")); ?></th>
+                            <th><?= esc(trans("membership_plan")); ?></th>
+                            <th><?= esc(trans("Refered By"));?></th>
+                            <th><?= esc(trans("status")); ?></th>
                             <th><?= str_replace(':', '', trans("last_seen")); ?></th>
-                            <th><?= trans("date"); ?></th>
-                            <th class="max-width-120"><?= trans("options"); ?></th>
+                            <th><?= esc(trans("date")); ?></th>
+                            <th class="max-width-120"><?= esc(trans("options")); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -119,7 +119,7 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                                                     <?= esc(getRoleName($userRole)); ?>
                                                 </label>
                                                 <?php if ($affiliateSettings->status == 1 && $user->is_affiliate == 1): ?>
-                                                    &nbsp;&nbsp;<label class="label bg-blue"><?= trans("affiliate"); ?></label>
+                                                    &nbsp;&nbsp;<label class="label bg-blue"><?= esc(trans("affiliate")); ?></label>
                                                 <?php endif;
                                                 if ($user->is_commission_set == 1): ?>
                                                     &nbsp;&nbsp;<label class="label bg-warning"><i class="fa fa-hand-holding-dollar"></i>&nbsp;<?= esc(formatDecimalClean($user->commission_rate)) ?>%</label>
@@ -130,9 +130,9 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                                     <td>
                                         <?= esc($user->email);
                                         if ($user->email_status == 1): ?>
-                                            <small class="text-success">(<?= trans("confirmed"); ?>)</small>
+                                            <small class="text-success">(<?= esc(trans("confirmed")); ?>)</small>
                                         <?php else: ?>
-                                            <small class="text-danger">(<?= trans("unconfirmed"); ?>)</small>
+                                            <small class="text-danger">(<?= esc(trans("unconfirmed")); ?>)</small>
                                         <?php endif; ?>
                                     </td>
                                     <td style="max-width: 200px;"><?= !empty($membershipPlan) ? esc($membershipPlan->plan_title) : ''; ?></td>
@@ -141,9 +141,9 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                                     </td>
                                     <td>
                                         <?php if ($user->banned == 0): ?>
-                                            <label class="label label-success"><?= trans('active'); ?></label>
+                                            <label class="label label-success"><?= esc(trans('active')); ?></label>
                                         <?php else: ?>
-                                            <label class="label label-danger"><?= trans('banned'); ?></label>
+                                            <label class="label label-danger"><?= esc(trans('banned')); ?></label>
                                         <?php endif; ?>
                                     </td>
                                     <td><?= timeAgo($user->last_seen); ?></td>
@@ -159,56 +159,56 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                                         }
                                         if ($showOptions): ?>
                                             <div class="dropdown">
-                                                <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= trans('select_option'); ?><span class="caret"></span></button>
+                                                <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?><span class="caret"></span></button>
                                                 <ul class="dropdown-menu options-dropdown">
                                                     <li>
-                                                        <a href="<?= adminUrl('user-details/' . $user->id); ?>"><i class="fa fa-info-circle option-icon"></i><?= trans('user_details'); ?></a>
+                                                        <a href="<?= adminUrl('user-details/' . $user->id); ?>"><i class="fa fa-info-circle option-icon"></i><?= esc(trans('user_details')); ?></a>
                                                     </li>
                                                     <?php if (isAdmin() && hasPermission('membership')): ?>
                                                         <li>
-                                                            <button type="button" class="btn-list-button btn-change-role" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="setLoginFormData(<?= $user->id; ?>, '<?= clrQuotes(getUsername($user)); ?>')">
-                                                                <i class="fa fa-user option-icon"></i><?= trans('login'); ?>
+                                                            <button type="button" class="btn-list-button btn-change-role btn-login-as-user" data-bs-toggle="modal" data-bs-target="#loginModal" data-user-id="<?= esc($user->id, 'attr'); ?>" data-username="<?= esc(getUsername($user), 'attr'); ?>">
+                                                                <i class="fa fa-user option-icon"></i><?= esc(trans('login')); ?>
                                                             </button>
                                                         </li>
                                                     <?php endif; ?>
                                                     <li>
                                                         <button type="button" class="btn-list-button btn-change-role" data-bs-toggle="modal" data-bs-target="#modalRole<?= $user->id; ?>">
-                                                            <i class="fa fa-key option-icon"></i><?= trans('change_user_role'); ?>
+                                                            <i class="fa fa-key option-icon"></i><?= esc(trans('change_user_role')); ?>
                                                         </button>
                                                     </li>
                                                     <?php if (!empty($membershipPlans) && $userRole->is_vendor): ?>
                                                         <li>
-                                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalAssign<?= $user->id; ?>"><i class="fa fa-check-circle option-icon"></i><?= trans('assign_membership_plan'); ?></a>
+                                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalAssign<?= $user->id; ?>"><i class="fa fa-check-circle option-icon"></i><?= esc(trans('assign_membership_plan')); ?></a>
                                                         </li>
                                                     <?php endif; ?>
                                                     <li>
                                                         <?php if ($user->email_status != 1): ?>
-                                                            <a href="javascript:void(0)" onclick="confirmUserEmail(<?= $user->id; ?>);"><i class="fa fa-check option-icon"></i><?= trans('confirm_user_email'); ?></a>
+                                                            <a href="javascript:void(0)" class="js-confirm-user-email" data-user-id="<?= esc($user->id, 'attr'); ?>"><i class="fa fa-check option-icon"></i><?= esc(trans('confirm_user_email')); ?></a>
                                                         <?php endif; ?>
                                                     </li>
                                                     <li>
                                                         <?php if ($user->banned == 0): ?>
-                                                            <a href="javascript:void(0)" onclick="banRemoveBanUser(<?= $user->id; ?>);"><i class="fa fa-stop-circle option-icon"></i><?= trans('ban_user'); ?></a>
+                                                            <a href="javascript:void(0)" class="js-ban-remove-user" data-user-id="<?= esc($user->id, 'attr'); ?>"><i class="fa fa-stop-circle option-icon"></i><?= esc(trans('ban_user')); ?></a>
                                                         <?php else: ?>
-                                                            <a href="javascript:void(0)" onclick="banRemoveBanUser(<?= $user->id; ?>);"><i class="fa fa-circle option-icon"></i><?= trans('remove_user_ban'); ?></a>
+                                                            <a href="javascript:void(0)" class="js-ban-remove-user" data-user-id="<?= esc($user->id, 'attr'); ?>"><i class="fa fa-circle option-icon"></i><?= esc(trans('remove_user_ban')); ?></a>
                                                         <?php endif; ?>
                                                     </li>
                                                     <?php if ($affiliateSettings->status == 1): ?>
                                                         <li>
                                                             <?php if ($user->is_affiliate == 1): ?>
-                                                                <a href="javascript:void(0)" onclick="addDeleteUserAffiliateProgram(<?= $user->id; ?>);"><i class="fa fa-eraser option-icon"></i><?= trans('delete_from_affiliate_program'); ?></a>
+                                                                <a href="javascript:void(0)" class="js-add-delete-user-affiliate" data-user-id="<?= esc($user->id, 'attr'); ?>"><i class="fa fa-eraser option-icon"></i><?= esc(trans('delete_from_affiliate_program')); ?></a>
                                                             <?php else: ?>
-                                                                <a href="javascript:void(0)" onclick="addDeleteUserAffiliateProgram(<?= $user->id; ?>);"><i class="fa fa-circle-plus option-icon"></i><?= trans('add_to_affiliate_program'); ?></a>
+                                                                <a href="javascript:void(0)" class="js-add-delete-user-affiliate" data-user-id="<?= esc($user->id, 'attr'); ?>"><i class="fa fa-circle-plus option-icon"></i><?= esc(trans('add_to_affiliate_program')); ?></a>
                                                             <?php endif; ?>
                                                         </li>
                                                     <?php endif; ?>
                                                     <li>
-                                                        <a href="<?= adminUrl('edit-user/' . $user->id); ?>"><i class="fa fa-edit option-icon"></i><?= trans('edit_user'); ?></a>
+                                                        <a href="<?= adminUrl('edit-user/' . $user->id); ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('edit_user')); ?></a>
                                                     </li>
                                                     <li>
-                                                        <!-- <a href="javascript:void(0)" onclick="deleteItem('Membership/deleteUserPost','<?= $user->id; ?>','<?= trans("confirm_user", true); ?>');"> -->
-                                                        <a href="#" class="btn-item-delete" data-url="Membership/deleteUserPost" data-id="<?= $user->id; ?>" data-msg="<?= trans('confirm_user', true); ?>">
-                                                        <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?></a>
+                                                        <!-- <a href="javascript:void(0)" onclick="deleteItem('Membership/deleteUserPost','<?= $user->id; ?>','<?= esc(trans("confirm_user", true)); ?>');"> -->
+                                                        <a href="#" class="btn-item-delete" data-url="Membership/deleteUserPost" data-id="<?= $user->id; ?>" data-msg="<?= esc(trans('confirm_user', true)); ?>">
+                                                        <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -220,7 +220,7 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                         </tbody>
                     </table>
                     <?php if (empty($users)): ?>
-                        <p class="text-center text-muted"><?= trans("no_records_found"); ?></p>
+                        <p class="text-center text-muted"><?= esc(trans("no_records_found")); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -243,14 +243,14 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                         <input type="hidden" name="user_id" value="<?= $user->id; ?>">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><?= trans("assign_membership_plan"); ?></h4>
+                            <h4 class="modal-title"><?= esc(trans("assign_membership_plan")); ?></h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label><?= trans("membership_plan"); ?></label>
+                                <label><?= esc(trans("membership_plan")); ?></label>
                                 <?php if (!empty($membershipPlans)): ?>
                                     <select class="form-control" name="plan_id" required>
-                                        <option value=""><?= trans("select"); ?></option>
+                                        <option value=""><?= esc(trans("select")); ?></option>
                                         <?php foreach ($membershipPlans as $plan): ?>
                                             <option value="<?= $plan->id; ?>"><?= getMembershipPlanName($plan->title_array, selectedLangId()); ?></option>
                                         <?php endforeach; ?>
@@ -259,7 +259,7 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success"><?= trans("submit"); ?></button>
+                            <button type="submit" class="btn btn-success"><?= esc(trans("submit")); ?></button>
                         </div>
                     </form>
                 </div>
@@ -270,7 +270,7 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><?= trans('change_user_role'); ?></h4>
+                        <h4 class="modal-title"><?= esc(trans('change_user_role')); ?></h4>
                     </div>
                     <form action="<?= base_url('Membership/changeUserRolePost'); ?>" method="post">
                         <?= csrf_field(); ?>
@@ -293,8 +293,8 @@ $userLoginSess = $session->getFlashdata('user-login-pass-wrong'); ?>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success"><?= trans('save_changes'); ?></button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><?= trans('close'); ?></button>
+                            <button type="submit" class="btn btn-success"><?= esc(trans('save_changes')); ?></button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><?= esc(trans('close')); ?></button>
                         </div>
                     </form>
                 </div>
@@ -312,31 +312,31 @@ endif; ?>
                     <input type="hidden" name="user_id" id="formLoginUserId">
                     <div class="modal-header text-center">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><?= trans("login"); ?></h4>
+                        <h4 class="modal-title"><?= esc(trans("login")); ?></h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group" style="margin-bottom: 30px;">
                             <div class="alert alert-info">
-                                <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;<?= trans("login_to_user_account_exp"); ?>
+                                <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;<?= esc(trans("login_to_user_account_exp")); ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label"><?= trans("user"); ?>:&nbsp;&nbsp;<span id="formLoginUsername"></span></label>
+                            <label class="control-label"><?= esc(trans("user")); ?>:&nbsp;&nbsp;<span id="formLoginUsername"></span></label>
                         </div>
                         <div class="form-group">
-                            <label class="control-label"><?= trans("enter_your_password"); ?></label>
-                            <input type="password" name="password" class="form-control auth-form-input" placeholder="<?= trans("password"); ?>" minlength="4" maxlength="255" required>
+                            <label class="control-label"><?= esc(trans("enter_your_password")); ?></label>
+                            <input type="password" name="password" class="form-control auth-form-input" placeholder="<?= esc(trans("password")); ?>" minlength="4" maxlength="255" required>
                         </div>
                         <?php if (!empty($userLoginSess)): ?>
                             <div class="form-group">
                                 <div class="alert alert-danger" style="width: 100%;">
-                                    <i class="fa fa-times"></i>&nbsp;&nbsp;<?= trans("wrong_password"); ?>
+                                    <i class="fa fa-times"></i>&nbsp;&nbsp;<?= esc(trans("wrong_password")); ?>
                                 </div>
                             </div>
                         <?php endif; ?>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-block"><?= trans("login"); ?></button>
+                        <button type="submit" class="btn btn-success btn-block"><?= esc(trans("login")); ?></button>
                     </div>
                 </form>
             </div>
@@ -345,8 +345,20 @@ endif; ?>
     <script <?= csp_script_nonce() ?>>
         function setLoginFormData(id, username) {
             $('#formLoginUserId').val(id);
-            document.getElementById("formLoginUsername").innerHTML = username;
+            document.getElementById("formLoginUsername").textContent = username;
         }
+        $(document).on('click', '.btn-login-as-user', function () {
+            setLoginFormData($(this).data('user-id'), $(this).data('username'));
+        });
+        $(document).on('click', '.js-confirm-user-email', function () {
+            confirmUserEmail($(this).data('user-id'));
+        });
+        $(document).on('click', '.js-ban-remove-user', function () {
+            banRemoveBanUser($(this).data('user-id'));
+        });
+        $(document).on('click', '.js-add-delete-user-affiliate', function () {
+            addDeleteUserAffiliateProgram($(this).data('user-id'));
+        });
     </script>
 <?php endif; ?>
 

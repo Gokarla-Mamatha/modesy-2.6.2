@@ -511,9 +511,9 @@ class AjaxController extends BaseController
     {
         $productId = inputPost('product_id');
         $this->productModel->addRemoveWishlist($productId);
-        return jsonResponse();
-    }
 
+        return jsonResponse(['result' => 1]);
+    }
     /*
      * --------------------------------------------------------------------
      * Product Comment

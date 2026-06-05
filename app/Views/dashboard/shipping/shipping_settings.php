@@ -3,11 +3,11 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("shipping_zones"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("shipping_zones")); ?></h3>
                 </div>
                 <div class="right">
                     <a href="<?= generateDashUrl('add_shipping_zone'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans("add_shipping_zone"); ?>
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans("add_shipping_zone")); ?>
                     </a>
                 </div>
             </div>
@@ -18,10 +18,10 @@
                             <table class="table table-bordered table-striped dataTableNoSort" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th scope="col"><?= trans("zone_name"); ?></th>
-                                    <th scope="col"><?= trans("regions"); ?></th>
-                                    <th scope="col"><?= trans("shipping_methods"); ?></th>
-                                    <th scope="col"><?= trans("options"); ?></th>
+                                    <th scope="col"><?= esc(trans("zone_name")); ?></th>
+                                    <th scope="col"><?= esc(trans("regions")); ?></th>
+                                    <th scope="col"><?= esc(trans("shipping_methods")); ?></th>
+                                    <th scope="col"><?= esc(trans("options")); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -62,9 +62,9 @@
                                             </td>
                                             <td style="width: 120px;">
                                                 <div class="btn-group btn-group-option">
-                                                    <a href="<?= generateDashUrl('edit_shipping_zone') . '/' . $shippingZone->id; ?>" class="btn btn-sm btn-default btn-edit" data-toggle="tooltip" title="<?= trans('edit'); ?>"><i class="fa fa-edit"></i></a>
-                                                    <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" data-toggle="tooltip" title="<?= trans('delete'); ?>" onclick="deleteItem('Dashboard/deleteShippingZonePost','<?= $shippingZone->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                        <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Dashboard/deleteShippingZonePost" data-id="<?= $shippingZone->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
+                                                    <a href="<?= generateDashUrl('edit_shipping_zone') . '/' . $shippingZone->id; ?>" class="btn btn-sm btn-default btn-edit" data-toggle="tooltip" title="<?= esc(trans('edit')); ?>"><i class="fa fa-edit"></i></a>
+                                                    <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" data-toggle="tooltip" title="<?= esc(trans('delete')); ?>" onclick="deleteItem('Dashboard/deleteShippingZonePost','<?= $shippingZone->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                        <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Dashboard/deleteShippingZonePost" data-id="<?= $shippingZone->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
                                                         <i class="fa fa-trash-can"></i></a>
                                                 </div>
                                             </td>
@@ -86,11 +86,11 @@
         <div class="box box-sm">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("shipping_delivery_times"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("shipping_delivery_times")); ?></h3>
                 </div>
                 <div class="right">
-                    <a href="javascript:void(0)" class="btn btn-success btn-add-new" data-toggle="modal" data-target="#modalAddDeliveryTime">
-                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans("add_delivery_time"); ?>
+                    <a href="#" class="btn btn-success btn-add-new btn-add-delivery-time">
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans("add_delivery_time")); ?>
                     </a>
                 </div>
             </div>
@@ -101,8 +101,8 @@
                             <table class="table table-bordered table-striped dataTableNoSort" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th scope="col"><?= trans("option"); ?></th>
-                                    <th scope="col"><?= trans("options"); ?></th>
+                                    <th scope="col"><?= esc(trans("option")); ?></th>
+                                    <th scope="col"><?= esc(trans("options")); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -112,9 +112,15 @@
                                             <td><?= @parseSerializedOptionArray($deliveryTime->option_array, selectedLangId()); ?></td>
                                             <td style="width: 120px;">
                                                 <div class="btn-group btn-group-option">
-                                                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-edit" data-toggle="modal" data-target="#modalEditDeliveryTime<?= $deliveryTime->id; ?>"><span data-toggle="tooltip" title="<?= trans('edit'); ?>"><i class="fa fa-edit"></i></span></a>
-                                                    <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" data-toggle="tooltip" title="<?= trans('delete'); ?>" onclick="deleteItem('Dashboard/deleteShippingDeliveryTimePost','<?= $deliveryTime->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                    <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Dashboard/deleteShippingDeliveryTimePost" data-id="<?= $deliveryTime->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-default btn-edit-delivery-time"
+                                                        data-id="<?= $deliveryTime->id; ?>">
+                                                            <span data-toggle="tooltip" title="<?= esc(trans('edit')); ?>">
+                                                                <i class="fa fa-edit"></i>
+                                                            </span>
+                                                        </a>
+                                                    <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" data-toggle="tooltip" title="<?= esc(trans('delete')); ?>" onclick="deleteItem('Dashboard/deleteShippingDeliveryTimePost','<?= $deliveryTime->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                    <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Dashboard/deleteShippingDeliveryTimePost" data-id="<?= $deliveryTime->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
                                                     <i class="fa fa-trash-can"></i></a>
                                                 </div>
                                             </td>
@@ -124,14 +130,14 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
-                                                        <h4 class="modal-title"><?= trans("edit_delivery_time"); ?></h4>
+                                                        <h4 class="modal-title"><?= esc(trans("edit_delivery_time")); ?></h4>
                                                     </div>
                                                     <form action="<?= base_url('edit-shipping-delivery-time-post'); ?>" method="post">
                                                         <?= csrf_field(); ?>
                                                         <input type="hidden" name="id" value="<?= $deliveryTime->id; ?>">
                                                         <div class="modal-body">
                                                             <div class="form-group">
-                                                                <label class="control-label"><?= trans("option"); ?></label>
+                                                                <label class="control-label"><?= esc(trans("option")); ?></label>
                                                                 <?php foreach ($activeLanguages as $language): ?>
                                                                     <input type="text" name="option_lang_<?= $language->id; ?>" value="<?= @parseSerializedOptionArray($deliveryTime->option_array, $language->id); ?>" class="form-control form-input m-b-5" placeholder="<?= esc($language->name); ?>" maxlength="255" data-type="text"
                                                                      required>
@@ -139,7 +145,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-success"><?= trans("submit"); ?></button>
+                                                            <button type="submit" class="btn btn-success"><?= esc(trans("submit")); ?></button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -155,7 +161,7 @@
             </div>
         </div>
         <div class="alert alert-info alert-large">
-            <?= trans("shipping_delivery_times_exp"); ?>
+            <?= esc(trans("shipping_delivery_times_exp")); ?>
         </div>
     </div>
 </div>
@@ -165,20 +171,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
-                <h4 class="modal-title"><?= trans("add_delivery_time"); ?></h4>
+                <h4 class="modal-title"><?= esc(trans("add_delivery_time")); ?></h4>
             </div>
             <form action="<?= base_url('add-shipping-delivery-time-post'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="control-label"><?= trans("option"); ?></label>
+                        <label class="control-label"><?= esc(trans("option")); ?></label>
                         <?php foreach ($activeLanguages as $language): ?>
                             <input type="text" name="option_lang_<?= $language->id; ?>" class="form-control form-input m-b-5" placeholder="<?= esc($language->name); ?>" maxlength="255" data-type="text" required>
                         <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"><?= trans("submit"); ?></button>
+                    <button type="submit" class="btn btn-success"><?= esc(trans("submit")); ?></button>
                 </div>
             </form>
         </div>

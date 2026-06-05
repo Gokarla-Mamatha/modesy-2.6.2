@@ -38,8 +38,8 @@ if ($listingType == 'sell_on_site' || $listingType == 'license_key' || $listingT
         } else {
             $formAction = base_url('add-to-cart');
             $formId = 'form-add-to-cart';
-            if (!$isSold && !$isCouponExpired) {
-                $formButtonHtml = '<div class="inline-buttons"><button id="add-to-cart-button"class="btn btn-md btn-custom btn-product-cart btn-add-to-cart"' . $disabledAttr . '><span class="btn-cart-icon"><i class="icon-cart-solid"></i></span>' . trans("add_to_cart") . '</button>';
+            if (!$isSold) {
+                $formButtonHtml = '<div class="inline-buttons"><button type="button" id="add-to-cart-button" class="btn btn-md btn-custom btn-product-cart btn-add-to-cart"' . $disabledAttr . '><span class="btn-cart-icon"><i class="icon-cart-solid"></i></span>' . trans("add_to_cart") . '</button>';
                 $formButtonHtml .= '<button type="button"id="btn-buy-now"class="btn btn-md btn-outline-primary"' . $disabledAttr . '>' . trans("buy_now") . '</button>';
                 $formButtonHtml .= '</div>';
             }
@@ -77,7 +77,7 @@ if ($listingType == 'sell_on_site' || $listingType == 'license_key' || $listingT
     }else {
         $needsFormWrapper = false;
         if (!$isSold && !empty($product->external_link)) {
-            $formButtonHtml = '<a href="' . $product->external_link . '" class="btn btn-md btn-custom btn-product-cart" target="_blank" rel="nofollow">' . trans("buy_now") . '</a>';
+            $formButtonHtml = '<a href="' . esc(safeUrl($product->external_link), 'attr') . '" class="btn btn-md btn-custom btn-product-cart" target="_blank" rel="nofollow noopener noreferrer">' . esc(trans("buy_now")) . '</a>';
         } else if (!$isSold) {
             if ($showVendorContactInfo) {
                 $formButtonHtml = '<button type="button" class="btn btn-md btn-custom btn-product-cart" data-toggle="modal" data-target="#messageModal">' . trans("contact_seller") . '</button>';
@@ -103,7 +103,7 @@ if ($needsFormWrapper): ?>
     </div>
     <?php if ($listingType == 'productbid' && $product->bidding_status !== 'closed'): ?>
     <div class="highest-bid-box mb-2">
-        <strong><?= trans("Highest Bid") ?>:</strong>
+        <strong><?= esc(trans("Highest Bid")) ?>:</strong>
         <span class="text-success">
             <?= ($highestBidAmount); ?>
         </span>
@@ -111,7 +111,7 @@ if ($needsFormWrapper): ?>
     <?php endif; ?>
     <div class="row">
         <div class="col-12 product-add-to-cart-container action-row">
-            <?php if (!$isSold && !$isCouponExpired && $listingType != 'ordinary_listing' && $productType != 'digital' && $listingType != 'productbid'): ?>
+            <?php if (!$isSold && $listingType != 'ordinary_listing' && $productType != 'digital' && $listingType != 'productbid'): ?>
             <div class="number-spinner">
                 <div class="input-group">
                     <span class="input-group-btn">
@@ -159,7 +159,7 @@ if ($needsFormWrapper): ?>
                             d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
                         <path
                             d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
-                    </svg>&nbsp;&nbsp;<?= trans('download') ?>
+                    </svg>&nbsp;&nbsp;<?= esc(trans('download')) ?>
                 </a>
             </div>
             <?php else: ?>
@@ -171,7 +171,7 @@ if ($needsFormWrapper): ?>
                             d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
                         <path
                             d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
-                    </svg>&nbsp;&nbsp;<?= trans('download') ?>
+                    </svg>&nbsp;&nbsp;<?= esc(trans('download')) ?>
                 </button>
             </div>
             <?php endif;
@@ -185,7 +185,7 @@ if ($needsFormWrapper): ?>
                             d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
                         <path
                             d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
-                    </svg>&nbsp;&nbsp;<?= trans('download') ?>
+                    </svg>&nbsp;&nbsp;<?= esc(trans('download')) ?>
                 </button>
             </div>
             <?php endif;
@@ -195,11 +195,11 @@ if ($needsFormWrapper): ?>
                 <?php if ($isProductInWishlist == 1): ?>
                 <button type="button" class="button-link btn-wishlist btn-add-remove-wishlist"
                     data-product-id="<?= $product->id ?>" data-type="details"><i class="icon-heart"
-                        aria-label="add-remove-wishlist"></i><span><?= trans('remove_from_wishlist') ?></span></button>
+                        aria-label="add-remove-wishlist"></i><span><?= esc(trans('remove_from_wishlist')) ?></span></button>
                 <?php else: ?>
                 <button type="button" class="button-link btn-wishlist btn-add-remove-wishlist"
                     data-product-id="<?= $product->id ?>" data-type="details"><i class="icon-heart-o"
-                        aria-label="add-remove-wishlist"></i><span><?= trans('add_to_wishlist') ?></span></button>
+                        aria-label="add-remove-wishlist"></i><span><?= esc(trans('add_to_wishlist')) ?></span></button>
                 <?php endif; ?>
             </div>
         </div>
@@ -207,8 +207,8 @@ if ($needsFormWrapper): ?>
         <?php if (!empty($product->demo_url)): ?>
         <div class="col-12 product-add-to-cart-container">
             <div class="button-container">
-                <a href="<?= $product->demo_url ?>" target="_blank" class="btn btn-md btn-live-preview"><i
-                        class="icon-preview"></i><?= trans('live_preview') ?></a>
+                <a href="<?= esc(safeUrl($product->demo_url), 'attr') ?>" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-md btn-live-preview"><i
+                        class="icon-preview"></i><?= esc(trans('live_preview')) ?></a>
             </div>
         </div>
         <?php endif; ?>
@@ -217,24 +217,25 @@ if ($needsFormWrapper): ?>
     <?php if ($needsFormWrapper): ?>
 </form>
 <?php endif; ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" <?= csp_script_nonce() ?>></script>
 <script <?= csp_script_nonce() ?>>
-$(document).on('click', '#btn-buy-now', function () {
+document.addEventListener('click', function (e) {
+    const btn = e.target.closest('#btn-buy-now');
+    if (!btn) return;
 
-    const form = $('#form-add-to-cart');
+    const form = document.getElementById('form-add-to-cart');
+    if (!form) return;
 
-    const buyNowForm = $('<form>', {
-        method: 'POST',
-        action: '<?= base_url('buy-now') ?>'
+    const buyNowForm = document.createElement('form');
+    buyNowForm.method = 'POST';
+    buyNowForm.action = '<?= base_url('buy-now') ?>';
+
+    const fieldNames = ['product_id', 'product_quantity', 'variant_id', 'extra_options', '<?= csrf_token() ?>'];
+    fieldNames.forEach(function (name) {
+        const input = form.querySelector('input[name="' + name + '"]');
+        if (input) buyNowForm.appendChild(input.cloneNode(true));
     });
 
-    buyNowForm.append(form.find('input[name="product_id"]').clone());
-    buyNowForm.append(form.find('input[name="product_quantity"]').clone());
-    buyNowForm.append(form.find('input[name="variant_id"]').clone());
-    buyNowForm.append(form.find('input[name="extra_options"]').clone());
-    buyNowForm.append(form.find('input[name="<?= csrf_token() ?>"]').clone());
-
-    $('body').append(buyNowForm);
+    document.body.appendChild(buyNowForm);
     buyNowForm.submit();
 });
 </script>

@@ -1,7 +1,7 @@
 <div class="box">
     <div class="box-header with-border">
         <div class="left">
-            <h3 class="box-title"><?= trans("account_deletion_requests"); ?></h3>
+            <h3 class="box-title"><?= esc(trans("account_deletion_requests")); ?></h3>
         </div>
     </div>
     <div class="box-body">
@@ -11,13 +11,13 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr role="row">
-                            <th width="20"><?= trans("id"); ?></th>
-                            <th><?= trans("user"); ?></th>
-                            <th><?= trans("email"); ?></th>
-                            <th><?= trans("status"); ?></th>
+                            <th width="20"><?= esc(trans("id")); ?></th>
+                            <th><?= esc(trans("user")); ?></th>
+                            <th><?= esc(trans("email")); ?></th>
+                            <th><?= esc(trans("status")); ?></th>
                             <th><?= str_replace(':', '', trans("last_seen")); ?></th>
-                            <th><?= trans("date"); ?></th>
-                            <th class="max-width-120"><?= trans("options"); ?></th>
+                            <th><?= esc(trans("date")); ?></th>
+                            <th class="max-width-120"><?= esc(trans("options")); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,16 +58,16 @@
                                     <td>
                                         <?= esc($user->email);
                                         if ($user->email_status == 1): ?>
-                                            <small class="text-success">(<?= trans("confirmed"); ?>)</small>
+                                            <small class="text-success">(<?= esc(trans("confirmed")); ?>)</small>
                                         <?php else: ?>
-                                            <small class="text-danger">(<?= trans("unconfirmed"); ?>)</small>
+                                            <small class="text-danger">(<?= esc(trans("unconfirmed")); ?>)</small>
                                         <?php endif; ?>
                                     </td>
                                     <td>
                                         <?php if ($user->banned == 0): ?>
-                                            <label class="label label-success"><?= trans('active'); ?></label>
+                                            <label class="label label-success"><?= esc(trans('active')); ?></label>
                                         <?php else: ?>
-                                            <label class="label label-danger"><?= trans('banned'); ?></label>
+                                            <label class="label label-danger"><?= esc(trans('banned')); ?></label>
                                         <?php endif; ?>
                                     </td>
                                     <td><?= timeAgo($user->last_seen); ?></td>
@@ -83,20 +83,20 @@
                                         }
                                         if ($showOptions): ?>
                                             <div class="dropdown">
-                                                <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= trans('select_option'); ?><span class="caret"></span></button>
+                                                <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?><span class="caret"></span></button>
                                                 <ul class="dropdown-menu options-dropdown">
                                                     <li>
-                                                        <a href="<?= adminUrl('user-details/' . $user->id); ?>"><i class="fa fa-info-circle option-icon"></i><?= trans('user_details'); ?></a>
+                                                        <a href="<?= adminUrl('user-details/' . $user->id); ?>"><i class="fa fa-info-circle option-icon"></i><?= esc(trans('user_details')); ?></a>
                                                     </li>
                                                     <li>
-                                                        <!-- <a href="javascript:void(0)" onclick="performAction('Membership/cancelAccountDeleteRequestPost','<?= $user->id; ?>','<?= trans("confirm_action", true); ?>');"><i class="fa fa-times option-icon"></i><?= trans('cancel'); ?></a> -->
-                                                       <a href="#" class="btn-perform-action"  data-url="<?= base_url('Membership/cancelAccountDeleteRequestPost'); ?>" data-id="<?= $user->id; ?>"  data-msg="<?= trans('confirm_action', true); ?>">
-                                                        <i class="fa fa-times option-icon"></i><?= trans('cancel'); ?> </a>
+                                                        <!-- <a href="javascript:void(0)" onclick="performAction('Membership/cancelAccountDeleteRequestPost','<?= $user->id; ?>','<?= esc(trans("confirm_action", true)); ?>');"><i class="fa fa-times option-icon"></i><?= esc(trans('cancel')); ?></a> -->
+                                                       <a href="#" class="btn-perform-action"  data-url="<?= base_url('Membership/cancelAccountDeleteRequestPost'); ?>" data-id="<?= $user->id; ?>"  data-msg="<?= esc(trans('confirm_action', true)); ?>">
+                                                        <i class="fa fa-times option-icon"></i><?= esc(trans('cancel')); ?> </a>
                                                     </li>
                                                     <li>
-                                                        <!-- <a href="javascript:void(0)" onclick="deleteItem('Membership/deleteUserPost','<?= $user->id; ?>','<?= trans("confirm_user", true); ?>');"> -->
-                                                        <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Membership/deleteUserPost" data-id="<?= $user->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
-                                                        <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?></a>
+                                                        <!-- <a href="javascript:void(0)" onclick="deleteItem('Membership/deleteUserPost','<?= $user->id; ?>','<?= esc(trans("confirm_user", true)); ?>');"> -->
+                                                        <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Membership/deleteUserPost" data-id="<?= $user->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
+                                                        <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -108,7 +108,7 @@
                         </tbody>
                     </table>
                     <?php if (empty($users)): ?>
-                        <p class="text-center text-muted"><?= trans("no_records_found"); ?></p>
+                        <p class="text-center text-muted"><?= esc(trans("no_records_found")); ?></p>
                     <?php endif; ?>
                 </div>
             </div>

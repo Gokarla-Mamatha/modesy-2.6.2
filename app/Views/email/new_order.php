@@ -10,16 +10,16 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td>
-                                    <h1 style="text-decoration: none; font-size: 24px;line-height: 28px;font-weight: bold"><?= trans("email_text_thank_for_order"); ?></h1>
+                                    <h1 style="text-decoration: none; font-size: 24px;line-height: 28px;font-weight: bold"><?= esc(trans("email_text_thank_for_order")); ?></h1>
                                     <div class="mailcontent" style="line-height: 26px;font-size: 14px;">
-                                        <p style='text-align: left;color: #555;'><?= trans("email_text_new_order"); ?></p><br>
-                                        <h2 style="margin-bottom: 10px; font-size: 16px;font-weight: 600;"><?= trans("order_information"); ?></h2>
+                                        <p style='text-align: left;color: #555;'><?= esc(trans("email_text_new_order")); ?></p><br>
+                                        <h2 style="margin-bottom: 10px; font-size: 16px;font-weight: 600;"><?= esc(trans("order_information")); ?></h2>
                                         <p style="color: #555;">
-                                            <?= trans("order"); ?>:&nbsp;#<?= $order->order_number; ?><br>
-                                            <?= trans("payment_status"); ?>:&nbsp;<?= trans($order->payment_status); ?><br>
-                                            <?= trans("payment_method"); ?>:&nbsp;<?= getPaymentMethod($order->payment_method); ?>
+                                            <?= esc(trans("order")); ?>:&nbsp;#<?= $order->order_number; ?><br>
+                                            <?= esc(trans("payment_status")); ?>:&nbsp;<?= esc(trans($order->payment_status)); ?><br>
+                                            <?= esc(trans("payment_method")); ?>:&nbsp;<?= getPaymentMethod($order->payment_method); ?>
                                             <br>
-                                            <?= trans("date"); ?>:&nbsp;<?= formatDate($order->created_at); ?><br>
+                                            <?= esc(trans("date")); ?>:&nbsp;<?= formatDate($order->created_at); ?><br>
                                         </p>
                                     </div>
                                     <?php $shipping = unserializeData($order->shipping);
@@ -27,31 +27,31 @@
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin-top: 30px;">
                                             <tr>
                                                 <td>
-                                                    <h3 style="margin-bottom: 10px; font-size: 16px;font-weight: 600;"><?= trans("shipping_address"); ?></h3>
+                                                    <h3 style="margin-bottom: 10px; font-size: 16px;font-weight: 600;"><?= esc(trans("shipping_address")); ?></h3>
                                                     <p style="color: #555; padding-right: 10px;">
-                                                        <?= trans("first_name"); ?>:&nbsp;<?= !empty($shipping->sFirstName) ? esc($shipping->sFirstName) : ''; ?><br>
-                                                        <?= trans("last_name"); ?>:&nbsp;<?= !empty($shipping->sLastName) ? esc($shipping->sLastName) : ''; ?><br>
-                                                        <?= trans("email"); ?>:&nbsp;<?= !empty($shipping->sEmail) ? esc($shipping->sEmail) : ''; ?><br>
-                                                        <?= trans("phone_number"); ?>:&nbsp;<?= !empty($shipping->sPhoneNumber) ? esc($shipping->sPhoneNumber) : ''; ?><br>
-                                                        <?= trans("address"); ?>:&nbsp;<?= !empty($shipping->sAddress) ? esc($shipping->sAddress) : ''; ?><br>
-                                                        <?= trans("country"); ?>:&nbsp;<?= !empty($shipping->sCountry) ? esc($shipping->sCountry) : ''; ?><br>
-                                                        <?= trans("state"); ?>:&nbsp;<?= !empty($shipping->sState) ? esc($shipping->sState) : ''; ?><br>
-                                                        <?= trans("city"); ?>:&nbsp;<?= !empty($shipping->sCity) ? esc($shipping->sCity) : ''; ?><br>
-                                                        <?= trans("zip_code"); ?>:&nbsp;<?= !empty($shipping->sZipCode) ? esc($shipping->sZipCode) : ''; ?><br>
+                                                        <?= esc(trans("first_name")); ?>:&nbsp;<?= !empty($shipping->sFirstName) ? esc($shipping->sFirstName) : ''; ?><br>
+                                                        <?= esc(trans("last_name")); ?>:&nbsp;<?= !empty($shipping->sLastName) ? esc($shipping->sLastName) : ''; ?><br>
+                                                        <?= esc(trans("email")); ?>:&nbsp;<?= !empty($shipping->sEmail) ? esc($shipping->sEmail) : ''; ?><br>
+                                                        <?= esc(trans("phone_number")); ?>:&nbsp;<?= !empty($shipping->sPhoneNumber) ? esc($shipping->sPhoneNumber) : ''; ?><br>
+                                                        <?= esc(trans("address")); ?>:&nbsp;<?= !empty($shipping->sAddress) ? esc($shipping->sAddress) : ''; ?><br>
+                                                        <?= esc(trans("country")); ?>:&nbsp;<?= !empty($shipping->sCountry) ? esc($shipping->sCountry) : ''; ?><br>
+                                                        <?= esc(trans("state")); ?>:&nbsp;<?= !empty($shipping->sState) ? esc($shipping->sState) : ''; ?><br>
+                                                        <?= esc(trans("city")); ?>:&nbsp;<?= !empty($shipping->sCity) ? esc($shipping->sCity) : ''; ?><br>
+                                                        <?= esc(trans("zip_code")); ?>:&nbsp;<?= !empty($shipping->sZipCode) ? esc($shipping->sZipCode) : ''; ?><br>
                                                     </p>
                                                 </td>
                                                 <td>
-                                                    <h3 style="margin-bottom: 10px; font-size: 16px;font-weight: 600;"><?= trans("billing_address"); ?></h3>
+                                                    <h3 style="margin-bottom: 10px; font-size: 16px;font-weight: 600;"><?= esc(trans("billing_address")); ?></h3>
                                                     <p style="color: #555; padding-right: 10px;">
-                                                        <?= trans("first_name"); ?>:&nbsp;<?= !empty($shipping->bFirstName) ? esc($shipping->bFirstName) : ''; ?><br>
-                                                        <?= trans("last_name"); ?>:&nbsp;<?= !empty($shipping->bLastName) ? esc($shipping->bLastName) : ''; ?><br>
-                                                        <?= trans("email"); ?>:&nbsp;<?= !empty($shipping->bEmail) ? esc($shipping->bEmail) : ''; ?><br>
-                                                        <?= trans("phone_number"); ?>:&nbsp;<?= !empty($shipping->bPhoneNumber) ? esc($shipping->bPhoneNumber) : ''; ?><br>
-                                                        <?= trans("address"); ?>:&nbsp;<?= !empty($shipping->bAddress) ? esc($shipping->bAddress) : ''; ?><br>
-                                                        <?= trans("country"); ?>:&nbsp;<?= !empty($shipping->bCountry) ? esc($shipping->bCountry) : ''; ?><br>
-                                                        <?= trans("state"); ?>:&nbsp;<?= !empty($shipping->bState) ? esc($shipping->bState) : ''; ?><br>
-                                                        <?= trans("city"); ?>:&nbsp;<?= !empty($shipping->bCity) ? esc($shipping->bCity) : ''; ?><br>
-                                                        <?= trans("zip_code"); ?>:&nbsp;<?= !empty($shipping->bZipCode) ? esc($shipping->bZipCode) : ''; ?><br>
+                                                        <?= esc(trans("first_name")); ?>:&nbsp;<?= !empty($shipping->bFirstName) ? esc($shipping->bFirstName) : ''; ?><br>
+                                                        <?= esc(trans("last_name")); ?>:&nbsp;<?= !empty($shipping->bLastName) ? esc($shipping->bLastName) : ''; ?><br>
+                                                        <?= esc(trans("email")); ?>:&nbsp;<?= !empty($shipping->bEmail) ? esc($shipping->bEmail) : ''; ?><br>
+                                                        <?= esc(trans("phone_number")); ?>:&nbsp;<?= !empty($shipping->bPhoneNumber) ? esc($shipping->bPhoneNumber) : ''; ?><br>
+                                                        <?= esc(trans("address")); ?>:&nbsp;<?= !empty($shipping->bAddress) ? esc($shipping->bAddress) : ''; ?><br>
+                                                        <?= esc(trans("country")); ?>:&nbsp;<?= !empty($shipping->bCountry) ? esc($shipping->bCountry) : ''; ?><br>
+                                                        <?= esc(trans("state")); ?>:&nbsp;<?= !empty($shipping->bState) ? esc($shipping->bState) : ''; ?><br>
+                                                        <?= esc(trans("city")); ?>:&nbsp;<?= !empty($shipping->bCity) ? esc($shipping->bCity) : ''; ?><br>
+                                                        <?= esc(trans("zip_code")); ?>:&nbsp;<?= !empty($shipping->bZipCode) ? esc($shipping->bZipCode) : ''; ?><br>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -59,11 +59,11 @@
                                     <?php endif; ?>
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="text-align: left" class="table-products">
                                         <tr>
-                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= trans("product"); ?></th>
-                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= trans("unit_price"); ?></th>
-                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= trans("quantity"); ?></th>
-                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= trans("vat"); ?></th>
-                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= trans("total"); ?></th>
+                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= esc(trans("product")); ?></th>
+                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= esc(trans("unit_price")); ?></th>
+                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= esc(trans("quantity")); ?></th>
+                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= esc(trans("vat")); ?></th>
+                                            <th style="padding: 10px 0; border-bottom: 2px solid #ddd;"><?= esc(trans("total")); ?></th>
                                         </tr>
                                         <?php if (!empty($orderProducts)):
                                             foreach ($orderProducts as $item): ?>
@@ -106,29 +106,29 @@
                                     </table>
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="text-align: right;margin-top: 40px;">
                                         <tr>
-                                            <td style="width: 70%"><?= trans("subtotal"); ?></td>
+                                            <td style="width: 70%"><?= esc(trans("subtotal")); ?></td>
                                             <td style="width: 30%;padding-right: 15px;font-weight: 600;"><?= priceFormatted($order->price_subtotal, $order->price_currency); ?></td>
                                         </tr>
                                         <?php $affiliate = unserializeData($order->affiliate_data);
                                         if (!empty($affiliate) && !empty($affiliate['discount'])): ?>
                                             <tr>
-                                                <td style="width: 70%"><?= trans("referral_discount"); ?>&nbsp;(<?= $affiliate['discountRate']; ?>%)</td>
+                                                <td style="width: 70%"><?= esc(trans("referral_discount")); ?>&nbsp;(<?= $affiliate['discountRate']; ?>%)</td>
                                                 <td style="width: 30%;padding-right: 15px;font-weight: 600;"><?= priceFormatted($affiliate['discount'], $order->price_currency); ?></td>
                                             </tr>
                                         <?php endif;
                                         if (!empty($order->price_vat)): ?>
                                             <tr>
-                                                <td style="width: 70%"><?= trans("vat"); ?></td>
+                                                <td style="width: 70%"><?= esc(trans("vat")); ?></td>
                                                 <td style="width: 30%;padding-right: 15px;font-weight: 600;"><?= priceFormatted($order->price_vat, $order->price_currency); ?></td>
                                             </tr>
                                         <?php endif; ?>
                                         <tr>
-                                            <td style="width: 70%"><?= trans("shipping"); ?></td>
+                                            <td style="width: 70%"><?= esc(trans("shipping")); ?></td>
                                             <td style="width: 30%;padding-right: 15px;font-weight: 600;"><?= priceFormatted($order->price_shipping, $order->price_currency); ?></td>
                                         </tr>
                                         <?php if ($order->coupon_discount > 0): ?>
                                             <tr>
-                                                <td style="width: 70%"><?= trans("coupon"); ?>&nbsp;&nbsp;[<?= esc($order->coupon_code); ?>]</td>
+                                                <td style="width: 70%"><?= esc(trans("coupon")); ?>&nbsp;&nbsp;[<?= esc($order->coupon_code); ?>]</td>
                                                 <td style="width: 30%;padding-right: 15px;font-weight: 600;">-<?= priceFormatted($order->coupon_discount, $order->price_currency); ?></td>
                                             </tr>
                                         <?php endif;
@@ -147,7 +147,7 @@
                                         endif;
                                         if (!empty($order->transaction_fee)): ?>
                                             <tr>
-                                                <td style="width: 70%"><?= trans("transaction_fee"); ?><?= $order->transaction_fee_rate ? ' (' . $order->transaction_fee_rate . '%)' : ''; ?></td>
+                                                <td style="width: 70%"><?= esc(trans("transaction_fee")); ?><?= $order->transaction_fee_rate ? ' (' . $order->transaction_fee_rate . '%)' : ''; ?></td>
                                                 <td style="width: 30%;padding-right: 15px;font-weight: 600;"><?= priceFormatted($order->transaction_fee, $order->price_currency); ?></td>
                                             </tr>
                                         <?php endif; ?>
@@ -157,11 +157,11 @@
                                             if (!empty($transaction) && $transaction->currency != $order->price_currency):
                                                 $priceSecondCurrency = priceCurrencyFormat($transaction->payment_amount, $transaction->currency);
                                             endif; ?>
-                                            <td style="width: 70%;font-weight: bold"><?= trans("total"); ?></td>
+                                            <td style="width: 70%;font-weight: bold"><?= esc(trans("total")); ?></td>
                                             <td style="width: 30%;padding-right: 15px;font-weight: 600;">
                                                 <?= priceFormatted($order->price_total, $order->price_currency);
                                                 if (!empty($priceSecondCurrency)):?>
-                                                    <br><span style="font-weight: 400;white-space: nowrap;">(<?= trans("paid"); ?>:&nbsp;<?= $priceSecondCurrency; ?>&nbsp;<?= $transaction->currency; ?>)</span>
+                                                    <br><span style="font-weight: 400;white-space: nowrap;">(<?= esc(trans("paid")); ?>:&nbsp;<?= $priceSecondCurrency; ?>&nbsp;<?= $transaction->currency; ?>)</span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -169,7 +169,7 @@
                                     <?php if ($order->buyer_type != 'guest'): ?>
                                         <p style='text-align: center;margin-top: 40px;'>
                                             <a href="<?= generateUrl('order_details') . '/' . $order->order_number; ?>" style='font-size: 14px;text-decoration: none;padding: 14px 40px;background-color: <?= $generalSettings->site_color; ?>;color: #ffffff !important; border-radius: 3px;'>
-                                                <?= trans("see_order_details"); ?>
+                                                <?= esc(trans("see_order_details")); ?>
                                             </a>
                                         </p>
                                     <?php endif; ?>

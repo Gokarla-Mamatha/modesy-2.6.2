@@ -52,57 +52,62 @@ class CartController extends BaseController
     /**
      * Add to Cart
      */
-    public function addToCart()
+   public function addToCart()
     {
         $productId = inputPost('product_id');
         $quantity = (int) inputPost('product_quantity');
         $variantId = inputPost('variant_id');
         $extraOptions = inputPost('extra_options');
+
         $product = $this->productModel->getActiveProduct($productId);
-        $data = ['result' => 0];
-            if (!empty($product) && $product->status == 1) {
-                if ($product->product_type === 'coupon') {
-                if (empty($variantId)) {
+
+        if (empty($product) || $product->status != 1) {
+            return jsonResponse([
+                'result' => 0,
+                'error' => 'Product not found or inactive.'
+            ]);
+        }
+
+        if ($product->product_type === 'coupon' && empty($variantId)) {
                     return jsonResponse([
                         'result' => 0,
                         'error'  => 'Please select a coupon option.'
                     ]);
-                }
-                $activeCouponCount = $this->productModel
-                    ->getActiveCouponCountByVariant($variantId);
+             }
+                    $cartItemId = $this->cartModel->addToCart($product, $quantity, $variantId, $extraOptions);
 
-                if ($activeCouponCount <= 0) {
-                    return jsonResponse([
-                        'result' => 0,
-                        'error'  => 'This coupon is no longer available.'
-                    ]);
-                }
-                if ((int)$quantity > $activeCouponCount) {
-                    return jsonResponse([
-                        'result' => 0,
-                        'error'  => 'Only ' . $activeCouponCount . ' coupons are available.'
-                    ]);
-                }
-            }
-            $cartItemId = $this->cartModel->addToCart($product, $quantity, $variantId, $extraOptions);
-            if (!empty($cartItemId)) {
-                $cart = $this->cartModel->getCart();
-                $cartItem = $this->cartModel->getCartItem($cartItemId);
-                if (empty($cart) || empty($cartItem)) {
-                    return jsonResponse(['result' => 0]);
-                }
-                $cartHasPhysicalProduct = !empty($cart) && !empty($cart->has_physical_product) ? true : false;
-                $relatedProducts = $this->productModel->getRelatedProducts($product->id, $product->category_id);
-                $data = [
-                    'result' => 1,
-                    'productCount' => 1,
-                    'htmlCartProduct' => view('cart/_modal_cart_product', ['cartItem' => $cartItem, 'product' => $product, 'relatedProducts' => $relatedProducts, 'cartHasPhysicalProduct' => $cartHasPhysicalProduct])
-                ];
-            }
+        if (empty($cartItemId)) {
+            return jsonResponse([
+                'result' => 0,
+                'error' => 'Unable to add product to cart.'
+            ]);
         }
-        return jsonResponse($data);
-    }
 
+        $cart = $this->cartModel->getCart();
+        $cartItem = $this->cartModel->getCartItem($cartItemId);
+
+        if (empty($cart) || empty($cartItem)) {
+            return jsonResponse([
+                'result' => 0,
+                'error' => 'Cart item not found after adding.'
+            ]);
+        }
+
+        $cartHasPhysicalProduct = !empty($cart->has_physical_product) ? true : false;
+        $relatedProducts = $this->productModel->getRelatedProducts($product->id, $product->category_id);
+
+        return jsonResponse([
+            'result' => 1,
+            'productCount' => $cart->num_items,
+            'htmlCartProduct' => view('cart/_modal_cart_product', [
+                'cartItem' => $cartItem,
+                'product' => $product,
+                'cart' => $cart,
+                'relatedProducts' => $relatedProducts,
+                'cartHasPhysicalProduct' => $cartHasPhysicalProduct
+            ])
+        ]);
+    }
     /**
      * Add to Cart Quote
      */
@@ -413,8 +418,8 @@ class CartController extends BaseController
             if (!empty($servicePayment->subtotal) && $servicePayment->serviceType != 'add_funds') {
 
                 $location = (object)[
-                    'country_id' => authCheck() ? user()->country_id : null,
-                    'state_id' => authCheck() ? user()->state_id : null
+                    'country_id' => !empty($servicePayment->locationCountryId) ? $servicePayment->locationCountryId : (authCheck() ? user()->country_id : null),
+                    'state_id' => !empty($servicePayment->locationStateId) ? $servicePayment->locationStateId : (authCheck() ? user()->state_id : null)
                 ];
 
                 //show location selection if it is required
@@ -459,6 +464,11 @@ class CartController extends BaseController
             $countryId = inputPost('country_id');
             $stateId = inputPost('state_id');
             $this->cartModel->setCartLocation($cart, $countryId, $stateId);
+            if (!empty($servicePayment)) {
+                $servicePayment->locationCountryId = clrNum($countryId);
+                $servicePayment->locationStateId = clrNum($stateId);
+                helperSetSession('mds_service_payment', $servicePayment);
+            }
 
             return redirect()->to(generateUrl('cart', 'payment_method'));
         }
@@ -523,8 +533,10 @@ class CartController extends BaseController
                 return redirect()->to(generateUrl('cart'));
             }
 
+            $serviceLocationCountryId = !empty($servicePayment->locationCountryId) ? $servicePayment->locationCountryId : user()->country_id;
+            $serviceLocationStateId = !empty($servicePayment->locationStateId) ? $servicePayment->locationStateId : user()->state_id;
             if ($this->paymentSettings->cart_location_selection && $servicePayment->serviceType != 'add_funds'
-                && (empty(user()->country_id) || empty(user()->state_id))) {
+                && (empty($serviceLocationCountryId) || empty($serviceLocationStateId))) {
                 return redirect()->to(generateUrl('cart', 'payment_method'));
             }
 
@@ -769,6 +781,26 @@ class CartController extends BaseController
         }
         return jsonResponse($data);
     }
+    public function saveShippingAddress()
+    {
+        log_message('error', 'saveShippingAddress called');
+        $cartRaw = $this->cartModel->fetchRawCartData();
+
+        if (empty($cartRaw)) {
+            return $this->response->setJSON([
+                'status' => 0
+            ]);
+        }
+
+        $_POST['shipping_address_id'] = inputPost('shipping_address_id');
+
+        $this->cartModel->setShippingData($cartRaw);
+        $this->cartModel->setShippingCost($cartRaw);
+
+        return $this->response->setJSON([
+            'status' => 1
+        ]);
+    }
     public function buyNow()
     {
         $productId    = inputPost('product_id');
@@ -787,18 +819,6 @@ class CartController extends BaseController
         if ($product->product_type === 'coupon') {
             if (empty($variantId)) {
                 return redirect()->back()->with('error', 'Please select a coupon option.');
-            }
-
-            $activeCouponCount = $this->productModel
-                ->getActiveCouponCountByVariant($variantId);
-
-            if ($activeCouponCount <= 0) {
-                return redirect()->back()->with('error', 'This coupon is no longer available.');
-            }
-
-            if ($quantity > $activeCouponCount) {
-                return redirect()->back()
-                    ->with('error', 'Only ' . $activeCouponCount . ' coupons are available.');
             }
         }
         session()->set('is_buy_now_checkout', true);

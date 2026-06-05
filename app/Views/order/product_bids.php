@@ -5,7 +5,7 @@
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a>
+                            <a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a>
                         </li>
                         <li class="breadcrumb-item active"><?= esc($title); ?></li>
                     </ol>
@@ -61,17 +61,17 @@
                                     <!-- STATUS -->
                                     <div class="col-12 col-lg-2 m-t-15-mobile">
                                         <?php if ($bid->status == 'active'): ?>
-                                            <span class="badge badge-warning-light"><?= trans('active'); ?></span>
+                                            <span class="badge badge-warning-light"><?= esc(trans('active')); ?></span>
                                         <?php elseif ($bid->status == 'accepted'): ?>
-                                            <span class="badge badge-success-light"style="text-transform: capitalize;"><?= trans('accepted'); ?></span>
+                                            <span class="badge badge-success-light"style="text-transform: capitalize;"><?= esc(trans('accepted')); ?></span>
                                         <?php elseif ($bid->status == 'closed'): ?>
-                                            <span class="badge badge-dark-light"><?= trans('Closed'); ?></span>
+                                            <span class="badge badge-dark-light"><?= esc(trans('Closed')); ?></span>
                                         <?php elseif ($bid->status == 'outbid'): ?>
-                                            <span class="badge badge-info-light"><?= trans('Outbid'); ?></span>
+                                            <span class="badge badge-info-light"><?= esc(trans('Outbid')); ?></span>
                                         <?php elseif ($bid->status == 'rejected'): ?>
-                                            <span class="badge badge-danger-light"><?= trans('Rejected'); ?></span>
+                                            <span class="badge badge-danger-light"><?= esc(trans('Rejected')); ?></span>
                                         <?php else: ?>
-                                            <span class="badge badge-secondary-light"><?= trans($bid->status); ?></span>
+                                            <span class="badge badge-secondary-light"><?= esc(trans($bid->status)); ?></span>
                                         <?php endif; ?>
                                     </div>
                                     <!-- BID INFO -->
@@ -108,14 +108,14 @@
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="id" value="<?= $bid->bid_id; ?>">
                                                 <button type="submit" class="btn btn-sm btn-info color-white m-b-5">
-                                                    <i class="icon-cart-solid"></i> <?= trans("add_to_cart"); ?>
+                                                    <i class="icon-cart-solid"></i> <?= esc(trans("add_to_cart")); ?>
                                                 </button>
                                             </form>
                                         <?php endif; ?>
-                                            <button type="button" class="btn btn-sm btn-light" onclick="deleteBid( <?= $bid->bid_id; ?>,'<?= trans("confirm_quote_request", true); ?>');">
+                                            <button type="button" class="btn btn-sm btn-light js-delete-bid" data-bid-id="<?= esc($bid->bid_id, 'attr'); ?>" data-msg="<?= esc(trans("confirm_quote_request", true), 'attr'); ?>">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="#6c757d" width="14" height="14">
                                                     <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
-                                                </svg>&nbsp;<?= trans("delete_quote"); ?>
+                                                </svg>&nbsp;<?= esc(trans("delete_quote")); ?>
                                             </button>
                                     </div>
 
@@ -124,7 +124,7 @@
 
                         <?php endif; endforeach; ?>
                     <?php else: ?>
-                        <p class="text-center text-muted"><?= trans("no_records_found"); ?></p>
+                        <p class="text-center text-muted"><?= esc(trans("no_records_found")); ?></p>
                     <?php endif; ?>
                 </div>
 
@@ -152,4 +152,8 @@ function deleteBid(id, message) {
         }
     });
 }
+
+$(document).on('click', '.js-delete-bid', function () {
+    deleteBid($(this).data('bid-id'), $(this).data('msg'));
+});
 </script>

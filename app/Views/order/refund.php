@@ -5,17 +5,17 @@
                 <div class="support">
                     <nav class="nav-breadcrumb" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                            <li class="breadcrumb-item"><a href="<?= generateUrl('refund_requests'); ?>"><?= trans("refund_requests"); ?></a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= trans("refund"); ?></li>
+                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                            <li class="breadcrumb-item"><a href="<?= generateUrl('refund_requests'); ?>"><?= esc(trans("refund_requests")); ?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("refund")); ?></li>
                         </ol>
                     </nav>
                     <div class="d-flex justify-content-between align-items-center m-b-15">
-                        <h1 class="page-title m-0"><?= trans("refund"); ?></h1>
+                        <h1 class="page-title m-0"><?= esc(trans("refund")); ?></h1>
                         <a href="<?= generateUrl('refund_requests'); ?>" class="btn btn-info color-white float-right">
                             <svg width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" fill="#fff">
                                 <path d="M384 1408q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm0-512q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1408 416v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5zm-1408-928q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1408 416v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5zm0-512v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5z"/>
-                            </svg>&nbsp;&nbsp;<?= trans("refund_requests") ?>
+                            </svg>&nbsp;&nbsp;<?= esc(trans("refund_requests")) ?>
                         </a>
                     </div>
                     <div class="row">
@@ -23,28 +23,28 @@
                             <div class="ticket-container shadow-sm">
                                 <div class="new-ticket-content new-ticket-content-reply">
                                     <div class="ticket-header">
-                                        <p><strong><?= trans("product"); ?>:&nbsp;
+                                        <p><strong><?= esc(trans("product")); ?>:&nbsp;
                                                 <a href="<?= generateUrl('order-details/') . esc($refundRequest->order_number); ?>" target="_blank">
                                                     #<?= esc($refundRequest->order_number); ?>&nbsp;-&nbsp;<?= esc($product->product_title); ?>
                                                 </a>
                                             </strong></p>
                                         <div class="row row-ticket-details">
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("status"); ?></strong>
+                                                <strong><?= esc(trans("status")); ?></strong>
                                                 <?php if ($refundRequest->status == 1): ?>
-                                                    <label class="badge badge-lg badge-success"><?= trans("approved"); ?></label>
+                                                    <label class="badge badge-lg badge-success"><?= esc(trans("approved")); ?></label>
                                                 <?php elseif ($refundRequest->status == 2): ?>
-                                                    <label class="badge badge-lg badge-danger"><?= trans("declined"); ?></label>
+                                                    <label class="badge badge-lg badge-danger"><?= esc(trans("declined")); ?></label>
                                                 <?php else: ?>
-                                                    <label class="badge badge-lg badge-secondary"><?= trans("order_processing"); ?></label>
+                                                    <label class="badge badge-lg badge-secondary"><?= esc(trans("order_processing")); ?></label>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("total"); ?></strong>
+                                                <strong><?= esc(trans("total")); ?></strong>
                                                 <span><?= priceFormatted($product->product_total_price, $product->product_currency); ?></span>
                                             </div>
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("seller"); ?></strong>
+                                                <strong><?= esc(trans("seller")); ?></strong>
                                                 <span>
                                                 <?php $seller = getUser($product->seller_id);
                                                 if (!empty($seller)): ?>
@@ -53,11 +53,11 @@
                                                 </span>
                                             </div>
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("last_update"); ?></strong>
+                                                <strong><?= esc(trans("last_update")); ?></strong>
                                                 <span><?= timeAgo($refundRequest->updated_at); ?></span>
                                             </div>
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("date"); ?></strong>
+                                                <strong><?= esc(trans("date")); ?></strong>
                                                 <span><?= formatDate($refundRequest->created_at); ?></span>
                                             </div>
                                         </div>
@@ -96,10 +96,10 @@
                                                         <img class="img-profile" alt="" width="48" height="48">
                                                         <div class="media-body refund-media-body text-right">
                                                             <div class="form-group">
-                                                                <textarea name="message" class="form-control form-textarea" placeholder="<?= trans("write_a_message", true); ?>" data-type="text" required></textarea>
+                                                                <textarea name="message" class="form-control form-textarea" placeholder="<?= esc(trans("write_a_message", true)); ?>" data-type="text" required></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                <button type="submit" class="btn btn-md btn-custom"><?= trans("submit"); ?></button>
+                                                                <button type="submit" class="btn btn-md btn-custom"><?= esc(trans("submit")); ?></button>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -109,17 +109,17 @@
                                         <div class="col-sm-12 text-center m-t-30">
                                             <?php if ($refundRequest->status == 1): ?>
                                                 <div class="alert alert-success" role="alert">
-                                                    <?= trans("refund_approved_exp"); ?>
+                                                    <?= esc(trans("refund_approved_exp")); ?>
                                                 </div>
                                             <?php endif;
                                             if ($refundRequest->status == 2): ?>
                                                 <div class="alert alert-danger" role="alert">
-                                                    <?= trans("refund_declined_exp"); ?>
+                                                    <?= esc(trans("refund_declined_exp")); ?>
                                                 </div>
                                                 <a href="<?= generateUrl('help_center', 'submit_request'); ?>" class="btn btn-lg btn-custom">
                                                     <svg width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" fill="#fff">
                                                         <path d="M896 0q182 0 348 71t286 191 191 286 71 348-71 348-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71zm0 128q-190 0-361 90l194 194q82-28 167-28t167 28l194-194q-171-90-361-90zm-678 1129l194-194q-28-82-28-167t28-167l-194-194q-90 171-90 361t90 361zm678 407q190 0 361-90l-194-194q-82 28-167 28t-167-28l-194 194q171 90 361 90zm0-384q159 0 271.5-112.5t112.5-271.5-112.5-271.5-271.5-112.5-271.5 112.5-112.5 271.5 112.5 271.5 271.5 112.5zm484-217l194 194q90-171 90-361t-90-361l-194 194q28 82 28 167t-28 167z"/>
-                                                    </svg>&nbsp;&nbsp;<?= trans("contact_support"); ?>
+                                                    </svg>&nbsp;&nbsp;<?= esc(trans("contact_support")); ?>
                                                 </a>
                                             <?php endif; ?>
                                         </div>

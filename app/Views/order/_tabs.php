@@ -11,7 +11,7 @@
                         </g>
                     </svg>
                 </div>
-                <?= trans("orders"); ?>
+                <?= esc(trans("orders")); ?>
             </a>
         </li>
         <?php if ($generalSettings->bidding_system == 1): ?>
@@ -25,7 +25,7 @@
                             </g>
                         </svg>
                     </div>
-                    <?= trans("quote_requests"); ?>
+                    <?= esc(trans("quote_requests")); ?>
                 </a>
             </li>
         <?php endif;
@@ -37,7 +37,7 @@
                         <path d="m14 13-7.5 7.5c-.83.83-2.17.83-3 0s-.83-2.17 0-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 8 8"/><path d="m21 11-8-8"/><path d="m11 13 8-8"/><path d="m11 13 3 3"/><path d="m13 11 3 3"/>
                         </svg>
                     </div>
-                    <?= trans("Bids"); ?>
+                    <?= esc(trans("Bids")); ?>
                 </a>
             </li>
         <?php endif;
@@ -52,7 +52,7 @@
                             </g>
                         </svg>
                     </div>
-                    <?= trans("downloads"); ?>
+                    <?= esc(trans("downloads")); ?>
                 </a>
             </li>
         <?php endif;
@@ -67,7 +67,7 @@
                             </g>
                         </svg>
                     </div>
-                    <?= trans("refund_requests"); ?>
+                    <?= esc(trans("refund_requests")); ?>
                 </a>
             </li>
         <?php endif; ?>

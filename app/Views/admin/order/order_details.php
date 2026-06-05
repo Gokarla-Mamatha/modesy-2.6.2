@@ -4,35 +4,35 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('order_details'); ?></h3>
+                    <h3 class="box-title"><?= esc(trans('order_details')); ?></h3>
                 </div>
                 <div class="right">
                     <?php if ($order->status != 2): ?>
-                        <a href="<?= langBaseUrl('invoice/' . esc($order->order_number) . '?type=admin'); ?>" target="_blank" class="btn btn-sm btn-info btn-sale-options btn-view-invoice"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;<?= trans('view_invoice'); ?></a>
+                        <a href="<?= langBaseUrl('invoice/' . esc($order->order_number) . '?type=admin'); ?>" target="_blank" class="btn btn-sm btn-info btn-sale-options btn-view-invoice"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;<?= esc(trans('view_invoice')); ?></a>
                     <?php endif; ?>
                 </div>
             </div>
             <div class="box-body">
                 <div class="row" style="margin-bottom: 30px;">
                     <div class="col-sm-12 col-md-12 col-lg-6">
-                        <h4 class="sec-title"><?= trans("order"); ?>#<?= esc($order->order_number); ?></h4>
+                        <h4 class="sec-title"><?= esc(trans("order")); ?>#<?= esc($order->order_number); ?></h4>
                         <div class="row row-details">
                             <div class="col-xs-12 col-sm-4 col-right">
-                                <strong> <?= trans("status"); ?></strong>
+                                <strong> <?= esc(trans("status")); ?></strong>
                             </div>
                             <div class="col-sm-8">
                                 <?php if ($order->status == 1): ?>
-                                    <label class="label label-success"><?= trans("completed"); ?></label>
+                                    <label class="label label-success"><?= esc(trans("completed")); ?></label>
                                 <?php elseif ($order->status == 2): ?>
-                                    <label class="label label-danger"><?= trans("cancelled"); ?></label>
+                                    <label class="label label-danger"><?= esc(trans("cancelled")); ?></label>
                                 <?php else: ?>
-                                    <label class="label label-default"><?= trans("order_processing"); ?></label>
+                                    <label class="label label-default"><?= esc(trans("order_processing")); ?></label>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="row row-details">
                             <div class="col-xs-12 col-sm-4 col-right">
-                                <strong> <?= trans("order_id"); ?></strong>
+                                <strong> <?= esc(trans("order_id")); ?></strong>
                             </div>
                             <div class="col-sm-8">
                                 <strong class="font-right"><?= $order->id; ?></strong>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="row row-details">
                             <div class="col-xs-12 col-sm-4 col-right">
-                                <strong> <?= trans("order_number"); ?></strong>
+                                <strong> <?= esc(trans("order_number")); ?></strong>
                             </div>
                             <div class="col-sm-8">
                                 <strong class="font-right"><?= esc($order->order_number); ?></strong>
@@ -49,7 +49,7 @@
                         <?php if ($order->status != 2): ?>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("payment_method"); ?></strong>
+                                    <strong> <?= esc(trans("payment_method")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("currency"); ?></strong>
+                                    <strong> <?= esc(trans("currency")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= $order->price_currency; ?></strong>
@@ -67,16 +67,16 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("payment_status"); ?></strong>
+                                    <strong> <?= esc(trans("payment_status")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
-                                    <strong class="font-right"><?= trans($order->payment_status); ?></strong>
+                                    <strong class="font-right"><?= esc(trans($order->payment_status)); ?></strong>
                                 </div>
                             </div>
                         <?php endif; ?>
                         <div class="row row-details">
                             <div class="col-xs-12 col-sm-4 col-right">
-                                <strong> <?= trans("updated"); ?></strong>
+                                <strong> <?= esc(trans("updated")); ?></strong>
                             </div>
                             <div class="col-sm-8">
                                 <strong class="font-right"><?= formatDate($order->updated_at); ?>&nbsp;(<?= timeAgo($order->updated_at); ?>)</strong>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="row row-details">
                             <div class="col-xs-12 col-sm-4 col-right">
-                                <strong> <?= trans("date"); ?></strong>
+                                <strong> <?= esc(trans("date")); ?></strong>
                             </div>
                             <div class="col-sm-8">
                                 <strong class="font-right"><?= formatDate($order->created_at); ?>&nbsp;(<?= timeAgo($order->created_at); ?>)</strong>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-6">
-                        <h4 class="sec-title"><?= trans("buyer"); ?></h4>
+                        <h4 class="sec-title"><?= esc(trans("buyer")); ?></h4>
                         <?php if ($order->buyer_id == 0): ?>
                             <div class="row row-details">
                                 <div class="col-xs-12">
@@ -104,19 +104,19 @@
                             <?php if (!empty($shipping)): ?>
                                 <div class="row row-details">
                                     <div class="col-xs-12 col-sm-4 col-right">
-                                        <strong> <?= trans("buyer"); ?></strong>
+                                        <strong> <?= esc(trans("buyer")); ?></strong>
                                     </div>
                                     <div class="col-sm-8">
                                         <strong class="font-right">
                                             <?= !empty($shipping->sFirstName) ? esc($shipping->sFirstName) : ''; ?>
                                             <?= !empty($shipping->sLastName) ? esc($shipping->sLastName) : ''; ?>
-                                            <label class="label bg-olive"><?= trans("guest"); ?></label>
+                                            <label class="label bg-olive"><?= esc(trans("guest")); ?></label>
                                         </strong>
                                     </div>
                                 </div>
                                 <div class="row row-details">
                                     <div class="col-xs-12 col-sm-4 col-right">
-                                        <strong> <?= trans("phone_number"); ?></strong>
+                                        <strong> <?= esc(trans("phone_number")); ?></strong>
                                     </div>
                                     <div class="col-sm-8">
                                         <strong class="font-right"><?= !empty($shipping->sPhoneNumber) ? esc($shipping->sPhoneNumber) : ''; ?></strong>
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="row row-details">
                                     <div class="col-xs-12 col-sm-4 col-right">
-                                        <strong> <?= trans("email"); ?></strong>
+                                        <strong> <?= esc(trans("email")); ?></strong>
                                     </div>
                                     <div class="col-sm-8">
                                         <strong class="font-right"><?= !empty($shipping->sEmail) ? esc($shipping->sEmail) : ''; ?></strong>
@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="row row-details">
                                     <div class="col-xs-12 col-sm-4 col-right">
-                                        <strong> <?= trans("username"); ?></strong>
+                                        <strong> <?= esc(trans("username")); ?></strong>
                                     </div>
                                     <div class="col-sm-8">
                                         <strong class="font-right">
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="row row-details">
                                     <div class="col-xs-12 col-sm-4 col-right">
-                                        <strong> <?= trans("phone_number"); ?></strong>
+                                        <strong> <?= esc(trans("phone_number")); ?></strong>
                                     </div>
                                     <div class="col-sm-8">
                                         <strong class="font-right"><?= esc($buyer->phone_number); ?></strong>
@@ -163,7 +163,7 @@
                                 </div>
                                 <div class="row row-details">
                                     <div class="col-xs-12 col-sm-4 col-right">
-                                        <strong> <?= trans("email"); ?></strong>
+                                        <strong> <?= esc(trans("email")); ?></strong>
                                     </div>
                                     <div class="col-sm-8">
                                         <strong class="font-right"><?= esc($buyer->email); ?></strong>
@@ -176,10 +176,10 @@
                 <?php if (!empty($shipping)): ?>
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-6">
-                            <h4 class="sec-title"><?= trans("billing_address"); ?></h4>
+                            <h4 class="sec-title"><?= esc(trans("billing_address")); ?></h4>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("first_name"); ?></strong>
+                                    <strong> <?= esc(trans("first_name")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bFirstName) ? esc($shipping->bFirstName) : ''; ?></strong>
@@ -187,7 +187,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("last_name"); ?></strong>
+                                    <strong> <?= esc(trans("last_name")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bLastName) ? esc($shipping->bLastName) : ''; ?></strong>
@@ -195,7 +195,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("email"); ?></strong>
+                                    <strong> <?= esc(trans("email")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bEmail) ? esc($shipping->bEmail) : ''; ?></strong>
@@ -203,7 +203,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("phone_number"); ?></strong>
+                                    <strong> <?= esc(trans("phone_number")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bPhoneNumber) ? esc($shipping->bPhoneNumber) : ''; ?></strong>
@@ -211,7 +211,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("address"); ?></strong>
+                                    <strong> <?= esc(trans("address")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bAddress) ? esc($shipping->bAddress) : ''; ?></strong>
@@ -219,7 +219,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("country"); ?></strong>
+                                    <strong> <?= esc(trans("country")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bCountry) ? esc($shipping->bCountry) : ''; ?></strong>
@@ -227,7 +227,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("state"); ?></strong>
+                                    <strong> <?= esc(trans("state")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bState) ? esc($shipping->bState) : ''; ?></strong>
@@ -235,7 +235,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("city"); ?></strong>
+                                    <strong> <?= esc(trans("city")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bCity) ? esc($shipping->bCity) : ''; ?></strong>
@@ -243,7 +243,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("zip_code"); ?></strong>
+                                    <strong> <?= esc(trans("zip_code")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->bZipCode) ? esc($shipping->bZipCode) : ''; ?></strong>
@@ -251,10 +251,10 @@
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6">
-                            <h4 class="sec-title"><?= trans("shipping_address"); ?></h4>
+                            <h4 class="sec-title"><?= esc(trans("shipping_address")); ?></h4>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("first_name"); ?></strong>
+                                    <strong> <?= esc(trans("first_name")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sFirstName) ? esc($shipping->sFirstName) : ''; ?></strong>
@@ -262,7 +262,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("last_name"); ?></strong>
+                                    <strong> <?= esc(trans("last_name")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sLastName) ? esc($shipping->sLastName) : ''; ?></strong>
@@ -270,7 +270,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("email"); ?></strong>
+                                    <strong> <?= esc(trans("email")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sEmail) ? esc($shipping->sEmail) : ''; ?></strong>
@@ -278,7 +278,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("phone_number"); ?></strong>
+                                    <strong> <?= esc(trans("phone_number")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sPhoneNumber) ? esc($shipping->sPhoneNumber) : ''; ?></strong>
@@ -286,7 +286,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("address"); ?></strong>
+                                    <strong> <?= esc(trans("address")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sAddress) ? esc($shipping->sAddress) : ''; ?></strong>
@@ -294,7 +294,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("country"); ?></strong>
+                                    <strong> <?= esc(trans("country")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sCountry) ? esc($shipping->sCountry) : ''; ?></strong>
@@ -302,7 +302,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("state"); ?></strong>
+                                    <strong> <?= esc(trans("state")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sState) ? esc($shipping->sState) : ''; ?></strong>
@@ -310,7 +310,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("city"); ?></strong>
+                                    <strong> <?= esc(trans("city")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sCity) ? esc($shipping->sCity) : ''; ?></strong>
@@ -318,7 +318,7 @@
                             </div>
                             <div class="row row-details">
                                 <div class="col-xs-12 col-sm-4 col-right">
-                                    <strong> <?= trans("zip_code"); ?></strong>
+                                    <strong> <?= esc(trans("zip_code")); ?></strong>
                                 </div>
                                 <div class="col-sm-8">
                                     <strong class="font-right"><?= !empty($shipping->sZipCode) ? esc($shipping->sZipCode) : ''; ?></strong>
@@ -333,7 +333,7 @@
     <div class="col-sm-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans("products"); ?></h3>
+                <h3 class="box-title"><?= esc(trans("products")); ?></h3>
             </div>
             <div class="box-body">
                 <div class="row">
@@ -342,16 +342,16 @@
                             <table class="table table-bordered" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th><?= trans('product_id'); ?></th>
-                                    <th><?= trans('product'); ?></th>
-                                    <th><?= trans('unit_price'); ?></th>
-                                    <th><?= trans('quantity'); ?></th>
-                                    <th><?= trans('vat'); ?></th>
-                                    <th><?= trans('shipping_cost'); ?></th>
-                                    <th><?= trans('total'); ?></th>
-                                    <th><?= trans('status'); ?></th>
-                                    <th><?= trans('updated'); ?></th>
-                                    <th class="max-width-120"><?= trans('options'); ?></th>
+                                    <th><?= esc(trans('product_id')); ?></th>
+                                    <th><?= esc(trans('product')); ?></th>
+                                    <th><?= esc(trans('unit_price')); ?></th>
+                                    <th><?= esc(trans('quantity')); ?></th>
+                                    <th><?= esc(trans('vat')); ?></th>
+                                    <th><?= esc(trans('shipping_cost')); ?></th>
+                                    <th><?= esc(trans('total')); ?></th>
+                                    <th><?= esc(trans('status')); ?></th>
+                                    <th><?= esc(trans('updated')); ?></th>
+                                    <th class="max-width-120"><?= esc(trans('options')); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -378,7 +378,7 @@
                                             <div style="height: 100px;">
                                                 <?php if ($item->product_type == 'digital'): ?>
                                                     <p>
-                                                        <label class="label bg-black"><i class="icon-cloud-download"></i><?= trans("instant_download"); ?></label>
+                                                        <label class="label bg-black"><i class="icon-cloud-download"></i><?= esc(trans("instant_download")); ?></label>
                                                     </p>
                                                 <?php endif; ?>
                                                 <a href="<?= generateProductUrl($product); ?>" target="_blank" class="table-product-title"><?= esc($item->product_title); ?></a>
@@ -396,10 +396,10 @@
                                                     </div>
                                                 <?php endif; ?>
                                                 <?php if (!empty($itemSku)): ?>
-                                                    <div><?= trans("sku"); ?>:&nbsp;<?= esc($itemSku); ?></div>
+                                                    <div><?= esc(trans("sku")); ?>:&nbsp;<?= esc($itemSku); ?></div>
                                                 <?php endif; ?>
                                                 <p>
-                                                    <span><?= trans("by"); ?></span>
+                                                    <span><?= esc(trans("by")); ?></span>
                                                     <?php $seller = getUser($item->seller_id);
                                                     if (!empty($seller)): ?>
                                                         <a href="<?= generateProfileUrl($seller->slug); ?>" target="_blank" class="table-product-title"><strong><?= esc(getUsername($seller)); ?></strong></a>
@@ -421,14 +421,14 @@
                                         </td>
                                         <td><?= priceFormatted($item->product_total_price, $item->product_currency); ?></td>
                                         <td>
-                                            <strong><?= trans($item->order_status); ?></strong>
+                                            <strong><?= esc(trans($item->order_status)); ?></strong>
                                             <?php if ($item->buyer_id == 0):
                                                 if ($item->is_approved == 0): ?>
                                                     <br>
                                                     <form action="<?= base_url('OrderAdmin/approveGuestOrderProduct'); ?>" method="post">
                                                         <?= csrf_field(); ?>
                                                         <input type="hidden" name="order_product_id" value="<?= $item->id; ?>">
-                                                        <button type="submit" class="btn btn-xs btn-primary m-t-5"><?= trans("approve"); ?></button>
+                                                        <button type="submit" class="btn btn-xs btn-primary m-t-5"><?= esc(trans("approve")); ?></button>
                                                     </form>
                                                 <?php endif;
                                             endif; ?>
@@ -442,19 +442,19 @@
                                             <?php if ($order->status != 2):
                                                 if (($item->product_type == 'digital' && $item->order_status != 'completed') || $item->product_type == 'physical'): ?>
                                                     <div class="dropdown">
-                                                        <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= trans('select_option'); ?>
+                                                        <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?>
                                                             <span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu options-dropdown">
                                                             <?php if ($item->order_status != 'refund_approved'): ?>
                                                                 <li>
-                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#updateStatusModal_<?= $item->id; ?>"><i class="fa fa-edit option-icon"></i><?= trans('update_order_status'); ?></a>
+                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#updateStatusModal_<?= $item->id; ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('update_order_status')); ?></a>
                                                                 </li>
                                                             <?php endif; ?>
                                                             <li>
-                                                                <!-- <a href="javascript:void(0)" onclick="deleteItem('OrderAdmin/deleteOrderProductPost','<?= $item->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                                    <a href="#" class="btn-item-delete" data-url="OrderAdmin/deleteOrderProductPost" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_user', true); ?>">
-                                                                    <i class="fa fa-times option-icon"></i><?= trans('delete'); ?></a>
+                                                                <!-- <a href="javascript:void(0)" onclick="deleteItem('OrderAdmin/deleteOrderProductPost','<?= $item->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                                    <a href="#" class="btn-item-delete" data-url="OrderAdmin/deleteOrderProductPost" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_user', true)); ?>">
+                                                                    <i class="fa fa-times option-icon"></i><?= esc(trans('delete')); ?></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -465,14 +465,14 @@
                                         <tr class="tr-shipping " style="background-color: #F3F6F9 !important; margin-top:40px !important;">
                                             <td colspan="10">
                                                 <div class="order-shipping-tracking-number">
-                                                    <p><strong><?= trans("shipping") ?></strong></p>
-                                                    <p class="font-600 m-t-5"><?= trans("shipping_method") ?>:&nbsp;<?= trans($item->shipping_method); ?></p>
+                                                    <p><strong><?= esc(trans("shipping")) ?></strong></p>
+                                                    <p class="font-600 m-t-5"><?= esc(trans("shipping_method")) ?>:&nbsp;<?= esc(trans($item->shipping_method)); ?></p>
                                                     <?php if ($item->order_status == 'shipped' || $item->order_status == 'completed'): ?>
-                                                        <p class="font-600 m-t-15 m-b-5"><?= trans("order_has_been_shipped"); ?></p>
-                                                        <p class="m-b-5"><?= trans("tracking_code") ?>:&nbsp;<?= esc($item->shipping_tracking_number); ?></p>
-                                                        <p class="m-0"><?= trans("tracking_url") ?>: <a href="<?= esc($item->shipping_tracking_url); ?>" target="_blank" class="link-underlined"><?= esc($item->shipping_tracking_url); ?></a></p>
+                                                        <p class="font-600 m-t-15 m-b-5"><?= esc(trans("order_has_been_shipped")); ?></p>
+                                                        <p class="m-b-5"><?= esc(trans("tracking_code")) ?>:&nbsp;<?= esc($item->shipping_tracking_number); ?></p>
+                                                        <p class="m-0"><?= esc(trans("tracking_url")) ?>: <a href="<?= esc($item->shipping_tracking_url); ?>" target="_blank" class="link-underlined"><?= esc($item->shipping_tracking_url); ?></a></p>
                                                     <?php else: ?>
-                                                        <p><?= trans("order_not_yet_shipped"); ?></p>
+                                                        <p><?= esc(trans("order_not_yet_shipped")); ?></p>
                                                     <?php endif; ?>
                                                 </div>
                                             </td>
@@ -485,7 +485,7 @@
                             </table>
                             <?php if (empty($orderProducts)): ?>
                                 <p class="text-center">
-                                    <?= trans("no_records_found"); ?>
+                                    <?= esc(trans("no_records_found")); ?>
                                 </p>
                             <?php endif; ?>
                         </div>
@@ -499,7 +499,7 @@
         <div class="box-payment-total">
             <div class="row row-details">
                 <div class="col-xs-12 col-sm-6 col-left">
-                    <strong> <?= trans("subtotal"); ?></strong>
+                    <strong> <?= esc(trans("subtotal")); ?></strong>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-right text-right">
                     <strong class="font-right"><?= priceFormatted($order->price_subtotal, $order->price_currency); ?></strong>
@@ -509,7 +509,7 @@
             if (!empty($affiliate) && !empty($affiliate['discount'])): ?>
                 <div class="row row-details">
                     <div class="col-xs-12 col-sm-6 col-left">
-                        <strong><?= trans("referral_discount"); ?>&nbsp;(<?= $affiliate['discountRate']; ?>%)</strong>
+                        <strong><?= esc(trans("referral_discount")); ?>&nbsp;(<?= $affiliate['discountRate']; ?>%)</strong>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-right text-right">
                         <strong class="font-right">-&nbsp;<?= priceCurrencyFormat($affiliate['discount'], $order->price_currency); ?></strong>
@@ -519,7 +519,7 @@
             <?php if (!empty($order->price_vat) && $order->price_vat > 0): ?>
                 <div class="row row-details">
                     <div class="col-xs-12 col-sm-6 col-left">
-                        <strong><?= trans("vat"); ?></strong>
+                        <strong><?= esc(trans("vat")); ?></strong>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-right text-right">
                         <strong class="font-right"><?= priceFormatted($order->price_vat, $order->price_currency); ?></strong>
@@ -529,7 +529,7 @@
             if ($isOrderHasPhysicalProduct): ?>
                 <div class="row row-details">
                     <div class="col-xs-12 col-sm-6 col-left">
-                        <strong><?= trans("shipping"); ?></strong>
+                        <strong><?= esc(trans("shipping")); ?></strong>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-right text-right">
                         <strong class="font-right"><?= priceFormatted($order->price_shipping, $order->price_currency); ?></strong>
@@ -539,7 +539,7 @@
             if ($order->coupon_discount > 0): ?>
                 <div class="row row-details">
                     <div class="col-xs-12 col-sm-6 col-left">
-                        <strong><?= trans("coupon"); ?>&nbsp;&nbsp;[<?= esc($order->coupon_code); ?>]</strong>
+                        <strong><?= esc(trans("coupon")); ?>&nbsp;&nbsp;[<?= esc($order->coupon_code); ?>]</strong>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-right text-right">
                         <strong class="font-right">-&nbsp;<?= priceFormatted($order->coupon_discount, $order->price_currency); ?></strong>
@@ -564,7 +564,7 @@
             if (!empty($order->transaction_fee) && $order->transaction_fee > 0): ?>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-left">
-                        <strong><?= trans("transaction_fee"); ?><?= $order->transaction_fee_rate ? ' (' . $order->transaction_fee_rate . '%)' : ''; ?></strong>
+                        <strong><?= esc(trans("transaction_fee")); ?><?= $order->transaction_fee_rate ? ' (' . $order->transaction_fee_rate . '%)' : ''; ?></strong>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-right text-right">
                         <strong class="font-right"><?= priceFormatted($order->transaction_fee, $order->price_currency); ?></strong>
@@ -574,7 +574,7 @@
             <hr>
             <div class="row row-details">
                 <div class="col-xs-12 col-sm-6 col-left">
-                    <strong><?= trans("total"); ?></strong>
+                    <strong><?= esc(trans("total")); ?></strong>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-right text-right">
                     <?php $priceSecondCurrency = "";
@@ -584,7 +584,7 @@
                     <strong>
                         <?= priceFormatted($order->price_total, $order->price_currency);
                         if (!empty($priceSecondCurrency)):?>
-                            <br><span style="font-weight: 400;white-space: nowrap;">(<?= trans("paid"); ?>:&nbsp;<?= $priceSecondCurrency; ?>&nbsp;<?= $transaction->currency; ?>)</span>
+                            <br><span style="font-weight: 400;white-space: nowrap;">(<?= esc(trans("paid")); ?>:&nbsp;<?= $priceSecondCurrency; ?>&nbsp;<?= $transaction->currency; ?>)</span>
                         <?php endif; ?>
                     </strong>
                 </div>
@@ -603,30 +603,30 @@
                         <input type="hidden" name="id" value="<?= $item->id; ?>">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><?= trans("update_order_status"); ?></h4>
+                            <h4 class="modal-title"><?= esc(trans("update_order_status")); ?></h4>
                         </div>
                         <div class="modal-body">
                             <div class="table-order-status">
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans('status'); ?></label>
+                                    <label class="control-label"><?= esc(trans('status')); ?></label>
                                     <select name="order_status" class="form-control">
                                         <?php if ($item->product_type == 'physical'): ?>
-                                            <option value="pending_payment" <?= $item->order_status == 'pending_payment' ? 'selected' : ''; ?>><?= trans("pending_payment"); ?></option>
-                                            <option value="payment_received" <?= $item->order_status == 'payment_received' ? 'selected' : ''; ?>><?= trans("payment_received"); ?></option>
-                                            <option value="order_processing" <?= $item->order_status == 'order_processing' ? 'selected' : ''; ?>><?= trans("order_processing"); ?></option>
-                                            <option value="shipped" <?= $item->order_status == 'shipped' ? 'selected' : ''; ?>><?= trans("shipped"); ?></option>
+                                            <option value="pending_payment" <?= $item->order_status == 'pending_payment' ? 'selected' : ''; ?>><?= esc(trans("pending_payment")); ?></option>
+                                            <option value="payment_received" <?= $item->order_status == 'payment_received' ? 'selected' : ''; ?>><?= esc(trans("payment_received")); ?></option>
+                                            <option value="order_processing" <?= $item->order_status == 'order_processing' ? 'selected' : ''; ?>><?= esc(trans("order_processing")); ?></option>
+                                            <option value="shipped" <?= $item->order_status == 'shipped' ? 'selected' : ''; ?>><?= esc(trans("shipped")); ?></option>
                                         <?php endif; ?>
                                         <?php if ($item->buyer_id != 0 && $item->order_status != 'completed'): ?>
-                                            <option value="completed" <?= $item->order_status == 'completed' ? 'selected' : ''; ?>><?= trans("completed"); ?></option>
+                                            <option value="completed" <?= $item->order_status == 'completed' ? 'selected' : ''; ?>><?= esc(trans("completed")); ?></option>
                                         <?php endif; ?>
-                                        <option value="refund_approved" <?= $item->order_status == 'refund_approved' ? 'selected' : ''; ?>><?= trans("refund_approved"); ?></option>
+                                        <option value="refund_approved" <?= $item->order_status == 'refund_approved' ? 'selected' : ''; ?>><?= esc(trans("refund_approved")); ?></option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success"><?= trans("save_changes"); ?></button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><?= trans("close"); ?></button>
+                            <button type="submit" class="btn btn-success"><?= esc(trans("save_changes")); ?></button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><?= esc(trans("close")); ?></button>
                         </div>
                     </form>
                 </div>

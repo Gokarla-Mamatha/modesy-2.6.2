@@ -11,11 +11,11 @@
                     <table class="table table-striped">
                         <thead>
                         <tr role="row">
-                            <th scope="col"><?= trans("id"); ?></th>
-                            <th scope="col"><?= trans("username"); ?></th>
-                            <th scope="col"><?= trans("comment"); ?></th>
-                            <th scope="col"><?= trans("product"); ?></th>
-                            <th scope="col"><?= trans("date"); ?></th>
+                            <th scope="col"><?= esc(trans("id")); ?></th>
+                            <th scope="col"><?= esc(trans("username")); ?></th>
+                            <th scope="col"><?= esc(trans("comment")); ?></th>
+                            <th scope="col"><?= esc(trans("product")); ?></th>
+                            <th scope="col"><?= esc(trans("date")); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -39,7 +39,7 @@
                 </div>
                 <?php if (empty($comments)): ?>
                     <p class="text-center">
-                        <?= trans("no_records_found"); ?>
+                        <?= esc(trans("no_records_found")); ?>
                     </p>
                 <?php endif; ?>
             </div>
@@ -48,7 +48,7 @@
             <div class="col-sm-12">
                 <?php if (!empty($comments)): ?>
                     <div class="number-of-entries">
-                        <span><?= trans("number_of_entries"); ?>:</span>&nbsp;&nbsp;<strong><?= $numRows; ?></strong>
+                        <span><?= esc(trans("number_of_entries")); ?>:</span>&nbsp;&nbsp;<strong><?= $numRows; ?></strong>
                     </div>
                 <?php endif; ?>
                 <div class="table-pagination">

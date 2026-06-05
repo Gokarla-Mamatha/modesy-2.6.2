@@ -26,7 +26,7 @@
             <tr>
                 <td class="content-block">
                     <?php if (!empty($subscriber)): ?>
-                        <?= trans("dont_want_receive_emails"); ?> <a href="<?= base_url(); ?>auth/unsubscribe?token=<?= !empty($subscriber->token) ? $subscriber->token : ''; ?>"><?= trans("unsubscribe"); ?></a>.
+                        <?= esc(trans("dont_want_receive_emails")); ?> <a href="<?= base_url(); ?>auth/unsubscribe?token=<?= !empty($subscriber->token) ? $subscriber->token : ''; ?>"><?= esc(trans("unsubscribe")); ?></a>.
                     <?php endif; ?>
                 </td>
             </tr>

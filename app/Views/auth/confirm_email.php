@@ -10,7 +10,7 @@
                         <h1 class="title">
                             <?= $success; ?>
                         </h1>
-                        <a href="<?= langBaseUrl(); ?>" class="btn btn-md btn-custom btn-block m-t-30"><?= trans("goto_home"); ?></a>
+                        <a href="<?= langBaseUrl(); ?>" class="btn btn-md btn-custom btn-block m-t-30"><?= esc(trans("goto_home")); ?></a>
                     <?php elseif (!empty($error)): ?>
                         <div class="error-circle">
                             <i class="icon-close-thin"></i>
@@ -18,7 +18,7 @@
                         <h1 class="title">
                             <?= $error; ?>
                         </h1>
-                        <a href="<?= langBaseUrl(); ?>" class="btn btn-md btn-custom btn-block m-t-30"><?= trans("goto_home"); ?></a>
+                        <a href="<?= langBaseUrl(); ?>" class="btn btn-md btn-custom btn-block m-t-30"><?= esc(trans("goto_home")); ?></a>
                     <?php endif; ?>
                 </div>
             </div>

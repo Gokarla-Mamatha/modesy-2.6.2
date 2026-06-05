@@ -12,7 +12,7 @@
             </div>
             <div class="row-custom">
                 <p class="p-last-seen">
-                    <span class="last-seen <?= isUserOnline($user->last_seen) ? 'last-seen-online' : ''; ?>"> <i class="icon-circle"></i> <?= trans("last_seen"); ?>&nbsp;<?= timeAgo($user->last_seen); ?></span>
+                    <span class="last-seen <?= isUserOnline($user->last_seen) ? 'last-seen-online' : ''; ?>"> <i class="icon-circle"></i> <?= esc(trans("last_seen")); ?>&nbsp;<?= timeAgo($user->last_seen); ?></span>
                 </p>
             </div>
             <div class="row-custom">
@@ -30,7 +30,7 @@
                             <circle cx="176" cy="416" r="32"/>
                             <circle cx="400" cy="416" r="32"/>
                             <path d="M456.8 120.78a23.92 23.92 0 00-18.56-8.78H133.89l-6.13-34.78A16 16 0 00112 64H48a16 16 0 000 32h50.58l45.66 258.78A16 16 0 00160 368h256a16 16 0 000-32H173.42l-5.64-32h241.66A24.07 24.07 0 00433 284.71l28.8-144a24 24 0 00-5-19.93z"/>
-                        </svg>&nbsp;<?= esc($user->number_of_sales); ?>&nbsp;<?= trans("sales_number"); ?>
+                        </svg>&nbsp;<?= esc($user->number_of_sales); ?>&nbsp;<?= esc(trans("sales_number")); ?>
                     </div>
                 <?php endif; ?>
             </div>
@@ -39,16 +39,16 @@
             </div>
           
             <div class="row-custom user-contact">
-                <span class="info"><?= trans("member_since"); ?>&nbsp;<?= formatDateLong($user->created_at, false); ?></span>
+                <span class="info"><?= esc(trans("member_since")); ?>&nbsp;<?= formatDateLong($user->created_at, false); ?></span>
                 <?php if ($generalSettings->show_vendor_contact_information == 1):
                     if (!empty($user->phone_number) && $user->show_phone == 1): ?>
                         <div class="info"><i class="icon-phone"></i>
-                            <button type="button" id="show_phone_number_profile" class="button-link" aria-label="show phone number"><?= trans("show"); ?></button>
+                            <button type="button" id="show_phone_number_profile" class="button-link" aria-label="show phone number"><?= esc(trans("show")); ?></button>
                             <a href="tel:<?= esc($user->phone_number); ?>" id="phone_number_profile" class="display-none"><?= esc($user->phone_number); ?></a>
                         </div>
                       <?php endif;
                     if (!empty($user->email) && $user->show_email == 1): ?>
-                        <span class="info"><i class="icon-envelope"></i><?= $user->email; ?></span>
+                        <span class="info"><i class="icon-envelope"></i><?= esc($user->email); ?></span>
                     <?php endif;
                 endif;
                 if (!empty(getLocation($user)) && $user->show_location == 1): ?>
@@ -102,22 +102,22 @@
                     <?php if (authCheck()):
                         if (user()->id != $user->id): ?>
                             <?php if ($user->vacation_mode == 0): ?>
-                                <button class="btn btn-md btn-outline-gray" data-toggle="modal" data-target="#messageModal"><i class="icon-envelope"></i>&nbsp;<?= trans("ask_question") ?></button>
+                                <button class="btn btn-md btn-outline-gray" data-toggle="modal" data-target="#messageModal"><i class="icon-envelope"></i>&nbsp;<?= esc(trans("ask_question")) ?></button>
                             <?php endif; ?>
                             <form action="<?= base_url('follow-unfollow-user-post'); ?>" method="post" class="form-inline">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="back_url" value="<?= getCurrentUrl(); ?>">
                                 <input type="hidden" name="user_id" value="<?= $user->id; ?>">
                                 <?php if (isUserFollows($user->id, user()->id)): ?>
-                                    <button class="btn btn-md btn-outline-gray"><i class="icon-user-minus"></i>&nbsp;<?= trans("unfollow"); ?></button>
+                                    <button class="btn btn-md btn-outline-gray"><i class="icon-user-minus"></i>&nbsp;<?= esc(trans("unfollow")); ?></button>
                                 <?php else: ?>
-                                    <button class="btn btn-md btn-outline-gray"><i class="icon-user-plus"></i>&nbsp;<?= trans("follow"); ?></button>
+                                    <button class="btn btn-md btn-outline-gray"><i class="icon-user-plus"></i>&nbsp;<?= esc(trans("follow")); ?></button>
                                 <?php endif; ?>
                             </form>
                         <?php endif;
                     else: ?>
-                        <button class="btn btn-md btn-outline-gray" data-toggle="modal" data-target="#loginModal"><i class="icon-envelope"></i>&nbsp;<?= trans("ask_question") ?></button>
-                        <button class="btn btn-md btn-outline-gray" data-toggle="modal" data-target="#loginModal"><i class="icon-user-plus"></i>&nbsp;<?= trans("follow"); ?></button>
+                        <button class="btn btn-md btn-outline-gray" data-toggle="modal" data-target="#loginModal"><i class="icon-envelope"></i>&nbsp;<?= esc(trans("ask_question")) ?></button>
+                        <button class="btn btn-md btn-outline-gray" data-toggle="modal" data-target="#loginModal"><i class="icon-user-plus"></i>&nbsp;<?= esc(trans("follow")); ?></button>
                     <?php endif; ?>
                 </div>
                 <?php if ($generalSettings->show_vendor_contact_information == 1): ?>

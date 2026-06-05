@@ -2,7 +2,7 @@
     //select continen
     $(document).on("change", "#select_continents", function () {
         $("#btn_select_region_container").show();
-        getCountriesByContinent($(this).val(), "<?= trans("all_countries"); ?>");
+        getCountriesByContinent($(this).val(), "<?= esc(trans("all_countries")); ?>");
         if ($(this).val() != '' && $(this).val() != 0) {
             $("#form_group_countries").show();
         } else {
@@ -12,7 +12,7 @@
     //select country
     $(document).on("change", "#select_countries", function () {
         $("#btn_select_region_container").show();
-        getStatesByCountry($(this).val(), "<?= trans("all_states"); ?>");
+        getStatesByCountry($(this).val(), "<?= esc(trans("all_states")); ?>");
         $("#form_group_states").show();
     });
     //select region
@@ -39,7 +39,7 @@
         region_text = region_text.replace(/^\/+|\/+$/g, '');
         if (region_id) {
             if (!$('#lc-' + input_name + '-' + region_id).length) {
-                $("#selected_regions_container").append('<div id="lc-' + input_name + '-' + region_id + '" class="region">' + region_text + '<a href="javascript:void(0)"><i class="fa fa-times"></i></a><input type="hidden" value="' + region_id + '" name="' + input_name + '[]"></div>');
+                $("#selected_regions_container").append('<div id="lc-' + input_name + '-' + region_id + '" class="region">' + region_text + '<a class="region-remove" style="cursor:pointer;"><i class="fa fa-times"></i></a><input type="hidden" value="' + region_id + '" name="' + input_name + '[]"></div>');
             }
         }
         //reset
@@ -52,6 +52,10 @@
     });
     //delete location
     $(document).on("click", ".region a", function () {
+        var id = $(this).attr('data-id');
+        if (id) {
+            deleteShippingLocation(id);
+        }
         $(this).parent().remove();
     });
 

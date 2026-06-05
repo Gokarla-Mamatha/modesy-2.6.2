@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-8">
                             <div class="left">
-                                <h1 class="cart-section-title"><?= trans("checkout"); ?></h1>
+                                <h1 class="cart-section-title"><?= esc(trans("checkout")); ?></h1>
                                <?php
                                $buyNowItem = session()->get('buy_now_item');
                                 if ($buyNowItem) {
@@ -33,9 +33,9 @@
                                 ?>
                                 <?php if (!authCheck() && !$hasCouponProduct): ?>
                                     <p class="font-600 text-center m-b-30">
-                                        <?= trans("checking_out_as_guest"); ?>.&nbsp;<?= trans("have_account"); ?>&nbsp;
+                                        <?= esc(trans("checking_out_as_guest")); ?>.&nbsp;<?= esc(trans("have_account")); ?>&nbsp;
                                         <a href="javascript:void(0)" class="link" data-toggle="modal" data-target="#loginModal">
-                                            <strong class="link-underlined"><?= trans("login"); ?></strong>
+                                            <strong class="link-underlined"><?= esc(trans("login")); ?></strong>
                                         </a>
                                     </p>
                                 <?php endif; ?>
@@ -44,7 +44,7 @@
                                         <strong>Guest Checkout Notice:</strong><br>
                                         Coupon codes will be sent to your email after purchase.
                                         <a href="javascript:void(0)" class="link" data-toggle="modal" data-target="#loginModal">
-                                            <strong class="link-underlined m-1"><?= trans("login"); ?></strong>
+                                            <strong class="link-underlined m-1"><?= esc(trans("login")); ?></strong>
                                         </a> to access your coupons anytime.
                                     </div>
                                 <?php endif; ?>
@@ -52,7 +52,7 @@
 
                                 <?php if ($showLocationSelection): ?>
                                     <div class="tab-checkout tab-checkout-open">
-                                        <h2 class="title"><?= trans("location"); ?></h2>
+                                        <h2 class="title"><?= esc(trans("location")); ?></h2>
                                         <?= view('cart/_cart_location'); ?>
                                     </div>
                                 <?php else: ?>
@@ -63,15 +63,15 @@
 
                                     <?php if (!empty($cart->has_physical_product) && $productSettings->marketplace_shipping == 1 && $checkoutType == 'product'): ?>
                                         <div class="tab-checkout tab-checkout-closed">
-                                            <a href="<?= generateUrl('cart', 'shipping'); ?>"><h2 class="title">1.&nbsp;&nbsp;<?= trans("shipping_information"); ?></h2></a>
-                                            <a href="<?= generateUrl('cart', 'shipping'); ?>" class="link-underlined edit-link"><?= trans("edit"); ?></a>
+                                            <a href="<?= generateUrl('cart', 'shipping'); ?>"><h2 class="title">1.&nbsp;&nbsp;<?= esc(trans("shipping_information")); ?></h2></a>
+                                            <a href="<?= generateUrl('cart', 'shipping'); ?>" class="link-underlined edit-link"><?= esc(trans("edit")); ?></a>
                                         </div>
                                     <?php endif; ?>
 
                                     <div class="tab-checkout tab-checkout-open">
                                         <h2 class="title">
                                             <?= !empty($cart->has_physical_product) && $productSettings->marketplace_shipping == 1 && $checkoutType == 'product' ? '2.' : '1.'; ?>
-                                            &nbsp;<?= trans("payment_method"); ?>
+                                            &nbsp;<?= esc(trans("payment_method")); ?>
                                         </h2>
 
                                         <div class="row">
@@ -112,8 +112,8 @@
                                                                 <label class="custom-control-label" for="option_bank_transfer"></label>
                                                             </div>
                                                             <div class="option-details">
-                                                                <div class="method-name"><?= trans("bank_transfer"); ?></div>
-                                                                <div class="method-desc"><?= trans("bank_transfer_exp"); ?></div>
+                                                                <div class="method-name"><?= esc(trans("bank_transfer")); ?></div>
+                                                                <div class="method-desc"><?= esc(trans("bank_transfer_exp")); ?></div>
                                                             </div>
                                                         </div>
                                                     <?php endif;
@@ -124,8 +124,8 @@
                                                                 <label class="custom-control-label" for="option_cash_on_delivery"></label>
                                                             </div>
                                                             <div class="option-details">
-                                                                <div class="method-name"><?= trans("cash_on_delivery"); ?></div>
-                                                                <div class="method-desc"><?= trans("cash_on_delivery_exp"); ?></div>
+                                                                <div class="method-name"><?= esc(trans("cash_on_delivery")); ?></div>
+                                                                <div class="method-desc"><?= esc(trans("cash_on_delivery_exp")); ?></div>
                                                             </div>
                                                         </div>
                                                     <?php endif;
@@ -136,8 +136,8 @@
                                                                 <label class="custom-control-label" for="option_wallet_balance"></label>
                                                             </div>
                                                             <div class="option-details">
-                                                                <div class="method-name"><?= trans("wallet_balance"); ?>&nbsp;(<b><?= trans("balance"); ?>:&nbsp;<?= priceFormatted(user()->balance, $payWithBalance->currency, true); ?></b>)</div>
-                                                                <div class="method-desc"><?= trans("pay_wallet_balance_exp"); ?></div>
+                                                                <div class="method-name"><?= esc(trans("wallet_balance")); ?>&nbsp;(<b><?= esc(trans("balance")); ?>:&nbsp;<?= priceFormatted(user()->balance, $payWithBalance->currency, true); ?></b>)</div>
+                                                                <div class="method-desc"><?= esc(trans("pay_wallet_balance_exp")); ?></div>
                                                             </div>
                                                         </div>
                                                     <?php endif; ?>
@@ -146,7 +146,7 @@
                                                 <div class="form-group m-t-30">
                                                     <div class="custom-control custom-checkbox custom-control-validate-input">
                                                         <input type="checkbox" class="custom-control-input" name="terms" id="checkbox_terms" required>
-                                                        <label for="checkbox_terms" class="custom-control-label"><?= trans("terms_conditions_exp"); ?>&nbsp;
+                                                        <label for="checkbox_terms" class="custom-control-label"><?= esc(trans("terms_conditions_exp")); ?>&nbsp;
                                                             <?php $pageTerms = getPageByDefaultName('terms_conditions', selectedLangId());
                                                             if (!empty($pageTerms)): ?>
                                                                 <a href="<?= generateUrl($pageTerms->page_default_name); ?>" class="link-terms" target="_blank"><strong><?= esc($pageTerms->title); ?></strong></a>
@@ -160,14 +160,14 @@
                                                 } ?>
 
                                                 <div class="form-group m-t-30 text-right">
-                                                    <button type="submit" name="action_type" value="update" class="btn btn-lg btn-custom btn-continue-payment"><?= trans("continue_to_payment") ?>&nbsp;&nbsp;<i class="icon-arrow-right m-0"></i></button>
+                                                    <button type="submit" name="action_type" value="update" class="btn btn-lg btn-custom btn-continue-payment"><?= esc(trans("continue_to_payment")) ?>&nbsp;&nbsp;<i class="icon-arrow-right m-0"></i></button>
                                                 </div>
                                             </div>
 
                                             <?php if ($checkoutType == 'product'): ?>
                                                 <div class="row">
                                                     <div class="col-12 m-t-30">
-                                                        <a href="<?= generateUrl('cart'); ?>" class="link-underlined link-return-cart"><&nbsp;<?= trans("return_to_cart"); ?></a>
+                                                        <a href="<?= generateUrl('cart'); ?>" class="link-underlined link-return-cart"><&nbsp;<?= esc(trans("return_to_cart")); ?></a>
                                                     </div>
                                                 </div>
                                             <?php endif; ?>
@@ -178,7 +178,7 @@
                                     <div class="tab-checkout tab-checkout-closed-bordered">
                                         <h2 class="title">
                                             <?= !empty($cart->has_physical_product) && $productSettings->marketplace_shipping == 1 && $checkoutType == 'product' ? '3.' : '2.'; ?>
-                                            &nbsp;<?= trans("payment"); ?>
+                                            &nbsp;<?= esc(trans("payment")); ?>
                                         </h2>
                                     </div>
 

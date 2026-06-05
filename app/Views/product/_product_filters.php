@@ -4,7 +4,7 @@
         <!-- Category Filter -->
         <?php if (!empty($category) || !empty($categories)): ?>
             <div class="filter-item filter-item-categories p-t-0">
-                <h4 class="title"><?= trans("category"); ?></h4>
+                <h4 class="title"><?= esc(trans("category")); ?></h4>
                 <?php
                 $isProfilePage = $isProfilePage ?? false;
                 $backUrl = '';
@@ -113,20 +113,20 @@
             $filterPmin = esc(inputGet('p_min'));
             $filterPmax = esc(inputGet('p_max')); ?>
             <div class="filter-item border-0">
-                <h4 class="title"><?= trans("price"); ?></h4>
+                <h4 class="title"><?= esc(trans("price")); ?></h4>
                 <div class="d-flex justify-content-between inputs-filter-price">
-                    <input type="number" id="price_min" value="<?= $filterPmin; ?>" class="min-price form-control form-input" placeholder="<?= trans("min"); ?>" min="0" step="0.01">
+                    <input type="number" id="price_min" value="<?= $filterPmin; ?>" class="min-price form-control form-input" placeholder="<?= esc(trans("min")); ?>" min="0" step="0.01">
                     <span>-</span>
-                    <input type="number" id="price_max" value="<?= $filterPmax; ?>" class="max-price form-control form-input" placeholder="<?= trans("max"); ?>" min="0" step="0.01">
+                    <input type="number" id="price_max" value="<?= $filterPmax; ?>" class="max-price form-control form-input" placeholder="<?= esc(trans("max")); ?>" min="0" step="0.01">
                 </div>
             </div>
         <?php endif; ?>
 
         <!-- Keyword Filter -->
         <div class="filter-item m-b-0">
-            <h4 class="title"><?= trans("filter_by_keyword"); ?></h4>
-            <input type="text" id="input_filter_keyword" value="<?= esc(removeSpecialCharacters(urldecode(inputGet('search') ?? ''))); ?>" class="form-control form-input" placeholder="<?= trans("keyword"); ?>" maxlength="255">
-            <button type="button" id="btnFilterByKeyword" class="btn btn-md btn-filter-product"><i class="icon-search"></i>&nbsp;<?= trans("filter"); ?></button>
+            <h4 class="title"><?= esc(trans("filter_by_keyword")); ?></h4>
+            <input type="text" id="input_filter_keyword" value="<?= esc(removeSpecialCharacters(urldecode(inputGet('search') ?? ''))); ?>" class="form-control form-input" placeholder="<?= esc(trans("keyword")); ?>" maxlength="255">
+            <button type="button" id="btnFilterByKeyword" class="btn btn-md btn-filter-product"><i class="icon-search"></i>&nbsp;<?= esc(trans("filter")); ?></button>
         </div>
     </div>
 

@@ -6,37 +6,37 @@
             <div class="box-header with-border">
                 <div class="left">
                     <h3 class="box-title"><?= $title; ?></h3><br>
-                    <small><?= trans("bulk_product_upload_exp"); ?></small>
+                    <small><?= esc(trans("bulk_product_upload_exp")); ?></small>
                 </div>
             </div>
             <div class="box-body">
                 <div class="form-group">
-                    <label class="control-label"><?= trans("select_action"); ?></label>
+                    <label class="control-label"><?= esc(trans("select_action")); ?></label>
                     <select id="select_bulk_action" name="bulk_action" class="form-control custom-select" required>
-                        <option value=""><?= trans("select"); ?></option>
-                        <option value="add_products"><?= trans("add_products"); ?></option>
-                        <option value="edit_products"><?= trans("edit_products"); ?></option>
+                        <option value=""><?= esc(trans("select")); ?></option>
+                        <option value="add_products"><?= esc(trans("add_products")); ?></option>
+                        <option value="edit_products"><?= esc(trans("edit_products")); ?></option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("listing_type"); ?></label>
+                    <label class="control-label"><?= esc(trans("listing_type")); ?></label>
                     <select id="select_listing_type" name="listing_type" class="form-control custom-select" required>
-                        <option value=""><?= trans("select"); ?></option>
+                        <option value=""><?= esc(trans("select")); ?></option>
                         <?php if ($generalSettings->marketplace_system == 1): ?>
-                            <option value="sell_on_site"><?= trans('add_product_for_sale'); ?></option>
+                            <option value="sell_on_site"><?= esc(trans('add_product_for_sale')); ?></option>
                         <?php endif;
                         if ($generalSettings->classified_ads_system == 1): ?>
-                            <option value="ordinary_listing"><?= trans('add_product_services_listing'); ?></option>
+                            <option value="ordinary_listing"><?= esc(trans('add_product_services_listing')); ?></option>
                         <?php endif;
                         if ($generalSettings->bidding_system == 1): ?>
-                            <option value="bidding"><?= trans('add_product_get_price_requests'); ?></option>
+                            <option value="bidding"><?= esc(trans('add_product_get_price_requests')); ?></option>
                         <?php endif; ?>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="control-label"><?= trans("currency"); ?></label>
+                    <label class="control-label"><?= esc(trans("currency")); ?></label>
                     <select id="select_currency" name="currency" class="form-control custom-select" required>
-                        <option value=""><?= trans("select"); ?></option>
+                        <option value=""><?= esc(trans("select")); ?></option>
                         <?php if (!empty($currencies)):
                             foreach ($currencies as $key => $value): ?>
                                 <option value="<?= $key; ?>" <?= $key == $defaultCurrency->code ? 'class="default"' : ''; ?>><?= $key . ' (' . $value->symbol . ')'; ?></option>
@@ -45,28 +45,28 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="control-label"><?= trans('csv_file'); ?></label>
+                    <label class="control-label"><?= esc(trans('csv_file')); ?></label>
                     <div class="dm-uploader-container">
                         <div id="drag-and-drop-zone" class="dm-uploader dm-uploader-csv text-center">
                             <p class="dm-upload-icon">
                                 <i class="fa fa-cloud-upload"></i>
                             </p>
-                            <p class="dm-upload-text"><?= trans("drag_drop_file_here"); ?></p>
+                            <p class="dm-upload-text"><?= esc(trans("drag_drop_file_here")); ?></p>
                             <p class="text-center">
-                                <button class="btn btn-default btn-browse-files"><?= trans('browse_files'); ?></button>
+                                <button class="btn btn-default btn-browse-files"><?= esc(trans('browse_files')); ?></button>
                             </p>
                             <a class='btn btn-md dm-btn-select-files'>
                                 <input type="file" name="file" size="40" multiple="multiple">
                             </a>
                             <ul class="dm-uploaded-files" id="files-file"></ul>
-                            <button type="button" id="btn_reset_upload" class="btn btn-reset-upload"><?= trans("reset"); ?></button>
+                            <button type="button" id="btn_reset_upload" class="btn btn-reset-upload"><?= esc(trans("reset")); ?></button>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="row">
                             <div id="csv_upload_spinner" class="csv-upload-spinner">
-                                <strong class="text-csv-importing"><?= trans("processing"); ?></strong>
-                                <strong class="text-csv-import-completed"><?= trans("completed"); ?>!</strong>
+                                <strong class="text-csv-importing"><?= esc(trans("processing")); ?></strong>
+                                <strong class="text-csv-import-completed"><?= esc(trans("completed")); ?>!</strong>
                                 <div class="spinner">
                                     <div class="bounce1"></div>
                                     <div class="bounce2"></div>
@@ -90,8 +90,8 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('help_documents'); ?></h3><br>
-                    <small><?= trans("help_documents_exp"); ?></small>
+                    <h3 class="box-title"><?= esc(trans('help_documents')); ?></h3><br>
+                    <small><?= esc(trans("help_documents_exp")); ?></small>
                 </div>
             </div>
             <div class="box-body">
@@ -99,9 +99,9 @@
                     <form action="<?= base_url('Bulk/downloadCsvFilesPost'); ?>" method="post">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="type" value="product">
-                        <button class="btn btn-success btn-block" name="submit" value="csv_template"><?= trans("download_csv_template"); ?></button>
-                        <button class="btn btn-blue btn-block" name="submit" value="csv_example"><?= trans("download_csv_example"); ?></button>
-                        <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#modalDocumentation"><?= trans("documentation"); ?></button>
+                        <button class="btn btn-success btn-block" name="submit" value="csv_template"><?= esc(trans("download_csv_template")); ?></button>
+                        <button class="btn btn-blue btn-block" name="submit" value="csv_example"><?= esc(trans("download_csv_example")); ?></button>
+                        <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#modalDocumentation"><?= esc(trans("documentation")); ?></button>
                     </form>
                 </div>
             </div>
@@ -109,14 +109,14 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('category_id_finder'); ?></h3><br>
-                    <small><?= trans("category_id_finder_exp"); ?></small>
+                    <h3 class="box-title"><?= esc(trans('category_id_finder')); ?></h3><br>
+                    <small><?= esc(trans("category_id_finder_exp")); ?></small>
                 </div>
             </div>
             <div class="box-body">
                 <div class="form-group form-group-category">
                     <select id="categories" name="category_id[]" class="select2 form-control subcategory-select m-0" onchange="getSubCategoriesDashboard(this.value, 1, <?= selectedLangId(); ?>, true);" required>
-                        <option value=""><?= trans('select_category'); ?></option>
+                        <option value=""><?= esc(trans('select_category')); ?></option>
                         <?php if (!empty($parentCategories)):
                             foreach ($parentCategories as $item): ?>
                                 <option value="<?= esc($item->id); ?>"><?= esc($item->cat_name); ?>&nbsp;(ID: <?= $item->id; ?>)</option>
@@ -135,7 +135,7 @@
         <div class="modal-content">
             <div class="modal-header" style="border-bottom: 0;">
                 <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
-                <h4 class="modal-title"><?= trans('bulk_product_upload'); ?></h4>
+                <h4 class="modal-title"><?= esc(trans('bulk_product_upload')); ?></h4>
             </div>
             <div class="modal-body">
                 <?= $baseSettings->bulk_upload_documentation; ?>

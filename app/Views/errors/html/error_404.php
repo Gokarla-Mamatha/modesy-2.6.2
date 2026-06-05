@@ -6,9 +6,9 @@
         <div class="row">
             <div class="error-404">
                 <h1>404</h1>
-                <h2><?= trans("page_not_found"); ?></h2>
-                <p><?= trans("page_not_found_sub"); ?></p>
-                <a class="btn btn-lg btn-custom" href="<?= langBaseUrl(); ?>"><?= trans("goto_home"); ?></a>
+                <h2><?= esc(trans("page_not_found")); ?></h2>
+                <p><?= esc(trans("page_not_found_sub")); ?></p>
+                <a class="btn btn-lg btn-custom" href="<?= langBaseUrl(); ?>"><?= esc(trans("goto_home")); ?></a>
             </div>
         </div>
     </div>

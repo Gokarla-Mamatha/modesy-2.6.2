@@ -10,7 +10,6 @@
                                 <div class="tab-checkout tab-checkout-open m-t-0">
                                     <h2 class="title">1.&nbsp;&nbsp;<?= trans("shipping_information"); ?></h2>
                                     <?= view('partials/_messages'); ?>
-
                                     <p class="text-right">
                                         <a href="javascript:void(0)" class="font-600 display-inline-flex align-items-center link-add-new-shipping-option" data-bs-toggle="modal" data-bs-target="#modalAddAddress">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -28,6 +27,11 @@
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="action_type" value="update">
                                             <p class="text-shipping-address"><?= trans("shipping_address"); ?></p>
+                                            <!-- <?php if (session()->getFlashdata('shipping_error')): ?>
+                                                <div class="alert alert-danger mb-3">
+                                                    <?= session()->getFlashdata('shipping_error'); ?>
+                                                </div>
+                                            <?php endif; ?> -->
                                             <div class="row">
                                                 <?php if (!empty($shippingAddresses)):
                                                     foreach ($shippingAddresses as $address):
@@ -38,8 +42,7 @@
                                                             <div class="col-12 m-b-10">
                                                                 <div class="shipping-address-box shipping-address-box-cart">
                                                                     <div class="custom-control custom-radio">
-                                                                        <input type="radio" class="custom-control-input" id="option_shipping_address_<?= $address->id; ?>" name="shipping_address_id" value="<?= $address->id; ?>"
-                                                                            <?= $selectedShippingAddressId == $address->id ? 'checked' : ''; ?> onchange="getShippingMethodsByLocation('<?= $address->state_id; ?>');" required>
+                                                                    <input type="radio" class="custom-control-input" id="option_shipping_address_<?= $address->id; ?>" name="shipping_address_id" value="<?= $address->id; ?>" <?= ($selectedShippingAddressId == $address->id) ? 'checked' : ''; ?>>
                                                                         <label class="custom-control-label" for="option_shipping_address_<?= $address->id; ?>">
                                                                             <strong class="m-b-5"><?= esc($address->title); ?></strong>
                                                                             <p>
@@ -79,6 +82,9 @@
                                                     endforeach;
                                                 endif; ?>
                                             </div>
+                                            <?php if (!empty($taxError)): ?>
+                                                <p class="error m-b-10"><?= esc($taxError); ?></p>
+                                            <?php endif; ?>
                                             <div class="row">
                                                 <div class="col-12 m-t-10">
                                                     <div class="form-group">
@@ -183,6 +189,7 @@
             <form action="<?= base_url('add-shipping-address-post'); ?>" method="post" id="form_add_shipping_address" class="validate-form">
                 <input type="hidden" name="<?= csrf_token(); ?>" value="<?= csrf_hash(); ?>">
                 <input type="hidden" name="back_url" value="<?= getCurrentUrl(); ?>">
+                <input type="hidden" id="state_code_new_address" name="state_code">
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="control-label"><?= trans("address_type"); ?></label>
@@ -290,6 +297,7 @@
                         <?= csrf_field(); ?>
                         <input type="hidden" name="id" value="<?= $address->id; ?>">
                         <input type="hidden" name="back_url" value="<?= getCurrentUrl(); ?>">
+                        <input type="hidden"  id="state_code_<?= $address->id; ?>" name="state_code">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="control-label"><?= trans("address_type"); ?></label>
@@ -403,6 +411,11 @@ endif; ?>
         document.addEventListener('DOMContentLoaded', function () {
             getShippingMethodsByLocation(<?= esc($selectedStateId); ?>);
         });
+
+        function setNewLocationShippingData(value)
+        {
+alert(value);
+        }
     </script>
 <?php endif; ?>
 <script <?= csp_script_nonce() ?>>

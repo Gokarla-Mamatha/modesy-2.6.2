@@ -3,7 +3,7 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("user_login_activities"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("user_login_activities")); ?></h3>
                 </div>
             </div>
             <div class="box-body">
@@ -12,17 +12,17 @@
                         <div class="row table-filter-container">
                             <div class="col-sm-12">
                                 <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                                    <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                                 </button>
                                 <div class="collapse navbar-collapse" id="collapseFilter">
                                     <form action="<?= adminUrl('user-login-activities'); ?>" method="get">
                                         <div class="item-table-filter">
-                                            <label><?= trans("search"); ?></label>
-                                            <input name="q" class="form-control" placeholder="<?= trans("search"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                            <label><?= esc(trans("search")); ?></label>
+                                            <input name="q" class="form-control" placeholder="<?= esc(trans("search")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
                                         </div>
                                         <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                             <label style="display: block">&nbsp;</label>
-                                            <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                            <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                         </div>
                                     </form>
                                 </div>
@@ -32,12 +32,12 @@
                             <table class="table table-bordered table-striped" role="grid">
                                 <thead>
                                 <tr role="row">
-                                    <th><?= trans("user"); ?></th>
-                                    <th><?= trans('activity'); ?></th>
-                                    <th><?= trans('updated_fields'); ?></th>
-                                    <th><?= trans('ip_address'); ?></th>
-                                    <th><?= trans('user_agent'); ?></th>
-                                    <th><?= trans('date'); ?></th>
+                                    <th><?= esc(trans("user")); ?></th>
+                                    <th><?= esc(trans('activity')); ?></th>
+                                    <th><?= esc(trans('updated_fields')); ?></th>
+                                    <th><?= esc(trans('ip_address')); ?></th>
+                                    <th><?= esc(trans('user_agent')); ?></th>
+                                    <th><?= esc(trans('date')); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,7 +50,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <?php if ($item->activity_type == 'profile_update'): ?>
+                                                <?php if (($item->activity_type ?? '') == 'profile_update'): ?>
                                                     <span class="label label-success">Profile Update</span>
                                                 <?php else: ?>
                                                     <span class="label label-info">Login</span>
@@ -61,7 +61,7 @@
 
                                                 <?php
 
-                                                if (!empty($item->updated_fields)) {
+                                                if (!empty($item->updated_fields ?? null)) {
 
                                                     $fields = json_decode($item->updated_fields);
 
@@ -92,7 +92,7 @@
                             </table>
                             <?php if (empty($activities)): ?>
                                 <p class="text-center">
-                                    <?= trans("no_records_found"); ?>
+                                    <?= esc(trans("no_records_found")); ?>
                                 </p>
                             <?php endif; ?>
                             <div class="col-sm-12 table-ft">

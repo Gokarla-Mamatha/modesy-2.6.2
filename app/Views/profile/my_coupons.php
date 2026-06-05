@@ -4,15 +4,15 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= trans("my_coupons"); ?></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("my_coupons")); ?></li>
                     </ol>
                 </nav>
             </div>
         </div>
         <div class="row">
             <div class="col-12 m-b-30">
-                <h1 class="page-title m-b-5"><?= trans("my_coupons"); ?></h1>
+                <h1 class="page-title m-b-5"><?= esc(trans("my_coupons")); ?></h1>
             </div>
             <?php if (!empty($coupons)):
                 foreach ($coupons as $coupon):
@@ -36,7 +36,7 @@
                                         <a href="<?= generateProfileUrl($coupon->user_slug); ?>">
                                             <span class="shop-name"><?= esc($shopName); ?></span>
                                         </a>
-                                        <strong class="discount"><?= $coupon->discount_rate; ?>% <span><?= trans("coupon"); ?></span></strong>
+                                        <strong class="discount"><?= $coupon->discount_rate; ?>% <span><?= esc(trans("coupon")); ?></span></strong>
                                         <div class="date <?= $isExpired ? 'date-expired' : ''; ?>">
                                             <?php if ($isExpired): ?>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
@@ -44,7 +44,7 @@
                                                     <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
                                                     <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
                                                 </svg>&nbsp;
-                                                <span><?= trans("expired"); ?></span>
+                                                <span><?= esc(trans("expired")); ?></span>
                                             <?php else: ?>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                                                     <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
@@ -56,7 +56,7 @@
                                         <div class="coupon-link">
                                             <?php if (!$isExpired): ?>
                                                 <a href="<?= generateProfileUrl($coupon->user_slug); ?>?v_coupon=<?= urlencode($coupon->coupon_code); ?>">
-                                                    <?= trans("see_products"); ?>&nbsp;
+                                                    <?= esc(trans("see_products")); ?>&nbsp;
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
                                                         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
                                                     </svg>
@@ -67,15 +67,15 @@
                                 </div>
                             </div>
                             <div class="copy-code-container">
-                                <span class="code" id="couponCode<?= $coupon->id; ?>"><?= esc($coupon->coupon_code); ?></span>
-                                <button type="button" id="btncouponCode<?= $coupon->id; ?>" class="btn btn-custom" onclick="copyCouponCode('couponCode<?= $coupon->id; ?>');"><span><?= trans("copy_code"); ?></span></button>
+                                <span class="code" id="couponCode<?= esc($coupon->id, 'attr'); ?>"><?= esc($coupon->coupon_code); ?></span>
+                                <button type="button" id="btncouponCode<?= esc($coupon->id, 'attr'); ?>" class="btn btn-custom js-copy-coupon-code" data-code-id="couponCode<?= esc($coupon->id, 'attr'); ?>"><span><?= esc(trans("copy_code")); ?></span></button>
                             </div>
                         </div>
                     </div>
                 <?php endforeach;
             else: ?>
                 <div class="col-12">
-                    <p class="text-muted text-center"><?= trans("no_records_found"); ?></p>
+                    <p class="text-muted text-center"><?= esc(trans("no_records_found")); ?></p>
                 </div>
             <?php endif; ?>
         </div>
@@ -96,4 +96,8 @@
             $('#btn' + id).text("<?= clrQuotes(trans('copy_code')); ?>");
         }, 2000);
     }
+
+    $(document).on('click', '.js-copy-coupon-code', function () {
+        copyCouponCode($(this).data('code-id'));
+    });
 </script>

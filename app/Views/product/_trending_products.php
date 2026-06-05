@@ -1,7 +1,7 @@
 <?php if (!empty($trendingProducts)): ?>
     <div class="col-12 section section-trending-products">
         <div class="section-header">
-            <h3 class="title"><?= trans("trending_products"); ?></h3>
+            <h3 class="title"><?= esc(trans("trending_products")); ?></h3>
         </div>
 
         <div class="swiper swiper-carousel swiper-carousel-product"

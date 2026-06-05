@@ -56,7 +56,23 @@ class Exceptions extends BaseConfig
      *
      * @var list<string>
      */
-    public array $sensitiveDataInTrace = [];
+    public array $sensitiveDataInTrace = [
+        'password',
+        'passwd',
+        'secret',
+        'token',
+        'authorization',
+        'api_key',
+        'apikey',
+        'access_key',
+        'PURCHASE_CODE',
+        'LICENSE_KEY',
+        'TWILIO_SID',
+        'TWILIO_TOKEN',
+        'taxjar.apiKey',
+        'stripe.secretKey',
+        'stripe.publishableKey',
+    ];
 
     /**
      * --------------------------------------------------------------------------

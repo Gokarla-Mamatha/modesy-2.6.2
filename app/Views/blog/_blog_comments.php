@@ -13,7 +13,7 @@
                         <span class="date"><?= timeAgo($comment->created_at); ?></span>
                         <?php if (authCheck()):
                             if ($comment->user_id == user()->id): ?>
-                                <button type="button" class="button-link btn-delete-comment" onclick="deleteBlogComment('<?= $comment->id; ?>','<?= $commentPostId; ?>','<?= trans("confirm_comment", true); ?>');" aria-label="delete-blog-comment-<?= $comment->id; ?>">&nbsp;<i class="icon-trash"></i>&nbsp;<?= trans("delete"); ?></button>
+                                <button type="button" class="button-link btn-delete-comment js-delete-blog-comment" data-comment-id="<?= esc($comment->id, 'attr'); ?>" data-post-id="<?= esc($commentPostId, 'attr'); ?>" data-msg="<?= esc(trans("confirm_comment", true), 'attr'); ?>" aria-label="delete-blog-comment-<?= esc($comment->id, 'attr'); ?>">&nbsp;<i class="icon-trash"></i>&nbsp;<?= esc(trans("delete")); ?></button>
                             <?php endif;
                         endif; ?>
                     </p>
@@ -34,8 +34,8 @@
     </div>
     <div class="col-12">
         <div class="row">
-            <button class="btn-load-more" onclick="loadMoreBlogComments('<?= $commentPostId; ?>');">
-                <?= trans("load_more"); ?>
+            <button class="btn-load-more js-load-more-blog-comments" data-post-id="<?= esc($commentPostId, 'attr'); ?>">
+                <?= esc(trans("load_more")); ?>
             </button>
         </div>
     </div>

@@ -1,11 +1,11 @@
 <div class="box">
     <div class="box-header with-border">
         <div class="left">
-            <h3 class="box-title"><?= trans('categories'); ?></h3>
+            <h3 class="box-title"><?= esc(trans('categories')); ?></h3>
         </div>
         <div class="right">
             <a href="<?= adminUrl('add-forums-category'); ?>" class="btn btn-success btn-add-new">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_category'); ?>
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_category')); ?>
             </a>
              
         </div>
@@ -15,12 +15,12 @@
             <div class="col-sm-12">
                 <form action="<?= adminUrl('forums-categories'); ?>" method="get">
                     <div class="item-table-filter" style="width: 220px;">
-                        <label><?= trans("search"); ?></label>
-                        <input name="q" class="form-control" placeholder="<?= trans("search") ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
+                        <label><?= esc(trans("search")); ?></label>
+                        <input name="q" class="form-control" placeholder="<?= esc(trans("search")) ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
                     </div>
                     <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                         <label style="display: block">&nbsp;</label>
-                        <button type="submit" class="btn bg-purple" style="height: 36px;"><?= trans("filter"); ?></button>
+                        <button type="submit" class="btn bg-purple" style="height: 36px;"><?= esc(trans("filter")); ?></button>
                     </div>
                 </form>
             </div>
@@ -46,7 +46,7 @@
     });
     $(document).on("click", ".panel .panel-heading .btn-delete", function (e) {
         var id = $(this).attr('data-item-id');
-        deleteItem("AdminForumCategory/deleteCategoryPost", id, "<?= trans("confirm_delete", true);?>");
+        deleteItem("AdminForumCategory/deleteCategoryPost", id, "<?= esc(trans("confirm_delete", true));?>");
     });
  
 </script>

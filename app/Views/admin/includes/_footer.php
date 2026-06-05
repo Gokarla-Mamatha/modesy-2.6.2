@@ -12,7 +12,8 @@
 
 
 <!-- <script src="<?= base_url('assets/admin/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script> -->
-<script src="<?= base_url('assets/admin/vendor/bootstrap/js/bootstrap.min.5.3.8.js'); ?>" <?= csp_script_nonce() ?>></script>
+<script src="<?= base_url('assets/admin/vendor/popper/popper.min.js'); ?>"></script>
+<script src="<?= base_url('assets/admin/vendor/bootstrap/js/bootstrap.v5.3.min.js'); ?>"></script>
 <script src="<?= base_url('assets/admin/vendor/datatables/jquery.dataTables.min.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/admin/vendor/datatables/dataTables.bootstrap.min.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/admin/js/adminlte.min.js'); ?>" <?= csp_script_nonce() ?>></script>
@@ -22,6 +23,7 @@
 <script src="<?= base_url('assets/admin/vendor/tagify/tagify.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/admin/vendor/magnific-popup/jquery.magnific-popup.min.js'); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/admin/js/admin-2.6.js'); ?>" <?= csp_script_nonce() ?>></script>
+<script src="<?= base_url('assets/js/script.js?v='.time()); ?>" <?= csp_script_nonce() ?>></script>
 <script src="<?= base_url('assets/js/inline.js'); ?>?time=<?= time(); ?>" <?= csp_script_nonce() ?>></script>
 <!-- <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.js'); ?>"></script> -->
 <!-- <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.8.4.js'); ?>"></script> -->
@@ -93,12 +95,12 @@
                 [15, 30, 60, 100, "All"]
             ],
             "language": {
-                "lengthMenu": "<?= trans('show'); ?> _MENU_",
-                "search": "<?= trans('search'); ?>:",
-                "zeroRecords": "<?= trans('no_records_found'); ?>"
+                "lengthMenu": "<?= esc(trans('show')); ?> _MENU_",
+                "search": "<?= esc(trans('search')); ?>:",
+                "zeroRecords": "<?= esc(trans('no_records_found')); ?>"
             },
             "infoCallback": function(settings, start, end, max, total, pre) {
-                return total > 0 ? "<?= trans('number_of_entries'); ?>: " + total : '';
+                return total > 0 ? "<?= esc(trans('number_of_entries')); ?>: " + total : '';
             }
         });
     });
@@ -110,12 +112,12 @@
                 [15, 30, 60, 100, "All"]
             ],
             "language": {
-                "lengthMenu": "<?= trans('show'); ?> _MENU_",
-                "search": "<?= trans('search'); ?>:",
-                "zeroRecords": "<?= trans('no_records_found'); ?>"
+                "lengthMenu": "<?= esc(trans('show')); ?> _MENU_",
+                "search": "<?= esc(trans('search')); ?>:",
+                "zeroRecords": "<?= esc(trans('no_records_found')); ?>"
             },
             "infoCallback": function(settings, start, end, max, total, pre) {
-                return total > 0 ? "<?= trans('number_of_entries'); ?>: " + total : '';
+                return total > 0 ? "<?= esc(trans('number_of_entries')); ?>: " + total : '';
             }
         });
     });
@@ -133,19 +135,19 @@
                 [15, 30, 60, 100, "All"]
             ],
             "language": {
-                "lengthMenu": "<?= trans('show'); ?> _MENU_",
-                "search": "<?= trans('search'); ?>:",
-                "zeroRecords": "<?= trans('no_records_found'); ?>",
-                "info": "<?= trans('number_of_entries'); ?>: _TOTAL_"
+                "lengthMenu": "<?= esc(trans('show')); ?> _MENU_",
+                "search": "<?= esc(trans('search')); ?>:",
+                "zeroRecords": "<?= esc(trans('no_records_found')); ?>",
+                "info": "<?= esc(trans('number_of_entries')); ?>: _TOTAL_"
             },
             "infoCallback": function(settings, start, end, max, total, pre) {
-                return total > 0 ? "<?= trans('number_of_entries'); ?>: " + total : '';
+                return total > 0 ? "<?= esc(trans('number_of_entries')); ?>: " + total : '';
             }
         });
-        $('<label class="table-label"><label/>').text("<?= trans('language'); ?>").appendTo('#table_dropdown');
+        $('<label class="table-label"><label/>').text("<?= esc(trans('language')); ?>").appendTo('#table_dropdown');
         //insert the select and some options
         $select = $('<select class="form-control input-sm"><select/>').appendTo('#table_dropdown');
-        $('<option/>').val('').text('<?= trans("all"); ?>').appendTo($select);
+        $('<option/>').val('').text('<?= esc(trans("all")); ?>').appendTo($select);
         <?php foreach ($activeLanguages as $lang): ?>
             $('<option/>').val('<?= $lang->name; ?>').text('<?= $lang->name; ?>').appendTo($select);
         <?php endforeach; ?>

@@ -1,6 +1,6 @@
 <div id="promoted_posts">
     <div class="section-header">
-        <h3 class="title"><?= trans("featured_products"); ?></h3>
+        <h3 class="title"><?= esc(trans("featured_products")); ?></h3>
     </div>
     <div id="row_promoted_products" class="row row-product">
         <?php $i = 0;
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="row-custom text-center promoted-load-more-container">
-            <button type="button" class="button-link link-see-more" onclick="loadMorePromotedProducts();" aria-label="load-more-promoted"><span><?= trans("load_more"); ?>&nbsp;<i class="icon-arrow-down"></i></span></button>
+            <button type="button" class="button-link link-see-more" onclick="loadMorePromotedProducts();" aria-label="load-more-promoted"><span><?= esc(trans("load_more")); ?>&nbsp;<i class="icon-arrow-down"></i></span></button>
         </div>
     <?php endif; ?>
 </div>

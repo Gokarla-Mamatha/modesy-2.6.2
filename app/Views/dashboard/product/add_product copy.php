@@ -5,8 +5,8 @@
             <div class="row">
                 <div class="col-md-12 wizard-add-product">
                     <ul class="wizard-progress">
-                        <li class="active" id="step_general"><strong><?= trans("general_information"); ?></strong></li>
-                        <li id="step_dedails"><strong><?= trans("details"); ?></strong></li>
+                        <li class="active" id="step_general"><strong><?= esc(trans("general_information")); ?></strong></li>
+                        <li id="step_dedails"><strong><?= esc(trans("details")); ?></strong></li>
                     </ul>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-sm-12 clearfix m-b-30">
-                        <label class="control-label"><?= trans("images"); ?></label>
+                        <label class="control-label"><?= esc(trans("images")); ?></label>
                         <?= view('dashboard/product/_image_upload'); ?>
                     </div>
                 </div>
@@ -27,14 +27,14 @@
                     <?= csrf_field(); ?>
                     <input type="hidden" name="back_url" value="<?= getCurrentUrl(); ?>">
                    <div class="form-group">
-                        <label class="control-label"><?= trans('product_type'); ?></label>
+                        <label class="control-label"><?= esc(trans('product_type')); ?></label>
                         <div class="row">
                             <?php if ($generalSettings->physical_products_system == 1): ?>
                                 <div class="col-12 col-sm-6 col-custom-field">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="product_type" value="physical" id="product_type_1" class="custom-control-input" required <?= ($generalSettings->digital_products_system != 1 && $generalSettings->coupons_products_system != 1) ? 'checked' : ''; ?>>
-                                        <label for="product_type_1" class="custom-control-label"><?= trans('physical'); ?></label>
-                                        <p class="form-element-exp"><?= trans('physical_exp'); ?></p>
+                                        <label for="product_type_1" class="custom-control-label"><?= esc(trans('physical')); ?></label>
+                                        <p class="form-element-exp"><?= esc(trans('physical_exp')); ?></p>
                                     </div>
                                 </div>
                             <?php endif;
@@ -42,29 +42,29 @@
                                 <div class="col-12 col-sm-6 col-custom-field">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="product_type" value="digital" id="product_type_2" class="custom-control-input" required <?= ($generalSettings->physical_products_system != 1 && $generalSettings->coupons_products_system != 1) ? 'checked' : ''; ?>>
-                                        <label for="product_type_2" class="custom-control-label"><?= trans('digital'); ?></label>
-                                        <p class="form-element-exp"><?= trans('digital_exp'); ?></p>
+                                        <label for="product_type_2" class="custom-control-label"><?= esc(trans('digital')); ?></label>
+                                        <p class="form-element-exp"><?= esc(trans('digital_exp')); ?></p>
                                     </div>
                                 </div>
                             <?php endif; ?>
                             <div class="col-12 col-sm-6 col-custom-field">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" name="product_type" value="coupon" id="product_type_3" class="custom-control-input" required <?= ($generalSettings->physical_products_system != 1 && $generalSettings->digital_products_system != 1) ? 'checked' : ''; ?>>
-                                    <label for="product_type_3" class="custom-control-label"><?= trans('coupon'); ?></label>
-                                    <p class="form-element-exp"><?= trans('coupon_exp'); ?></p>
+                                    <label for="product_type_3" class="custom-control-label"><?= esc(trans('coupon')); ?></label>
+                                    <p class="form-element-exp"><?= esc(trans('coupon_exp')); ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans('listing_type'); ?></label>
+                        <label class="control-label"><?= esc(trans('listing_type')); ?></label>
                         <div class="row">
                             <?php if ($generalSettings->marketplace_system == 1): ?>
                                 <div class="col-12 col-sm-6 col-custom-field listing_sell_on_site">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="listing_type" value="sell_on_site" id="listing_type_1" class="custom-control-input" required>
-                                        <label for="listing_type_1" class="custom-control-label"><?= trans('add_product_for_sale'); ?></label><br>
-                                        <p class="form-element-exp"><?= trans('add_product_for_sale_exp'); ?></p>
+                                        <label for="listing_type_1" class="custom-control-label"><?= esc(trans('add_product_for_sale')); ?></label><br>
+                                        <p class="form-element-exp"><?= esc(trans('add_product_for_sale_exp')); ?></p>
                                     </div>
                                 </div>
                             <?php endif;
@@ -72,8 +72,8 @@
                                 <div class="col-12 col-sm-6 col-custom-field listing_ordinary_listing">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="listing_type" value="ordinary_listing" id="listing_type_2" class="custom-control-input" required>
-                                        <label for="listing_type_2" class="custom-control-label"><?= trans('add_product_services_listing'); ?></label>
-                                        <p class="form-element-exp"><?= trans('add_product_services_listing_exp'); ?></p>
+                                        <label for="listing_type_2" class="custom-control-label"><?= esc(trans('add_product_services_listing')); ?></label>
+                                        <p class="form-element-exp"><?= esc(trans('add_product_services_listing_exp')); ?></p>
                                     </div>
                                 </div>
                             <?php endif;
@@ -81,8 +81,8 @@
                                 <div class="col-12 col-sm-6 col-custom-field listing_bidding">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="listing_type" value="bidding" id="listing_type_3" class="custom-control-input" required>
-                                        <label for="listing_type_3" class="custom-control-label"><?= trans('add_product_get_price_requests'); ?></label>
-                                        <p class="form-element-exp"><?= trans('add_product_get_price_requests_exp'); ?></p>
+                                        <label for="listing_type_3" class="custom-control-label"><?= esc(trans('add_product_get_price_requests')); ?></label>
+                                        <p class="form-element-exp"><?= esc(trans('add_product_get_price_requests_exp')); ?></p>
                                     </div>
                                 </div>
                             <?php endif;
@@ -90,8 +90,8 @@
                                 <div class="col-12 col-sm-6 col-custom-field listing_license_keys">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="listing_type" value="license_key" id="listing_type_4" class="custom-control-input" required>
-                                        <label for="listing_type_4" class="custom-control-label"><?= trans('add_product_sell_license_keys'); ?></label>
-                                        <p class="form-element-exp"><?= trans('add_product_sell_license_keys_exp'); ?></p>
+                                        <label for="listing_type_4" class="custom-control-label"><?= esc(trans('add_product_sell_license_keys')); ?></label>
+                                        <p class="form-element-exp"><?= esc(trans('add_product_sell_license_keys_exp')); ?></p>
                                     </div>
                                 </div>
                             <?php endif;
@@ -99,16 +99,16 @@
                                 <div class="col-12 col-sm-6 col-custom-field listing_productbid">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="listing_type" value="bidding" id="listing_type_6" class="custom-control-input" required>
-                                        <label for="listing_type_6" class="custom-control-label"><?= trans('Add a product to get bid requests'); ?></label>
-                                        <p class="form-element-exp"><?= trans('Add a product and receive bid requests'); ?></p>
+                                        <label for="listing_type_6" class="custom-control-label"><?= esc(trans('Add a product to get bid requests')); ?></label>
+                                        <p class="form-element-exp"><?= esc(trans('Add a product and receive bid requests')); ?></p>
                                     </div>
                                 </div>
                             <?php endif;?>
                                 <div class="col-12 col-sm-6 col-custom-field listing_coupon">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" name="listing_type" value="coupon" id="listing_type_5" class="custom-control-input" required>
-                                        <label for="listing_type_5" class="custom-control-label"><?= trans('add_coupon_for_sale'); ?></label>
-                                        <p class="form-element-exp"><?= trans('add_coupon_for_sale_exp'); ?></p>
+                                        <label for="listing_type_5" class="custom-control-label"><?= esc(trans('add_coupon_for_sale')); ?></label>
+                                        <p class="form-element-exp"><?= esc(trans('add_coupon_for_sale_exp')); ?></p>
                                     </div>
                                 </div>
                             
@@ -117,9 +117,9 @@
                     </div>
 
                     <div class="form-group form-group-category">
-                        <label class="control-label"><?= trans("category"); ?></label>
+                        <label class="control-label"><?= esc(trans("category")); ?></label>
                         <select id="categories" name="category_id[]" class="select2 form-control subcategory-select m-0" onchange="getSubCategoriesDashboard(this.value, 1, <?= selectedLangId(); ?>);" required>
-                            <option value=""><?= trans('select_category'); ?></option>
+                            <option value=""><?= esc(trans('select_category')); ?></option>
                             <?php if (!empty($parentCategories)):
                                 foreach ($parentCategories as $item): ?>
                                     <option value="<?= esc($item->id); ?>"><?= esc($item->cat_name); ?></option>
@@ -129,7 +129,7 @@
                         <div id="category_select_container"></div>
                     </div>
                     <!-- <div class="form-group">
-                            <label class="control-label"><?= trans("Loyalty Points"); ?></label>
+                            <label class="control-label"><?= esc(trans("Loyalty Points")); ?></label>
                             <input type="number" name="loyalty_points" class="form-control form-control-sm" style="max-width: 400px;"value="<?= esc($product->loyalty_points ?? 0); ?>"min="0">
                             <small class="text-muted">Points earned when this product is purchased</small>
                     </div> -->
@@ -149,29 +149,29 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" href="#collapse_<?= $language->id; ?>"><?= trans("details"); ?><?= $activeLanguages > 1 ? ':&nbsp;' . esc($language->name) : ''; ?>&nbsp;<?= selectedLangId() != $language->id ? '(' . trans("optional") . ')' : ''; ?><i class="fa fa-caret-down pull-right"></i></a>
+                                            <a data-toggle="collapse" href="#collapse_<?= $language->id; ?>"><?= esc(trans("details")); ?><?= $activeLanguages > 1 ? ':&nbsp;' . esc($language->name) : ''; ?>&nbsp;<?= selectedLangId() != $language->id ? '(' . trans("optional") . ')' : ''; ?><i class="fa fa-caret-down pull-right"></i></a>
                                         </h4>
                                     </div>
                                     <div id="collapse_<?= $language->id; ?>" class="panel-collapse collapse <?= selectedLangId() == $language->id ? 'in' : ''; ?>">
                                         <div class="panel-body">
                                             <div class="form-group m-b-15">
-                                                <label class="control-label"><?= trans("title"); ?></label>
-                                                <input type="text" name="title_<?= $language->id; ?>" class="form-control form-input" placeholder="<?= trans("title"); ?>" <?= selectedLangId() == $language->id ? 'required' : ''; ?> maxlength="499" data-type="title">
+                                                <label class="control-label"><?= esc(trans("title")); ?></label>
+                                                <input type="text" name="title_<?= $language->id; ?>" class="form-control form-input" placeholder="<?= esc(trans("title")); ?>" <?= selectedLangId() == $language->id ? 'required' : ''; ?> maxlength="499" data-type="title">
                                             </div>
                                             <div class="form-group m-b-15">
-                                                <label class="control-label"><?= trans("short_description"); ?></label>
-                                                <input type="text" name="short_description_<?= $language->id; ?>" class="form-control form-input" placeholder="<?= trans("short_description"); ?>" maxlength="499" data-type="text">
+                                                <label class="control-label"><?= esc(trans("short_description")); ?></label>
+                                                <input type="text" name="short_description_<?= $language->id; ?>" class="form-control form-input" placeholder="<?= esc(trans("short_description")); ?>" maxlength="499" data-type="text">
                                             </div>
                                             <div class="form-group m-b-15">
                                                 <?= view("dashboard/product/_tags_input", ['tags' => '', 'language' => $language]); ?>
                                             </div>
                                             <div class="form-group m-b-15">
-                                                <label class="control-label"><?= trans("description"); ?></label>
+                                                <label class="control-label"><?= esc(trans("description")); ?></label>
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <button type="button" id="btn_add_image_editor" class="btn btn-md btn-info m-b-10" data-editor-id="<?= $editorId; ?>" data-toggle="modal" data-target="#fileManagerModal"><i class="fa fa-image"></i>&nbsp;&nbsp;<?= trans("add_image"); ?></button>
+                                                        <button type="button" id="btn_add_image_editor" class="btn btn-md btn-info m-b-10" data-editor-id="<?= $editorId; ?>" data-toggle="modal" data-target="#fileManagerModal"><i class="fa fa-image"></i>&nbsp;&nbsp;<?= esc(trans("add_image")); ?></button>
                                                         <?php if (aiWriter()->status && hasPermission('ai_writer') && $editorId == 'editor_main'): ?>
-                                                            <button type="button" class="btn btn-md btn-default btn-open-ai-writer m-b-10" data-toggle="modal" data-target="#modalAiWriter"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;<?= trans("ai_writer"); ?></button>
+                                                            <button type="button" class="btn btn-md btn-default btn-open-ai-writer m-b-10" data-toggle="modal" data-target="#modalAiWriter"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;<?= esc(trans("ai_writer")); ?></button>
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>
@@ -186,7 +186,7 @@
 
                     <div class="row">
                         <div class="col-sm-12 m-t-30 buttons-product-form">
-                            <button type="submit" class="btn btn-lg btn-success pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= trans("save_and_continue"); ?></button>
+                            <button type="submit" class="btn btn-lg btn-success pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= esc(trans("save_and_continue")); ?></button>
                         </div>
                     </div>
 
@@ -200,7 +200,7 @@
     <div class="modal-dialog modal-lg modal-file-manager" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><?= trans("images"); ?></h5>
+                <h5 class="modal-title"><?= esc(trans("images")); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                 </button>
@@ -223,15 +223,15 @@
                                         <path fill="currentColor" d="M19.226 35.769a.5.5 0 0 1-.5-.5V15.087a.5.5 0 0 1 1 0V35.27a.5.5 0 0 1-.5.499"/>
                                     </svg>
                                 </p>
-                                <p class="dm-upload-text"><?= trans("drag_drop_images_here"); ?></p>
+                                <p class="dm-upload-text"><?= esc(trans("drag_drop_images_here")); ?></p>
                                 <p class="text-center">
-                                    <button class="btn btn-default btn-browse-files"><?= trans('browse_files'); ?></button>
+                                    <button class="btn btn-default btn-browse-files"><?= esc(trans('browse_files')); ?></button>
                                 </p>
                                 <a class='btn btn-md dm-btn-select-files'>
                                     <input type="file" name="file" size="40" multiple="multiple">
                                 </a>
                                 <ul class="dm-uploaded-files" id="files-file-manager"></ul>
-                                <button type="button" id="btn_reset_upload_image" class="btn btn-reset-upload"><?= trans("reset"); ?></button>
+                                <button type="button" id="btn_reset_upload_image" class="btn btn-reset-upload"><?= esc(trans("reset")); ?></button>
                             </div>
                         </div>
                     </div>
@@ -258,9 +258,9 @@
             </div>
             <div class="modal-footer">
                 <div class="file-manager-footer">
-                    <button type="button" id="btn_fm_img_delete" class="btn btn-sm btn-danger color-white pull-left btn-file-delete m-r-3"><i class="fa fa-trash-can"></i>&nbsp;&nbsp;<?= trans('delete'); ?></button>
-                    <button type="button" id="btn_fm_img_select" class="btn btn-sm btn-info color-white btn-file-select"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= trans('select_image'); ?></button>
-                    <button type="button" class="btn btn-sm btn-secondary color-white" data-dismiss="modal"><?= trans('close'); ?></button>
+                    <button type="button" id="btn_fm_img_delete" class="btn btn-sm btn-danger color-white pull-left btn-file-delete m-r-3"><i class="fa fa-trash-can"></i>&nbsp;&nbsp;<?= esc(trans('delete')); ?></button>
+                    <button type="button" id="btn_fm_img_select" class="btn btn-sm btn-info color-white btn-file-select"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= esc(trans('select_image')); ?></button>
+                    <button type="button" class="btn btn-sm btn-secondary color-white" data-dismiss="modal"><?= esc(trans('close')); ?></button>
                 </div>
             </div>
         </div>

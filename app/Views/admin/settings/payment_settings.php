@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12 title-section">
-        <h3><?= trans('payment_settings'); ?></h3>
+        <h3><?= esc(trans('payment_settings')); ?></h3>
     </div>
 </div>
 
@@ -16,8 +16,8 @@
                             <li class="<?= $activeTab == $gateway->name_key ? ' active' : ''; ?>"><a href="<?= adminUrl('payment-settings'); ?>?gateway=<?= $gateway->name_key; ?>"><?= esc($gateway->name); ?></a></li>
                         <?php endforeach;
                     endif; ?>
-                    <li class="<?= $activeTab == 'bank_transfer' ? ' active' : ''; ?>"><a href="<?= adminUrl('payment-settings'); ?>?gateway=bank_transfer"><?= trans("bank_transfer"); ?></a></li>
-                    <li class="<?= $activeTab == 'cash_on_delivery' ? ' active' : ''; ?>"><a href="<?= adminUrl('payment-settings'); ?>?gateway=cash_on_delivery"><?= trans("cash_on_delivery"); ?></a></li>
+                    <li class="<?= $activeTab == 'bank_transfer' ? ' active' : ''; ?>"><a href="<?= adminUrl('payment-settings'); ?>?gateway=bank_transfer"><?= esc(trans("bank_transfer")); ?></a></li>
+                    <li class="<?= $activeTab == 'cash_on_delivery' ? ' active' : ''; ?>"><a href="<?= adminUrl('payment-settings'); ?>?gateway=cash_on_delivery"><?= esc(trans("cash_on_delivery")); ?></a></li>
                 </ul>
                 <form action="<?= base_url('Admin/paymentGatewaySettingsPost'); ?>" method="post">
                     <?= csrf_field(); ?>
@@ -29,25 +29,25 @@
                                     <input type="hidden" name="name_key" value="paypal">
                                     <img src="<?= base_url('assets/img/payment/paypal.svg'); ?>" alt="paypal" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $paypal->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label><?= trans("mode"); ?></label>
+                                        <label><?= esc(trans("mode")); ?></label>
                                         <?= formRadio('environment', 'production', 'sandbox', trans("production"), trans("sandbox"), $paypal->environment, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("client_id"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("client_id"); ?>" value="<?= esc($paypal->public_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("client_id")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("client_id")); ?>" value="<?= esc($paypal->public_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($paypal->secret_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($paypal->secret_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $paypal->transaction_fee; ?>" placeholder="0.00" data-type="decimal">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -60,25 +60,25 @@
                                     <input type="hidden" name="name_key" value="stripe">
                                     <img src="<?= base_url('assets/img/payment/stripe.svg'); ?>" alt="stripe" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $stripe->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("publishable_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("publishable_key"); ?>" value="<?= esc($stripe->public_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("publishable_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("publishable_key")); ?>" value="<?= esc($stripe->public_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($stripe->secret_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($stripe->secret_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("webhook_secret"); ?></label>
-                                        <input type="text" class="form-control" name="webhook_secret" placeholder="<?= trans("webhook_secret"); ?>" value="<?= esc($stripe->webhook_secret); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("webhook_secret")); ?></label>
+                                        <input type="text" class="form-control" name="webhook_secret" placeholder="<?= esc(trans("webhook_secret")); ?>" value="<?= esc($stripe->webhook_secret); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $stripe->transaction_fee; ?>" placeholder="0.00" data-type="decimal">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -91,21 +91,21 @@
                                     <input type="hidden" name="name_key" value="paystack">
                                     <img src="<?= base_url('assets/img/payment/paystack.svg'); ?>" alt="paystack" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $paystack->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("public_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("public_key"); ?>" value="<?= esc($paystack->public_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("public_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("public_key")); ?>" value="<?= esc($paystack->public_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($paystack->secret_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($paystack->secret_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $paystack->transaction_fee; ?>" placeholder="0.00" data-type="decimal">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -118,25 +118,25 @@
                                     <input type="hidden" name="name_key" value="razorpay">
                                     <img src="<?= base_url('assets/img/payment/razorpay.svg'); ?>" alt="razorpay" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $razorpay->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("api_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("api_key"); ?>" value="<?= esc($razorpay->public_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("api_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("api_key")); ?>" value="<?= esc($razorpay->public_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($razorpay->secret_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($razorpay->secret_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("webhook_secret"); ?></label>
-                                        <input type="text" class="form-control" name="webhook_secret" placeholder="<?= trans("webhook_secret"); ?>" value="<?= esc($razorpay->webhook_secret); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("webhook_secret")); ?></label>
+                                        <input type="text" class="form-control" name="webhook_secret" placeholder="<?= esc(trans("webhook_secret")); ?>" value="<?= esc($razorpay->webhook_secret); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $razorpay->transaction_fee; ?>" placeholder="0.00" data-type="decimal">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -149,21 +149,21 @@
                                     <input type="hidden" name="name_key" value="flutterwave">
                                     <img src="<?= base_url('assets/img/payment/flutterwave.svg'); ?>" alt="flutterwave" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $flutterwave->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("public_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("public_key"); ?>" value="<?= esc($flutterwave->public_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("public_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("public_key")); ?>" value="<?= esc($flutterwave->public_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($flutterwave->secret_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($flutterwave->secret_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $flutterwave->transaction_fee; ?>" placeholder="0.00" data-type="decimal">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -176,29 +176,29 @@
                                     <input type="hidden" name="name_key" value="iyzico">
                                     <img src="<?= base_url('assets/img/payment/iyzico.svg'); ?>" alt="iyzico" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $iyzico->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label><?= trans("mode"); ?></label>
+                                        <label><?= esc(trans("mode")); ?></label>
                                         <?= formRadio('environment', 'production', 'sandbox', trans("production"), trans("sandbox"), $iyzico->environment, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("api_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("api_key"); ?>" value="<?= esc($iyzico->public_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("api_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("api_key")); ?>" value="<?= esc($iyzico->public_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($iyzico->secret_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($iyzico->secret_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $iyzico->transaction_fee; ?>" placeholder="0.00" data-type="decimal">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif; ?>
                                 <div class="alert alert-info alert-large">
-                                    <strong><?= trans("warning"); ?>!</strong>&nbsp;&nbsp;<?= trans("iyzico_warning"); ?> <a href="https://dev.iyzipay.com/en/checkout-form" target="_blank" style="color: #0c5460;font-weight: bold">Iyzico Checkout Form</a>
+                                    <strong><?= esc(trans("warning")); ?>!</strong>&nbsp;&nbsp;<?= esc(trans("iyzico_warning")); ?> <a href="https://dev.iyzipay.com/en/checkout-form" target="_blank" style="color: #0c5460;font-weight: bold">Iyzico Checkout Form</a>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -210,25 +210,25 @@
                                     <input type="hidden" name="name_key" value="midtrans">
                                     <img src="<?= base_url('assets/img/payment/midtrans.svg'); ?>" alt="midtrans" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $midtrans->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label><?= trans("mode"); ?></label>
+                                        <label><?= esc(trans("mode")); ?></label>
                                         <?= formRadio('environment', 'production', 'sandbox', trans("production"), trans("sandbox"), $midtrans->environment, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("api_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("api_key"); ?>" value="<?= esc($midtrans->public_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("api_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("api_key")); ?>" value="<?= esc($midtrans->public_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("server_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("server_key"); ?>" value="<?= esc($midtrans->secret_key); ?>" data-type="apikey">
+                                        <label class="control-label"><?= esc(trans("server_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("server_key")); ?>" value="<?= esc($midtrans->secret_key); ?>" data-type="apikey">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $midtrans->transaction_fee; ?>" placeholder="0.00" data-type="decimal">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -241,25 +241,25 @@
                                     <input type="hidden" name="name_key" value="dlocalgo">
                                     <img src="<?= base_url('assets/img/payment/d-local-go.svg'); ?>" alt="dlocalgo" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $dLocalGo->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label><?= trans("mode"); ?></label>
+                                        <label><?= esc(trans("mode")); ?></label>
                                         <?= formRadio('environment', 'production', 'sandbox', trans("production"), trans("sandbox"), $dLocalGo->environment, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("api_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("api_key"); ?>" value="<?= esc($dLocalGo->public_key); ?>">
+                                        <label class="control-label"><?= esc(trans("api_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("api_key")); ?>" value="<?= esc($dLocalGo->public_key); ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?> (Token)</label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($dLocalGo->secret_key); ?>">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?> (Token)</label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($dLocalGo->secret_key); ?>">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $dLocalGo->transaction_fee; ?>" placeholder="0.00">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -272,21 +272,21 @@
                                     <input type="hidden" name="name_key" value="paytabs">
                                     <img src="<?= base_url('assets/img/payment/paytabs.svg'); ?>" alt="paytabs" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $payTabs->status, 'col-md-4'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("profile_id"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("profile_id"); ?>" value="<?= esc($payTabs->public_key); ?>">
+                                        <label class="control-label"><?= esc(trans("profile_id")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("profile_id")); ?>" value="<?= esc($payTabs->public_key); ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("server_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($payTabs->secret_key); ?>">
+                                        <label class="control-label"><?= esc(trans("server_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($payTabs->secret_key); ?>">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $payTabs->transaction_fee; ?>" placeholder="0.00">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -299,25 +299,25 @@
                                     <input type="hidden" name="name_key" value="yoomoney">
                                     <img src="<?= base_url('assets/img/payment/yoomoney.svg'); ?>" alt="yoomoney" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $yooMoney->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label><?= trans("mode"); ?></label>
+                                        <label><?= esc(trans("mode")); ?></label>
                                         <?= formRadio('environment', 'production', 'sandbox', trans("production"), trans("sandbox"), $yooMoney->environment, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("shop_id"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("shop_id"); ?>" value="<?= esc($yooMoney->public_key); ?>">
+                                        <label class="control-label"><?= esc(trans("shop_id")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("shop_id")); ?>" value="<?= esc($yooMoney->public_key); ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($yooMoney->secret_key); ?>">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($yooMoney->secret_key); ?>">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $yooMoney->transaction_fee; ?>" placeholder="0.00">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -330,21 +330,21 @@
                                     <input type="hidden" name="name_key" value="mercado_pago">
                                     <img src="<?= base_url('assets/img/payment/mercado_pago.svg'); ?>" alt="mercado_pago" class="img-payment-logo">
                                     <div class="form-group">
-                                        <label><?= trans("status"); ?></label>
+                                        <label><?= esc(trans("status")); ?></label>
                                         <?= formRadio('status', 1, 0, trans("enable"), trans("disable"), $mercadoPago->status, 'col-lg-3'); ?>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("public_key"); ?></label>
-                                        <input type="text" class="form-control" name="public_key" placeholder="<?= trans("public_key"); ?>" value="<?= esc($mercadoPago->public_key); ?>">
+                                        <label class="control-label"><?= esc(trans("public_key")); ?></label>
+                                        <input type="text" class="form-control" name="public_key" placeholder="<?= esc(trans("public_key")); ?>" value="<?= esc($mercadoPago->public_key); ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label"><?= trans("secret_key"); ?></label>
-                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= trans("secret_key"); ?>" value="<?= esc($mercadoPago->secret_key); ?>">
+                                        <label class="control-label"><?= esc(trans("secret_key")); ?></label>
+                                        <input type="text" class="form-control" name="secret_key" placeholder="<?= esc(trans("secret_key")); ?>" value="<?= esc($mercadoPago->secret_key); ?>">
                                     </div>
                                     <div class="form-group max-400">
-                                        <label><?= trans('transaction_fee'); ?>&nbsp;(%)</label>
+                                        <label><?= esc(trans('transaction_fee')); ?>&nbsp;(%)</label>
                                         <input type="number" name="transaction_fee" class="form-control" min="0" max="100" step="0.01" value="<?= $mercadoPago->transaction_fee; ?>" placeholder="0.00">
-                                        <small>* <?= trans("transaction_fee_exp"); ?></small>
+                                        <small>* <?= esc(trans("transaction_fee_exp")); ?></small>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -354,7 +354,7 @@
                             <?php if ($activeTab == 'bank_transfer'): ?>
                                 <input type="hidden" name="name_key" value="bank_transfer">
                                 <div class="form-group">
-                                    <label><?= trans("status"); ?></label>
+                                    <label><?= esc(trans("status")); ?></label>
                                     <?= formRadio('bank_transfer_enabled', 1, 0, trans("enable"), trans("disable"), $paymentSettings->bank_transfer_enabled, 'col-lg-3'); ?>
                                 </div>
                                 <div class="form-group">
@@ -367,11 +367,11 @@
                             <?php if ($activeTab == 'cash_on_delivery'): ?>
                                 <input type="hidden" name="name_key" value="cash_on_delivery">
                                 <div class="form-group">
-                                    <label><?= trans("status"); ?></label>
+                                    <label><?= esc(trans("status")); ?></label>
                                     <?= formRadio('cash_on_delivery_enabled', 1, 0, trans("enable"), trans("disable"), $paymentSettings->cash_on_delivery_enabled, 'col-lg-3'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label"><?= trans('commission_debt_limit'); ?></label>
+                                    <label class="control-label"><?= esc(trans('commission_debt_limit')); ?></label>
                                     <div class="max-600">
                                         <?= renderPriceInput('cash_on_delivery_debt_limit', $paymentSettings->cash_on_delivery_debt_limit, ['required' => true]); ?>
                                     </div>
@@ -380,7 +380,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                        <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                     </div>
                 </form>
             </div>
@@ -392,7 +392,7 @@
     <div class="col-lg-6 col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans('commission'); ?>&nbsp;&&nbsp;<?= trans('tax_settings'); ?></h3><br>
+                <h3 class="box-title"><?= esc(trans('commission')); ?>&nbsp;&&nbsp;<?= esc(trans('tax_settings')); ?></h3><br>
             </div>
             <form action="<?= base_url('Admin/commissionSettingsPost'); ?>" method="post">
                 <?= csrf_field(); ?>
@@ -400,44 +400,44 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-12 col-xs-12 m-b-10">
-                                <label><?= trans('commission'); ?></label>
+                                <label><?= esc(trans('commission')); ?></label>
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" name="commission" value="1" id="commission_1" class="custom-control-input radio-commission" <?= $paymentSettings->commission_rate > 0 ? 'checked' : ''; ?>>
-                                    <label for="commission_1" class="custom-control-label"><?= trans("enable"); ?></label>
+                                    <label for="commission_1" class="custom-control-label"><?= esc(trans("enable")); ?></label>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" name="commission" value="0" id="commission_2" class="custom-control-input radio-commission" <?= $paymentSettings->commission_rate <= 0 ? 'checked' : ''; ?>>
-                                    <label for="commission_2" class="custom-control-label"><?= trans("disable"); ?></label>
+                                    <label for="commission_2" class="custom-control-label"><?= esc(trans("disable")); ?></label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="commissionRateContainer" class="form-group" <?= $paymentSettings->commission_rate <= 0 ? 'style="display:none;"' : ''; ?>>
-                        <label><?= trans('commission_rate'); ?>(%)</label>
+                        <label><?= esc(trans('commission_rate')); ?>(%)</label>
                         <input type="number" name="commission_rate" class="form-control" min="0" max="100" step="0.01" value="<?= $paymentSettings->commission_rate; ?>">
                     </div>
                     <div class="form-group">
                         <div class="m-b-10">
-                            <label><?= trans('vat'); ?>&nbsp;(<?= trans("vat_exp"); ?>)</label><br>
-                            <small style="font-size: 13px;"><?= trans("vat_vendor_exp"); ?></small>
+                            <label><?= esc(trans('vat')); ?>&nbsp;(<?= esc(trans("vat_exp")); ?>)</label><br>
+                            <small style="font-size: 13px;"><?= esc(trans("vat_vendor_exp")); ?></small>
                         </div>
                         <?= formRadio('vat_status', 1, 0, trans("enable"), trans("disable"), $paymentSettings->vat_status); ?>
                     </div>
 
                     <div class="form-group">
                         <div class="m-b-10">
-                            <label><?= trans('cart_location_selection'); ?></label><br>
-                            <small style="font-size: 13px;"><?= trans("cart_location_selection_exp"); ?></small>
+                            <label><?= esc(trans('cart_location_selection')); ?></label><br>
+                            <small style="font-size: 13px;"><?= esc(trans("cart_location_selection_exp")); ?></small>
                         </div>
                         <?= formRadio('cart_location_selection', 1, 0, trans("enable"), trans("disable"), $paymentSettings->cart_location_selection); ?>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>
@@ -446,26 +446,26 @@
     <div class="col-lg-6 col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans('featured_product_fees'); ?></h3>
+                <h3 class="box-title"><?= esc(trans('featured_product_fees')); ?></h3>
             </div>
             <form action="<?= base_url('Product/featuredProductsPricingPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label class="control-label"><?= trans('price_per_day'); ?></label>
+                        <label class="control-label"><?= esc(trans('price_per_day')); ?></label>
                         <?= renderPriceInput('price_per_day', $paymentSettings->price_per_day, ['required' => true]); ?>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans('price_per_month'); ?></label>
+                        <label class="control-label"><?= esc(trans('price_per_month')); ?></label>
                         <?= renderPriceInput('price_per_month', $paymentSettings->price_per_month, ['required' => true]); ?>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("free_promotion"); ?></label>
+                        <label><?= esc(trans("free_promotion")); ?></label>
                         <?= formRadio('free_product_promotion', 1, 0, trans("enable"), trans("disable"), $paymentSettings->free_product_promotion); ?>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>
@@ -479,13 +479,13 @@
             <div class="box-header with-border">
                 <div class="left">
                     <h3 class="box-title">
-                        <?= trans('global_taxes'); ?><br>
-                        <small><?= trans("global_taxes_exp"); ?></small>
+                        <?= esc(trans('global_taxes')); ?><br>
+                        <small><?= esc(trans("global_taxes_exp")); ?></small>
                     </h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('add-tax'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_tax'); ?>
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_tax')); ?>
                     </a>
                 </div>
             </div>
@@ -493,11 +493,11 @@
                 <div class="form-group" style="max-height: 500px; overflow-y: scroll;">
                     <table class="table">
                         <tr>
-                            <th><?= trans('id'); ?></th>
-                            <th><?= trans('tax_name'); ?></th>
-                            <th><?= trans('tax_rate'); ?></th>
-                            <th><?= trans('status'); ?></th>
-                            <th><?= trans('options'); ?></th>
+                            <th><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('tax_name')); ?></th>
+                            <th><?= esc(trans('tax_rate')); ?></th>
+                            <th><?= esc(trans('status')); ?></th>
+                            <th><?= esc(trans('options')); ?></th>
                         </tr>
                         <?php if (!empty($taxes)):
                             foreach ($taxes as $tax):
@@ -508,16 +508,16 @@
                                     <td><?= esc($tax->tax_rate); ?>%</td>
                                     <td>
                                         <?php if ($tax->status == 1): ?>
-                                            <label class="label label-success"><?= trans("active"); ?></label>
+                                            <label class="label label-success"><?= esc(trans("active")); ?></label>
                                         <?php else: ?>
-                                            <label class="label label-danger"><?= trans("inactive"); ?></label>
+                                            <label class="label label-danger"><?= esc(trans("inactive")); ?></label>
                                         <?php endif; ?>
                                     </td>
                                     <td style="width: 100px;">
                                         <div class="btn-group btn-group-option">
                                             <a href="<?= adminUrl('edit-tax/' . $tax->id); ?>" class="btn btn-sm btn-default btn-edit"><i class="fa fa-edit"></i></a>
-                                            <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" onclick="deleteItem('Admin/deleteTaxPost','<?= $tax->id; ?>','<?= trans("confirm_delete"); ?>');"> -->
-                                                <a href="#" class="btn-item-delete" data-url="Admin/deleteTaxPost" data-id="<?= $tax->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
+                                            <!-- <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" onclick="deleteItem('Admin/deleteTaxPost','<?= $tax->id; ?>','<?= esc(trans("confirm_delete")); ?>');"> -->
+                                                <a href="#" class="btn-item-delete" data-url="Admin/deleteTaxPost" data-id="<?= $tax->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
                                                 <i class="fa fa-trash-can"></i></a>
                                         </div>
                                     </td>
@@ -526,7 +526,7 @@
                         endif; ?>
                     </table>
                     <?php if (empty($taxes)): ?>
-                        <p class="text-center m-t-30"><?= trans("no_records_found"); ?></p>
+                        <p class="text-center m-t-30"><?= esc(trans("no_records_found")); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -536,15 +536,15 @@
     <div class="col-lg-6 col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans('invoice'); ?></h3><br>
+                <h3 class="box-title"><?= esc(trans('invoice')); ?></h3><br>
             </div>
             <form action="<?= base_url('Admin/additionalInvoiceInfoPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group" style="max-height: 300px; overflow-y: scroll">
                         <div class="m-b-15">
-                            <label class="m-0"><?= trans('additional_invoice_information'); ?></label>
-                            <br><small><?= trans("additional_invoice_information_exp"); ?></small>
+                            <label class="m-0"><?= esc(trans('additional_invoice_information')); ?></label>
+                            <br><small><?= esc(trans("additional_invoice_information_exp")); ?></small>
                         </div>
                         <?php foreach ($activeLanguages as $language):
                             $infoInvoice = getAdditionalInvoiceInfo($language->id); ?>
@@ -553,7 +553,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>

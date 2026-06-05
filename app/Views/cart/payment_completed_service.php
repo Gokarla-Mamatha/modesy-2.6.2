@@ -8,7 +8,7 @@
                     </div>
 
                     <?php if (empty($bankTransactionNumber)): ?>
-                        <h1 class="title"><?= trans("msg_payment_completed"); ?></h1>
+                        <h1 class="title"><?= esc(trans("msg_payment_completed")); ?></h1>
                     <?php endif; ?>
 
                     <?php
@@ -32,11 +32,11 @@
 
                             <div class="m-t-45 text-center">
                                 <a href="<?= base_url('invoice-membership/' . $transaction->id); ?>" class="btn btn-lg btn-info color-white" target="_blank">
-                                    <i class="icon-text-o"></i>&nbsp;&nbsp;<?= trans("view_invoice"); ?>
+                                    <i class="icon-text-o"></i>&nbsp;&nbsp;<?= esc(trans("view_invoice")); ?>
                                 </a>
 
                                 <a href="<?= generateDashUrl('shop_settings'); ?>" class="btn btn-lg btn-custom">
-                                    <?= trans("go_back_to_shop_settings"); ?>&nbsp;&nbsp;
+                                    <?= esc(trans("go_back_to_shop_settings")); ?>&nbsp;&nbsp;
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                                     </svg>
@@ -51,11 +51,11 @@
 
                         <div class="m-t-45 text-center">
                             <a href="<?= base_url('invoice-promotion/' . $transaction->id); ?>" class="btn btn-lg btn-info color-white" target="_blank">
-                                <i class="icon-text-o"></i>&nbsp;&nbsp;<?= trans("view_invoice"); ?>
+                                <i class="icon-text-o"></i>&nbsp;&nbsp;<?= esc(trans("view_invoice")); ?>
                             </a>
 
                             <a href="<?= generateDashUrl('products'); ?>" class="btn btn-lg btn-custom">
-                                <?= trans("go_back_to_products") ?>&nbsp;&nbsp;
+                                <?= esc(trans("go_back_to_products")) ?>&nbsp;&nbsp;
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                                 </svg>
@@ -69,11 +69,11 @@
 
                         <div class="m-t-45 text-center">
                             <a href="<?= base_url('invoice-wallet-deposit/' . $transaction->id); ?>" class="btn btn-lg btn-info color-white" target="_blank">
-                                <i class="icon-text-o"></i>&nbsp;&nbsp;<?= trans("view_invoice"); ?>
+                                <i class="icon-text-o"></i>&nbsp;&nbsp;<?= esc(trans("view_invoice")); ?>
                             </a>
 
                             <a href="<?= generateUrl('wallet'); ?>?tab=deposits" class="btn btn-lg btn-custom">
-                                <?= trans("wallet"); ?>&nbsp;&nbsp;
+                                <?= esc(trans("wallet")); ?>&nbsp;&nbsp;
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                                 </svg>

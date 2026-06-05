@@ -1114,8 +1114,10 @@ if (!function_exists('unserializeData')) {
         }
 
         try {
-            // Allow all classes (safe only if data is trusted)
-            $data = unserialize($trimmedData, ['allowed_classes' => true]);
+            // Block object deserialization to prevent PHP Object Injection (CWE-502).
+            // Only arrays and scalars are returned; objects become __PHP_Incomplete_Class
+            // which has no usable methods (including __destruct/__wakeup/__toString gadgets).
+            $data = unserialize($trimmedData, ['allowed_classes' => false]);
 
             if ($data === false && $trimmedData !== 'b:0;') {
                 return null;

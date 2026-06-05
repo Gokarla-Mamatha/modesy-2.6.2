@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12 title-section">
-        <h3><?= trans('newsletter'); ?></h3>
+        <h3><?= esc(trans('newsletter')); ?></h3>
     </div>
 </div>
 
@@ -9,10 +9,10 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('users'); ?>&nbsp;(<?= $usersCount; ?>)</h3>
+                    <h3 class="box-title"><?= esc(trans('users')); ?>&nbsp;(<?= $usersCount; ?>)</h3>
                 </div>
                 <div class="right">
-                    <input type="text" id="searchUsers" class="form-control" placeholder="<?= trans("search"); ?>" style="width: 180px;">
+                    <input type="text" id="searchUsers" class="form-control" placeholder="<?= esc(trans("search")); ?>" style="width: 180px;">
                 </div>
             </div>
             <div class="box-body">
@@ -21,9 +21,9 @@
                         <thead>
                         <tr>
                             <th width="20"><input type="checkbox" id="checkboxAllUsers"></th>
-                            <th><?= trans("id"); ?></th>
-                            <th><?= trans("username"); ?></th>
-                            <th><?= trans("email"); ?></th>
+                            <th><?= esc(trans("id")); ?></th>
+                            <th><?= esc(trans("username")); ?></th>
+                            <th><?= esc(trans("email")); ?></th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -43,7 +43,7 @@
                 <form action="<?= base_url('Admin/newsletterSelectEmailsPost'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="user_ids" id="selectedUserIds">
-                    <button type="submit" name="submit" value="users" class="btn btn-lg btn-block btn-info"><?= trans("send_email"); ?>&nbsp;&nbsp;<i class="fa fa-send"></i></button>
+                    <button type="submit" name="submit" value="users" class="btn btn-lg btn-block btn-info"><?= esc(trans("send_email")); ?>&nbsp;&nbsp;<i class="fa fa-send"></i></button>
                 </form>
             </div>
         </div>
@@ -53,10 +53,10 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('subscribers'); ?>&nbsp;(<?= $subscribersCount; ?>)</h3>
+                    <h3 class="box-title"><?= esc(trans('subscribers')); ?>&nbsp;(<?= $subscribersCount; ?>)</h3>
                 </div>
                 <div class="right">
-                    <input type="text" id="searchSubscribers" class="form-control" placeholder="<?= trans("search"); ?>" style="width: 180px;">
+                    <input type="text" id="searchSubscribers" class="form-control" placeholder="<?= esc(trans("search")); ?>" style="width: 180px;">
                 </div>
             </div>
             <div class="box-body">
@@ -65,9 +65,9 @@
                         <thead>
                         <tr>
                             <th width="20"><input type="checkbox" id="checkboxAllSubscribers"></th>
-                            <th><?= trans("id"); ?></th>
-                            <th><?= trans("email"); ?></th>
-                            <th><?= trans("options"); ?></th>
+                            <th><?= esc(trans("id")); ?></th>
+                            <th><?= esc(trans("email")); ?></th>
+                            <th><?= esc(trans("options")); ?></th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -87,7 +87,7 @@
                 <form action="<?= base_url('Admin/newsletterSelectEmailsPost'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="subscriber_ids" id="selectedSubscriberIds">
-                    <button type="submit" name="submit" value="subscribers" class="btn btn-lg btn-block btn-info"><?= trans("send_email"); ?>&nbsp;&nbsp;<i class="fa fa-send"></i></button>
+                    <button type="submit" name="submit" value="subscribers" class="btn btn-lg btn-block btn-info"><?= esc(trans("send_email")); ?>&nbsp;&nbsp;<i class="fa fa-send"></i></button>
                 </form>
             </div>
         </div>
@@ -98,7 +98,7 @@
     <div class="col-md-6 col-sm-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans('settings'); ?></h3>
+                <h3 class="box-title"><?= esc(trans('settings')); ?></h3>
             </div>
             <form action="<?= base_url('Admin/newsletterSettingsPost'); ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
@@ -112,13 +112,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label"><?= trans("image"); ?></label>
+                        <label class="control-label"><?= esc(trans("image")); ?></label>
                         <div style="margin-bottom: 10px;">
                             <img src="<?= getStorageFileUrl($newsletterSettings->image, $newsletterSettings->storage, 'newsletter_bg'); ?>" alt="" style="max-width: 300px; max-height: 300px;">
                         </div>
                         <div class="display-block">
                             <a class='btn btn-success btn-sm btn-file-upload'>
-                                <?= trans('select_image'); ?>
+                                <?= esc(trans('select_image')); ?>
                                 <input type="file" name="file" size="40" accept=".jpg, .jpeg, .webp, .png" onchange="$('#upload-file-info').html($(this).val().replace(/.*[\/\\]/, ''));">
                             </a>
                             (.jpg, .jpeg, .webp, .png)
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <div class="box-footer text-right">
-                    <button type="submit" name="submit" value="general" class="btn btn-primary"><?= trans('save_changes'); ?></button>
+                    <button type="submit" name="submit" value="general" class="btn btn-primary"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>

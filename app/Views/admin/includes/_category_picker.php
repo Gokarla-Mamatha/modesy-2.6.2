@@ -1,4 +1,4 @@
-<label class="control-label"><?= trans("categories"); ?></label>
+<label class="control-label"><?= esc(trans("categories")); ?></label>
 <div id="selected_categories">
     <?php $strCategoryIds = '';
     if (!empty($brandCategoryIdsArray)):
@@ -15,7 +15,7 @@
     endif; ?>
 </div>
 <select id="categories" name="category_id[]" class="form-control custom-select select2" onchange="getSubCategories(this.value, 0);">
-    <option value=""><?= trans('select_category'); ?></option>
+    <option value=""><?= esc(trans('select_category')); ?></option>
     <?php if (!empty($parentCategories)):
         foreach ($parentCategories as $item): ?>
             <option value="<?= esc($item->id); ?>"><?= esc($item->cat_name); ?></option>
@@ -23,7 +23,7 @@
     endif; ?>
 </select>
 <div id="category_select_container"></div>
-<button type="button" class="btn btn-sm btn-info m-t-10 btn-select-category"><i class="fa fa-check"></i>&nbsp;<?= trans("select") ?></button>
+<button type="button" class="btn btn-sm btn-info m-t-10 btn-select-category"><i class="fa fa-check"></i>&nbsp;<?= esc(trans("select")) ?></button>
 <input type="hidden" name="category_ids" id="input_selected_category_ids" value="<?= esc($strCategoryIds); ?>">
 
 

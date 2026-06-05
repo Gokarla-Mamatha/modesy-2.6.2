@@ -14,14 +14,14 @@
 </head>
 <body>
 <div class="container" style="width: 898px; max-width: 898px;min-width: 898px;">
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12">
             <div class="container-invoice">
                 <div id="content" class="card">
                     <div class="card-body invoice p-0">
                         <div class="row">
                             <div class="col-12">
-                                <h1 style="text-align: center; font-size: 36px;font-weight: 400;margin-top: 20px;"><?= trans("invoice"); ?></h1>
+                                <h1 style="text-align: center; font-size: 36px;font-weight: 400;margin-top: 20px;"><?= esc(trans("invoice")); ?></h1>
                             </div>
                         </div>
                         <div class="row" style="padding: 45px 30px;">
@@ -40,14 +40,14 @@
                             </div>
                             <div class="col-6">
                                 <div class="float-right">
-                                    <p class="font-weight-bold mb-1"><span style="display: inline-block;width: 100px;"><?= trans("invoice"); ?>:</span>#<?= 'VN' . $order->order_number; ?></p>
-                                    <p class="font-weight-bold"><span style="display: inline-block;width: 100px;"><?= trans("date"); ?>:</span><?= formatDate($order->created_at); ?></p>
+                                    <p class="font-weight-bold mb-1"><span style="display: inline-block;width: 100px;"><?= esc(trans("invoice")); ?>:</span>#<?= 'VN' . $order->order_number; ?></p>
+                                    <p class="font-weight-bold"><span style="display: inline-block;width: 100px;"><?= esc(trans("date")); ?>:</span><?= formatDate($order->created_at); ?></p>
                                 </div>
                             </div>
                         </div>
                         <div class="row" style="padding: 45px 30px;">
                             <div class="col-6">
-                                <p class="font-weight-bold mb-3"><?= trans("client_information"); ?></p>
+                                <p class="font-weight-bold mb-3"><?= esc(trans("client_information")); ?></p>
                                 <p class="mb-1"><?= esc($invoice->client_first_name); ?>&nbsp;<?= esc($invoice->client_last_name); ?>&nbsp;(<?= $invoice->client_username; ?>)</p>
                                 <?php if (!empty($invoice->client_address)): ?>
                                     <p class="mb-1"><?= esc($invoice->client_address); ?></p>
@@ -64,15 +64,15 @@
                                     <?php endif;
                                 endif;
                                 if (!empty($invoice->client_tax_number)): ?>
-                                    <p class="mb-1"><?= trans("tax_registration_number"); ?>:&nbsp;<?= esc($invoice->client_tax_number); ?></p>
+                                    <p class="mb-1"><?= esc(trans("tax_registration_number")); ?>:&nbsp;<?= esc($invoice->client_tax_number); ?></p>
                                 <?php endif; ?>
                             </div>
                             <div class="col-6">
                                 <div class="float-right">
-                                    <p class="font-weight-bold mb-3"><?= trans("payment_details"); ?></p>
-                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= trans("payment_status"); ?>:</span><?= getPaymentStatus($order->payment_status); ?></p>
-                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= trans("payment_method"); ?>:</span><?= getPaymentMethod($order->payment_method); ?></p>
-                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= trans("currency"); ?>:</span><?= $order->price_currency; ?></p>
+                                    <p class="font-weight-bold mb-3"><?= esc(trans("payment_details")); ?></p>
+                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= esc(trans("payment_status")); ?>:</span><?= getPaymentStatus($order->payment_status); ?></p>
+                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= esc(trans("payment_method")); ?>:</span><?= getPaymentMethod($order->payment_method); ?></p>
+                                    <p class="mb-1"><span style="display: inline-block;min-width: 158px;"><?= esc(trans("currency")); ?>:</span><?= $order->price_currency; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -82,15 +82,15 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th class="border-0 font-weight-bold"><?= trans("seller"); ?></th>
-                                            <th class="border-0 font-weight-bold"><?= trans("product_id"); ?></th>
-                                            <th class="border-0 font-weight-bold"><?= trans("description"); ?></th>
-                                            <th class="border-0 font-weight-bold"><?= trans("quantity"); ?></th>
-                                            <th class="border-0 font-weight-bold"><?= trans("unit_price"); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("seller")); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("product_id")); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("description")); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("quantity")); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("unit_price")); ?></th>
                                             <?php if ($paymentSettings->vat_status): ?>
-                                                <th class="border-0 font-weight-bold"><?= trans("vat"); ?></th>
+                                                <th class="border-0 font-weight-bold"><?= esc(trans("vat")); ?></th>
                                             <?php endif; ?>
-                                            <th class="border-0 font-weight-bold"><?= trans("total"); ?></th>
+                                            <th class="border-0 font-weight-bold"><?= esc(trans("total")); ?></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -136,7 +136,7 @@
                                                                 <td>
                                                                     <?= $orderProduct->product_title; ?>
                                                                     <?php if (!empty($itemSku)): ?>
-                                                                        <div><?= trans("sku"); ?>:&nbsp;<?= esc($itemSku); ?></div>
+                                                                        <div><?= esc(trans("sku")); ?>:&nbsp;<?= esc($itemSku); ?></div>
                                                                     <?php endif; ?>
                                                                 </td>
                                                                 <td><?= $orderProduct->product_quantity; ?></td>
@@ -165,7 +165,7 @@
                                 <div class="order-total float-right">
                                     <div class="row mb-2">
                                         <div class="col-7 col-left">
-                                            <?= trans("subtotal"); ?>
+                                            <?= esc(trans("subtotal")); ?>
                                         </div>
                                         <div class="col-5 col-right">
                                             <strong class="font-600"><?= priceFormatted($saleSubtotal, $order->price_currency); ?></strong>
@@ -176,7 +176,7 @@
                                         $saleTotal = $saleTotal - $affiliateDiscount; ?>
                                         <div class="row">
                                             <div class="col-sm-6 col-xs-6 col-left">
-                                                <?= trans("referral_discount"); ?>&nbsp;(<?= $affiliateDiscountRate; ?>%)
+                                                <?= esc(trans("referral_discount")); ?>&nbsp;(<?= $affiliateDiscountRate; ?>%)
                                             </div>
                                             <div class="col-sm-6 col-xs-6 col-right">
                                                 <strong>- <?= priceFormatted($affiliateDiscount, $order->price_currency); ?></strong>
@@ -186,7 +186,7 @@
                                     <?php if (!empty($saleVat)): ?>
                                         <div class="row mb-2">
                                             <div class="col-7 col-left">
-                                                <?= trans("vat"); ?>
+                                                <?= esc(trans("vat")); ?>
                                             </div>
                                             <div class="col-5 col-right">
                                                 <strong class="font-600"><?= priceFormatted($saleVat, $order->price_currency); ?></strong>
@@ -196,7 +196,7 @@
                                     if ($shipping): ?>
                                         <div class="row mb-2">
                                             <div class="col-7 col-left">
-                                                <?= trans("shipping"); ?>
+                                                <?= esc(trans("shipping")); ?>
                                             </div>
                                             <div class="col-5 col-right">
                                                 <strong class="font-600"><?= priceFormatted($saleShipping, $order->price_currency); ?></strong>
@@ -214,7 +214,7 @@
                                         if ($showDiscount):?>
                                             <div class="row mb-2">
                                                 <div class="col-7 col-left">
-                                                    <?= trans("discount"); ?>
+                                                    <?= esc(trans("discount")); ?>
                                                 </div>
                                                 <div class="col-5 col-right">
                                                     <strong class="font-600">-<?= priceFormatted($order->coupon_discount, $order->price_currency); ?></strong>
@@ -224,7 +224,7 @@
                                     endif; ?>
                                     <div class="row mb-2">
                                         <div class="col-7 col-left">
-                                            <?= trans("total"); ?>
+                                            <?= esc(trans("total")); ?>
                                         </div>
                                         <div class="col-5 col-right">
                                             <?php $priceSecondCurrency = '';
@@ -236,7 +236,7 @@
                                                 <?php $saleTotal = $saleTotal + $saleShipping; ?>
                                                 <?= priceFormatted($saleTotal, $order->price_currency);
                                                 if (!empty($priceSecondCurrency)):?>
-                                                    <br><span style="font-weight: 400;white-space: nowrap;">(<?= trans("paid"); ?>:&nbsp;<?= $priceSecondCurrency; ?>&nbsp;<?= $transaction->currency; ?>)</span>
+                                                    <br><span style="font-weight: 400;white-space: nowrap;">(<?= esc(trans("paid")); ?>:&nbsp;<?= $priceSecondCurrency; ?>&nbsp;<?= $transaction->currency; ?>)</span>
                                                 <?php endif; ?>
                                             </strong>
                                         </div>
@@ -258,6 +258,10 @@
                         .container-invoice {
                             max-width: 900px;
                             margin: 0 auto;
+                        }
+
+                        .card-body.invoice {
+                            padding: 40px 35px !important;
                         }
 
                         table {
@@ -306,7 +310,7 @@
                 <svg id="i-print" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="margin-top: -4px;">
                     <path d="M7 25 L2 25 2 9 30 9 30 25 25 25 M7 19 L7 30 25 30 25 19 Z M25 9 L25 2 7 2 7 9 M22 14 L25 14"/>
                 </svg>
-                &nbsp;&nbsp;<?= trans("print"); ?></button>
+                &nbsp;&nbsp;<?= esc(trans("print")); ?></button>
         </div>
     </div>
 </div>

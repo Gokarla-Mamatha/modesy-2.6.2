@@ -17,21 +17,35 @@
         </div>
     </div>
     <div class="col-6 col-right">
-        <div class="text-muted mb-2"><?= trans("product_cart_summary"); ?>:</div>
+        <div class="text-muted mb-2"><?= esc(trans("product_cart_summary")); ?>:</div>
         <div class="d-flex justify-content-between mb-1">
-            <strong><?= trans("quantity"); ?>:</strong>
+            <strong><?= esc(trans("quantity")); ?>:</strong>
             <strong><?= $cartItem->quantity; ?></strong>
         </div>
-        <div class="d-flex justify-content-between mb-5">
-            <strong><?= trans("subtotal"); ?>:</strong>
-            <?php $total = numToDecimal($cartItem->unit_price * $cartItem->quantity); ?>
-            <strong><?= priceFormatted($total, $selectedCurrency->code); ?></strong>
+        <div class="d-flex justify-content-between mb-1">
+            <strong><?= esc(trans("subtotal")); ?>:</strong>
+            <?php $subtotal = numToDecimal($cartItem->unit_price * $cartItem->quantity); ?>
+            <strong><?= priceFormatted($subtotal, $selectedCurrency->code); ?></strong>
         </div>
-        <a href="<?= generateUrl('cart'); ?>" class="btn btn-block btn-custom"><?= trans("view_cart"); ?></a>
+
+        <div class="d-flex justify-content-between mb-5">
+            <strong><?= esc(trans("total")); ?>:</strong>
+            <?php
+            $cartTotal = 0;
+
+            if (!empty($cart) && !empty($cart->items)) {
+                foreach ($cart->items as $item) {
+                    $cartTotal += $item->unit_price * $item->quantity;
+                }
+            }
+            ?>
+            <strong><?= priceFormatted(numToDecimal($cartTotal), $selectedCurrency->code); ?></strong>
+        </div>
+        <a href="<?= generateUrl('cart'); ?>" class="btn btn-block btn-custom"><?= esc(trans("view_cart")); ?></a>
         <?php if ($cartHasPhysicalProduct == true && $productSettings->marketplace_shipping == 1): ?>
-            <a href="<?= generateUrl('cart', 'shipping'); ?>" class="btn btn-block btn-custom btn-custom-outline"><?= trans("checkout"); ?></a>
+            <a href="<?= generateUrl('cart', 'shipping'); ?>" class="btn btn-block btn-custom btn-custom-outline"><?= esc(trans("checkout")); ?></a>
         <?php else: ?>
-            <a href="<?= generateUrl('cart', 'payment_method'); ?>" class="btn btn-block btn-custom btn-custom-outline"><?= trans("checkout"); ?></a>
+            <a href="<?= generateUrl('cart', 'payment_method'); ?>" class="btn btn-block btn-custom btn-custom-outline"><?= esc(trans("checkout")); ?></a>
         <?php endif; ?>
     </div>
 </div>
@@ -39,7 +53,7 @@
 <?php if (!empty($relatedProducts)): ?>
     <div class="row">
         <div class="col-12 cart-related-products">
-            <h3 class="title"><?= trans("you_may_also_like"); ?></h3>
+            <h3 class="title"><?= esc(trans("you_may_also_like")); ?></h3>
             <div class="row row-product">
                 <?php $i = 0;
                 foreach ($relatedProducts as $item):

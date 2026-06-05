@@ -30,14 +30,16 @@ class TaxJarService
 
             return $this->client->taxForOrder($data);
 
-        } catch (\TaxJar\Exception $e) {
+        } catch (\Exception $e) {
 
             log_message('error', 'TaxJar Error: ' . $e->getMessage());
 
-            return [
-                'error' => true,
-                'message' => $e->getMessage()
-            ];
+            session()->setFlashdata(
+                'shipping_error',
+                 $e->getMessage()
+            );
+
+            return null;
         }
     }
 }

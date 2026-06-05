@@ -6,8 +6,8 @@
                 <div class="col-12">
                     <nav class="nav-breadcrumb" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= trans("followers"); ?></li>
+                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("followers")); ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -40,7 +40,7 @@
                             <?php endforeach;
                         else:?>
                             <div class="col-12">
-                                <p class="text-center text-muted"><?= trans("no_records_found"); ?></p>
+                                <p class="text-center text-muted"><?= esc(trans("no_records_found")); ?></p>
                             </div>
                         <?php endif; ?>
                     </div>

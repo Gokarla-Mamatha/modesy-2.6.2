@@ -4,11 +4,11 @@
             <?php if ($product->product_type != 'digital' && $product->listing_type != 'ordinary_listing'): ?>
                 <div class="col-sm-12 col-lg-6">
                     <div class="form-box-head">
-                        <h4 class="title"><?= trans('stock'); ?></h4>
+                        <h4 class="title"><?= esc(trans('stock')); ?></h4>
                     </div>
                     <div class="form-box-body">
                         <div class="form-group">
-                            <input type="number" name="stock" class="form-control form-input" min="0" max="999999999" value="<?= $product->stock; ?>" placeholder="<?= trans("stock"); ?>" required>
+                            <input type="number" name="stock" class="form-control form-input" min="0" max="999999999" value="<?= $product->stock; ?>" placeholder="<?= esc(trans("stock")); ?>" required>
                         </div>
                     </div>
                 </div>
@@ -19,14 +19,14 @@
                 <div class="col-sm-12 col-lg-6">
                     <div class="form-box-head">
                         <h4 class="title">
-                            <?= trans('sku'); ?>&nbsp;<small style="width: auto;display: inline-block;margin-bottom: 0;margin-top:0;">(<?= trans("product_code"); ?>)</small>
+                            <?= esc(trans('sku')); ?>&nbsp;<small style="width: auto;display: inline-block;margin-bottom: 0;margin-top:0;">(<?= esc(trans("product_code")); ?>)</small>
                         </h4>
                     </div>
                     <div class="form-box-body">
                         <div class="form-group">
                             <div class="position-relative">
-                                <input type="text" name="sku" id="input_sku" class="form-control form-input" value="<?= $product->sku; ?>" placeholder="<?= trans("sku"); ?>&nbsp;(<?= trans("optional"); ?>)" maxlength="90">
-                                <button type="button" class="btn btn-default btn-generate-sku" onclick="$('#input_sku').val(generateUniqueString()).trigger('input');"><?= trans("generate"); ?></button>
+                                <input type="text" name="sku" id="input_sku" class="form-control form-input" value="<?= $product->sku; ?>" placeholder="<?= esc(trans("sku")); ?>&nbsp;(<?= esc(trans("optional")); ?>)" maxlength="90">
+                                <button type="button" class="btn btn-default btn-generate-sku" onclick="$('#input_sku').val(generateUniqueString()).trigger('input');"><?= esc(trans("generate")); ?></button>
                             </div>
                         </div>
                     </div>
@@ -40,19 +40,19 @@
        <?php if ($product->listing_type == 'sell_on_site' || $product->listing_type == 'license_key'|| $product->product_type == 'coupon'): ?>
         <div class="form-box form-box-price form-box-last">
             <div class="form-box-head">
-                <h4 class="title"><?= trans("product_price"); ?></h4>
+                <h4 class="title"><?= esc(trans("product_price")); ?></h4>
             </div>
             <div class="form-box-body">
                 <div id="price_input_container" class="form-group">
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 m-b-sm-15">
-                            <label class="font-600"><?= trans("price"); ?></label>
+                            <label class="font-600"><?= esc(trans("price")); ?></label>
                             <?= renderPriceInput('price', $product->price, ['id' => 'product_price_input', 'required' => $product->is_free_product == 1 ? false : true]); ?>
                         </div>
                         <div class="col-xs-12 col-sm-4 m-b-sm-15">
                             <div class="row align-items-center">
                                 <div class="col-sm-12">
-                                    <label class="font-600"><?= trans("discounted_price"); ?></label>
+                                    <label class="font-600"><?= esc(trans("discounted_price")); ?></label>
                                     <div id="discount_input_container" class="<?= $product->discount_rate == 0 ? 'display-none' : ''; ?>">
                                         <?= renderPriceInput('price_discounted', $product->price_discounted, ['id' => 'product_discounted_price_input']); ?>
                                     </div>
@@ -60,7 +60,7 @@
                                 <div class="col-sm-12 m-t-10">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" name="checkbox_has_discount" id="checkbox_discount_rate" <?= $product->discount_rate == 0 ? 'checked' : ''; ?>>
-                                        <label for="checkbox_discount_rate" class="custom-control-label"><?= trans("no_discount"); ?></label>
+                                        <label for="checkbox_discount_rate" class="custom-control-label"><?= esc(trans("no_discount")); ?></label>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                             <div class="col-xs-12 col-sm-4">
                                 <div class="row align-items-center">
                                     <div class="col-sm-12">
-                                        <label class="font-600"><?= trans("product_based_vat"); ?><small>&nbsp;(<?= trans("vat_exp"); ?>)</small></label>
+                                        <label class="font-600"><?= esc(trans("product_based_vat")); ?><small>&nbsp;(<?= esc(trans("vat_exp")); ?>)</small></label>
                                         <div id="vat_input_container" class="<?= $product->vat_rate == 0 ? 'display-none' : ''; ?>">
                                             <div class="input-group">
                                                 <span class="input-group-addon">%</span>
@@ -81,7 +81,7 @@
                                     <div class="col-xs-12 m-t-10">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" name="no_vat" id="checkbox_no_vat" <?= $product->vat_rate == 0 ? 'checked' : ''; ?>>
-                                            <label for="checkbox_no_vat" class="custom-control-label"><?= trans("no_vat"); ?></label>
+                                            <label for="checkbox_no_vat" class="custom-control-label"><?= esc(trans("no_vat")); ?></label>
                                         </div>
                                     </div>
                                 </div>
@@ -91,15 +91,15 @@
                         <?php if (!empty($product->price) && $product->price > 0): ?>
                             <div class="col-sm-12 m-t-30">
                                 <p class="calculated-price">
-                                    <strong><?= trans("discount_rate"); ?>:&nbsp;&nbsp;</strong>
+                                    <strong><?= esc(trans("discount_rate")); ?>:&nbsp;&nbsp;</strong>
                                     <b id="calculated_discount_rate" class="earned-price"><?= $product->discount_rate; ?>%</b>
                                 </p>
                                 <p class="calculated-price">
-                                    <strong><?= trans("commission_rate"); ?>:&nbsp;&nbsp;</strong>
+                                    <strong><?= esc(trans("commission_rate")); ?>:&nbsp;&nbsp;</strong>
                                     <b id="calculated_discount_rate" class="earned-price"><?= $commissionRate; ?>%</b>
                                 </p>
                                 <p class="calculated-price">
-                                    <strong><?= trans("you_will_earn"); ?> (<?= $defaultCurrency->code; ?>):&nbsp;&nbsp;</strong>
+                                    <strong><?= esc(trans("you_will_earn")); ?> (<?= $defaultCurrency->code; ?>):&nbsp;&nbsp;</strong>
                                     <b id="earned_amount" class="earned-price">
                                         <?php $earnedAmount = 0;
                                         if (!empty($product)) {
@@ -108,9 +108,9 @@
                                         }
                                         echo esc(priceFormatted($earnedAmount, $defaultCurrency->code, true)); ?>
                                     </b>
-                                    &nbsp;&nbsp;<b>+&nbsp;&nbsp;&nbsp;<?= trans("vat"); ?></b>
+                                    &nbsp;&nbsp;<b>+&nbsp;&nbsp;&nbsp;<?= esc(trans("vat")); ?></b>
                                     <?php if ($product->product_type != 'digital'): ?>
-                                        &nbsp;&nbsp;<b>+&nbsp;&nbsp;&nbsp;<?= trans("shipping_cost"); ?></b>&nbsp;&nbsp;
+                                        &nbsp;&nbsp;<b>+&nbsp;&nbsp;&nbsp;<?= esc(trans("shipping_cost")); ?></b>&nbsp;&nbsp;
                                     <?php endif; ?>
                                 </p>
                             </div>
@@ -123,7 +123,7 @@
                         <div class="col-sm-12">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="is_free_product" id="checkbox_free_product" <?= $product->is_free_product == 1 ? 'checked' : ''; ?>>
-                                <label for="checkbox_free_product" class="custom-control-label text-danger"><?= trans("free_product"); ?></label>
+                                <label for="checkbox_free_product" class="custom-control-label text-danger"><?= esc(trans("free_product")); ?></label>
                             </div>
                         </div>
                     </div>
@@ -134,13 +134,13 @@
         if ($productSettings->classified_price == 1): ?>
             <div class="form-box form-box-last">
                 <div class="form-box-head">
-                    <h4 class="title"><?= trans('price'); ?></h4>
+                    <h4 class="title"><?= esc(trans('price')); ?></h4>
                 </div>
                 <div class="form-box-body">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-12 col-md-4 col-lg-3 m-b-sm-15">
-                                <label class="font-600"><?= trans("currency"); ?></label>
+                                <label class="font-600"><?= esc(trans("currency")); ?></label>
                                 <select name="currency" class="form-control custom-select select2" required>
                                     <?php if (!empty($currencies)):
                                         $allowAllCurrencies = $paymentSettings->allow_all_currencies_for_classied == 1;
@@ -155,13 +155,13 @@
                                 </select>
                             </div>
                             <div class="col-xs-12 col-md-4 col-lg-3 m-b-sm-15">
-                                <label class="font-600"><?= trans("price"); ?></label>
+                                <label class="font-600"><?= esc(trans("price")); ?></label>
                                 <?= renderPriceInput('price', $product->price, ['id' => 'product_price_input', 'required' => $product->is_free_product == 1 ? false : true], false); ?>
                             </div>
                             <div class="col-xs-12 col-md-4 col-lg-3">
                                 <div class="row align-items-center">
                                     <div class="col-sm-12">
-                                        <label class="font-600"><?= trans("discounted_price"); ?></label>
+                                        <label class="font-600"><?= esc(trans("discounted_price")); ?></label>
                                         <div id="discount_input_container" class="<?= $product->discount_rate == 0 ? 'display-none' : ''; ?>">
                                             <?= renderPriceInput('price_discounted', $product->price_discounted, ['id' => 'product_discounted_price_input'], false); ?>
                                         </div>
@@ -169,7 +169,7 @@
                                     <div class="col-sm-12 m-t-10">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" name="checkbox_has_discount" id="checkbox_discount_rate" <?= $product->discount_rate == 0 ? 'checked' : ''; ?>>
-                                            <label for="checkbox_discount_rate" class="custom-control-label"><?= trans("no_discount"); ?></label>
+                                            <label for="checkbox_discount_rate" class="custom-control-label"><?= esc(trans("no_discount")); ?></label>
                                         </div>
                                     </div>
                                 </div>
@@ -193,10 +193,10 @@
                             <label class="font-600">Bidding Status</label>
                             <select name="bidding_status" class="form-control custom-select">
                                 <option value="active" <?= $product->bidding_status == 'active' ? 'selected' : ''; ?>>
-                                    <?= trans('active'); ?>
+                                    <?= esc(trans('active')); ?>
                                 </option>
                                 <option value="closed" <?= $product->bidding_status == 'closed' ? 'selected' : ''; ?>>
-                                    <?= trans('closed'); ?>
+                                    <?= esc(trans('closed')); ?>
                                 </option>
                             </select>
                         </div>

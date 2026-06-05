@@ -12,7 +12,7 @@ $imgContainerClass = 'product-image-container' . ($hasSecondImg ? ' multi-image-
         <?php endif; ?>
 
         <?php if ($product->is_promoted && $generalSettings->promoted_products && !empty($promotedBadge)): ?>
-            <span class="product-card-badge product-card-badge-green"><?= trans("featured"); ?></span>
+            <span class="product-card-badge product-card-badge-green"><?= esc(trans("featured")); ?></span>
         <?php endif; ?>
 
         <a href="<?= $url; ?>">
@@ -25,15 +25,15 @@ $imgContainerClass = 'product-image-container' . ($hasSecondImg ? ' multi-image-
         <div class="product-actions-overlay">
             <?php if (($product->listing_type != 'ordinary_listing') && $product->is_free_product != 1):
                 if (!empty($product->has_options) || $product->listing_type == 'bidding'):?>
-                    <a href="<?= $url; ?>" class="action-btn cart-btn" data-toggle="tooltip" data-placement="left" data-product-id="<?= $product->id; ?>" data-reload="0" title="<?= trans("view_options"); ?>" aria-label="<?= trans("view_options"); ?>"><i class="icon-cart"></i></a>
+                    <a href="<?= $url; ?>" class="action-btn cart-btn" data-toggle="tooltip" data-placement="left" data-product-id="<?= $product->id; ?>" data-reload="0" title="<?= esc(trans("view_options")); ?>" aria-label="<?= esc(trans("view_options")); ?>"><i class="icon-cart"></i></a>
                 <?php else:
                     $itemUniqueID = uniqid();
                     if ($product->stock > 0):?>
-                        <button type="button" id="btn_add_cart_<?= $itemUniqueID; ?>" class="action-btn cart-btn btn-item-add-to-cart" data-id="<?= $itemUniqueID; ?>" data-toggle="tooltip" data-placement="left" data-product-id="<?= $product->id; ?>" data-reload="0" title="<?= trans("add_to_cart"); ?>" aria-label="add-to-cart"><i class="icon-cart"></i></button>
+                        <button type="button" id="btn_add_cart_<?= $itemUniqueID; ?>" class="action-btn cart-btn btn-item-add-to-cart" data-id="<?= $itemUniqueID; ?>" data-toggle="tooltip" data-placement="left" data-product-id="<?= $product->id; ?>" data-reload="0" title="<?= esc(trans("add_to_cart")); ?>" aria-label="add-to-cart"><i class="icon-cart"></i></button>
                     <?php endif;
                 endif;
             endif; ?>
-            <button type="button" class="action-btn wishlist-btn btn-add-remove-wishlist" data-toggle="tooltip" data-placement="left" data-product-id="<?= $product->id; ?>" data-type="list" title="<?= trans("wishlist"); ?>" aria-label="add-remove-wishlist">
+            <button type="button" class="action-btn wishlist-btn btn-add-remove-wishlist" data-toggle="tooltip" data-placement="left" data-product-id="<?= $product->id; ?>" data-type="list" title="<?= esc(trans("wishlist")); ?>" aria-label="add-remove-wishlist">
                 <?php if (isProductInWishlist($product) == 1): ?>
                     <i class="icon-heart"></i>
                 <?php else: ?>

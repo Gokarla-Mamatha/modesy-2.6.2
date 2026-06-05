@@ -9,7 +9,7 @@ if ($session->getFlashdata('errors')): ?>
 if ($session->getFlashdata('error')): ?>
     <div class="m-b-15">
         <div class="alert alert-danger alert-dismissable">
-            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+           <button type="button" class="close btn-alert-close">×</button>
             <h4>
                 <i class="icon fa fa-exclamation-triangle"></i>
                 <?= $session->getFlashdata('error'); ?>
@@ -19,7 +19,7 @@ if ($session->getFlashdata('error')): ?>
 <?php elseif ($session->getFlashdata('success')): ?>
     <div class="m-b-15">
         <div class="alert alert-success alert-dismissable">
-            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+           <button type="button" class="close btn-alert-close">×</button>
             <h4>
                 <i class="icon fa fa-check"></i>
                 <?= $session->getFlashdata('success'); ?>

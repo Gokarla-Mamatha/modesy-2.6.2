@@ -41,7 +41,7 @@
         </div>
         <?php if ($generalSettings->single_country_mode != 1): ?>
             <div class="col-md-12 m-b-5">
-                <select id="select_countries" name="country_id" class="select2 form-control" onchange="getStates(this.value);" data-placeholder="<?= trans("country"); ?>">
+                <select id="select_countries" name="country_id" class="select2 form-control" onchange="getStates(this.value);" data-placeholder="<?= esc(trans("country")); ?>">
                     <option value=""></option>
                     <?php if (!empty($countries)):
                         foreach ($countries as $item):
@@ -58,7 +58,7 @@
             $states = getStatesByCountry($countryId);
         endif; ?>
         <div id="get_states_container" class="col-md-12 m-b-5 <?= !empty($countryId) ? '' : 'display-none'; ?>">
-            <select id="select_states" name="state_id" class="select2 form-control" data-placeholder="<?= trans("state"); ?>">
+            <select id="select_states" name="state_id" class="select2 form-control" data-placeholder="<?= esc(trans("state")); ?>">
                 <option value=""></option>
                 <?php if (!empty($states)):
                     foreach ($states as $item): ?>
@@ -68,7 +68,7 @@
             </select>
         </div>
         <div class="col-sm-12">
-            <button type="button" id="btnSelectLocation" class="btn btn-sm btn-info"><i class="fa fa-check"></i>&nbsp;<?= trans("select_location") ?></button>
+            <button type="button" id="btnSelectLocation" class="btn btn-sm btn-info"><i class="fa fa-check"></i>&nbsp;<?= esc(trans("select_location")) ?></button>
         </div>
     </div>
 </div>

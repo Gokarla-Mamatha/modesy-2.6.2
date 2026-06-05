@@ -715,7 +715,17 @@ class CartModel extends BaseModel
         $cartTotal->shipping_cost = $cart->shipping_cost;
         $cartTotal->total_before_shipping = $cartTotal->subtotal + $cartTotal->vat;
         $cartTotal->total = $cartTotal->subtotal + $cartTotal->vat + $cartTotal->shipping_cost;
+        //custom tax
+        $cartTotal->custom_tax = 0;
 
+        if (!empty($cart->items)) {
+            foreach ($cart->items as $item) {
+                $cartTotal->custom_tax += get_tax_amount([$item]);
+            }
+        }
+
+        $cartTotal->total_before_shipping += $cartTotal->custom_tax;
+        $cartTotal->total += $cartTotal->custom_tax;
         //calculate affiliate discount
         $affiliateDiscount = $this->calculateAffiliateDiscount($cart->items);
         $cartTotal->affiliate_id = $affiliateDiscount['id'];

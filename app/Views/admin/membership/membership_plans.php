@@ -2,19 +2,19 @@
     <div class="col-lg-7 col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans("create_new_plan"); ?></h3>
+                <h3 class="box-title"><?= esc(trans("create_new_plan")); ?></h3>
             </div>
             <form action="<?= base_url('Membership/addPlanPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label class="control-label"><?= trans("title"); ?></label>
+                        <label class="control-label"><?= esc(trans("title")); ?></label>
                         <?php foreach ($activeLanguages as $language): ?>
                             <input type="text" class="form-control m-b-5" name="title_<?= $language->id; ?>" placeholder="<?= esc($language->name); ?>" maxlength="255" data-type="name" required>
                         <?php endforeach; ?>
                     </div>
                     <div class="form-inline option-plan-type m-b-15">
-                        <label class="control-label m-b-5"><?= trans("number_of_ads"); ?></label>
+                        <label class="control-label m-b-5"><?= esc(trans("number_of_ads")); ?></label>
                         <div>
                             <div class="form-group form-group-number-of-ads">
                                 <input type="number" class="form-control form-input m-r-10" name="number_of_ads" min="1" max="999999999" placeholder="E.g: 10" required style="width: 400px; max-width: 100%;" data-type="number">
@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="is_unlimited_number_of_ads" id="checkbox_is_unlimited_number_of_ads" value="1" class="custom-control-input">
-                                    <label for="checkbox_is_unlimited_number_of_ads" class="custom-control-label"><?= trans("unlimited"); ?></label>
+                                    <label for="checkbox_is_unlimited_number_of_ads" class="custom-control-label"><?= esc(trans("unlimited")); ?></label>
                                 </div>
                             </div>
                         </div>
@@ -31,18 +31,18 @@
                         <label class="control-label m-b-5"><?= trans("duration") . " (" . trans("time_limit_for_plan") . ")"; ?></label>
                         <div>
                             <div class="form-group form-group-duration">
-                                <input type="number" class="form-control form-input m-r-10" name="number_of_days" min="1" max="999999999" placeholder="<?= trans("number_of_days") ?>&nbsp;&nbsp;(E.g: 30)" required style="width: 400px; max-width: 100%;" data-type="number">
+                                <input type="number" class="form-control form-input m-r-10" name="number_of_days" min="1" max="999999999" placeholder="<?= esc(trans("number_of_days")) ?>&nbsp;&nbsp;(E.g: 30)" required style="width: 400px; max-width: 100%;" data-type="number">
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="is_unlimited_time" id="checkbox_is_unlimited_time" value="1" class="custom-control-input">
-                                    <label for="checkbox_is_unlimited_time" class="custom-control-label"><?= trans("unlimited"); ?></label>
+                                    <label for="checkbox_is_unlimited_time" class="custom-control-label"><?= esc(trans("unlimited")); ?></label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-inline m-b-15">
-                        <label class="control-label m-b-5"><?= trans("price"); ?></label>
+                        <label class="control-label m-b-5"><?= esc(trans("price")); ?></label>
                         <div>
                             <div class="form-group form-group-price">
                                 <?= renderPriceInput('price', null, ['required' => true, 'class' => 'validate-price-input','data-type' => 'number']); ?>
@@ -50,14 +50,14 @@
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="is_free" id="checkbox_free" value="1" class="custom-control-input">
-                                    <label for="checkbox_free" class="custom-control-label"><?= trans("free"); ?></label>
+                                    <label for="checkbox_free" class="custom-control-label"><?= esc(trans("free")); ?></label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-inline m-b-15">
                         <label class="control-label m-b-5">
-                            <?= trans("storage_limit"); ?> (MB)
+                            <?= esc(trans("storage_limit")); ?> (MB)
                         </label>
                         <div>
                             <div class="form-group form-group-storage">
@@ -67,21 +67,21 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("order"); ?></label>
-                        <input type="number" class="form-control" name="plan_order" min="1" max="99999" placeholder="<?= trans("order"); ?>" required data-type="number">
+                        <label class="control-label"><?= esc(trans("order")); ?></label>
+                        <input type="number" class="form-control" name="plan_order" min="1" max="99999" placeholder="<?= esc(trans("order")); ?>" required data-type="number">
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" name="is_popular" id="checkbox_is_popular" value="1" class="custom-control-input">
-                            <label for="checkbox_is_popular" class="custom-control-label"><?= trans("popular"); ?></label>
+                            <label for="checkbox_is_popular" class="custom-control-label"><?= esc(trans("popular")); ?></label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("features"); ?></label>
+                        <label class="control-label"><?= esc(trans("features")); ?></label>
                         <hr style="margin-top: 5px;margin-bottom: 5px;">
                         <div class="membership-plans-container">
                             <div class="feature">
-                                <p class="m-b-5"><?= trans("feature"); ?></p>
+                                <p class="m-b-5"><?= esc(trans("feature")); ?></p>
                                 <?php foreach ($activeLanguages as $language): ?>
                                     <input type="text" name="feature_<?= $language->id; ?>[]" class="form-control m-b-5" placeholder="<?= esc($language->name); ?>" data-type="name" required>
                                 <?php endforeach; ?>
@@ -90,14 +90,14 @@
                         <div class="row">
                             <div class="col-sm-12 text-right">
                                 <button type="button" class="btn btn-sm btn-success" onclick="addMembershipFeature();">
-                                    <i class="fa fa-plus"></i>&nbsp;<?= trans("add_feature"); ?>
+                                    <i class="fa fa-plus"></i>&nbsp;<?= esc(trans("add_feature")); ?>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans("submit"); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans("submit")); ?></button>
                 </div>
             </form>
         </div>
@@ -105,22 +105,22 @@
     <div class="col-lg-5 col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= trans("settings"); ?></h3>
+                <h3 class="box-title"><?= esc(trans("settings")); ?></h3>
             </div>
             <form action="<?= base_url('Membership/settingsPost'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label><?= trans("status"); ?></label>
+                        <label><?= esc(trans("status")); ?></label>
                         <?= formRadio('membership_plans_system', 1, 0, trans("enable"), trans("disable"), $generalSettings->membership_plans_system); ?>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("allow_free_plan_multiple_times"); ?></label>
+                        <label><?= esc(trans("allow_free_plan_multiple_times")); ?></label>
                         <?= formRadio('allow_free_plan_multiple_times', 1, 0, trans("yes"), trans("no"), $generalSettings->allow_free_plan_multiple_times); ?>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans("save_changes"); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans("save_changes")); ?></button>
                 </div>
             </form>
         </div>
@@ -130,14 +130,14 @@
 <?php if (!empty($membershipPlans)): ?>
     <div class="row" style="margin-bottom: 100px;">
         <div class="col-sm-12 m-b-15">
-            <h3 class="box-title" style="font-size: 18px; font-weight: 600;"><?= trans("membership_plans"); ?></h3>
+            <h3 class="box-title" style="font-size: 18px; font-weight: 600;"><?= esc(trans("membership_plans")); ?></h3>
         </div>
         <div class="col-sm-12">
             <div class="price-box-container">
                 <?php foreach ($membershipPlans as $plan): ?>
                     <div class="price-box">
                         <?php if ($plan->is_popular == 1): ?>
-                            <div class="ribbon ribbon-top-right"><span><?= trans("popular"); ?></span></div>
+                            <div class="ribbon ribbon-top-right"><span><?= esc(trans("popular")); ?></span></div>
                         <?php endif; ?>
                         <div class="price-box-inner">
                             <div class="pricing-name text-center">
@@ -168,9 +168,9 @@
                             </div>
                             <div class="text-center">
                                 <div class="btn-group">
-                                    <a href="<?= adminUrl('edit-plan/' . $plan->id); ?>" class="btn btn-default btn-edit"><?= trans("edit"); ?></a>
-                                    <!-- <a href="javascript:void(0)" class="btn btn-default btn-delete" onclick="deleteItem('Membership/deletePlanPost','<?= $plan->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                        <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Membership/deletePlanPost" data-id="<?= $plan->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
+                                    <a href="<?= adminUrl('edit-plan/' . $plan->id); ?>" class="btn btn-default btn-edit"><?= esc(trans("edit")); ?></a>
+                                    <!-- <a href="javascript:void(0)" class="btn btn-default btn-delete" onclick="deleteItem('Membership/deletePlanPost','<?= $plan->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                        <a href="#" class="btn btn-sm btn-default btn-delete btn-item-delete" data-url="Membership/deletePlanPost" data-id="<?= $plan->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
                                         <i class="fa fa-trash-can"></i></a>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@
 <script <?= csp_script_nonce() ?>>
     function addMembershipFeature() {
         var feature = '<div class="feature">\n';
-        feature += '<p class="m-b-5"><?= trans("feature"); ?><span class="btn btn-xs btn-danger btn-delete-membership-feature m-l-5"><i class="fa fa-times"></i></span></p>\n';
+        feature += '<p class="m-b-5"><?= esc(trans("feature")); ?><span class="btn btn-xs btn-danger btn-delete-membership-feature m-l-5"><i class="fa fa-times"></i></span></p>\n';
         <?php foreach ($activeLanguages as $language): ?>
         feature += '<input type="text" name="feature_<?= $language->id; ?>[]" class="form-control m-b-5" placeholder="<?= esc($language->name); ?>" required>';
         <?php endforeach; ?>

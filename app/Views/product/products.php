@@ -4,8 +4,8 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-products breadcrumb-mobile-scroll">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item"><a href="<?= generateUrl('products'); ?>"><?= trans("products"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= generateUrl('products'); ?>"><?= esc(trans("products")); ?></a></li>
                         <?php if (!empty($parentCategoriesTree)):
                             foreach ($parentCategoriesTree as $item):
                                 if ($item->id == $category->id):?>
@@ -33,7 +33,7 @@
                         <p class="category-description"><?= esc($description); ?></p>
                     <?php endif;
                 else: ?>
-                    <h1 class="h1-title-nvs"><?= trans("products"); ?></h1>
+                    <h1 class="h1-title-nvs"><?= esc(trans("products")); ?></h1>
                 <?php endif; ?>
             </div>
         </div>

@@ -4,12 +4,12 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= trans("profile_settings"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= esc(trans("profile_settings")); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= $title; ?></li>
                     </ol>
                 </nav>
-                <h1 class="page-title"><?= trans("profile_settings"); ?></h1>
+                <h1 class="page-title"><?= esc(trans("profile_settings")); ?></h1>
             </div>
         </div>
         <div class="row">
@@ -24,9 +24,9 @@
                         <table class="table">
                             <thead>
                             <tr role="row">
-                                <th scope="col"><?= trans("product"); ?></th>
-                                <th scope="col"><?= trans("affiliate_link"); ?></th>
-                                <th scope="col"><?= trans("date"); ?></th>
+                                <th scope="col"><?= esc(trans("product")); ?></th>
+                                <th scope="col"><?= esc(trans("affiliate_link")); ?></th>
+                                <th scope="col"><?= esc(trans("date")); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,7 +39,7 @@
                                             <td style="width: 50%;"><?= esc(generateUrl('affiliate') . '/' . $link->link_short); ?></td>
                                             <td style="width: 120px;">
                                                 <?= formatDate($link->created_at, false); ?>
-                                                <div><a href="javascript:void(0)" class="text-danger link-underlined" onclick='deleteAffiliateLink(<?= $link->id; ?>,"<?= trans("confirm_action", true); ?>");'><?= trans("delete"); ?></a></div>
+                                                <div><a href="javascript:void(0)" class="text-danger link-underlined btn-delete-affiliate-link" data-link-id="<?= esc($link->id, 'attr'); ?>" data-msg="<?= esc(trans("confirm_action", true), 'attr'); ?>"><?= esc(trans("delete")); ?></a></div>
                                             </td>
                                         </tr>
                                     <?php endif; endforeach;
@@ -49,7 +49,7 @@
                     </div>
                     <?php if (empty($links)): ?>
                         <p class="text-center m-t-15">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                     <div class="d-flex justify-content-center m-t-30">
@@ -61,3 +61,8 @@
         </div>
     </div>
 </div>
+<script <?= csp_script_nonce() ?>>
+    $(document).on('click', '.btn-delete-affiliate-link', function () {
+        deleteAffiliateLink($(this).data('link-id'), $(this).data('msg'));
+    });
+</script>

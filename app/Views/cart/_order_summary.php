@@ -29,7 +29,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                                             <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
-                                        </svg>&nbsp;&nbsp;<?= trans("instant_download"); ?>
+                                        </svg>&nbsp;&nbsp;<?= esc(trans("instant_download")); ?>
                                     </label>
                                 </div>
                             <?php endif; ?>
@@ -48,7 +48,7 @@
 
                             <div class="list-item seller">
                                 <div class="badge badge-info-light">
-                                    <?= trans("seller"); ?>:&nbsp;
+                                    <?= esc(trans("seller")); ?>:&nbsp;
                                     <a href="<?= generateProfileUrl($cartItem->seller_slug); ?>">
                                         <?= esc($cartItem->seller_username); ?>
                                     </a>
@@ -56,23 +56,22 @@
                             </div>
 
                             <div class="list-item m-t-15">
-                                <label><?= trans("quantity"); ?>:</label>
+                                <label><?= esc(trans("quantity")); ?>:</label>
                                 <strong class="lbl-price"><?= $cartItem->quantity; ?></strong>
                             </div>
 
                             <div class="list-item">
-                                <label><?= trans("price"); ?>:</label>
+                                <label><?= esc(trans("price")); ?>:</label>
                                 <strong class="lbl-price">
                                     <?= priceDecimal($cartItem->total_price, $cart->currency_code); ?>
                                 </strong>
                             </div>
-
-                            <?php if (!empty($cartItem->product_vat) && $cartItem->product_vat > 0): ?>
+                            <!-- <?php if (!empty($cartItem->product_vat) && $cartItem->product_vat > 0): ?>
                                 <div class="list-item">
-                                    <label><?= trans("vat"); ?>&nbsp;(<?= $cartItem->product_vat_rate; ?>%):</label>
+                                    <label><?= esc(trans("vat")); ?>&nbsp;(<?= $cartItem->product_vat_rate; ?>%):</label>
                                     <strong><?= priceDecimal($cartItem->product_vat, $cart->currency_code); ?></strong>
                                 </div>
-                            <?php endif; ?>
+                            <?php endif; ?> -->
 
                         </div>
                     </div>
@@ -82,12 +81,13 @@
 
             <?php
             //echo  ' shipping total: '.$shippingtotal;exit;
-            $oldShipping = $cart->totals->shipping_cost;
+            // $oldShipping = $cart->totals->shipping_cost;
 
-            $cart->totals->shipping_cost = $shippingtotal;
+            // $cart->totals->shipping_cost = $shippingtotal;
 
-            $cart->totals->total =
-                ($cart->totals->total - $oldShipping) + $shippingtotal;
+            // $cart->totals->total =
+            //     ($cart->totals->total - $oldShipping) + $shippingtotal;
+            $taxTotal = $shippingtotal; 
             ?>
 
         </div>
@@ -102,7 +102,7 @@
 
         <?php if ($cart->totals->affiliate_discount > 0): ?>
             <div class="row-custom m-b-10">
-                <strong><?= trans("referral_discount"); ?>&nbsp;(<?= $cart->totals->affiliate_discount_rate; ?>%)
+                <strong><?= esc(trans("referral_discount")); ?>&nbsp;(<?= $cart->totals->affiliate_discount_rate; ?>%)
                     <span class="float-right">
                         -&nbsp;<?= priceDecimal($cart->totals->affiliate_discount, $cart->currency_code); ?>
                     </span>
@@ -110,31 +110,28 @@
             </div>
         <?php endif; ?>
 
-        <?php if (!empty($cart->totals->vat) && $cart->totals->vat > 0): ?>
+        <?php //if (!empty($cart->totals->shipping_cost) && $cart->totals->shipping_cost >0): ?>
             <div class="row-custom m-b-10">
-                <strong><?= trans("vat"); ?>
+                <strong><?= esc(trans("tax")); ?>
                     <span class="float-right">
-                        <?= priceDecimal($cart->totals->vat, $cart->currency_code); ?>
+                        <?= priceDecimal($taxTotal, $cart->currency_code); ?>
                     </span>
                 </strong>
             </div>
-        <?php endif; ?>
-
-        <?php if (!empty($cart->totals->shipping_cost) && $cart->totals->shipping_cost > 0): ?>
-            <div class="row-custom m-b-10">
-                <strong><?= trans("shipping"); ?>
-                    <span class="float-right">
-                        <?= priceDecimal($shippingtotal, $cart->currency_code); ?>
-                    </span>
-                </strong>
-            </div>
-        <?php endif; ?>
+        <?php //endif; ?>
+       <div class="row-custom m-b-10">
+            <strong><?= esc(trans("shipping")); ?>
+                <span class="float-right">
+                    <?= priceDecimal($cart->totals->shipping_cost, $cart->currency_code); ?>
+                </span>
+            </strong>
+        </div>
 
         <?php if (!empty($cart->coupon_code)): ?>
             <div class="row-custom m-b-10">
-                <strong><?= trans("coupon"); ?>&nbsp;&nbsp;[<?= esc($cart->coupon_code); ?>]&nbsp;&nbsp;
+                <strong><?= esc(trans("coupon")); ?>&nbsp;&nbsp;[<?= esc($cart->coupon_code); ?>]&nbsp;&nbsp;
                     <a href="javascript:void(0)" class="font-weight-normal" onclick="removeCartDiscountCoupon();">
-                        [<?= trans("remove"); ?>]
+                        [<?= esc(trans("remove")); ?>]
                     </a>
 
                     <span class="float-right">
@@ -164,7 +161,7 @@
         <?php if (!empty($cart->totals->transaction_fee)): ?>
             <div class="row-custom m-b-15">
                 <strong>
-                    <?= trans("transaction_fee"); ?>
+                    <?= esc(trans("transaction_fee")); ?>
                     <?= $cart->totals->transaction_fee_rate ? ' (' . numToDecimal($cart->totals->transaction_fee_rate) . '%)' : ''; ?>
 
                     <span class="float-right">
@@ -188,7 +185,7 @@
             </div>
         <?php else: ?>
             <div class="row-custom">
-                <strong><?= trans("total"); ?>
+                <strong><?= esc(trans("total")); ?>
                     <span class="float-right">
                         <?= priceDecimal($cart->totals->total, $cart->currency_code); ?>
                     </span>

@@ -182,46 +182,41 @@ class ProductController extends BaseAdminController
     /**
      * Delete Product
      */
-public function deleteProduct()
-{
-    $id = inputPost('id');
+    public function deleteProduct()
+    {
+        $id = inputPost('id');
 
-    $product = $this->productAdminModel->getProduct($id);
+        $product = $this->productAdminModel->getProduct($id);
 
-    if (!empty($product)) {
+        if (!empty($product)) {
 
-        if (hasPermission('products') || $this->userId == $product->user_id) {
+            if (hasPermission('products') || $this->userId == $product->user_id) {
 
-            if ($this->productAdminModel->deleteProduct($id)) {
+                if ($this->productAdminModel->deleteProduct($id)) {
 
-                setSuccessMessage(trans("msg_deleted"));
 
-                return $this->response->setJSON([
-                    'status' => 1
-                ]);
+                    return $this->response->setJSON([
+                        'status' => 1
+                    ]);
+
+                } else {
+                    return $this->response->setJSON([
+                        'status' => 0
+                    ]);
+                }
 
             } else {
-
-                setErrorMessage(trans("msg_error"));
-
                 return $this->response->setJSON([
-                    'status' => 0
+                    'status' => 0,
+                    'message' => 'Permission denied'
                 ]);
             }
-
-        } else {
-
-            return $this->response->setJSON([
-                'status' => 0,
-                'message' => 'Permission denied'
-            ]);
         }
-    }
 
-    return $this->response->setJSON([
-        'status' => 0
-    ]);
-}
+        return $this->response->setJSON([
+            'status' => 0
+        ]);
+    }
 
     /**
      * Delete Product Permanently
@@ -231,11 +226,16 @@ public function deleteProduct()
         checkPermission('products');
         $id = inputPost('id');
         if ($this->productAdminModel->deleteProductPermanently($id)) {
-            setSuccessMessage(trans("msg_deleted"));
-        } else {
-            setErrorMessage(trans("msg_error"));
+            resetCacheDataOnChange();
+            return $this->response->setJSON([
+                'status' => 1
+            ]);
         }
-        resetCacheDataOnChange();
+
+        return $this->response->setJSON([
+            'status' => 0,
+            'message' => trans("msg_error")
+        ]);
     }
 
     /**

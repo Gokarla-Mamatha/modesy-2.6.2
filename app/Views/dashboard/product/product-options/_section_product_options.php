@@ -6,8 +6,8 @@
     <div class="form-box form-box-last">
         <div class="form-box-head">
             <h4 class="title">
-                <?= trans('product_options'); ?><br>
-                <small><?= trans("product_options_exp"); ?></small>
+                <?= esc(trans('product_options')); ?><br>
+                <small><?= esc(trans("product_options_exp")); ?></small>
             </h4>
         </div>
         <div class="form-box-body">
@@ -18,12 +18,12 @@
 
                         <div id="options-container"></div>
 
-                        <button type="button" class="btn btn-primary" id="add-option-btn"><i class="fas fa-plus"></i>&nbsp;<?= trans("add_product_option"); ?></button>
+                        <button type="button" class="btn btn-primary" id="add-option-btn"><i class="fas fa-plus"></i>&nbsp;<?= esc(trans("add_product_option")); ?></button>
 
                         <div id="variants-preview-container" class="custom-sc" style="display: none; margin-top: 40px; padding-top: 40px; border-top: 2px solid #f5f7f9;">
 
                             <div class="display-flex align-items-center m-b-30" style="gap: 15px;">
-                                <h4 class="title m-0"><?= trans("variants"); ?></h4>
+                                <h4 class="title m-0"><?= esc(trans("variants")); ?></h4>
                                 <button type="button" class="btn btn-sm btn-default collapse-option-btn" data-toggle="collapse" data-target="#collapseVariants" title="Expand">
                                     <i class="fas fa-chevron-down"></i>
                                 </button>
@@ -34,7 +34,7 @@
                                 <div class="row default-settings-grid">
                                     <div class="col-md-12 col-lg-3">
                                         <div class="form-group">
-                                            <label><?= trans("price"); ?></label>
+                                            <label><?= esc(trans("price")); ?></label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><?= $defaultCurrency->symbol; ?></span>
                                                 <input type="text" id="default-price" class="form-control input-price" maxlength="13" placeholder="<?= $defaultCurrency->currency_format == 'european' ? '0,00' : '0.00'; ?>" inputmode="decimal">
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-md-12 col-lg-3">
                                         <div class="form-group">
-                                            <label><?= trans("discounted_price"); ?></label>
+                                            <label><?= esc(trans("discounted_price")); ?></label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><?= $defaultCurrency->symbol; ?></span>
                                                 <input type="text" id="default-discounted-price" class="form-control input-price" maxlength="13" placeholder="<?= $defaultCurrency->currency_format == 'european' ? '0,00' : '0.00'; ?>" inputmode="decimal">
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-md-12 col-lg-3">
                                         <div class="form-group">
-                                            <label><?= trans("quantity"); ?></label>
+                                            <label><?= esc(trans("quantity")); ?></label>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" placeholder="e.g. 100" id="default-quantity" min="0" max="9999999" step="1">
                                                 <div class="input-group-btn">
@@ -70,7 +70,7 @@
                                     <?php if ($product->product_type == 'physical'): ?>
                                         <div class="col-md-12 col-lg-3">
                                             <div class="form-group">
-                                                <label><?= trans("weight"); ?>(<?= trans("kg"); ?>)</label>
+                                                <label><?= esc(trans("weight")); ?>(<?= esc(trans("kg")); ?>)</label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control" placeholder="e.g. 0.5" id="default-weight" min="0" max="9999999.999" step="0.001">
                                                     <div class="input-group-btn">
@@ -94,17 +94,17 @@
                                             <th class="select-all-header">
                                                 <input type="checkbox" id="select-all-variants">
                                             </th>
-                                            <th class="variant-visual-col"><?= trans("image"); ?>/<?= trans("color"); ?></th>
-                                            <th class="variant-name-col"><?= trans("variant_name"); ?></th>
-                                            <th class="variant-sku-col"><?= trans("sku"); ?></th>
-                                            <th class="variant-price-col"><?= trans("price"); ?>&nbsp;(<?= $defaultCurrency->symbol; ?>)</th>
-                                            <th class="variant-discounted-price-col"><?= trans("discounted_price"); ?>&nbsp;(<?= $defaultCurrency->symbol; ?>)</th>
-                                            <th class="variant-qty-col"><?= trans("quantity"); ?></th>
+                                            <th class="variant-visual-col"><?= esc(trans("image")); ?>/<?= esc(trans("color")); ?></th>
+                                            <th class="variant-name-col"><?= esc(trans("variant_name")); ?></th>
+                                            <th class="variant-sku-col"><?= esc(trans("sku")); ?></th>
+                                            <th class="variant-price-col"><?= esc(trans("price")); ?>&nbsp;(<?= $defaultCurrency->symbol; ?>)</th>
+                                            <th class="variant-discounted-price-col"><?= esc(trans("discounted_price")); ?>&nbsp;(<?= $defaultCurrency->symbol; ?>)</th>
+                                            <th class="variant-qty-col"><?= esc(trans("quantity")); ?></th>
                                             <?php if ($product->product_type == 'physical'): ?>
-                                                <th class="variant-weight-col"><?= trans("weight"); ?>(<?= trans("kg"); ?>)</th>
+                                                <th class="variant-weight-col"><?= esc(trans("weight")); ?>(<?= esc(trans("kg")); ?>)</th>
                                             <?php endif; ?>
-                                            <th class="variant-status-col"><?= trans("default_variant"); ?></th>
-                                            <th class="variant-status-col"><?= trans("status"); ?></th>
+                                            <th class="variant-status-col"><?= esc(trans("default_variant")); ?></th>
+                                            <th class="variant-status-col"><?= esc(trans("status")); ?></th>
                                             <th class="variant-coupon-col">Coupons</th>
 
                                         </tr>
@@ -142,14 +142,14 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-                                        <h4 class="modal-title" id="confirmationModalLabel"><?= trans("warning"); ?></h4>
+                                        <h4 class="modal-title" id="confirmationModalLabel"><?= esc(trans("warning")); ?></h4>
                                     </div>
                                     <div class="modal-body">
-                                        <?= trans("msg_change_product_option_type"); ?>
+                                        <?= esc(trans("msg_change_product_option_type")); ?>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= trans("cancel"); ?></button>
-                                        <button type="button" class="btn btn-primary" id="confirmationModalConfirmBtn"><?= trans("confirm"); ?></button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= esc(trans("cancel")); ?></button>
+                                        <button type="button" class="btn btn-primary" id="confirmationModalConfirmBtn"><?= esc(trans("confirm")); ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -160,12 +160,12 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-                                        <h4 class="modal-title" id="translationModalLabel"><?= trans("edit_translations"); ?></h4></div>
+                                        <h4 class="modal-title" id="translationModalLabel"><?= esc(trans("edit_translations")); ?></h4></div>
                                     <div class="modal-body" id="translationModalBody">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= trans("cancel"); ?></button>
-                                        <button type="button" class="btn btn-primary" id="saveTranslationsBtn"><?= trans("save_changes"); ?></button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= esc(trans("cancel")); ?></button>
+                                        <button type="button" class="btn btn-primary" id="saveTranslationsBtn"><?= esc(trans("save_changes")); ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
         </div>
 
         <div id="alertDefaultVariant" class="alert alert-info m-t-30" style="display: none">
-            <strong><?= trans("warning"); ?>!</strong>&nbsp;&nbsp;<?= trans("msg_default_variant"); ?>
+            <strong><?= esc(trans("warning")); ?>!</strong>&nbsp;&nbsp;<?= esc(trans("msg_default_variant")); ?>
         </div>
     </div>
 </div>

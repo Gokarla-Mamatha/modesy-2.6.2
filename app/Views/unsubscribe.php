@@ -6,9 +6,9 @@
                     <div class="circle-loader">
                         <div class="checkmark draw"></div>
                     </div>
-                    <h1 class="title"><?= trans("unsubscribe_successful"); ?></h1>
-                    <p><?= trans("msg_unsubscribe"); ?></p>
-                    <a href="<?= langBaseUrl(); ?>" class="btn btn-md btn-custom m-t-15"><?= trans("goto_home"); ?></a>
+                    <h1 class="title"><?= esc(trans("unsubscribe_successful")); ?></h1>
+                    <p><?= esc(trans("msg_unsubscribe")); ?></p>
+                    <a href="<?= langBaseUrl(); ?>" class="btn btn-md btn-custom m-t-15"><?= esc(trans("goto_home")); ?></a>
                 </div>
             </div>
         </div>

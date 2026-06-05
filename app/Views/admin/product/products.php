@@ -11,24 +11,24 @@
                         <thead>
                         <tr role="row">
                             <th width="20"><input type="checkbox" class="checkbox-table" id="checkAll"></th>
-                            <th width="20"><?= trans('id'); ?></th>
-                            <th><?= trans('product'); ?></th>
-                            <th><?= trans('product_type'); ?></th>
-                            <th><?= trans('category'); ?></th>
-                            <th><?= trans('user'); ?></th>
-                            <th><?= trans('price'); ?></th>
-                            <th><?= trans('stock'); ?></th>
+                            <th width="20"><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('product')); ?></th>
+                            <th><?= esc(trans('product_type')); ?></th>
+                            <th><?= esc(trans('category')); ?></th>
+                            <th><?= esc(trans('user')); ?></th>
+                            <th><?= esc(trans('price')); ?></th>
+                            <th><?= esc(trans('stock')); ?></th>
                             <?php if ($listType == 'featured_products'): ?>
-                                <th><?= trans('purchased_plan'); ?></th>
-                                <th><?= trans('remaining_days'); ?></th>
+                                <th><?= esc(trans('purchased_plan')); ?></th>
+                                <th><?= esc(trans('remaining_days')); ?></th>
                             <?php endif; ?>
                             <?php if ($listType == 'edited_products' || $listType == 'pending_products'): ?>
-                                <th><?= trans('status'); ?></th>
+                                <th><?= esc(trans('status')); ?></th>
                             <?php endif; ?>
-                            <th><?= trans('page_views'); ?></th>
-                            <th><?= trans('updated'); ?></th>
-                            <th><?= trans('date'); ?></th>
-                            <th class="max-width-120"><?= trans('options'); ?></th>
+                            <th><?= esc(trans('page_views')); ?></th>
+                            <th><?= esc(trans('updated')); ?></th>
+                            <th><?= esc(trans('date')); ?></th>
+                            <th class="max-width-120"><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,7 +41,7 @@
                                         <div class="media">
                                             <div class="<?= $activeLang->text_direction == 'rtl' ? 'media-right' : 'media-left'; ?>">
                                                 <a href="<?= generateProductUrl($item); ?>" target="_blank">
-                                                    <img data-src="<?= getProductItemImage($item); ?>" alt="" class="lazyload" style="width: 80px; height: 80px; border-radius: 1px; object-fit: cover">
+                                                    <img data-src="<?= getProductItemImage($item); ?>" alt="" class="lazyload product-img">
                                                 </a>
                                             </div>
                                             <div class="media-body <?= $activeLang->text_direction == 'rtl' ? 'text-right' : 'text-left'; ?>">
@@ -52,15 +52,15 @@
                                                 </div>
                                                 <?php if (!empty($item->sku)): ?>
                                                     <p class="m-b-5 font-size-13">
-                                                        <strong><?= trans('sku'); ?>:</strong>&nbsp;<?= esc($item->sku); ?>
+                                                        <strong><?= esc(trans('sku')); ?>:</strong>&nbsp;<?= esc($item->sku); ?>
                                                     </p>
                                                 <?php endif; ?>
                                                 <p class="m-b-5">
                                                     <?php if ($item->is_promoted == 1): ?>
-                                                        <label class="label label-success"><?= trans("featured"); ?></label>
+                                                        <label class="label label-success"><?= esc(trans("featured")); ?></label>
                                                     <?php endif;
                                                     if ($item->is_special_offer == 1): ?>
-                                                        <label class="label label-info"><?= trans("special_offer"); ?></label>
+                                                        <label class="label label-info"><?= esc(trans("special_offer")); ?></label>
                                                     <?php endif;
                                                     if ($item->is_commission_set == 1): ?>
                                                         &nbsp;<label class="label bg-warning"><i class="fa fa-hand-holding-dollar"></i>&nbsp;<?= esc(formatDecimalClean($item->commission_rate)) ?>%</label>
@@ -69,7 +69,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><?= trans($item->product_type); ?></td>
+                                    <td><?= esc(trans($item->product_type)); ?></td>
                                     <td><?= esc($item->cat_name); ?></td>
                                     <td>
                                         <a href="<?= generateProfileUrl($item->user_slug); ?>" target="_blank" class="table-username">
@@ -85,12 +85,12 @@
                                     </td>
                                     <td class="white-space-nowrap">
                                         <?php if ($item->product_type == "digital"): ?>
-                                            <span class="text-success"><?= trans("in_stock"); ?></span>
+                                            <span class="text-success"><?= esc(trans("in_stock")); ?></span>
                                         <?php else:
                                             if ($item->stock < 1): ?>
                                                 <span class="text-danger"><?= $item->listing_type == 'ordinary_listing' ? trans("sold") : trans("out_of_stock"); ?></span>
                                             <?php else: ?>
-                                                <span class="text-success"><?= trans("in_stock"); ?>&nbsp;<?= $item->listing_type != 'ordinary_listing' ? '(' . $item->stock . ')' : ''; ?></span>
+                                                <span class="text-success"><?= esc(trans("in_stock")); ?>&nbsp;<?= $item->listing_type != 'ordinary_listing' ? '(' . $item->stock . ')' : ''; ?></span>
                                             <?php endif;
                                         endif; ?>
                                     </td>
@@ -116,30 +116,30 @@
                                         <td>
                                             <?php if ($item->is_rejected == 1): ?>
                                                 <p>
-                                                    <label class="label label-danger"><?= trans("rejected"); ?></label>
+                                                    <label class="label label-danger"><?= esc(trans("rejected")); ?></label>
                                                 </p>
-                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalReason<?= $item->id; ?>"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;<?= trans("show_reason"); ?></button>
+                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalReason<?= $item->id; ?>"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;<?= esc(trans("show_reason")); ?></button>
                                                 <div id="modalReason<?= $item->id; ?>" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                <h4 class="modal-title"><?= trans("reason"); ?></h4>
+                                                                <h4 class="modal-title"><?= esc(trans("reason")); ?></h4>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <p class="m-t-10"><?= esc($item->reject_reason); ?></p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal"><?= trans("close"); ?></button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal"><?= esc(trans("close")); ?></button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             <?php else:
                                                 if ($item->status == 1):?>
-                                                    <label class="label label-success"><?= trans("active"); ?></label>
+                                                    <label class="label label-success"><?= esc(trans("active")); ?></label>
                                                 <?php else: ?>
-                                                    <label class="label label-default"><?= trans("pending"); ?></label>
+                                                    <label class="label label-default"><?= esc(trans("pending")); ?></label>
                                                 <?php endif;
                                             endif; ?>
                                         </td>
@@ -150,32 +150,32 @@
                                     <td><?= formatDate($item->created_at); ?></td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= trans("select_option"); ?>
+                                            <button class="btn bg-purple dropdown-bs-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans("select_option")); ?>
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu options-dropdown">
                                                 <li>
-                                                    <a href="<?= adminUrl('product-details/' . $item->id); ?>"><i class="fa fa-info option-icon"></i><?= trans("view_details"); ?></a>
+                                                    <a href="<?= adminUrl('product-details/' . $item->id); ?>"><i class="fa fa-info option-icon"></i><?= esc(trans("view_details")); ?></a>
                                                 </li>
 
                                                 <?php if ($item->is_deleted != 1 && $item->is_draft != 1 && $item->is_sold != 1): ?>
 
                                                     <?php if ($item->is_promoted == 1): ?>
                                                         <li>
-                                                            <a href="javascript:void(0)" onclick="removeFromFeatured('<?= esc($item->id); ?>');"><i class="fa fa-minus option-icon"></i><?= trans("remove_from_featured"); ?></a>
+                                                            <a href="javascript:void(0)" class="js-remove-from-featured" data-product-id="<?= esc($item->id, 'attr'); ?>"><i class="fa fa-minus option-icon"></i><?= esc(trans("remove_from_featured")); ?></a>
                                                         </li>
                                                     <?php else: ?>
                                                         <li>
-                                                            <a href="javascript:void(0)" onclick="$('#day_count_product_id').val('<?= esc($item->id); ?>');" data-toggle="modal" data-target="#modalAddFeatured"><i class="fa fa-plus option-icon"></i><?= trans('add_to_featured'); ?></a>
+                                                            <a href="javascript:void(0)" class="js-set-featured-product" data-product-id="<?= esc($item->id, 'attr'); ?>" data-toggle="modal" data-target="#modalAddFeatured"><i class="fa fa-plus option-icon"></i><?= esc(trans('add_to_featured')); ?></a>
                                                         </li>
                                                     <?php endif;
                                                     if ($item->is_special_offer == 1): ?>
                                                         <li>
-                                                            <a href="javascript:void(0)" onclick="addRemoveSpecialOffer('<?= esc($item->id); ?>');"><i class="fa fa-minus option-icon"></i><?= trans("remove_from_special_offers"); ?></a>
+                                                            <a href="javascript:void(0)" class="js-add-remove-special-offer" data-product-id="<?= esc($item->id, 'attr'); ?>"><i class="fa fa-minus option-icon"></i><?= esc(trans("remove_from_special_offers")); ?></a>
                                                         </li>
                                                     <?php else: ?>
                                                         <li>
-                                                            <a href="javascript:void(0)" onclick="addRemoveSpecialOffer('<?= esc($item->id); ?>');"><i class="fa fa-plus option-icon"></i><?= trans('add_to_special_offers'); ?></a>
+                                                            <a href="javascript:void(0)" class="js-add-remove-special-offer" data-product-id="<?= esc($item->id, 'attr'); ?>"><i class="fa fa-plus option-icon"></i><?= esc(trans('add_to_special_offers')); ?></a>
                                                         </li>
                                                     <?php endif; ?>
 
@@ -183,32 +183,36 @@
 
                                                 <?php if ($listType == 'edited_products' || $listType == 'pending_products'): ?>
                                                     <li>
-                                                        <a href="javascript:void(0)" onclick="approveProduct('<?= $item->id; ?>');"><i class="fa fa-check option-icon"></i><?= trans("approve"); ?></a>
+                                                        <a href="javascript:void(0)" class="js-approve-product" data-product-id="<?= esc($item->id, 'attr'); ?>"><i class="fa fa-check option-icon"></i><?= esc(trans("approve")); ?></a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modalReject" onclick="$('#reject_product_id').val(<?= $item->id; ?>);"><i class="fa fa-ban option-icon"></i><?= trans("reject"); ?></a>
+                                                        <a href="javascript:void(0)" class="js-set-reject-product" data-toggle="modal" data-target="#modalReject" data-product-id="<?= esc($item->id, 'attr'); ?>"><i class="fa fa-ban option-icon"></i><?= esc(trans("reject")); ?></a>
                                                     </li>
                                                 <?php endif; ?>
 
                                                 <li>
-                                                    <a href="<?= generateDashUrl('edit_product') . '/' . $item->id; ?>" target="_blank"><i class="fa fa-edit option-icon"></i><?= trans("edit"); ?></a>
+                                                    <a href="<?= generateDashUrl('edit_product') . '/' . $item->id; ?>" target="_blank"><i class="fa fa-edit option-icon"></i><?= esc(trans("edit")); ?></a>
                                                 </li>
                                                 <?php if ($item->is_deleted != 1): ?>
-                                                    <li>
-                                                        <!-- <a href="javascript:void(0)" onclick="deleteItem('Product/deleteProduct','<?= $item->id; ?>','<?= trans("confirm_product", true); ?>');"> -->
-                                                            <a href="#" class="btn-item-delete" data-url="Product/deleteProduct" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_product', true); ?>">
-                                                            <i class="fa fa-times option-icon"></i><?= trans('delete'); ?></a>
-                                                    </li>
+                                                 <li>
+                                                    <a href="#"
+                                                    class="btn-item-delete"
+                                                    data-url="Product/deleteProduct"
+                                                    data-id="<?= $item->id; ?>"
+                                                    data-msg="<?= esc(trans('confirm_product', true), 'attr'); ?>">
+                                                        <i class="fa fa-times option-icon"></i><?= esc(trans('delete')); ?>
+                                                    </a>
+                                                  </li>
                                                 <?php endif;
                                                 if ($item->is_deleted == 1): ?>
                                                     <li>
-                                                        <a href="javascript:void(0)" onclick="restoreProduct('<?= $item->id; ?>');"><i class="fa fa-reply option-icon"></i><?= trans('restore'); ?></a>
+                                                        <a href="javascript:void(0)" class="js-restore-product" data-product-id="<?= esc($item->id, 'attr'); ?>"><i class="fa fa-reply option-icon"></i><?= esc(trans('restore')); ?></a>
                                                     </li>
                                                 <?php endif; ?>
                                                 <li>
-                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Product/deleteProductPermanently','<?= $item->id; ?>','<?= trans("confirm_product_permanent", true); ?>');"> -->
-                                                        <a href="#" class="btn-item-delete" data-url="Product/deleteProductPermanently" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_product_permanent', true); ?>">
-                                                        <i class="fa fa-trash-can option-icon"></i><?= trans('delete_permanently'); ?></a>
+                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Product/deleteProductPermanently','<?= $item->id; ?>','<?= esc(trans("confirm_product_permanent", true)); ?>');"> -->
+                                                        <a href="#" class="btn-item-delete" data-url="Product/deleteProductPermanently" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_product_permanent', true)); ?>">
+                                                        <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete_permanently')); ?></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -220,7 +224,7 @@
                     </table>
                     <?php if (empty($products)): ?>
                         <p class="text-center">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                     <div class="col-sm-12 table-ft">
@@ -231,11 +235,11 @@
                             <?php if (countItems($products) > 0):
                                 if ($listType == 'deleted_products'):?>
                                     <div class="pull-left">
-                                        <button class="btn btn-sm btn-danger btn-table-delete" onclick="deleteSelectedProductsPermanently('<?= trans("confirm_products", true); ?>');"><?= trans('delete'); ?></button>
+                                        <button class="btn btn-sm btn-danger btn-table-delete js-delete-selected-products-permanently" data-msg="<?= esc(trans("confirm_products", true), 'attr'); ?>"><?= esc(trans('delete')); ?></button>
                                     </div>
                                 <?php else: ?>
                                     <div class="pull-left">
-                                        <button class="btn btn-sm btn-danger btn-table-delete" onclick="deleteSelectedProducts('<?= trans("confirm_products", true); ?>');"><?= trans('delete'); ?></button>
+                                        <button class="btn btn-sm btn-danger btn-table-delete js-delete-selected-products" data-msg="<?= esc(trans("confirm_products", true), 'attr'); ?>"><?= esc(trans('delete')); ?></button>
                                     </div>
                                 <?php endif;
                             endif; ?>
@@ -246,6 +250,33 @@
         </div>
     </div>
 </div>
+<script <?= csp_script_nonce() ?>>
+    $(document).on('click', '.js-remove-from-featured', function () {
+        removeFromFeatured($(this).data('product-id'));
+    });
+    $(document).on('click', '.js-set-featured-product', function () {
+        $('#day_count_product_id').val($(this).data('product-id'));
+    });
+    $(document).on('click', '.js-add-remove-special-offer', function () {
+        addRemoveSpecialOffer($(this).data('product-id'));
+    });
+    $(document).on('click', '.js-approve-product', function () {
+        approveProduct($(this).data('product-id'));
+    });
+    $(document).on('click', '.js-set-reject-product', function () {
+        $('#reject_product_id').val($(this).data('product-id'));
+    });
+    $(document).on('click', '.js-restore-product', function () {
+        restoreProduct($(this).data('product-id'));
+    });
+    $(document).on('click', '.js-delete-selected-products-permanently', function () {
+        deleteSelectedProductsPermanently($(this).data('msg'));
+    });
+    $(document).on('click', '.js-delete-selected-products', function () {
+        deleteSelectedProducts($(this).data('msg'));
+    });
+</script>
+</script>
 
 <div id="modalAddFeatured" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -254,19 +285,19 @@
                 <?= csrf_field(); ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><?= trans('add_to_featured'); ?></h4>
+                    <h4 class="modal-title"><?= esc(trans('add_to_featured')); ?></h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label><?= trans('number_of_days'); ?></label>
+                        <label><?= esc(trans('number_of_days')); ?></label>
                         <input type="hidden" class="form-control" name="product_id" id="day_count_product_id" value="">
                         <input type="hidden" class="form-control" name="is_ajax" value="0">
-                        <input type="number" class="form-control" name="day_count" placeholder="<?= trans('number_of_days'); ?>" value="1" min="1">
+                        <input type="number" class="form-control" name="day_count" placeholder="<?= esc(trans('number_of_days')); ?>" value="1" min="1">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"><?= trans("submit"); ?></button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><?= trans("close"); ?></button>
+                    <button type="submit" class="btn btn-success"><?= esc(trans("submit")); ?></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><?= esc(trans("close")); ?></button>
                 </div>
             </form>
         </div>
@@ -281,15 +312,21 @@
                 <input type="hidden" name="id" id="reject_product_id">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><?= trans("reject"); ?></h4>
+                    <h4 class="modal-title"><?= esc(trans("reject")); ?></h4>
                 </div>
                 <div class="modal-body">
-                    <textarea name="reject_reason" class="form-control form-textarea" placeholder="<?= trans("reason"); ?>.." style="min-height: 150px;" data-type="text"></textarea>
+                    <textarea name="reject_reason" class="form-control form-textarea" placeholder="<?= esc(trans("reason")); ?>.." style="min-height: 150px;" data-type="text"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"><?= trans("submit"); ?></button>
+                    <button type="submit" class="btn btn-success"><?= esc(trans("submit")); ?></button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<style <?= csp_style_nonce() ?>>
+.swal2-container {
+    position: fixed !important;
+    z-index: 999999 !important;
+}   
+</style> 

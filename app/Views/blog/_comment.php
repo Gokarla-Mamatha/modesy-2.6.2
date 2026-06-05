@@ -5,21 +5,21 @@
             <?php if (!authCheck()): ?>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="text" name="name" id="comment_name" class="form-control form-input" placeholder="<?= trans("name"); ?>">
+                        <input type="text" name="name" id="comment_name" class="form-control form-input" placeholder="<?= esc(trans("name")); ?>">
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="email" name="email" id="comment_email" class="form-control form-input" placeholder="<?= trans("email_address"); ?>">
+                        <input type="email" name="email" id="comment_email" class="form-control form-input" placeholder="<?= esc(trans("email_address")); ?>">
                     </div>
                 </div>
             <?php endif; ?>
             <div class="form-group">
-                <textarea name="comment" id="comment_text" class="form-control form-input form-textarea" placeholder="<?= trans("comment"); ?>" data-type="text"></textarea>
+                <textarea name="comment" id="comment_text" class="form-control form-input form-textarea" placeholder="<?= esc(trans("comment")); ?>" data-type="text"></textarea>
             </div>
 
             <?= view('partials/_cf_turnstile'); ?>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-md btn-custom float-right"><?= trans("submit"); ?></button>
+                <button type="submit" class="btn btn-md btn-custom float-right"><?= esc(trans("submit")); ?></button>
             </div>
         </form>
     </div>

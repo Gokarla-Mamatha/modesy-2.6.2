@@ -4,12 +4,12 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= trans("profile_settings"); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= generateUrl('settings', 'edit_profile'); ?>"><?= esc(trans("profile_settings")); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= esc($title); ?></li>
                     </ol>
                 </nav>
-                <h1 class="page-title"><?= trans("profile_settings"); ?></h1>
+                <h1 class="page-title"><?= esc(trans("profile_settings")); ?></h1>
             </div>
         </div>
         <div class="row">
@@ -69,7 +69,7 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                                <p class="mb-4"><small class="text-muted">*<?= trans("warning_edit_profile_image"); ?></small></p>
+                                <p class="mb-4"><small class="text-muted">*<?= esc(trans("warning_edit_profile_image")); ?></small></p>
                             </div>
                             <div class="form-group">
                                 <?php if (!empty(user()->profile_updated_at)): ?>
@@ -81,54 +81,59 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">
-                                    <?= trans("email_address"); ?>
+                                    <?= esc(trans("email_address")); ?>
                                     <?php if ($generalSettings->email_verification == 1): ?>
                                         <?php if (user()->email_status == 1): ?>
-                                            <small class="text-success">(<?= trans("confirmed"); ?>)</small>
+                                            <small class="text-success">(<?= esc(trans("confirmed")); ?>)</small>
                                         <?php else: ?>
-                                            <small class="text-danger">(<?= trans("unconfirmed"); ?>)</small>
-                                            <button type="button" onclick="sendActivationEmail('<?= user()->token; ?>', 'profile');" class="btn btn-sm btn-default display-inline-block"><?= trans("resend_activation_email"); ?></button>
+                                            <small class="text-danger">(<?= esc(trans("unconfirmed")); ?>)</small>
+                                            <button type="button" data-token="<?= esc(user()->token, 'attr'); ?>" class="btn btn-sm btn-default display-inline-block btn-send-activation-profile"><?= esc(trans("resend_activation_email")); ?></button>
                                             <div class="display-inline-block font-weight-normal m-l-5" id="confirmation-result-profile"></div>
                                         <?php endif;
                                     endif; ?>
                                 </label>
-                                <input type="email" name="email" class="form-control form-input" value="<?= esc(user()->email); ?>" placeholder="<?= trans("email_address"); ?>" required>
+                                <input type="email" name="email" class="form-control form-input" value="<?= esc(user()->email); ?>" placeholder="<?= esc(trans("email_address")); ?>" required>
+                            </div>
+                            <script <?= csp_script_nonce() ?>>
+                                $(document).on('click', '.btn-send-activation-profile', function () {
+                                    sendActivationEmail($(this).data('token'), 'profile');
+                                });
+                            </script>
+                            <div class="form-group">
+                                <label class="control-label"><?= esc(trans("slug")); ?></label>
+                                <input type="text" name="slug" class="form-control form-input" value="<?= esc(user()->slug); ?>" placeholder="<?= esc(trans("slug")); ?>" maxlength="200" data-type="slug" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("slug"); ?></label>
-                                <input type="text" name="slug" class="form-control form-input" value="<?= esc(user()->slug); ?>" placeholder="<?= trans("slug"); ?>" maxlength="200" data-type="slug" required>
+                                <label class="control-label"><?= esc(trans("first_name")); ?></label>
+                                <input type="text" name="first_name" class="form-control form-input" value="<?= esc(user()->first_name); ?>" placeholder="<?= esc(trans("first_name")); ?>" maxlength="250"data-type="name" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("first_name"); ?></label>
-                                <input type="text" name="first_name" class="form-control form-input" value="<?= esc(user()->first_name); ?>" placeholder="<?= trans("first_name"); ?>" maxlength="250"data-type="name" required>
+                                <label class="control-label"><?= esc(trans("last_name")); ?></label>
+                                <input type="text" name="last_name" class="form-control form-input" value="<?= esc(user()->last_name); ?>" placeholder="<?= esc(trans("last_name")); ?>" maxlength="250" data-type="name" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("last_name"); ?></label>
-                                <input type="text" name="last_name" class="form-control form-input" value="<?= esc(user()->last_name); ?>" placeholder="<?= trans("last_name"); ?>" maxlength="250" data-type="name" required>
+                                <label class="control-label"><?= esc(trans("phone_number")); ?></label>
+                                <input type="text" name="phone_number" class="form-control form-input" value="<?= esc(user()->phone_number); ?>" placeholder="<?= esc(trans("phone_number")); ?>" data-type="mobile" maxlength="100">
                             </div>
                             <div class="form-group">
-                                <label class="control-label"><?= trans("phone_number"); ?></label>
-                                <input type="text" name="phone_number" class="form-control form-input" value="<?= esc(user()->phone_number); ?>" placeholder="<?= trans("phone_number"); ?>" data-type="mobile" maxlength="100">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label"><?= trans("tax_registration_number"); ?></label>
-                                <input type="text" name="tax_registration_number" class="form-control form-input" value="<?= esc(user()->tax_registration_number); ?>" placeholder="<?= trans("tax_registration_number"); ?>" maxlength="255">
+                                <label class="control-label"><?= esc(trans("tax_registration_number")); ?></label>
+                                <input type="text" name="tax_registration_number" class="form-control form-input" value="<?= esc(user()->tax_registration_number); ?>" placeholder="<?= esc(trans("tax_registration_number")); ?>" maxlength="255">
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label class="control-label"><?= trans('cover_image_type'); ?></label>
+                                        <label class="control-label"><?= esc(trans('cover_image_type')); ?></label>
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="cover_image_type" value="full_width" id="cover_image_type_1" class="custom-control-input" <?= user()->cover_image_type == 'full_width' ? 'checked' : ''; ?>>
-                                            <label for="cover_image_type_1" class="custom-control-label"><?= trans("full_width"); ?></label>
+                                            <label for="cover_image_type_1" class="custom-control-label"><?= esc(trans("full_width")); ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" name="cover_image_type" value="boxed" id="cover_image_type_2" class="custom-control-input" <?= user()->cover_image_type == 'boxed' ? 'checked' : ''; ?>>
-                                            <label for="cover_image_type_2" class="custom-control-label"><?= trans("boxed"); ?></label>
+                                            <label for="cover_image_type_2" class="custom-control-label"><?= esc(trans("boxed")); ?></label>
                                         </div>
                                     </div>
                                 </div>
@@ -136,26 +141,26 @@
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="send_email_new_message" value="1" id="send_email_new_message" class="custom-control-input" <?= user()->send_email_new_message == 1 ? 'checked' : ''; ?>>
-                                    <label for="send_email_new_message" class="custom-control-label"><?= trans("email_option_send_email_new_message"); ?></label>
+                                    <label for="send_email_new_message" class="custom-control-label"><?= esc(trans("email_option_send_email_new_message")); ?></label>
                                 </div>
                             </div>
                             <?php if ($generalSettings->show_vendor_contact_information == 1): ?>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" name="show_email" value="1" id="checkbox_show_email" class="custom-control-input" <?= user()->show_email == 1 ? 'checked' : ''; ?>>
-                                        <label for="checkbox_show_email" class="custom-control-label"><?= trans("show_my_email"); ?></label>
+                                        <label for="checkbox_show_email" class="custom-control-label"><?= esc(trans("show_my_email")); ?></label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" name="show_phone" value="1" id="checkbox_show_phone" class="custom-control-input" <?= user()->show_phone == 1 ? 'checked' : ''; ?>>
-                                        <label for="checkbox_show_phone" class="custom-control-label"><?= trans("show_my_phone"); ?></label>
+                                        <label for="checkbox_show_phone" class="custom-control-label"><?= esc(trans("show_my_phone")); ?></label>
                                     </div>
                                 </div>
                             <?php endif; ?>
                             <input type="hidden" name="avatar" id="selectedAvatarInput">
                             <button type="submit" name="submit" value="update" class="btn btn-md btn-custom m-t-10">
-                                <?= trans("save_changes") ?>
+                                <?= esc(trans("save_changes")) ?>
                             </button>
                         </form>
                     </div>

@@ -10,27 +10,27 @@
                 <div class="right">
                     <a href="<?= adminUrl('categories'); ?>" class="btn btn-success btn-add-new">
                         <i class="fa fa-bars"></i>
-                        <?= trans('categories'); ?>
+                        <?= esc(trans('categories')); ?>
                     </a>
                 </div>
             </div>
             <div class="box-body">
                 <div class="form-group">
-                    <label class="control-label"><?= trans('csv_file'); ?></label>
+                    <label class="control-label"><?= esc(trans('csv_file')); ?></label>
                     <div class="dm-uploader-container">
                         <div id="drag-and-drop-zone" class="dm-uploader dm-uploader-csv text-center">
                             <p class="dm-upload-icon">
                                 <i class="fa fa-cloud-upload"></i>
                             </p>
-                            <p class="dm-upload-text"><?= trans("drag_drop_file_here"); ?></p>
+                            <p class="dm-upload-text"><?= esc(trans("drag_drop_file_here")); ?></p>
                             <p class="text-center">
-                                <button class="btn btn-default btn-browse-files"><?= trans('browse_files'); ?></button>
+                                <button class="btn btn-default btn-browse-files"><?= esc(trans('browse_files')); ?></button>
                             </p>
                             <a class='btn btn-md dm-btn-select-files'>
                                 <input type="file" name="file" size="40" multiple="multiple">
                             </a>
                             <ul class="dm-uploaded-files" id="files-file"></ul>
-                            <button type="button" id="btn_reset_upload" class="btn btn-reset-upload"><?= trans("reset"); ?></button>
+                            <button type="button" id="btn_reset_upload" class="btn btn-reset-upload"><?= esc(trans("reset")); ?></button>
                         </div>
                     </div>
 
@@ -38,8 +38,8 @@
                         <div class="col-sm-12">
                             <div id="csv_upload_spinner" class="csv-upload-spinner">
                                 <div class="clearfix"></div>
-                                <div class="text-csv-importing"><strong><?= trans("processing"); ?></strong></div>
-                                <strong class="text-csv-import-completed"><?= trans("completed"); ?>!</strong>
+                                <div class="text-csv-importing"><strong><?= esc(trans("processing")); ?></strong></div>
+                                <strong class="text-csv-import-completed"><?= esc(trans("completed")); ?>!</strong>
                                 <div class="spinner">
                                     <div class="bounce1"></div>
                                     <div class="bounce2"></div>
@@ -65,8 +65,8 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans('help_documents'); ?></h3><br>
-                    <small><?= trans("help_documents_exp"); ?></small>
+                    <h3 class="box-title"><?= esc(trans('help_documents')); ?></h3><br>
+                    <small><?= esc(trans("help_documents_exp")); ?></small>
                 </div>
             </div>
             <div class="box-body">
@@ -74,8 +74,8 @@
                     <form action="<?= base_url('Bulk/downloadCsvFilesPost'); ?>" method="post">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="type" value="category">
-                        <button class="btn btn-default btn-block" name="submit" value="csv_template"><?= trans("download_csv_template"); ?></button>
-                        <button class="btn btn-default btn-block" name="submit" value="csv_example"><?= trans("download_csv_example"); ?></button>
+                        <button class="btn btn-default btn-block" name="submit" value="csv_template"><?= esc(trans("download_csv_template")); ?></button>
+                        <button class="btn btn-default btn-block" name="submit" value="csv_example"><?= esc(trans("download_csv_example")); ?></button>
                     </form>
                 </div>
             </div>

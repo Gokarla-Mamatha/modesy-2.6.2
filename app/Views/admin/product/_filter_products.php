@@ -2,13 +2,13 @@
 <div class="row table-filter-container">
     <div class="col-sm-12">
         <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
         </button>
         <div class="collapse navbar-collapse" id="collapseFilter">
             <form action="<?= $formAction; ?>" method="submit" id="formFilterProducts">
                 <input type="hidden" name="list" value="<?= esc($list); ?>">
                 <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                    <label><?= trans("show"); ?></label>
+                    <label><?= esc(trans("show")); ?></label>
                     <select name="show" class="form-control">
                         <option value="15" <?= inputGet('show', true) == '15' ? 'selected' : ''; ?>>15</option>
                         <option value="30" <?= inputGet('show', true) == '30' ? 'selected' : ''; ?>>30</option>
@@ -17,28 +17,28 @@
                     </select>
                 </div>
                 <div class="item-table-filter">
-                    <label><?= trans('listing_type'); ?></label>
+                    <label><?= esc(trans('listing_type')); ?></label>
                     <select name="listing_type" class="form-control custom-select">
-                        <option value="" selected><?= trans("all"); ?></option>
-                        <option value="sell_on_site" <?= inputGet('listing_type') == 'sell_on_site' ? 'selected' : ''; ?>><?= trans("marketplace_selling_product_on_the_site"); ?></option>
-                        <option value="ordinary_listing" <?= inputGet('listing_type') == 'ordinary_listing' ? 'selected' : ''; ?>><?= trans("classified_ads_adding_product_as_listing"); ?></option>
-                        <option value="bidding" <?= inputGet('listing_type') == 'bidding' ? 'selected' : ''; ?>><?= trans("bidding_system_request_quote"); ?></option>
-                        <option value="license_key" <?= inputGet('listing_type') == 'license_key' ? 'selected' : ''; ?>><?= trans("selling_license_keys"); ?></option>
+                        <option value="" selected><?= esc(trans("all")); ?></option>
+                        <option value="sell_on_site" <?= inputGet('listing_type') == 'sell_on_site' ? 'selected' : ''; ?>><?= esc(trans("marketplace_selling_product_on_the_site")); ?></option>
+                        <option value="ordinary_listing" <?= inputGet('listing_type') == 'ordinary_listing' ? 'selected' : ''; ?>><?= esc(trans("classified_ads_adding_product_as_listing")); ?></option>
+                        <option value="bidding" <?= inputGet('listing_type') == 'bidding' ? 'selected' : ''; ?>><?= esc(trans("bidding_system_request_quote")); ?></option>
+                        <option value="license_key" <?= inputGet('listing_type') == 'license_key' ? 'selected' : ''; ?>><?= esc(trans("selling_license_keys")); ?></option>
                     </select>
                 </div>
                 <div class="item-table-filter">
-                    <label><?= trans('product_type'); ?></label>
+                    <label><?= esc(trans('product_type')); ?></label>
                     <select name="product_type" class="form-control custom-select">
-                        <option value="" selected><?= trans("all"); ?></option>
-                        <option value="physical" <?= inputGet('product_type') == 'physical' ? 'selected' : ''; ?>><?= trans("physical"); ?></option>
-                        <option value="digital" <?= inputGet('product_type') == 'digital' ? 'selected' : ''; ?>><?= trans("digital"); ?></option>
-                        <option value="coupon" <?= inputGet('product_type') == 'coupon' ? 'selected' : ''; ?>><?= trans("coupon"); ?></option>
+                        <option value="" selected><?= esc(trans("all")); ?></option>
+                        <option value="physical" <?= inputGet('product_type') == 'physical' ? 'selected' : ''; ?>><?= esc(trans("physical")); ?></option>
+                        <option value="digital" <?= inputGet('product_type') == 'digital' ? 'selected' : ''; ?>><?= esc(trans("digital")); ?></option>
+                        <option value="coupon" <?= inputGet('product_type') == 'coupon' ? 'selected' : ''; ?>><?= esc(trans("coupon")); ?></option>
                     </select>
                 </div>
                 <div class="item-table-filter">
-                    <label><?= trans('category'); ?></label>
+                    <label><?= esc(trans('category')); ?></label>
                     <select id="categories" name="category" class="form-control" onchange="getFilterSubCategories(this.value);">
-                        <option value=""><?= trans("all"); ?></option>
+                        <option value=""><?= esc(trans("all")); ?></option>
                         <?php $categories = getSubCategoriesByParentId(0);
                         foreach ($categories as $item): ?>
                             <option value="<?= $item->id; ?>" <?= inputGet('category', true) == $item->id ? 'selected' : ''; ?>>
@@ -48,9 +48,9 @@
                     </select>
                 </div>
                 <div class="item-table-filter">
-                    <label class="control-label"><?= trans('subcategory'); ?></label>
+                    <label class="control-label"><?= esc(trans('subcategory')); ?></label>
                     <select id="subcategories" name="subcategory" class="form-control">
-                        <option value=""><?= trans("all"); ?></option>
+                        <option value=""><?= esc(trans("all")); ?></option>
                         <?php if (!empty(inputGet('category'))):
                             $parentId = clrNum(inputGet('category'));
                             $subCategories = getSubCategoriesByParentId($parentId);
@@ -63,20 +63,20 @@
                     </select>
                 </div>
                 <div class="item-table-filter">
-                    <label><?= trans('stock'); ?></label>
+                    <label><?= esc(trans('stock')); ?></label>
                     <select name="stock" class="form-control custom-select">
-                        <option value="" selected><?= trans("all"); ?></option>
-                        <option value="in_stock" <?= inputGet("stock") == 'in_stock' ? 'selected' : ''; ?>><?= trans("in_stock"); ?></option>
-                        <option value="out_of_stock" <?= inputGet("stock") == 'out_of_stock' ? 'selected' : ''; ?>><?= trans("out_of_stock"); ?></option>
+                        <option value="" selected><?= esc(trans("all")); ?></option>
+                        <option value="in_stock" <?= inputGet("stock") == 'in_stock' ? 'selected' : ''; ?>><?= esc(trans("in_stock")); ?></option>
+                        <option value="out_of_stock" <?= inputGet("stock") == 'out_of_stock' ? 'selected' : ''; ?>><?= esc(trans("out_of_stock")); ?></option>
                     </select>
                 </div>
                 <div class="item-table-filter" style="width: 320px;">
-                    <label><?= trans("search"); ?></label>
+                    <label><?= esc(trans("search")); ?></label>
                     <div class="item-table-filter-search">
-                        <input name="q" class="form-control" placeholder="<?= trans("search"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
-                        <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                        <input name="q" class="form-control" placeholder="<?= esc(trans("search")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                        <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                         <div class="btn-group table-export">
-                            <button type="button" class="btn btn-default dropdown-toggle btn-table-export" data-toggle="dropdown"><?= trans("export"); ?>&nbsp;&nbsp;<i class="fa fa-caret-down"></i></button>
+                            <button type="button" class="btn btn-default dropdown-bs-toggle btn-table-export" data-bs-toggle="dropdown"><?= esc(trans("export")); ?>&nbsp;&nbsp;<i class="fa fa-caret-down"></i></button>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <button type="button" class="btn-export-data" data-export-form="formFilterProducts" data-export-type="products" data-export-file-type="csv">CSV</button>
@@ -85,7 +85,7 @@
                                     <button type="button" class="btn-export-data" data-export-form="formFilterProducts" data-export-type="products" data-export-file-type="xml">XML</button>
                                 </li>
                                 <li>
-                                    <button type="button" class="btn-export-data" data-export-form="formFilterProducts" data-export-type="products" data-export-file-type="excel"><?= trans("excel"); ?>&nbsp;(.xlsx)</button>
+                                    <button type="button" class="btn-export-data" data-export-form="formFilterProducts" data-export-type="products" data-export-file-type="excel"><?= esc(trans("excel")); ?>&nbsp;(.xlsx)</button>
                                 </li>
                             </ul>
                         </div>

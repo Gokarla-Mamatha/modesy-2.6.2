@@ -1,11 +1,11 @@
 <div class="box">
     <div class="box-header with-border">
         <div class="left">
-            <h3 class="box-title"><?= trans("blog_posts"); ?></h3>
+            <h3 class="box-title"><?= esc(trans("blog_posts")); ?></h3>
         </div>
         <div class="right">
             <a href="<?= adminUrl('blog-add-post'); ?>" class="btn btn-success btn-add-new">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_post'); ?>
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_post')); ?>
             </a>
         </div>
     </div>
@@ -15,12 +15,12 @@
                 <div class="row table-filter-container">
                     <div class="col-sm-12">
                         <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                         </button>
                         <div class="collapse navbar-collapse" id="collapseFilter">
                             <form action="<?= adminUrl('blog-posts'); ?>" method="get">
                                 <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                    <label><?= trans("show"); ?></label>
+                                    <label><?= esc(trans("show")); ?></label>
                                     <select name="show" class="form-control">
                                         <option value="15" <?= inputGet('show', true) == '15' ? 'selected' : ''; ?>>15</option>
                                         <option value="30" <?= inputGet('show', true) == '30' ? 'selected' : ''; ?>>30</option>
@@ -29,21 +29,21 @@
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("language"); ?></label>
+                                    <label><?= esc(trans("language")); ?></label>
                                     <select name="lang_id" class="form-control" onchange="getParentCategoriesByLang(this.value);">
-                                        <option value=""><?= trans("all"); ?></option>
+                                        <option value=""><?= esc(trans("all")); ?></option>
                                         <?php foreach ($activeLanguages as $language): ?>
                                             <option value="<?= $language->id; ?>" <?= inputGet('lang_id') == $language->id ? 'selected' : ''; ?>><?= esc($language->name); ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("search"); ?></label>
-                                    <input name="q" class="form-control" placeholder="<?= trans("search") ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
+                                    <label><?= esc(trans("search")); ?></label>
+                                    <input name="q" class="form-control" placeholder="<?= esc(trans("search")) ?>" type="search" value="<?= esc(inputGet('q', true)); ?>">
                                 </div>
                                 <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                     <label style="display: block">&nbsp;</label>
-                                    <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                    <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                 </div>
                             </form>
                         </div>
@@ -53,12 +53,12 @@
                     <table class="table table-bordered table-striped" role="grid">
                         <thead>
                         <tr role="row">
-                            <th width="20"><?= trans('id'); ?></th>
-                            <th><?= trans('title'); ?></th>
-                            <th><?= trans('language'); ?></th>
-                            <th><?= trans('category'); ?></th>
-                            <th><?= trans('date'); ?></th>
-                            <th class="th-options"><?= trans('options'); ?></th>
+                            <th width="20"><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('title')); ?></th>
+                            <th><?= esc(trans('language')); ?></th>
+                            <th><?= esc(trans('category')); ?></th>
+                            <th><?= esc(trans('date')); ?></th>
+                            <th class="th-options"><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -99,15 +99,15 @@
                                     <td><?= formatDate($item->created_at); ?></td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?>
+                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?>
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu options-dropdown">
-                                                <li><a href="<?= adminUrl('edit-blog-post/' . $item->id); ?>"><i class="fa fa-edit option-icon"></i><?= trans('edit'); ?></a></li>
+                                                <li><a href="<?= adminUrl('edit-blog-post/' . $item->id); ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('edit')); ?></a></li>
                                                 <li>
-                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Blog/deletePostPost','<?= $item->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                    <a href="#" class="btn-item-delete" data-url="Blog/deletePostPost" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
-                                                        <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?>
+                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Blog/deletePostPost','<?= $item->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                    <a href="#" class="btn-item-delete" data-url="Blog/deletePostPost" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
+                                                        <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -119,7 +119,7 @@
                         </tbody>
                     </table>
                     <?php if (empty($posts)): ?>
-                        <p class="text-center"><?= trans("no_records_found"); ?></p>
+                        <p class="text-center"><?= esc(trans("no_records_found")); ?></p>
                     <?php endif; ?>
                     <div class="col-sm-12">
                         <div class="row">

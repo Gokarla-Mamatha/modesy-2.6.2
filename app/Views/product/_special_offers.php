@@ -4,7 +4,7 @@
 
         <div class="col-12 section">
             <div class="section-header">
-                <h3 class="title"><?= trans("special_offers"); ?></h3>
+                <h3 class="title"><?= esc(trans("special_offers")); ?></h3>
             </div>
             <div class="swiper swiper-carousel swiper-carousel-product" <?= $baseVars->rtl == true ? 'dir="rtl"' : ''; ?>>
 

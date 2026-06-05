@@ -37,7 +37,7 @@
                             <?= csrf_field() ?>
                             &nbsp;&nbsp;
                             <button type="submit" name="submit" value="reset"
-                                class="btn-reset-location"><?= trans('reset') ?></button>
+                                class="btn-reset-location"><?= esc(trans('reset')) ?></button>
                         </form>
                         <?php endif; ?>
                     </li>
@@ -110,10 +110,10 @@
                             data-target="#loginModal"
                             class="nav-link button-link"
                             aria-label="login">
-                        <?= trans('login') ?>
+                        <?= esc(trans('login')) ?>
                     </button>
                         <span class="auth-sep">/</span>
-                        <a href="<?= generateUrl('register') ?>" class="nav-link"><?= trans('register') ?></a>
+                        <a href="<?= generateUrl('register') ?>" class="nav-link"><?= esc(trans('register')) ?></a>
                     </li>
                     <?php endif; ?>
                 </ul>

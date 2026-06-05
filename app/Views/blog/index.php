@@ -5,21 +5,21 @@
                 <div class="blog-content">
                     <nav class="nav-breadcrumb" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
+                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
                             <?php if (!empty($category)): ?>
-                                <li class="breadcrumb-item"><a href="<?= generateUrl("blog"); ?>"><?= trans("blog"); ?></a></li>
+                                <li class="breadcrumb-item"><a href="<?= generateUrl("blog"); ?>"><?= esc(trans("blog")); ?></a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><?= esc($category->name); ?></li>
                             <?php else: ?>
-                                <li class="breadcrumb-item active" aria-current="page"><?= trans('blog'); ?></li>
+                                <li class="breadcrumb-item active" aria-current="page"><?= esc(trans('blog')); ?></li>
                             <?php endif; ?>
                         </ol>
                     </nav>
-                    <h1 class="page-title"><?= trans("blog"); ?></h1>
+                    <h1 class="page-title"><?= esc(trans("blog")); ?></h1>
                     <div class="row">
                         <div class="col-12">
                             <ul class="blog-categories">
                                 <li class="<?= ($activeCategory == 'all') ? 'active' : ''; ?>">
-                                    <a href="<?= generateUrl("blog"); ?>"><?= trans('all'); ?></a>
+                                    <a href="<?= generateUrl("blog"); ?>"><?= esc(trans('all')); ?></a>
                                 </li>
                                 <?php if (!empty($categories)):
                                     foreach ($categories as $category): ?>

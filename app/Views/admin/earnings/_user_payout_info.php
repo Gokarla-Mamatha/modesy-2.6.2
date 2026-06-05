@@ -5,13 +5,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><?= trans($payout->payout_method); ?></h4>
+                    <h4 class="modal-title"><?= esc(trans($payout->payout_method)); ?></h4>
                 </div>
                 <div class="modal-body">
                     <?php if ($payout->payout_method == 'paypal'): ?>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("user"); ?>
+                                <?= esc(trans("user")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc(getUsername($user)); ?></strong>
@@ -19,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("paypal_email_address"); ?>
+                                <?= esc(trans("paypal_email_address")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->paypal_email); ?></strong>
@@ -28,7 +28,7 @@
                     <?php elseif ($payout->payout_method == 'bitcoin'): ?>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("user"); ?>
+                                <?= esc(trans("user")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc(getUsername($user)); ?></strong>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("btc_address"); ?>
+                                <?= esc(trans("btc_address")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->btc_address); ?></strong>
@@ -45,7 +45,7 @@
                     <?php elseif ($payout->payout_method == 'iban'): ?>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("user"); ?>
+                                <?= esc(trans("user")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc(getUsername($user)); ?></strong>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("full_name"); ?>
+                                <?= esc(trans("full_name")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->iban_full_name); ?></strong>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("country"); ?>
+                                <?= esc(trans("country")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <?php $country = getCountry($userPayout->iban_country_id);
@@ -72,7 +72,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("bank_name"); ?>
+                                <?= esc(trans("bank_name")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->iban_bank_name); ?></strong>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("iban"); ?>
+                                <?= esc(trans("iban")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->iban_number); ?></strong>
@@ -89,7 +89,7 @@
                     <?php elseif ($payout->payout_method == 'swift'): ?>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("user"); ?>
+                                <?= esc(trans("user")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc(getUsername($user)); ?></strong>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("full_name"); ?>
+                                <?= esc(trans("full_name")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_full_name); ?></strong>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("address"); ?>
+                                <?= esc(trans("address")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_address); ?></strong>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("state"); ?>
+                                <?= esc(trans("state")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_state); ?></strong>
@@ -121,7 +121,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("city"); ?>
+                                <?= esc(trans("city")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_city); ?></strong>
@@ -129,7 +129,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("postcode"); ?>
+                                <?= esc(trans("postcode")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_postcode); ?></strong>
@@ -137,7 +137,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("country"); ?>
+                                <?= esc(trans("country")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <?php $branchCountry = getCountry($userPayout->swift_country_id);
@@ -148,7 +148,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("bank_account_holder_name"); ?>
+                                <?= esc(trans("bank_account_holder_name")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_bank_account_holder_name); ?></strong>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("iban"); ?>
+                                <?= esc(trans("iban")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_iban); ?></strong>
@@ -164,7 +164,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("swift_code"); ?>
+                                <?= esc(trans("swift_code")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_code); ?></strong>
@@ -172,7 +172,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("bank_name"); ?>
+                                <?= esc(trans("bank_name")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_bank_name); ?></strong>
@@ -180,7 +180,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("bank_branch_city"); ?>
+                                <?= esc(trans("bank_branch_city")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <strong>&nbsp;<?= esc($userPayout->swift_bank_branch_city); ?></strong>
@@ -188,7 +188,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= trans("bank_branch_country"); ?>
+                                <?= esc(trans("bank_branch_country")); ?>
                             </div>
                             <div class="col-sm-8">
                                 <?php $branchCountry = getCountry($userPayout->swift_bank_branch_country_id);
@@ -200,7 +200,7 @@
                     <?php endif; ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= trans("close"); ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= esc(trans("close")); ?></button>
                 </div>
             </div>
         </div>

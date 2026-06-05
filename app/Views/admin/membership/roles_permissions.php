@@ -1,11 +1,11 @@
 <div class="box">
     <div class="box-header with-border">
         <div class="left">
-            <h3 class="box-title"><?= trans("roles_permissions"); ?></h3>
+            <h3 class="box-title"><?= esc(trans("roles_permissions")); ?></h3>
         </div>
         <div class="right">
             <a href="<?= adminUrl('add-role'); ?>" class="btn btn-success btn-add-new">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans("add_role"); ?>
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans("add_role")); ?>
             </a>
         </div>
     </div>
@@ -16,9 +16,9 @@
                     <table class="table table-bordered table-striped" role="grid">
                         <thead>
                         <tr role="row">
-                            <th><?= trans("role_name"); ?></th>
-                            <th><?= trans("permissions"); ?></th>
-                            <th class="max-width-120"><?= trans("options"); ?></th>
+                            <th><?= esc(trans("role_name")); ?></th>
+                            <th><?= esc(trans("permissions")); ?></th>
+                            <th class="max-width-120"><?= esc(trans("options")); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,30 +28,30 @@
                                     <td class="font-600">
                                         <?= esc(getRoleName($item)); ?>
                                         <?php if ($item->is_default): ?>
-                                            &nbsp;<label class="label label-default"><?= trans("default"); ?></label>
+                                            &nbsp;<label class="label label-default"><?= esc(trans("default")); ?></label>
                                         <?php endif; ?>
                                     </td>
                                     <td>
                                         <?php if ($item->permissions == "all"): ?>
-                                            <label class="label label-success"><?= trans("all_permissions"); ?></label>
+                                            <label class="label label-success"><?= esc(trans("all_permissions")); ?></label>
                                         <?php endif;
                                         $permissions = @explode(',', $item->permissions);
                                         if (!empty($permissions) && is_array($permissions)):
                                             foreach ($permissions as $index):
                                                 $permission = getPermissionByIndex($index);
                                                 if (!empty($permission)):?>
-                                                    <label class="label label-success"><?= trans($permission); ?></label>
+                                                    <label class="label label-success"><?= esc(trans($permission)); ?></label>
                                                 <?php endif;
                                             endforeach;
                                         endif; ?>
                                     </td>
                                     <td style="width: 180px;">
                                         <?php if ($item->is_default == 1): ?>
-                                            <a href="<?= adminUrl('edit-role/' . $item->id); ?>" class="btn btn-sm btn-default btn-edit"><i class="fa fa-edit"></i>&nbsp;&nbsp;<?= trans("edit"); ?></a>
+                                            <a href="<?= adminUrl('edit-role/' . $item->id); ?>" class="btn btn-sm btn-default btn-edit"><i class="fa fa-edit"></i>&nbsp;&nbsp;<?= esc(trans("edit")); ?></a>
                                         <?php else: ?>
                                             <div class="btn-group btn-group-option">
-                                                <a href="<?= adminUrl('edit-role/' . $item->id); ?>" class="btn btn-sm btn-default btn-edit"><i class="fa fa-edit"></i>&nbsp;&nbsp;<?= trans("edit"); ?></a>
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" onclick='deleteItem("Membership/deleteRolePost","<?= $item->id; ?>","<?= trans("confirm_delete", true); ?>");'><i class="fa fa-trash-can"></i></a>
+                                                <a href="<?= adminUrl('edit-role/' . $item->id); ?>" class="btn btn-sm btn-default btn-edit"><i class="fa fa-edit"></i>&nbsp;&nbsp;<?= esc(trans("edit")); ?></a>
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-default btn-delete" onclick='deleteItem("Membership/deleteRolePost","<?= $item->id; ?>","<?= esc(trans("confirm_delete", true)); ?>");'><i class="fa fa-trash-can"></i></a>
                                             </div>
                                         <?php endif; ?>
                                     </td>
@@ -62,7 +62,7 @@
                     </table>
                     <?php if (empty($roles)): ?>
                         <p class="text-center">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                 </div>

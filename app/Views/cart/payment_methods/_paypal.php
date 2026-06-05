@@ -6,11 +6,11 @@
                     <div class="spinner-border text-primary" role="status">
                         <span class="sr-only"></span>
                     </div>
-                    <p class="mt-3 text-muted"><?= trans("loading_payment_options"); ?></p>
+                    <p class="mt-3 text-muted"><?= esc(trans("loading_payment_options")); ?></p>
                 </div>
 
                 <div id="payment-container" class="payment-button-cnt d-none">
-                    <h2 class="title-complete-payment"><?= trans("confirm_and_pay"); ?></h2>
+                    <h2 class="title-complete-payment"><?= esc(trans("confirm_and_pay")); ?></h2>
                     <div id="paypal-button-container" class="mx-auto" style="max-width: 500px;"></div>
 
                     <div class="paypal-loader d-none text-center mt-4">
@@ -18,7 +18,7 @@
                             <span class="sr-only"></span>
                         </div>
                         <br>
-                        <strong class="payment-loader-text d-block mt-2"><?= trans("processing"); ?></strong>
+                        <strong class="payment-loader-text d-block mt-2"><?= esc(trans("processing")); ?></strong>
                     </div>
                 </div>
 

@@ -5,42 +5,42 @@
                 <div class="support">
                     <nav class="nav-breadcrumb" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                            <li class="breadcrumb-item"><a href="<?= generateUrl('help_center'); ?>"><?= trans("help_center"); ?></a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= trans("submit_a_request"); ?></li>
+                            <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                            <li class="breadcrumb-item"><a href="<?= generateUrl('help_center'); ?>"><?= esc(trans("help_center")); ?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("submit_a_request")); ?></li>
                         </ol>
                     </nav>
                     <div class="row justify-content-center">
                         <div class="col-12 m-t-15 m-b-30">
-                            <h1 class="page-title page-title-ticket"><?= trans("ticket"); ?>: #<?= $ticket->id; ?></h1>
+                            <h1 class="page-title page-title-ticket"><?= esc(trans("ticket")); ?>: #<?= $ticket->id; ?></h1>
                             <a href="<?= generateUrl('help_center', 'tickets'); ?>" class="btn btn-info color-white float-right">
                                 <svg width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" fill="#fff">
                                     <path d="M384 1408q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm0-512q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1408 416v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5zm-1408-928q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1408 416v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5zm0-512v192q0 13-9.5 22.5t-22.5 9.5h-1216q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h1216q13 0 22.5 9.5t9.5 22.5z"/>
-                                </svg>&nbsp;&nbsp;<?= trans("support_tickets") ?>
+                                </svg>&nbsp;&nbsp;<?= esc(trans("support_tickets")) ?>
                             </a>
                         </div>
                         <div class="col-12">
                             <div class="ticket-container shadow-sm">
                                 <div class="new-ticket-content new-ticket-content-reply">
                                     <div class="ticket-header">
-                                        <p><strong><?= trans("subject"); ?>:&nbsp;<?= esc($ticket->subject); ?></strong></p>
+                                        <p><strong><?= esc(trans("subject")); ?>:&nbsp;<?= esc($ticket->subject); ?></strong></p>
                                         <div class="row row-ticket-details">
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("status"); ?></strong>
+                                                <strong><?= esc(trans("status")); ?></strong>
                                                 <?php if ($ticket->status == 1): ?>
-                                                    <label class="badge badge-lg badge-success-light"><?= trans("open"); ?></label>
+                                                    <label class="badge badge-lg badge-success-light"><?= esc(trans("open")); ?></label>
                                                 <?php elseif ($ticket->status == 2): ?>
-                                                    <label class="badge badge-lg badge-warning-light"><?= trans("responded"); ?></label>
+                                                    <label class="badge badge-lg badge-warning-light"><?= esc(trans("responded")); ?></label>
                                                 <?php elseif ($ticket->status == 3): ?>
-                                                    <label class="badge badge-lg badge-secondary-light"><?= trans("closed"); ?></label>
+                                                    <label class="badge badge-lg badge-secondary-light"><?= esc(trans("closed")); ?></label>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("date"); ?></strong>
+                                                <strong><?= esc(trans("date")); ?></strong>
                                                 <span><?= formatDate($ticket->created_at); ?></span>
                                             </div>
                                             <div class="col-12 col-md-2">
-                                                <strong><?= trans("last_update"); ?></strong>
+                                                <strong><?= esc(trans("last_update")); ?></strong>
                                                 <span><?= timeAgo($ticket->updated_at); ?></span>
                                             </div>
                                         </div>
@@ -50,11 +50,11 @@
                                         <div class="col-12">
                                             <div class="ticket-buttons">
                                                 <button class="btn btn-info color-white float-left" type="button" data-toggle="collapse" data-target="#collapseTicketAnswer" aria-expanded="false" aria-controls="collapseTicketAnswer">
-                                                    <i class="icon-reply"></i><?= trans("reply"); ?>
+                                                    <i class="icon-reply"></i><?= esc(trans("reply")); ?>
                                                 </button>
                                                 <?php if ($ticket->status != 3): ?>
-                                                    <button class="btn btn-secondary color-white float-right" type="button" onclick="closeSupportTicket(<?= $ticket->id; ?>);">
-                                                        <i class="icon-times"></i><?= trans("close_ticket"); ?>
+                                                    <button class="btn btn-secondary color-white float-right js-close-support-ticket" type="button" data-ticket-id="<?= esc($ticket->id, 'attr'); ?>">
+                                                        <i class="icon-times"></i><?= esc(trans("close_ticket")); ?>
                                                     </button>
                                                 <?php endif; ?>
                                             </div>
@@ -66,17 +66,17 @@
                                                         <?= csrf_field(); ?>
                                                         <input type="hidden" name="ticket_id" value="<?= $ticket->id; ?>">
                                                         <div class="form-group m-0">
-                                                            <label class="control-label"><?= trans("message"); ?></label>
+                                                            <label class="control-label"><?= esc(trans("message")); ?></label>
                                                         </div>
                                                         <div class="form-group" style="min-height: 400px">
                                                             <textarea name="message" class="tinyMCEticket" aria-hidden="true"><?= old('message'); ?></textarea>
                                                         </div>
                                                         <div class="form-group m-0">
-                                                            <label class="control-label"><?= trans("attachments"); ?></label>
+                                                            <label class="control-label"><?= esc(trans("attachments")); ?></label>
                                                             <div class="dm-uploader-container">
                                                                 <div id="drag-and-drop-zone" class="dm-uploader text-center mb-2">
                                                                     <p class="dm-upload-text">
-                                                                        <?= trans("drag_drop_file_here"); ?>&nbsp;<span style="text-decoration: underline; font-weight: 600;"><?= trans('browse_files'); ?>
+                                                                        <?= esc(trans("drag_drop_file_here")); ?>&nbsp;<span style="text-decoration: underline; font-weight: 600;"><?= esc(trans('browse_files')); ?>
                                                                     </p>
                                                                     <a class='btn btn-md dm-btn-select-files'>
                                                                         <input type="file" name="file" size="40" multiple="multiple">
@@ -102,7 +102,7 @@
                                                                             <div class="item">
                                                                                 <div class="item-inner">
                                                                                     <?= esc($file->name); ?>
-                                                                                    <a href="javascript:void(0)" onclick="deleteSupportAttachment('<?= esc($file->fileId); ?>')">
+                                                                                    <a href="javascript:void(0)" class="js-delete-support-attachment" data-file-id="<?= esc($file->fileId, 'attr'); ?>">
                                                                                         <i class="icon-times"></i>
                                                                                     </a>
                                                                                 </div>
@@ -113,7 +113,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="text-right m-t-20">
-                                                            <button type="submit" class="btn btn-md btn-custom"><?= trans("send_message"); ?></button>
+                                                            <button type="submit" class="btn btn-md btn-custom"><?= esc(trans("send_message")); ?></button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -177,3 +177,12 @@
         </div>
     </div>
 </div>
+<script <?= csp_script_nonce() ?>>
+    $(document).on('click', '.js-close-support-ticket', function () {
+        closeSupportTicket($(this).data('ticket-id'));
+    });
+
+    $(document).on('click', '.js-delete-support-attachment', function () {
+        deleteSupportAttachment($(this).data('file-id'));
+    });
+</script>

@@ -6,42 +6,42 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-8">
                             <div class="left">
-                                <h1 class="cart-section-title"><?= trans("checkout"); ?></h1>
+                                <h1 class="cart-section-title"><?= esc(trans("checkout")); ?></h1>
                                 <div class="tab-checkout tab-checkout-open m-t-0">
                                     <p class="font-600 text-center m-b-30">
-                                        <?= trans("checking_out_as_guest"); ?>.&nbsp;<?= trans("have_account"); ?>&nbsp;
+                                        <?= esc(trans("checking_out_as_guest")); ?>.&nbsp;<?= esc(trans("have_account")); ?>&nbsp;
                                         <a href="javascript:void(0)" class="link" data-toggle="modal" data-target="#loginModal">
-                                            <strong class="link-underlined"><?= trans("login"); ?></strong>
+                                            <strong class="link-underlined"><?= esc(trans("login")); ?></strong>
                                         </a>
                                     </p>
 
-                                    <h2 class="title">1.&nbsp;&nbsp;<?= trans("shipping_information"); ?></h2>
+                                    <h2 class="title">1.&nbsp;&nbsp;<?= esc(trans("shipping_information")); ?></h2>
                                     <form action="<?= base_url('Cart/shippingPost'); ?>" method="post" id="form-guest-shipping" class="validate-form">
                                         <?= csrf_field(); ?>
                                         <div class="row">
                                             <div class="col-12 cart-form-shipping-address">
-                                                <p class="text-shipping-address"><?= trans("shipping_address") ?></p>
+                                                <p class="text-shipping-address"><?= esc(trans("shipping_address")) ?></p>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 m-b-sm-15">
-                                                            <label class="control-label"><?= trans("first_name"); ?></label>
-                                                            <input type="text" name="shipping_first_name" class="form-control form-input" value="<?= !empty($cartShippingData->sFirstName) ? esc($cartShippingData->sFirstName) : ''; ?>" maxlength="250" placeholder="<?= trans("first_name"); ?>" required data-type="name">
+                                                            <label class="control-label"><?= esc(trans("first_name")); ?></label>
+                                                            <input type="text" name="shipping_first_name" class="form-control form-input" value="<?= !empty($cartShippingData->sFirstName) ? esc($cartShippingData->sFirstName) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("first_name")); ?>" required data-type="name">
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <label class="control-label"><?= trans("last_name"); ?></label>
-                                                            <input type="text" name="shipping_last_name" class="form-control form-input" value="<?= !empty($cartShippingData->sLastName) ? esc($cartShippingData->sLastName) : ''; ?>" maxlength="250" placeholder="<?= trans("last_name"); ?>" required data-type="name">
+                                                            <label class="control-label"><?= esc(trans("last_name")); ?></label>
+                                                            <input type="text" name="shipping_last_name" class="form-control form-input" value="<?= !empty($cartShippingData->sLastName) ? esc($cartShippingData->sLastName) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("last_name")); ?>" required data-type="name">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 m-b-sm-15">
-                                                            <label class="control-label"><?= trans("email"); ?></label>
-                                                            <input type="email" name="shipping_email" class="form-control form-input" value="<?= !empty($cartShippingData->sEmail) ? esc($cartShippingData->sEmail) : ''; ?>" maxlength="250" placeholder="<?= trans("email"); ?>" required data-type="email">
+                                                            <label class="control-label"><?= esc(trans("email")); ?></label>
+                                                            <input type="email" name="shipping_email" class="form-control form-input" value="<?= !empty($cartShippingData->sEmail) ? esc($cartShippingData->sEmail) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("email")); ?>" required data-type="email">
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <label class="control-label"><?= trans("phone_number"); ?></label>
-                                                            <input type="text" name="shipping_phone_number" class="form-control form-input" value="<?= !empty($cartShippingData->sPhoneNumber) ? esc($cartShippingData->sPhoneNumber) : ''; ?>" maxlength="100" placeholder="<?= trans("phone_number"); ?>" required data-type="mobile">
+                                                            <label class="control-label"><?= esc(trans("phone_number")); ?></label>
+                                                            <input type="text" name="shipping_phone_number" class="form-control form-input" value="<?= !empty($cartShippingData->sPhoneNumber) ? esc($cartShippingData->sPhoneNumber) : ''; ?>" maxlength="100" placeholder="<?= esc(trans("phone_number")); ?>" required data-type="mobile">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -49,8 +49,8 @@
                                                     <div class="row">
                                                         <?php if ($generalSettings->single_country_mode != 1): ?>
                                                             <div class="col-12 col-md-6 m-b-sm-15">
-                                                                <label class="control-label"><?= trans("country"); ?></label>
-                                                                <select id="select_countries_guest_address"  name="shipping_country_id" class="select2 select2-req form-control form-input" data-placeholder="<?= trans("country"); ?>"  required>
+                                                                <label class="control-label"><?= esc(trans("country")); ?></label>
+                                                                <select id="select_countries_guest_address"  name="shipping_country_id" class="select2 select2-req form-control form-input" data-placeholder="<?= esc(trans("country")); ?>"  required>
                                                                     <option></option>
                                                                     <?php if (!empty($activeCountries)):
                                                                         foreach ($activeCountries as $item): ?>
@@ -67,8 +67,8 @@
                                                             <?php $states = getStatesByCountry($generalSettings->single_country_id);
                                                         endif; ?>
                                                         <div id="get_states_container_guest_address" class="col-12 <?= $generalSettings->single_country_mode == 1 ? 'col-md-12' : 'col-md-6'; ?>">
-                                                            <label class="control-label"><?= trans("state"); ?></label>
-                                                            <select id="select_states_guest_address" name="shipping_state_id" class="select2 select2-req form-control" data-placeholder="<?= trans("state"); ?>" required>
+                                                            <label class="control-label"><?= esc(trans("state")); ?></label>
+                                                            <select id="select_states_guest_address" name="shipping_state_id" class="select2 select2-req form-control" data-placeholder="<?= esc(trans("state")); ?>" required>
                                                                 <option></option>
                                                                 <?php if (!empty($states)):
                                                                     foreach ($states as $item): ?>
@@ -82,43 +82,43 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 m-b-sm-15">
-                                                            <label class="control-label"><?= trans("city"); ?></label>
-                                                            <input type="text" name="shipping_city" class="form-control form-input" value="<?= !empty($cartShippingData->sCity) ? esc($cartShippingData->sCity) : ''; ?>" maxlength="250" placeholder="<?= trans("city"); ?>" required data-type="text">
+                                                            <label class="control-label"><?= esc(trans("city")); ?></label>
+                                                            <input type="text" name="shipping_city" class="form-control form-input" value="<?= !empty($cartShippingData->sCity) ? esc($cartShippingData->sCity) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("city")); ?>" required data-type="text">
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <label class="control-label"><?= trans("zip_code"); ?></label>
-                                                            <input type="text" name="shipping_zip_code" class="form-control form-input" value="<?= !empty($cartShippingData->sZipCode) ? esc($cartShippingData->sZipCode) : ''; ?>" maxlength="90" placeholder="<?= trans("zip_code"); ?>" required data-type="text">
+                                                            <label class="control-label"><?= esc(trans("zip_code")); ?></label>
+                                                            <input type="text" name="shipping_zip_code" class="form-control form-input" value="<?= !empty($cartShippingData->sZipCode) ? esc($cartShippingData->sZipCode) : ''; ?>" maxlength="10" inputmode="numeric" placeholder="<?= esc(trans("zip_code")); ?>" required data-type="zip">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label"><?= trans("address"); ?></label>
-                                                    <input type="text" name="shipping_address" class="form-control form-input" value="<?= !empty($cartShippingData->sAddress) ? esc($cartShippingData->sAddress) : ''; ?>" maxlength="250" placeholder="<?= trans("address"); ?>" required data-type="text">
+                                                    <label class="control-label"><?= esc(trans("address")); ?></label>
+                                                    <input type="text" name="shipping_address" class="form-control form-input" value="<?= !empty($cartShippingData->sAddress) ? esc($cartShippingData->sAddress) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("address")); ?>" required data-type="text">
                                                 </div>
                                             </div>
                                             <div class="col-12 cart-form-billing-address" <?= empty($selectedSameAddressForBilling) ? 'style="display: block;"' : ''; ?>>
-                                                <p class="text-shipping-address"><?= trans("billing_address") ?></p>
+                                                <p class="text-shipping-address"><?= esc(trans("billing_address")) ?></p>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 m-b-sm-15">
-                                                            <label class="control-label"><?= trans("first_name"); ?></label>
-                                                            <input type="text" name="billing_first_name" class="form-control form-input" value="<?= !empty($cartShippingData->bFirstName) ? esc($cartShippingData->bFirstName) : ''; ?>" maxlength="250" placeholder="<?= trans("first_name"); ?>" required data-type="name">
+                                                            <label class="control-label"><?= esc(trans("first_name")); ?></label>
+                                                            <input type="text" name="billing_first_name" class="form-control form-input" value="<?= !empty($cartShippingData->bFirstName) ? esc($cartShippingData->bFirstName) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("first_name")); ?>" required data-type="name">
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <label class="control-label"><?= trans("last_name"); ?></label>
-                                                            <input type="text" name="billing_last_name" class="form-control form-input" value="<?= !empty($cartShippingData->bLastName) ? esc($cartShippingData->bLastName) : ''; ?>" maxlength="250" placeholder="<?= trans("last_name"); ?>" required data-type="name">
+                                                            <label class="control-label"><?= esc(trans("last_name")); ?></label>
+                                                            <input type="text" name="billing_last_name" class="form-control form-input" value="<?= !empty($cartShippingData->bLastName) ? esc($cartShippingData->bLastName) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("last_name")); ?>" required data-type="name">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 m-b-sm-15">
-                                                            <label class="control-label"><?= trans("email"); ?></label>
-                                                            <input type="email" name="billing_email" class="form-control form-input" value="<?= !empty($cartShippingData->bEmail) ? esc($cartShippingData->bEmail) : ''; ?>" maxlength="250" placeholder="<?= trans("email"); ?>" required data-type="email">
+                                                            <label class="control-label"><?= esc(trans("email")); ?></label>
+                                                            <input type="email" name="billing_email" class="form-control form-input" value="<?= !empty($cartShippingData->bEmail) ? esc($cartShippingData->bEmail) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("email")); ?>" required data-type="email">
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <label class="control-label"><?= trans("phone_number"); ?></label>
-                                                            <input type="text" name="billing_phone_number" class="form-control form-input" value="<?= !empty($cartShippingData->bPhoneNumber) ? esc($cartShippingData->bPhoneNumber) : ''; ?>" maxlength="100" placeholder="<?= trans("phone_number"); ?>" required data-type="mobile">
+                                                            <label class="control-label"><?= esc(trans("phone_number")); ?></label>
+                                                            <input type="text" name="billing_phone_number" class="form-control form-input" value="<?= !empty($cartShippingData->bPhoneNumber) ? esc($cartShippingData->bPhoneNumber) : ''; ?>" maxlength="100" placeholder="<?= esc(trans("phone_number")); ?>" required data-type="mobile">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,8 +126,8 @@
                                                     <div class="row">
                                                         <?php if ($generalSettings->single_country_mode != 1): ?>
                                                             <div class="col-12 col-md-6 m-b-sm-15">
-                                                                <label class="control-label"><?= trans("country"); ?></label>
-                                                                <select id="select_countries_guest_billing" name="billing_country_id" class="select2 form-control <?= empty($selectedSameAddressForBilling) ? 'select2-req' : ''; ?>" data-placeholder="<?= trans("country"); ?>" onchange="getStates(this.value,'guest_billing');" required>
+                                                                <label class="control-label"><?= esc(trans("country")); ?></label>
+                                                                <select id="select_countries_guest_billing" name="billing_country_id" class="select2 form-control <?= empty($selectedSameAddressForBilling) ? 'select2-req' : ''; ?>" data-placeholder="<?= esc(trans("country")); ?>" onchange="getStates(this.value,'guest_billing');" required>
                                                                     <option></option>
                                                                     <?php if (!empty($activeCountries)):
                                                                         foreach ($activeCountries as $item): ?>
@@ -144,9 +144,9 @@
                                                             <?php $states = getStatesByCountry($generalSettings->single_country_id);
                                                         endif; ?>
                                                         <div class="col-12 <?= $generalSettings->single_country_mode == 1 ? 'col-md-12' : 'col-md-6'; ?>">
-                                                            <label class="control-label"><?= trans("state"); ?></label>
+                                                            <label class="control-label"><?= esc(trans("state")); ?></label>
                                                             <div id="get_states_container_guest_billing">
-                                                                <select id="select_states_guest_billing" name="billing_state_id" class="select2 form-control <?= empty($selectedSameAddressForBilling) == 1 ? 'select2-req' : ''; ?>" data-placeholder="<?= trans("state"); ?>" required>
+                                                                <select id="select_states_guest_billing" name="billing_state_id" class="select2 form-control <?= empty($selectedSameAddressForBilling) == 1 ? 'select2-req' : ''; ?>" data-placeholder="<?= esc(trans("state")); ?>" required>
                                                                     <option></option>
                                                                     <?php if (!empty($states)):
                                                                         foreach ($states as $item): ?>
@@ -161,25 +161,25 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 m-b-sm-15">
-                                                            <label class="control-label"><?= trans("city"); ?></label>
-                                                            <input type="text" name="billing_city" class="form-control form-input" value="<?= !empty($cartShippingData->bCity) ? esc($cartShippingData->bCity) : ''; ?>" maxlength="250" placeholder="<?= trans("city"); ?>" required data-type="text">
+                                                            <label class="control-label"><?= esc(trans("city")); ?></label>
+                                                            <input type="text" name="billing_city" class="form-control form-input" value="<?= !empty($cartShippingData->bCity) ? esc($cartShippingData->bCity) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("city")); ?>" required data-type="text">
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <label class="control-label"><?= trans("zip_code"); ?></label>
-                                                            <input type="text" name="billing_zip_code" class="form-control form-input" value="<?= !empty($cartShippingData->bZipCode) ? esc($cartShippingData->bZipCode) : ''; ?>" maxlength="90" placeholder="<?= trans("zip_code"); ?>" required data-type="text">
+                                                            <label class="control-label"><?= esc(trans("zip_code")); ?></label>
+                                                            <input type="text" name="billing_zip_code" class="form-control form-input" value="<?= !empty($cartShippingData->bZipCode) ? esc($cartShippingData->bZipCode) : ''; ?>" maxlength="10" inputmode="numeric" placeholder="<?= esc(trans("zip_code")); ?>" required data-type="zip">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label"><?= trans("address"); ?></label>
-                                                    <input type="text" name="billing_address" class="form-control form-input" value="<?= !empty($cartShippingData->bAddress) ? esc($cartShippingData->bAddress) : ''; ?>" maxlength="250" placeholder="<?= trans("address"); ?>" required data-type="text">
+                                                    <label class="control-label"><?= esc(trans("address")); ?></label>
+                                                    <input type="text" name="billing_address" class="form-control form-input" value="<?= !empty($cartShippingData->bAddress) ? esc($cartShippingData->bAddress) : ''; ?>" maxlength="250" placeholder="<?= esc(trans("address")); ?>" required data-type="text">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" name="use_same_address_for_billing" value="1" id="use_same_address_for_billing" <?= $selectedSameAddressForBilling == 1 ? 'checked' : ''; ?>>
-                                                        <label for="use_same_address_for_billing" class="custom-control-label"><?= trans("use_same_address_for_billing"); ?></label>
+                                                        <label for="use_same_address_for_billing" class="custom-control-label"><?= esc(trans("use_same_address_for_billing")); ?></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,10 +203,10 @@
                                     </form>
                                 </div>
                                 <div class="tab-checkout tab-checkout-closed-bordered">
-                                    <h2 class="title">2.&nbsp;&nbsp;<?= trans("payment_method"); ?></h2>
+                                    <h2 class="title">2.&nbsp;&nbsp;<?= esc(trans("payment_method")); ?></h2>
                                 </div>
                                 <div class="tab-checkout tab-checkout-closed-bordered border-top-0">
-                                    <h2 class="title">3.&nbsp;&nbsp;<?= trans("payment"); ?></h2>
+                                    <h2 class="title">3.&nbsp;&nbsp;<?= esc(trans("payment")); ?></h2>
                                 </div>
                             </div>
                         </div>

@@ -16,12 +16,12 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="wizard-product">
-                <h1 class="product-form-title"><?= trans("add_product"); ?></h1>
+                <h1 class="product-form-title"><?= esc(trans("add_product")); ?></h1>
                 <div class="row">
                     <div class="col-md-12 wizard-add-product">
                         <ul class="wizard-progress">
-                            <li class="active" id="step_general"><strong><?= trans("general_information"); ?></strong></li>
-                            <li class="active" id="step_dedails"><strong><?= trans("details"); ?></strong></li>
+                            <li class="active" id="step_general"><strong><?= esc(trans("general_information")); ?></strong></li>
+                            <li class="active" id="step_dedails"><strong><?= esc(trans("details")); ?></strong></li>
                         </ul>
                     </div>
                 </div>
@@ -31,14 +31,14 @@
 <?php endif;
 if ($showShippingOptionsWarning): ?>
     <div class="alert alert-danger alert-large">
-        <i class="fa fa-warning"></i>&nbsp;&nbsp;<?= trans("vendor_no_shipping_option_warning"); ?>&nbsp;<a href="<?= generateDashUrl('shipping_settings'); ?>" target="_blank" class="link-blue"><?= trans("shipping_settings"); ?></a>
+        <i class="fa fa-warning"></i>&nbsp;&nbsp;<?= esc(trans("vendor_no_shipping_option_warning")); ?>&nbsp;<a href="<?= generateDashUrl('shipping_settings'); ?>" target="_blank" class="link-blue"><?= esc(trans("shipping_settings")); ?></a>
     </div>
 <?php endif; ?>
 
 <div class="row">
     <div class="col-sm-12">
         <?php if ($product->is_draft != 1): ?>
-            <h1 class="product-form-title"><?= trans("edit_product"); ?></h1>
+            <h1 class="product-form-title"><?= esc(trans("edit_product")); ?></h1>
         <?php endif; ?>
 
         <?= view('dashboard/product/_section_digital'); ?>
@@ -66,7 +66,7 @@ if ($showShippingOptionsWarning): ?>
                             <?php else: ?>
                                 <input type="checkbox" class="custom-control-input" name="terms_conditions" id="terms_conditions" value="1" checked>
                             <?php endif; ?>
-                            <label for="terms_conditions" class="custom-control-label"><?= trans("terms_conditions_exp"); ?>&nbsp;
+                            <label for="terms_conditions" class="custom-control-label"><?= esc(trans("terms_conditions_exp")); ?>&nbsp;
                                 <?php $pageTerms = getPageByDefaultName('terms_conditions', selectedLangId());
                                 if (!empty($pageTerms)): ?>
                                     <a href="<?= generateUrl($pageTerms->page_default_name); ?>" class="link-terms" target="_blank"><strong><?= esc($pageTerms->title); ?></strong></a>
@@ -77,12 +77,12 @@ if ($showShippingOptionsWarning): ?>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group m-t-15 buttons-product-form">
-                        <a href="<?= generateDashUrl('edit_product') . '/' . $product->id; ?>" class="btn btn-lg btn-dark pull-left"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;<?= trans("back"); ?></a>
+                        <a href="<?= generateDashUrl('edit_product') . '/' . $product->id; ?>" class="btn btn-lg btn-dark pull-left"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;<?= esc(trans("back")); ?></a>
                         <?php if ($product->is_draft == 1): ?>
-                            <button type="submit" name="submit" value="submit" class="btn btn-lg btn-success btn-form-product-details pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= trans("submit"); ?></button>
-                            <button type="submit" name="submit" value="save_as_draft" class="btn btn-lg btn-secondary btn-form-product-details m-r-10 pull-right"><i class="fa fa-file"></i>&nbsp;&nbsp;<?= trans("save_as_draft"); ?></button>
+                            <button type="submit" name="submit" value="submit" class="btn btn-lg btn-success btn-form-product-details pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= esc(trans("submit")); ?></button>
+                            <button type="submit" name="submit" value="save_as_draft" class="btn btn-lg btn-secondary btn-form-product-details m-r-10 pull-right"><i class="fa fa-file"></i>&nbsp;&nbsp;<?= esc(trans("save_as_draft")); ?></button>
                         <?php else: ?>
-                            <button type="submit" name="submit" value="save_changes" class="btn btn-lg btn-success btn-form-product-details pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= trans("save_changes"); ?></button>
+                            <button type="submit" name="submit" value="save_changes" class="btn btn-lg btn-success btn-form-product-details pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;<?= esc(trans("save_changes")); ?></button>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -147,18 +147,18 @@ if ($showShippingOptionsWarning): ?>
             "<?= substr(trans("friday", true), 0, 3); ?>",
             "<?= substr(trans("saturday", true), 0, 3); ?>",
             "<?= substr(trans("sunday", true), 0, 3); ?>"],
-        months: ['<?= trans("january", true); ?>',
-            "<?= trans("february", true); ?>",
-            "<?= trans("march", true); ?>",
-            "<?= trans("april", true); ?>",
-            "<?= trans("may", true); ?>",
-            "<?= trans("june", true); ?>",
-            "<?= trans("july", true); ?>",
-            "<?= trans("august", true); ?>",
-            "<?= trans("september", true); ?>",
-            "<?= trans("october", true); ?>",
-            "<?= trans("november", true); ?>",
-            "<?= trans("december", true); ?>"],
+        months: ['<?= esc(trans("january", true)); ?>',
+            "<?= esc(trans("february", true)); ?>",
+            "<?= esc(trans("march", true)); ?>",
+            "<?= esc(trans("april", true)); ?>",
+            "<?= esc(trans("may", true)); ?>",
+            "<?= esc(trans("june", true)); ?>",
+            "<?= esc(trans("july", true)); ?>",
+            "<?= esc(trans("august", true)); ?>",
+            "<?= esc(trans("september", true)); ?>",
+            "<?= esc(trans("october", true)); ?>",
+            "<?= esc(trans("november", true)); ?>",
+            "<?= esc(trans("december", true)); ?>"],
         monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         today: "Today",
         clear: "Clear",

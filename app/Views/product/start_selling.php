@@ -5,7 +5,8 @@
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb"></ol>
                 </nav>
-                <h1 class="page-title page-title-product m-b-15"><?= trans("start_selling"); ?></h1>
+                <h1 class="page-title page-title-product m-b-15"><?= esc(trans("start_selling")); ?></h1>
+                <?= view('partials/_messages'); ?>
                 <div class="form-add-product">
                     <div class="row justify-content-center">
                         <div class="col-12 d-flex justify-content-center">
@@ -14,25 +15,25 @@
                                 if (user()->is_active_shop_request == 1): ?>
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="alert alert-info">
+                                            <div class="showMsg showMsg-info">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
                                                     <circle cx="12" cy="12" r="10"></circle>
                                                     <line x1="12" y1="16" x2="12" y2="12"></line>
                                                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                                                 </svg>&nbsp;
-                                                <?= trans("msg_shop_opening_requests"); ?>
+                                                <?= esc(trans("msg_shop_opening_requests")); ?>
                                             </div>
                                         </div>
                                     </div>
                                 <?php elseif (user()->is_active_shop_request == 2): ?>
                                     <div class="row">
                                         <div class="col-12 m-b-30">
-                                            <div class="alert alert-danger display-block">
+                                            <div class="showMsg showMsg-danger display-block">
                                                 <div class="m-b-10">
-                                                    <strong><?= trans("mgs_reject_open_shop"); ?></strong>
+                                                    <strong><?= esc(trans("mgs_reject_open_shop")); ?></strong>
                                                 </div>
                                                 <div class="m-b-5">
-                                                    <strong><?= trans("reason"); ?>:</strong>
+                                                    <strong><?= esc(trans("reason")); ?>:</strong>
                                                 </div>
                                                 <div>
                                                     <?= esc(user()->shop_request_reject_reason); ?>
@@ -43,12 +44,12 @@
                                 <?php elseif (user()->is_active_shop_request == 3): ?>
                                     <div class="row">
                                         <div class="col-12 m-b-30">
-                                            <div class="alert alert-danger display-block">
+                                            <div class="showMsg showMsg-danger display-block">
                                                 <div class="m-b-10">
-                                                    <strong><?= trans("mgs_reject_open_shop_permanently"); ?></strong>
+                                                    <strong><?= esc(trans("mgs_reject_open_shop_permanently")); ?></strong>
                                                 </div>
                                                 <div class="m-b-5">
-                                                    <strong><?= trans("reason"); ?>:</strong>
+                                                    <strong><?= esc(trans("reason")); ?>:</strong>
                                                 </div>
                                                 <div>
                                                     <?= esc(user()->shop_request_reject_reason); ?>
@@ -67,9 +68,10 @@
                                                 enctype="multipart/form-data"
                                                 id="form_validate"
                                                 class="validate_terms validate-form">
-                                                <?= csrf_field(); ?>
-
+                                                
+                                                <input type="hidden" id="csrf_token" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                                                 <input type="hidden" name="account_type" id="account_type" value="personal">
+
                                                 <div class="register-layout">
 
                                                     <!-- LEFT SIDE IMAGE -->
@@ -86,6 +88,7 @@
                                                     </div>
                                                     <div class="register-wrapper">
                                                         <div class="register-card" id="mainFormCard">
+                                                            <div id="customshowMsg"></div>
                                                             <div id="formStep">
                                                                 <h2>Create an account</h2>
                                                                 <div class="account-toggle">
@@ -131,8 +134,8 @@
                                                                 </div>
                                                                 <div class="form-group m-t-15">
                                                                     <div class="custom-control custom-checkbox custom-control-validate-input">
-                                                                        <input type="checkbox" class="custom-control-input" name="terms_conditions" id="terms_conditions" value="1" required>
-                                                                        <label for="terms_conditions" class="custom-control-label"><?= trans("terms_conditions_exp"); ?>&nbsp;
+                                                                        <input type="checkbox" class="custom-control-input" name="terms_conditions" id="terms_conditions" value="1" >
+                                                                        <label for="terms_conditions" class="custom-control-label"><?= esc(trans("terms_conditions_exp")); ?>&nbsp;
                                                                             <?php $pageTerms = getPageByDefaultName('terms_conditions', selectedLangId());
                                                                             if (!empty($pageTerms)): ?>
                                                                                 <a href="<?= generateUrl($pageTerms->page_default_name); ?>" class="link-terms" target="_blank"><strong><?= esc($pageTerms->title); ?></strong></a>
@@ -147,7 +150,7 @@
 
                                                                 <h4>Mobile Verification</h4>
 
-                                                                <p id="mobileMessage" style="font-size:14px; color:gray;"></p>
+                                                                <p id="mobileMessage" class="msg-text"></p>
 
                                                                 <div id="mobileInputBox">
                                                                     <input type="text" id="mobile_number" placeholder="Enter Mobile Number" data-type="mobile">
@@ -157,19 +160,21 @@
                                                                     <button type="button" id="sendOtpBtn" class="btn btn-custom"> Submit</button>
                                                                 </div>
 
-                                                                <div id="otpBox" style="display:none;">
+                                                                <div id="otpBox" class="hidden-box">
 
                                                                     <input type="text" id="otp" placeholder="Enter OTP">
 
-                                                                    <button type="button" onclick="verifyOtp()" class="btn btn-success">
+                                                                    <button type="button" id="verifyOtpBtn" class="btn btn-success">
                                                                         Verify
                                                                     </button>
 
-                                                                    <button type="button" id="resendMobileBtn" onclick="resendOtp()" disabled>
-                                                                        Resend OTP
-                                                                    </button>
-
-                                                                    <span id="mobileTimer" style="font-size:12px; color:gray;"></span>
+                                                                    <div class="resend-box">
+                                                                        <button type="button" id="resendMobileBtn" class="resend-link" disabled>
+                                                                            Resend OTP
+                                                                        </button>
+                                                                        <span id="mobileTimer"></span>
+                                                                    </div>
+                                                                    <span id="mobileTimer" class="timer-text"></span>
 
                                                                 </div>
 
@@ -178,70 +183,80 @@
 
                                                                 <h4>Email Verification</h4>
 
-                                                                <p id="emailMessage" style="font-size:14px; color:gray;"></p>
+                                                                <p id="emailMessage" class="msg-text"></p>
 
                                                                 <input type="text" id="email_otp" placeholder="Enter Email OTP">
 
-                                                                <button type="button" onclick="verifyEmail()" class="btn btn-success">
+                                                                <button type="button" id="verifyEmailBtn" class="btn btn-success">
                                                                     Verify Email
                                                                 </button>
-                                                                <div style="margin-top:10px;">
-                                                                    <button type="button" id="resendEmailBtn" onclick="resendEmailOtp()" disabled class="btn btn-link">
+                                                                <div class="mt-10">
+                                                                    <button type="button" id="resendEmailBtn" class="resend-link" disabled>
                                                                         Resend OTP
                                                                     </button>
-                                                                    <span id="emailTimer" style="font-size:12px; color:gray;"></span>
+                                                                    <span id="emailTimer" class="timer-text"></span>
                                                                 </div>
 
                                                             </div>
                                                             <!-- PHONE OTP -->
-                                                            <div id="phoneStep" class="step-box">
+                                                            <div id="phoneStep" class="step-box mt-3">
                                                                 <h4>Phone Verification</h4>
 
                                                                 <input type="text" id="business_phone" name="business_phone" placeholder="Enter Phone Number">
-                                                                <input type="hidden" name="business_phone" id="hidden_business_phone">
-                                                                <button type="button" onclick="sendPhoneOtp()" class="btn btn-custom">Send OTP</button>
+                                                                <input type="hidden" name="verified_business_phone" id="hidden_business_phone">
 
-                                                                <div id="phoneOtpBox" style="display:none;">
+                                                                <button type="button" id="sendPhoneOtpBtn" class="btn btn-custom">Send OTP</button>
+
+                                                                <div id="phoneOtpBox" class="hidden-box">
                                                                     <input type="text" id="phone_otp" placeholder="Enter OTP">
-                                                                    <button type="button" onclick="verifyPhone()" class="btn btn-success">Verify</button>
+
+                                                                    <button type="button" id="verifyPhoneBtn" class="btn btn-success">Verify</button>
+
+                                                                    <div class="resend-box">
+                                                                        <button type="button" id="resendPhoneBtn" class="resend-link" disabled>
+                                                                            Resend OTP
+                                                                        </button>
+                                                                        <span id="phoneTimer"></span>
+                                                                    </div>
+                                                                    
                                                                 </div>
                                                             </div>
 
                                                             <!-- BUSINESS TYPE -->
                                                             <div id="businessTypeStep" class="step-box">
 
-                                                                <h4>What type of business is this?</h4>
-
                                                                 <input type="hidden" name="business_type" id="business_type">
 
-                                                                <div class="business-options">
+                                                                <div id="businessTypeQuestion">
+                                                                    <h4>What type of business is this?</h4>
 
-                                                                    <div class="business-card" onclick="selectBusinessType('sole', this)">
-                                                                        <h5>Sole proprietorship</h5>
+                                                                    <div class="business-options">
+                                                                        <div class="business-card" data-type="sole">
+                                                                            <h5>Sole proprietorship</h5>
+                                                                        </div>
+
+                                                                        <div class="business-card" data-type="registered">
+                                                                            <h5>Registered business</h5>
+                                                                        </div>
+
+                                                                        <div class="business-card" data-type="nonprofit">
+                                                                            <h5>Nonprofit</h5>
+                                                                        </div>
                                                                     </div>
-
-                                                                    <div class="business-card" onclick="selectBusinessType('registered', this)">
-                                                                        <h5>Registered business</h5>
-                                                                    </div>
-
-                                                                    <div class="business-card" onclick="selectBusinessType('nonprofit', this)">
-                                                                        <h5>Nonprofit</h5>
-                                                                    </div>
-
                                                                 </div>
 
-                                                                <!-- 🔥 DYNAMIC FIELDS -->
-                                                                <div id="businessExtraFields" style="display:none; margin-top:15px;">
+                                                                <div id="businessExtraFields" class="hidden-extra">
+                                                                    <h4>Business Details</h4>
 
-                                                                    <input type="text" name="legal_business_name" placeholder="Legal business name">
-
-                                                                    <input type="text" name="doing_business_as" placeholder="Doing business as (optional)">
-
-                                                                    <input type="text" name="ein_registered" id="ein_registered" placeholder="Employer ID Number (9 digits)">
-
+                                                                    <input type="text" name="legal_business_name" placeholder="Legal business name" data-type="name" required>
+                                                                    <input type="text" name="doing_business_as" placeholder="Doing business as (optional)" data-type="text">
+                                                                    <input type="text" name="ein_registered" id="ein_registered" placeholder="Employer ID Number (9 digits)" data-type="number" inputmode="numeric" maxlength="9" pattern="\d{9}">
+                                                                     <!-- <button type="button" class="btn btn-secondary backBtn" data-back="businessTypeStep">
+                                                                        Back
+                                                                    </button> -->
                                                                 </div>
-
-                                                                <button type="button" onclick="goToStakeholders()" class="btn btn-custom">
+                                                
+                                                                <button type="button" id="goToStakeholdersBtn" class="btn btn-custom">
                                                                     Continue
                                                                 </button>
 
@@ -251,35 +266,53 @@
 
                                                                 <h4>Confirm account details</h4>
 
-                                                                <p style="font-size:13px;color:#777;">
+                                                                <p class="small-gray">
                                                                     Add your information (must match your government ID)
                                                                 </p>
 
                                                                 <!-- LEGAL NAME -->
-                                                                <input type="text" name="legal_first_name" placeholder="First name">
-                                                                <input type="text" name="legal_middle_name" placeholder="Middle name (optional)">
-                                                                <input type="text" name="legal_last_name" placeholder="Last name">
-
-                                                                <!-- PERSONAL INFO -->
-                                                                <select name="nationality">
-                                                                    <option value="">Select Nationality</option>
-                                                                    <option value="india">India</option>
-                                                                    <option value="us">United States</option>
-                                                                </select>
+                                                                <input type="text" name="legal_first_name" placeholder="First name" data-type="name" required>
+                                                                <input type="text" name="legal_middle_name" placeholder="Middle name (optional)" data-type="name">
+                                                                <input type="text" name="legal_last_name" placeholder="Last name" data-type="name" required>                        
 
                                                                 <!-- ADDRESS -->
-                                                                <input type="text" name="address_line1" placeholder="Street address">
-                                                                <input type="text" name="address_line2" placeholder="Street address 2 (optional)">
-                                                                <input type="text" name="city" placeholder="City">
-                                                                <input type="text" name="state" placeholder="State">
-                                                                <input type="text" name="zip" placeholder="ZIP Code">
+                                                                <input type="text" name="address_line1" placeholder="Street address" data-type="text" required>
+                                                                <input type="text" name="address_line2" placeholder="Street address 2 (optional)" data-type="text">
+
+                                                                <!-- COUNTRY / STATE / CITY (cascading) -->
+                                                                <select id="select_countries_sole" name="sole_country_id" required>
+                                                                    <option value=""><?= esc(trans('country')); ?></option>
+                                                                    <?php foreach (($activeCountries ?? []) as $soleCountry): ?>
+                                                                        <option value="<?= $soleCountry->id; ?>"><?= esc($soleCountry->name); ?></option>
+                                                                    <?php endforeach; ?>
+                                                                </select>
+
+                                                                <div id="get_states_container_sole" class="display-none">
+                                                                    <select id="select_states_sole" name="sole_state_id">
+                                                                        <option value=""><?= esc(trans('state')); ?></option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div id="get_cities_container_sole" class="display-none">
+                                                                    <select id="select_cities_sole" name="sole_city_id">
+                                                                        <option value=""><?= esc(trans('city')); ?></option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <input type="text" name="zip" placeholder="ZIP Code" data-type="number" required>
 
                                                                 <!-- PHONE -->
-                                                                <input type="text" name="contact_phone" placeholder="Phone number">
+                                                                <input type="text" name="contact_phone" placeholder="Phone number" data-type="mobile" required>
 
-                                                                <button type="button" onclick="goNextFromSole()" class="btn btn-custom">
-                                                                    Continue
-                                                                </button>
+                                                               <div class="d-flex justify-content-between mt-15">
+                                                                    <button type="button" class="btn btn-secondary backBtn" data-back="businessTypeStep">
+                                                                        Back
+                                                                    </button>
+
+                                                                    <button type="button" id="goNextFromSoleBtn" class="btn btn-custom">
+                                                                        Continue
+                                                                    </button>
+                                                                </div>
 
                                                             </div>
 
@@ -287,55 +320,28 @@
                                                             <div id="stakeholderStep" class="step-box">
                                                                 <h4>Stakeholders</h4>
 
-                                                                <input type="text" id="director_name" placeholder="Director Name">
-                                                                <input type="text" id="director_role" placeholder="Role">
+                                                                <input type="text" id="director_name" data-type="title" placeholder="Director Name" required>
+                                                                <input type="text" id="director_role" data-type="title" placeholder="Role" required>
 
-                                                                <button onclick="addDirector()">Add Member</button>
+                                                                <button type="button" id="addDirectorBtn" class="btn btn-custom btn-sm">
+                                                                    Add Member
+                                                                </button>
 
-                                                                <ul id="directorList"></ul>
+                                                                <ul id="directorList" class="director-list"></ul>
 
-                                                                <button onclick="goToPayout()" class="btn btn-custom">
+                                                                <button type="button" id="goToPayoutBtn" class="btn btn-custom mt-15">
                                                                     Continue
                                                                 </button>
-                                                            </div>
-
-                                                            <div id="registeredFields" style="display:none; margin-top:20px;">
-
-                                                                <h5>Business details</h5>
-
-                                                                <!-- BUSINESS PROFILE -->
-                                                                <input type="text" name="legal_business_name" placeholder="Legal business name">
-                                                                <input type="text" name="doing_business_as" placeholder="Doing business as (optional)">
-                                                                <input type="text" name="ein_registered" id="ein_registered" placeholder="Employer ID Number (9 digits)">
-
-                                                                <!-- ADDRESS -->
-                                                                <h5 style="margin-top:15px;">Business address</h5>
-
-                                                                <input type="text" name="address_line1" placeholder="Street address">
-                                                                <input type="text" name="address_line2" placeholder="Street address 2 (optional)">
-                                                                <input type="text" name="city" placeholder="City">
-                                                                <input type="text" name="state" placeholder="State">
-                                                                <input type="text" name="zip" placeholder="ZIP Code">
-
-                                                                <!-- CONTACT -->
-                                                                <h5 style="margin-top:15px;">Contact information</h5>
-
-                                                                <input type="text" name="contact_phone" placeholder="Phone number">
-
-                                                                <p style="font-size:12px;color:#777;">
-                                                                    We'll verify your phone number for security purposes.
-                                                                </p>
-
                                                             </div>
 
                                                             <!-- PAYOUT -->
                                                             <div id="payoutStep" class="step-box">
                                                                 <h4>Payout Information</h4>
 
-                                                                <input type="text" placeholder="Account Number">
-                                                                <input type="text" placeholder="IFSC Code">
+                                                                <input type="text" name="account_number" placeholder="Account Number" data-type="number" required>
+                                                                <!-- <input type="text" name="ifsc_code" placeholder="IFSC Code" data-type="text" required> -->
 
-                                                                <button onclick="goToReview()" class="btn btn-custom">
+                                                                <button id="goToReviewBtn" class="btn btn-custom">
                                                                     Continue
                                                                 </button>
                                                             </div>
@@ -344,7 +350,7 @@
                                                             <div id="reviewStep" class="step-box">
                                                                 <h4>Review & Submit</h4>
 
-                                                                <button onclick="finalSubmit()" class="btn btn-success">
+                                                                <button id="finalSubmitBtn" class="btn btn-success">
                                                                     Submit
                                                                 </button>
                                                             </div>
@@ -352,7 +358,6 @@
 
                                                         </div>
                                                         <!-- ================= BUSINESS FLOW ================= -->
-
                                                         <!-- EMAIL OTP -->
 
                                                     </div>
@@ -370,54 +375,119 @@
     </div>
 </div>
 <script <?= csp_script_nonce() ?>>
-    function selectBusinessType(type, el) {
+    function getCsrfData() {
+        let csrfInput = document.getElementById("csrf_token");
+
+        return {
+            csrfName: csrfInput.name,
+            csrfHash: csrfInput.value
+        };
+    }
+    function showMsg(msg) {
+        let box = document.getElementById("customshowMsg");
+        box.innerText = msg;
+        box.style.display = "block";
+    }
+    function hideMsg() {
+    let box = document.getElementById("customshowMsg");
+    box.innerText = "";
+    box.style.display = "none";
+}
+      function selectBusinessType(type, el) {
 
         document.querySelectorAll(".business-card").forEach(card => {
             card.classList.remove("active");
         });
 
         el.classList.add("active");
-
         document.getElementById("business_type").value = type;
 
-        let registeredFields = document.getElementById("registeredFields");
+        if (type === "sole") {
+            hideAllSteps();
+            document.getElementById("soleDetailsStep").classList.add("active");
+            return;
+        }
 
-        // 🔥 SHOW FULL FORM ONLY FOR REGISTERED
+        let businessTypeQuestion = document.getElementById("businessTypeQuestion");
+        let businessExtraFields = document.getElementById("businessExtraFields");
+            businessTypeQuestion.style.display = "none";
         if (type === "registered") {
-            registeredFields.style.display = "block";
+            businessExtraFields.style.display = "block";
         } else {
-            registeredFields.style.display = "none";
+            businessExtraFields.style.display = "none";
         }
     }
 
     function goToStakeholders() {
+    let type = document.getElementById("business_type").value;
 
-        let type = document.getElementById("business_type").value;
+    if (!type) {
+        showMsg("Select business type");
+        return;
+    }
 
-        if (!type) {
-            alert("Select business type");
+    if (type === "registered") {
+        let legalName = document.querySelector('#businessExtraFields input[name="legal_business_name"]');
+        let ein = document.querySelector('#businessExtraFields input[name="ein_registered"]');
+
+        if (!legalName.value.trim()) {
+            legalName.focus();
+            showMsg("Enter legal business name");
             return;
         }
 
-        // 🔥 validate only registered
-        if (type === "registered") {
-
-            let ein = document.getElementById("ein_registered").value;
-
-            if (!ein || ein.length !== 9) {
-                alert("Enter valid 9 digit EIN");
-                return;
-            }
+        let einVal = ein.value.trim();
+        if (!einVal) {
+            ein.focus();
+            showMsg("Enter Employer ID Number");
+            return;
         }
 
+        if (!/^\d{9}$/.test(einVal)) {
+            ein.focus();
+            showMsg("Employer ID Number must be exactly 9 digits");
+            return;
+        }
+
+        hideMsg();
         hideAllSteps();
-        document.getElementById("nextStep").classList.add("active");
+            document.getElementById("stakeholderStep").classList.add("active");
+            return;
+        }
+
+        if (type === "sole") {
+            hideAllSteps();
+            document.getElementById("soleDetailsStep").classList.add("active");
+            return;
+        }
+
+        if (type === "nonprofit") {
+            hideAllSteps();
+            document.getElementById("stakeholderStep").classList.add("active");
+            return;
+        }
     }
 
     document.getElementById("form_validate").addEventListener("submit", function(e) {
         // ❌ block accidental submit during steps
         if (!window.allowSubmit) {
             e.preventDefault();
+        }
+    });
+
+    // Cascading country -> state -> city for the sole step (uses global getStates/getCities)
+    document.addEventListener('change', function (e) {
+        if (e.target && e.target.id === 'select_countries_sole') {
+            getStates(e.target.value, 'sole');
+        } else if (e.target && e.target.id === 'select_states_sole') {
+            getCities(e.target.value, 'sole');
+        }
+    });
+
+    // Allow only digits (max 9) in the Employer ID Number field
+    document.addEventListener('input', function (e) {
+        if (e.target && e.target.id === 'ein_registered') {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 9);
         }
     });
     document.addEventListener("DOMContentLoaded", function() {
@@ -430,7 +500,8 @@
     const businessForm = document.getElementById("businessForm");
     const accountType = document.getElementById("account_type");
 
-    personalBtn.onclick = () => {
+    personalBtn.addEventListener("click", function () {
+
         personalBtn.classList.add("active");
         businessBtn.classList.remove("active");
 
@@ -438,9 +509,10 @@
         businessForm.classList.remove("active");
 
         accountType.value = "personal";
-    };
+    });
 
-    businessBtn.onclick = () => {
+    businessBtn.addEventListener("click", function () {
+
         businessBtn.classList.add("active");
         personalBtn.classList.remove("active");
 
@@ -448,7 +520,7 @@
         personalForm.classList.remove("active");
 
         accountType.value = "business";
-    };
+    });
 
     // CONTINUE BUTTON
     continueBtn.addEventListener("click", function () {
@@ -458,29 +530,45 @@
     });
 
     function hideAllSteps() {
+        hideMsg(); 
+
         document.querySelectorAll(".step-box").forEach(el => {
             el.classList.remove("active");
         });
     }
 
     function handleStartSelling() {
+        let terms = document.getElementById("terms_conditions");
+
+        if (!terms.checked) {
+            showMsg("Please accept Terms and Conditions");
+            return;
+        }
+
+        hideMsg(); // ✅ add this
+
         let type = document.getElementById("account_type").value;
         hideAllSteps();
+
         if (type === "personal") {
             if (!validatePersonal()) return;
+
             document.getElementById("formStep").style.display = "none";
             document.getElementById("mobileOtpStep").classList.add("active");
+
         } else if (type === "business") {
             if (!validateBusiness()) return;
+
             document.getElementById("formStep").style.display = "none";
+
             let email = document.querySelector('input[name="business_email"]').value;
             document.getElementById("emailStep").classList.add("active");
             document.getElementById("emailMessage").innerText =
                 "Sending OTP to: " + email;
+
             sendEmailOtp();
         }
     }
-
     function validatePersonal() {
         let isValid = true;
 
@@ -552,208 +640,380 @@
     }
 
     function sendEmailOtp() {
+
         let email = document.querySelector('input[name="business_email"]').value;
 
+        let csrf = getCsrfData();
+
         fetch('<?= base_url("seller/send-email-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'email=' + email + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status == 1) {
-                    startTimer("resendEmailBtn", "emailTimer");
-                } else {
-                    alert(data.msg);
+
+            method: 'POST',
+
+            credentials: 'same-origin',
+
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+
+            body:
+                'email=' + encodeURIComponent(email) +
+                '&' + csrf.csrfName + '=' + encodeURIComponent(csrf.csrfHash)
+
+        })
+        .then(async res => {
+
+            let text = await res.text();
+
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                console.log(text);
+                throw new Error("Invalid JSON response");
+            }
+
+        })
+        .then(data => {
+
+            if (data.token) {
+                let csrfInput = document.getElementById("csrf_token");
+                csrfInput.value = data.token;
+
+                if (data.csrfName) {
+                    csrfInput.name = data.csrfName;
                 }
-            });
+            }
+
+            if (data.status == 1) {
+
+                startTimer("resendEmailBtn", "emailTimer");
+
+            } else {
+
+                showMsg(data.msg);
+
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     function verifyEmail() {
-        let otp = document.getElementById("email_otp").value;
+        let otp = document.getElementById("email_otp").value.trim();
+        let csrfInput = document.getElementById("csrf_token");
+
+        let formData = new FormData();
+        formData.append("otp", otp);
+        formData.append(csrfInput.name, csrfInput.value);
 
         fetch('<?= base_url("seller/verify-email-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'otp=' + otp + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status) {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: formData
+        })
+        .then(async res => {
+            let text = await res.text();
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                console.log(text);
+                throw new Error("Invalid JSON response");
+            }
+        })
+        .then(data => {
+            if (data.token) {
+                csrfInput.value = data.token;
+            }
 
-                    hideAllSteps();
-
-                    // ✅ SHOW PHONE STEP (NEW SCREEN)
-                    document.getElementById("phoneStep").classList.add("active");
-
-                } else {
-                    alert("Invalid OTP");
-                }
-            });
+            if (data.status == 1) {
+                hideAllSteps();
+                document.getElementById("phoneStep").classList.add("active");
+            } else {
+                showMsg(data.msg);
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     function resendEmailOtp() {
-        let email = document.querySelector('input[name="business_email"]').value;
+        let csrf = getCsrfData();
 
-        fetch('<?= base_url("seller/send-email-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'email=' + email + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status == 1) {
+        fetch('<?= base_url("seller/resend-email-otp"); ?>', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: csrf.csrfName + '=' + encodeURIComponent(csrf.csrfHash)
+        })
+        .then(res => res.json())
+        .then(data => {
+            let csrfInput = document.getElementById("csrf_token");
 
-                    // ✅ better UX (no alert)
-                    document.getElementById("emailTimer").innerText = "OTP resent";
+            if (data.token) csrfInput.value = data.token;
+            if (data.csrfName) csrfInput.name = data.csrfName;
 
-                    // ✅ correct timer target
-                    startTimer("resendEmailBtn", "emailTimer");
-
-                } else {
-                    alert(data.msg);
-                }
-            });
+            if (data.status == 1) {
+                showMsg(data.msg);
+                startTimer("resendEmailBtn", "emailTimer");
+            } else {
+                showMsg(data.msg);
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     function sendPhoneOtp() {
-        let phone = document.getElementById("business_phone").value;
+        let phone = document.getElementById("business_phone").value.trim();
+        let csrf = getCsrfData();
 
         if (!phone) {
-            alert("Enter phone number");
+            showMsg("Enter phone number");
             return;
         }
 
-        // ✅ STORE VERIFIED PHONE
         document.getElementById("hidden_business_phone").value = phone;
 
-        fetch('<?= base_url("seller/send-phone-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'phone=' + phone + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status) {
-                    document.getElementById("phoneOtpBox").style.display = "block";
-                }
-            });
+        fetch('<?= base_url("seller/send-otp"); ?>', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body:
+                'mobile=' + encodeURIComponent(phone) +
+                '&' + csrf.csrfName + '=' + encodeURIComponent(csrf.csrfHash)
+        })
+        .then(res => res.json())
+        .then(data => {
+            let csrfInput = document.getElementById("csrf_token");
+
+            if (data.token) csrfInput.value = data.token;
+            if (data.csrfName) csrfInput.name = data.csrfName;
+
+            if (data.status == 1) {
+                showMsg(data.msg);
+                document.getElementById("phoneOtpBox").style.display = "block";
+                startTimer("resendPhoneBtn", "phoneTimer");
+            } else {
+                showMsg(data.msg);
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     function verifyPhone() {
-        let otp = document.getElementById("phone_otp").value;
+        let otp = document.getElementById("phone_otp").value.trim();
+        let csrf = getCsrfData();
 
-        fetch('<?= base_url("seller/verify-phone-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'otp=' + otp + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status) {
-                    hideAllSteps();
-                    document.getElementById("businessTypeStep").classList.add("active");
-                } else {
-                    alert("Invalid OTP");
-                }
-            });
+        fetch('<?= base_url("seller/verify-otp"); ?>', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body:
+                'otp=' + encodeURIComponent(otp) +
+                '&' + csrf.csrfName + '=' + encodeURIComponent(csrf.csrfHash)
+        })
+        .then(res => res.json())
+        .then(data => {
+            let csrfInput = document.getElementById("csrf_token");
+
+            if (data.token) csrfInput.value = data.token;
+            if (data.csrfName) csrfInput.name = data.csrfName;
+
+            if (data.status == 1) {
+                hideAllSteps();
+                document.getElementById("businessTypeStep").classList.add("active");
+            } else {
+                showMsg(data.msg);
+            }
+        })
+        .catch(err => console.log(err));
+    }
+
+    function resendPhoneOtp() {
+        let csrf = getCsrfData();
+
+        fetch('<?= base_url("seller/resend-otp"); ?>', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: csrf.csrfName + '=' + encodeURIComponent(csrf.csrfHash)
+        })
+        .then(res => res.json())
+        .then(data => {
+            let csrfInput = document.getElementById("csrf_token");
+
+            if (data.token) csrfInput.value = data.token;
+            if (data.csrfName) csrfInput.name = data.csrfName;
+
+            if (data.status == 1) {
+                showMsg(data.msg);
+                startTimer("resendPhoneBtn", "phoneTimer");
+            } else {
+                showMsg(data.msg);
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     function sendOtp() {
+ 
         let mobile = document.getElementById("mobile_number").value;
 
         if (!mobile) {
-            alert("Enter mobile number");
+            showMsg("Enter mobile number");
             return;
         }
 
-        // ✅ store in hidden input (IMPORTANT)
+        // store in hidden input
         document.getElementById("hidden_phone").value = mobile;
 
+        // GET CSRF
+        let csrf = getCsrfData();
+
         fetch('<?= base_url("seller/send-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'mobile=' + mobile + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status == 1) {
 
-                    let last4 = mobile.slice(-4);
+            method: 'POST',
 
-                    document.getElementById("mobileMessage").innerText =
-                        "OTP sent to ******" + last4;
+            credentials: 'same-origin',
 
-                    document.getElementById("mobileInputBox").style.display = "none";
-                    document.getElementById("otpBox").style.display = "block";
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
 
-                } else {
-                    alert(data.msg);
-                }
-            });
+            body:
+                'mobile=' + encodeURIComponent(mobile) +
+                '&' + csrf.csrfName + '=' + encodeURIComponent(csrf.csrfHash)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            
+            // UPDATE CSRF TOKEN
+            if (data.token) {
+                document.getElementById("csrf_token").value = data.token;
+            }
+
+            if (data.status == 1) {
+                hideMsg();
+                let last4 = mobile.slice(-4);
+
+                document.getElementById("mobileMessage").innerText =
+                    "OTP sent to ******" + last4;
+
+                document.getElementById("mobileInputBox").style.display = "none";
+
+                document.getElementById("otpBox").style.display = "block";
+
+                startTimer("resendMobileBtn", "mobileTimer");
+
+            } else {
+
+                showMsg(data.msg);
+
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     function verifyOtp() {
+
         let otp = document.getElementById("otp").value;
 
+        let csrfName = '<?= csrf_token() ?>';
+
+        let csrfHash = document.getElementById("csrf_token").value;
+
         fetch('<?= base_url("seller/verify-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'otp=' + otp + '&<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status == 1) {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body:
+                'otp=' + encodeURIComponent(otp) +
+                '&' + csrfName + '=' + encodeURIComponent(csrfHash)
+        })
+        .then(res => res.json())
+        .then(data => {
 
-                    // ✅ MOBILE VERIFIED
-                    alert("Mobile Verified ✅");
+            // ✅ UPDATE NEW TOKEN
+            if (data.token) {
+                document.getElementById("csrf_token").value = data.token;
+            }
 
-                    hideAllSteps();
+            if (data.status == 1) {
 
-                    // ✅ GO TO NEXT STEP (business type)
-                    document.getElementById("businessTypeStep").classList.add("active");
+                showMsg("Mobile Verified ✅");
 
-                } else {
-                    alert(data.msg);
-                }
-            });
+                hideAllSteps();
+
+                document.getElementById("businessTypeStep").classList.add("active");
+
+            } else {
+
+                showMsg(data.msg);
+
+            }
+            
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
     }
 
     function resendOtp() {
+        let csrf = getCsrfData();
+
         fetch('<?= base_url("seller/resend-otp"); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: '<?= csrf_token() ?>=<?= csrf_hash() ?>'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status) {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: csrf.csrfName + '=' + encodeURIComponent(csrf.csrfHash)
+        })
+        .then(res => res.json())
+        .then(data => {
+            let csrfInput = document.getElementById("csrf_token");
 
-                    document.getElementById("mobileTimer").innerText = "OTP resent";
+            if (data.token) {
+                csrfInput.value = data.token;
+            }
 
-                    // ✅ correct timer target
-                    startTimer("resendMobileBtn", "mobileTimer");
+            if (data.csrfName) {
+                csrfInput.name = data.csrfName;
+            }
 
-                } else {
-                    alert(data.msg);
-                }
-            });
+            if (data.status == 1) {
+                showMsg(data.msg);
+                startTimer("resendMobileBtn", "mobileTimer");
+            } else {
+                showMsg(data.msg);
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     let interval;
@@ -779,12 +1039,199 @@
             }
         }, 1000);
     }
+
+    function goNextFromSole() {
+
+        let step = document.getElementById("soleDetailsStep");
+        let fields = step.querySelectorAll("input[required], select[required]");
+
+        for (let field of fields) {
+            if (!field.value.trim()) {
+                field.focus();
+                showMsg("Please fill all required fields");
+                return;
+            }
+        }
+
+        hideMsg();
+        hideAllSteps();
+
+        document.getElementById("payoutStep").classList.add("active");
+    }
+
+    let directorIndex = 0;
+
+    function addDirector() {
+        let name = document.getElementById("director_name").value.trim();
+        let role = document.getElementById("director_role").value.trim();
+
+        if (!name || !role) {
+            showMsg("Enter director details");
+            return;
+        }
+
+        let idx = directorIndex++;
+
+        let li = document.createElement("li");
+        let strong = document.createElement("strong");
+        strong.textContent = name;
+        let span = document.createElement("span");
+        span.textContent = role;
+        li.appendChild(strong);
+        li.appendChild(document.createTextNode(" - "));
+        li.appendChild(span);
+
+        // remove button
+        let removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "btn btn-sm director-remove";
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", function () {
+            li.remove();
+        });
+        li.appendChild(removeBtn);
+
+        // hidden inputs so the stakeholder is submitted and stored as JSON
+        let nameInput = document.createElement("input");
+        nameInput.type = "hidden";
+        nameInput.name = "stakeholders[" + idx + "][name]";
+        nameInput.value = name;
+
+        let roleInput = document.createElement("input");
+        roleInput.type = "hidden";
+        roleInput.name = "stakeholders[" + idx + "][role]";
+        roleInput.value = role;
+
+        li.appendChild(nameInput);
+        li.appendChild(roleInput);
+
+        document.getElementById("directorList").appendChild(li);
+
+        document.getElementById("director_name").value = "";
+        document.getElementById("director_role").value = "";
+    }
+
+    function goToPayout() {
+
+        hideAllSteps();
+
+        document.getElementById("payoutStep").classList.add("active");
+    }
+
+    function goToReview() {
+
+        let step = document.getElementById("payoutStep");
+        let fields = step.querySelectorAll("input[required]");
+
+        for (let field of fields) {
+            if (!field.value.trim()) {
+                field.focus();
+                showMsg("Please fill payout information");
+                return;
+            }
+        }
+
+        hideMsg();
+        hideAllSteps();
+
+        document.getElementById("reviewStep").classList.add("active");
+    }
+
+    function finalSubmit() {
+
+        window.allowSubmit = true;
+
+        document.getElementById("form_validate").submit();
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
 
-        const sendOtpBtn = document.getElementById("sendOtpBtn");
+       const sendOtpBtn = document.getElementById("sendOtpBtn");
 
         if (sendOtpBtn) {
             sendOtpBtn.addEventListener("click", sendOtp);
+        }
+        // MOBILE OTP
+        const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+        if (verifyOtpBtn) {
+            verifyOtpBtn.addEventListener("click", verifyOtp);
+        }
+
+        const resendMobileBtn = document.getElementById("resendMobileBtn");
+        if (resendMobileBtn) {
+            resendMobileBtn.addEventListener("click", resendOtp);
+        }
+
+        // EMAIL OTP
+        const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+        if (verifyEmailBtn) {
+            verifyEmailBtn.addEventListener("click", verifyEmail);
+        }
+
+        const resendEmailBtn = document.getElementById("resendEmailBtn");
+        if (resendEmailBtn) {
+            resendEmailBtn.addEventListener("click", resendEmailOtp);
+        }
+
+        // PHONE OTP
+        const sendPhoneOtpBtn = document.getElementById("sendPhoneOtpBtn");
+        if (sendPhoneOtpBtn) {
+            sendPhoneOtpBtn.addEventListener("click", sendPhoneOtp);
+        }
+
+        const verifyPhoneBtn = document.getElementById("verifyPhoneBtn");
+        if (verifyPhoneBtn) {
+            verifyPhoneBtn.addEventListener("click", verifyPhone);
+        }
+
+        // BUSINESS TYPE
+        document.querySelectorAll(".business-card").forEach(card => {
+
+            card.addEventListener("click", function () {
+
+                let type = this.dataset.type;
+
+                selectBusinessType(type, this);
+            });
+        });
+
+        // STAKEHOLDER
+        const goToStakeholdersBtn = document.getElementById("goToStakeholdersBtn");
+        if (goToStakeholdersBtn) {
+            goToStakeholdersBtn.addEventListener("click", goToStakeholders);
+        }
+
+        // SOLE DETAILS
+        const goNextFromSoleBtn = document.getElementById("goNextFromSoleBtn");
+        if (goNextFromSoleBtn) {
+            goNextFromSoleBtn.addEventListener("click", goNextFromSole);
+        }
+
+        // DIRECTOR
+        const addDirectorBtn = document.getElementById("addDirectorBtn");
+        if (addDirectorBtn) {
+            addDirectorBtn.addEventListener("click", addDirector);
+        }
+
+        const goToPayoutBtn = document.getElementById("goToPayoutBtn");
+        if (goToPayoutBtn) {
+            goToPayoutBtn.addEventListener("click", goToPayout);
+        }
+
+        // PAYOUT
+        const goToReviewBtn = document.getElementById("goToReviewBtn");
+        if (goToReviewBtn) {
+            goToReviewBtn.addEventListener("click", goToReview);
+        }
+
+        // FINAL SUBMIT
+        const finalSubmitBtn = document.getElementById("finalSubmitBtn");
+        if (finalSubmitBtn) {
+            finalSubmitBtn.addEventListener("click", finalSubmit);
+        }
+        const resendPhoneBtn = document.getElementById("resendPhoneBtn");
+        if (resendPhoneBtn) {
+            resendPhoneBtn.addEventListener("click", resendPhoneOtp);
         }
 
     });
@@ -849,7 +1296,6 @@
         background: #fff;
         padding: 28px;
         border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     .step-box.active {
@@ -1134,5 +1580,102 @@
         display: flex;
         gap: 8px;
         margin: 10px 0;
+    }
+    .msg-text{
+    font-size:14px;
+    color:gray;
+    }
+
+    .timer-text{
+        font-size:12px;
+        color:gray;
+    }
+
+    .hidden-box{
+        display:none;
+    }
+
+    .hidden-extra{
+        display:none;
+        margin-top:15px;
+    }
+
+    .mt-10{
+        margin-top:10px;
+    }
+
+    .mt-15{
+        margin-top:15px;
+    }
+
+    .small-gray{
+        font-size:13px;
+        color:#777;
+    }
+
+    .tiny-gray{
+        font-size:12px;
+        color:#777;
+    }
+    .registered-fields{
+        display:none;
+        margin-top:20px;
+    }
+    .director-list {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0;
+    }
+
+    .director-list li {
+        background: #f7f7f7;
+        border: 1px solid #ddd;
+        padding: 10px 12px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    #addDirectorBtn {
+        margin-bottom: 10px;
+    }
+
+    #goToPayoutBtn {
+        width: 100%;
+    }
+    .resend-box {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .resend-box button {
+        background: none;
+        border: none;
+        color: #ff6a00;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .resend-box button:disabled {
+        color: #999;
+        cursor: not-allowed;
+    }
+
+    .resend-box span {
+        font-size: 12px;
+        color: #777;
+    }
+    #customshowMsg {
+        display: none;
+        color: red;
+        background: #fff3f3;
+        border: 1px solid #ffb3b3;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 13px;
+        margin-bottom: 12px;
     }
 </style>

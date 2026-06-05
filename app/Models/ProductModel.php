@@ -601,10 +601,24 @@ class ProductModel extends BaseModel
         $this->buildQuery();
 
         // Filter products by category and its subcategories
-        if (!empty($objParams->category)) {
+       if (!empty($objParams->category)) {
             $categoryId = clrNum($objParams->category->id);
-            $this->builder->join('category_paths AS cp', 'products.category_id = cp.descendant_id');
-            $this->builder->where('cp.ancestor_id', $categoryId);
+
+            $categoryIds = [$categoryId];
+
+            $children = $this->db->table('categories')
+                ->select('id')
+                ->where('parent_id', $categoryId)
+                ->get()
+                ->getResult();
+
+            if (!empty($children)) {
+                foreach ($children as $child) {
+                    $categoryIds[] = (int) $child->id;
+                }
+            }
+
+            $this->builder->whereIn('products.category_id', $categoryIds);
         }
 
         //filter by brand
@@ -700,15 +714,14 @@ class ProductModel extends BaseModel
     {
         $cacheKey = 'seller_product_count_' . $userId . '_' . ($status == 'active' ? 'active' : 'pending');
         return getCacheData($cacheKey, function () use ($userId, $status) {
-            $this->setBaseQuery(false, true);
             if ($status == 'pending') {
+                $this->setBaseQuery(false, true);
                 return $this->builder->where('users.id', clrNum($userId))->where('products.is_deleted', 0)->where('products.status', 0)->where('products.is_draft', 0)->countAllResults();
-            } else {
-                return $this->builder->where('users.id', clrNum($userId))->where('products.is_active', 1)->countAllResults();
             }
+            $this->buildQuery();
+            return $this->builder->where('products.user_id', clrNum($userId))->countAllResults();
         }, 'product');
     }
-
     //get latest products
     public function getLatestProducts($langId, $limit)
     {
@@ -1242,18 +1255,19 @@ class ProductModel extends BaseModel
         $words = explode(' ', $cleaned);
 
         $words = array_filter($words, function ($word) {
-            return mb_strlen($word, 'UTF-8') > 2;
+            return mb_strlen($word, 'UTF-8') > 2
+                && !in_array($word, ['for', 'your', 'the', 'and', 'with']);
         });
 
         if (empty($words)) {
             return '';
         }
 
-        $prefixedWords = array_map(function ($word) {
-            return '+' . $word;
+        $terms = array_map(function ($word) {
+            return $word . '*';
         }, $words);
 
-        return implode(' ', $prefixedWords);
+        return implode(' ', $terms);
     }
 
     //clean a string for indexing

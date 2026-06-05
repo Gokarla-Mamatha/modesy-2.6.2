@@ -6,11 +6,11 @@
                 <h4 class="modal-title" id="manageOptionImagesModalLabel"></h4></div>
             <div class="modal-body">
 
-                <h6 class="font-600"><?= trans("selected_images"); ?>:</h6>
+                <h6 class="font-600"><?= esc(trans("selected_images")); ?>:</h6>
                 <div id="currentOptionImagesList" class="option-image-list"></div>
                 <hr>
 
-                <h6 class="font-600"><?= trans("images"); ?>:</h6>
+                <h6 class="font-600"><?= esc(trans("images")); ?>:</h6>
                 <div id="uploadedOptionImagesList" class="option-image-list"></div>
                 <hr>
 
@@ -24,7 +24,7 @@
                                 <path fill="currentColor" d="M19.226 35.769a.5.5 0 0 1-.5-.5V15.087a.5.5 0 0 1 1 0V35.27a.5.5 0 0 1-.5.499"/>
                             </svg>
                         </p>
-                        <p class="dm-upload-text"><?= trans("drag_drop_images_here"); ?>&nbsp;<span style="text-decoration: underline"><?= trans('browse_files'); ?></span></p>
+                        <p class="dm-upload-text"><?= esc(trans("drag_drop_images_here")); ?>&nbsp;<span style="text-decoration: underline"><?= esc(trans('browse_files')); ?></span></p>
                         <a class='btn btn-md dm-btn-select-files'>
                             <input type="file" name="file" size="40" multiple="multiple">
                         </a>
@@ -34,8 +34,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= trans("cancel"); ?></button>
-                <button type="button" class="btn btn-primary" id="saveOptionImagesButton"><?= trans("save_changes"); ?></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?= esc(trans("cancel")); ?></button>
+                <button type="button" class="btn btn-primary" id="saveOptionImagesButton"><?= esc(trans("save_changes")); ?></button>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
         <img class="preview-img" alt="bg">
         <div class="media-body">
             <div class="progress">
-                <div class="dm-progress-waiting"><?= trans("waiting"); ?></div>
+                <div class="dm-progress-waiting"><?= esc(trans("waiting")); ?></div>
                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
@@ -109,14 +109,14 @@
             },
             onFileTypeError: function (file) {
                 Swal.fire({
-                    text: "<?= trans('invalid_file_type', true); ?>",
+                    text: "<?= esc(trans('invalid_file_type', true)); ?>",
                     icon: 'warning',
                     confirmButtonText: MdsConfig.text.ok
                 });
             },
             onFileExtError: function (file) {
                 Swal.fire({
-                    text: "<?= trans('invalid_file_type', true); ?>",
+                    text: "<?= esc(trans('invalid_file_type', true)); ?>",
                     icon: 'warning',
                     confirmButtonText: MdsConfig.text.ok
                 });

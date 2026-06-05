@@ -3,11 +3,11 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("add_country"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("add_country")); ?></h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('countries'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= trans('countries'); ?>
+                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= esc(trans('countries')); ?>
                     </a>
                 </div>
             </div>
@@ -15,11 +15,11 @@
                 <?= csrf_field(); ?>
                 <div class="box-body">
                     <div class="form-group">
-                        <label><?= trans("name"); ?></label>
-                        <input type="text" class="form-control" name="name" placeholder="<?= trans("name"); ?>" maxlength="200" data-type="name" required>
+                        <label><?= esc(trans("name")); ?></label>
+                        <input type="text" class="form-control" name="name" placeholder="<?= esc(trans("name")); ?>" maxlength="200" data-type="name" required>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("continent"); ?></label>
+                        <label><?= esc(trans("continent")); ?></label>
                         <select name="continent_code" class="form-control">
                             <?php $continents = getAppDefault('continents');
                             if (!empty($continents)):
@@ -30,12 +30,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label><?= trans("status"); ?></label>
+                        <label><?= esc(trans("status")); ?></label>
                         <?= formRadio('status', 1, 0, trans("active"), trans("inactive"), 1); ?>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('add_country'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('add_country')); ?></button>
                 </div>
             </form>
         </div>

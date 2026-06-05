@@ -4,11 +4,11 @@
             <div class="col-12">
                 <nav class="nav-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= $title; ?></li>
+                        <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= esc($title); ?></li>
                     </ol>
                 </nav>
-                <h1 class="page-title"><?= $title; ?></h1>
+                <h1 class="page-title"><?= esc($title); ?></h1>
             </div>
         </div>
         <div class="row">
@@ -34,7 +34,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-item">
-                                                    <div class="m-b-5"><strong><?= trans("quote"); ?>:&nbsp;#<?= $quoteRequest->id; ?></strong></div>
+                                                    <div class="m-b-5"><strong><?= esc(trans("quote")); ?>:&nbsp;#<?= $quoteRequest->id; ?></strong></div>
                                                     <h3 class="title">
                                                         <a href="<?= generateProductUrl($product); ?>"><?= esc($quoteRequest->product_title); ?></a>
                                                     </h3>
@@ -50,21 +50,21 @@
 
                                         <div class="col-12 col-lg-2 m-t-15-mobile">
                                             <?php if ($quoteRequest->status == "new_quote_request"): ?>
-                                                <span class="badge badge-primary-light"><?= trans($quoteRequest->status); ?></span>
+                                                <span class="badge badge-primary-light"><?= esc(trans($quoteRequest->status)); ?></span>
                                             <?php elseif ($quoteRequest->status == "pending_quote" || $quoteRequest->status == "pending_payment"): ?>
-                                                <span class="badge badge-warning-light"><?= trans($quoteRequest->status); ?></span>
+                                                <span class="badge badge-warning-light"><?= esc(trans($quoteRequest->status)); ?></span>
                                             <?php elseif ($quoteRequest->status == "rejected_quote"): ?>
-                                                <span class="badge badge-danger-light"><?= trans($quoteRequest->status); ?></span>
+                                                <span class="badge badge-danger-light"><?= esc(trans($quoteRequest->status)); ?></span>
                                             <?php elseif ($quoteRequest->status == "closed"): ?>
-                                                <span class="badge badge-secondary-light"><?= trans($quoteRequest->status); ?></span>
+                                                <span class="badge badge-secondary-light"><?= esc(trans($quoteRequest->status)); ?></span>
                                             <?php elseif ($quoteRequest->status == "completed"): ?>
-                                                <span class="badge badge-success-light"><?= trans($quoteRequest->status); ?></span>
+                                                <span class="badge badge-success-light"><?= esc(trans($quoteRequest->status)); ?></span>
                                             <?php endif; ?>
                                         </div>
 
                                         <div class="col-12 col-lg-3 m-t-15-mobile">
                                             <?php if ($quoteRequest->status != 'new_quote_request' && $quoteRequest->price_offered != 0): ?>
-                                                <div class="m-b-5"><?= trans("sellers_bid"); ?>:&nbsp;<strong><?= priceFormatted(@convertCurrencyByExchangeRate($quoteRequest->price_offered, $selectedCurrency->exchange_rate), $selectedCurrency->code); ?></strong></div>
+                                                <div class="m-b-5"><?= esc(trans("sellers_bid")); ?>:&nbsp;<strong><?= priceFormatted(@convertCurrencyByExchangeRate($quoteRequest->price_offered, $selectedCurrency->exchange_rate), $selectedCurrency->code); ?></strong></div>
                                             <?php endif; ?>
                                             <div class="display-flex align-items-center font-size-13">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="13" height="13" fill="#6c757d">
@@ -79,7 +79,7 @@
                                                 $variant = getVariantByHash($quoteRequest->variant_hash);
                                                 if (empty($variant) || $variant->is_active != 1): ?>
                                                     <div class="m-b-5 text-center">
-                                                        <span class="badge badge-danger-light"><?= trans("expired"); ?></span>
+                                                        <span class="badge badge-danger-light"><?= esc(trans("expired")); ?></span>
                                                     </div>
                                                 <?php else: ?>
 
@@ -91,7 +91,7 @@
                                                             <button type="submit" class="btn btn-sm btn-success color-white m-b-5">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#ffffff" width="14" height="14">
                                                                     <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
-                                                                </svg>&nbsp;<?= trans("accept_quote"); ?>
+                                                                </svg>&nbsp;<?= esc(trans("accept_quote")); ?>
                                                             </button>
                                                         </form>
                                                         <form action="<?= base_url('bidding/reject-quote-post'); ?>" method="post">
@@ -101,24 +101,24 @@
                                                             <button type="submit" class="btn btn-sm btn-danger color-white m-b-5">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#ffffff" width="14" height="14">
                                                                     <path d="M367.2 412.5L99.5 144.8C77.1 176.1 64 214.5 64 256c0 106 86 192 192 192c41.5 0 79.9-13.1 111.2-35.5zm45.3-45.3C434.9 335.9 448 297.5 448 256c0-106-86-192-192-192c-41.5 0-79.9 13.1-111.2 35.5L412.5 367.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/>
-                                                                </svg>&nbsp;<?= trans("reject_quote"); ?>
+                                                                </svg>&nbsp;<?= esc(trans("reject_quote")); ?>
                                                             </button>
                                                         </form>
                                                     <?php elseif ($quoteRequest->status == 'pending_payment'): ?>
                                                         <form action="<?= base_url('add-to-cart-quote'); ?>" method="post">
                                                             <?= csrf_field(); ?>
                                                             <input type="hidden" name="id" class="form-control" value="<?= $quoteRequest->id; ?>">
-                                                            <button type="submit" class="btn btn-sm btn-info color-white m-b-5"><i class="icon-cart-solid"></i>&nbsp;<?= trans("add_to_cart"); ?></button>
+                                                            <button type="submit" class="btn btn-sm btn-info color-white m-b-5"><i class="icon-cart-solid"></i>&nbsp;<?= esc(trans("add_to_cart")); ?></button>
                                                         </form>
                                                     <?php endif; ?>
 
                                                 <?php endif;
                                             endif; ?>
 
-                                            <button type="button" class="btn btn-sm btn-light" onclick="deleteQuoteRequest(<?= $quoteRequest->id; ?>,'<?= trans("confirm_quote_request", true); ?>');">
+                                            <button type="button" class="btn btn-sm btn-light js-delete-quote-request" data-quote-id="<?= esc($quoteRequest->id, 'attr'); ?>" data-msg="<?= esc(trans("confirm_quote_request", true), 'attr'); ?>">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="#6c757d" width="14" height="14">
                                                     <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
-                                                </svg>&nbsp;<?= trans("delete_quote"); ?>
+                                                </svg>&nbsp;<?= esc(trans("delete_quote")); ?>
                                             </button>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@
                         endforeach;
                     endif; ?>
                     <?php if (empty($quoteRequests)): ?>
-                        <p class="text-center text-muted"><?= trans("no_records_found"); ?></p>
+                        <p class="text-center text-muted"><?= esc(trans("no_records_found")); ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="d-flex justify-content-center m-t-15">

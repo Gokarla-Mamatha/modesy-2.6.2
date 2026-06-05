@@ -114,4 +114,10 @@
     background: var(--mds-color-main);
     color: #fff;
 }
+.forum-thread-table img {
+    max-height: 70px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    margin-right: 15px !important;
+}
 </style>

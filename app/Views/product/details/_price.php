@@ -1,11 +1,11 @@
 <div class="product-price-container">
     <?php if ($product->is_free_product): ?>
         <div id="div-product-price" class="text-product-discounted">
-            <span class="final-price final-price-free"><?= trans("free"); ?></span>
+            <span class="final-price final-price-free"><?= esc(trans("free")); ?></span>
         </div>
     <?php elseif ($product->listing_type == 'ordinary_listing' && $product->is_sold): ?>
         <div id="div-product-price">
-            <span class="final-price text-muted"><?= trans("sold"); ?></span>
+            <span class="final-price text-muted"><?= esc(trans("sold")); ?></span>
         </div>
     <?php else:
         if (!empty($productPrice)):?>

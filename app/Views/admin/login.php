@@ -15,35 +15,35 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="<?= adminUrl('login'); ?>"><b><?= esc($generalSettings->application_name); ?></b>&nbsp;<?= trans("panel"); ?></a>
+        <a href="<?= adminUrl('login'); ?>"><b><?= esc($generalSettings->application_name); ?></b>&nbsp;<?= esc(trans("panel")); ?></a>
     </div>
     <div class="login-box-body">
-        <h4 class="login-box-msg"><?= trans("login"); ?></h4>
+        <h4 class="login-box-msg"><?= esc(trans("login")); ?></h4>
         <?= view('admin/includes/_messages'); ?>
         <form action="<?= adminUrl('login-post'); ?>" method="post">
             <?= csrf_field(); ?>
             <input type="text" name="hidden_field" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px; top:-9999px;">
             <?= view('partials/_cf_turnstile'); ?>
             <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control form-input" placeholder="<?= trans("email"); ?>" value="<?= old('email'); ?>" required>
+                <input type="email" name="email" class="form-control form-input" placeholder="<?= esc(trans("email")); ?>" value="<?= old('email'); ?>" required>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
 
             <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control form-input" placeholder="<?= trans("password"); ?>" value="<?= old('password'); ?>" required>
+                <input type="password" name="password" class="form-control form-input" placeholder="<?= esc(trans("password")); ?>" value="<?= old('password'); ?>" required>
                 <span class=" glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
 
             <div class="row">
                 <div class="col-sm-8 col-xs-12"></div>
                 <div class="col-sm-4 col-xs-12">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat"><?= trans("login"); ?></button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat"><?= esc(trans("login")); ?></button>
                 </div>
             </div>
         </form>
     </div>
     <div class="text-center m-t-15">
-        <a class="btn btn-md" href="<?= langBaseUrl(); ?>"><?= trans("goto_home"); ?></a>
+        <a class="btn btn-md" href="<?= langBaseUrl(); ?>"><?= esc(trans("goto_home")); ?></a>
     </div>
 </div>
 </body>

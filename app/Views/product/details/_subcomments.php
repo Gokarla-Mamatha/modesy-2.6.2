@@ -37,17 +37,17 @@ if (!empty($subComments)): ?>
                                     <span class="date"><?= timeAgo($subComment->created_at); ?></span>
                                     <?php if (authCheck()):
                                         if ($subComment->user_id == user()->id || hasPermission('comments')): ?>
-                                            <button type="button" class="button-link" onclick="deleteComment('<?= $subComment->id; ?>','subcomment','<?= trans("confirm_comment", true); ?>');" aria-label="delete-comment-sub-<?= $subComment->id; ?>">&nbsp;<i class="icon-trash"></i>&nbsp;<?= trans("delete"); ?></button>
+                                            <button type="button" class="button-link js-delete-product-comment" data-comment-id="<?= esc($subComment->id, 'attr'); ?>" data-type="subcomment" data-msg="<?= esc(trans("confirm_comment", true), 'attr'); ?>" aria-label="delete-comment-sub-<?= esc($subComment->id, 'attr'); ?>">&nbsp;<i class="icon-trash"></i>&nbsp;<?= esc(trans("delete")); ?></button>
                                         <?php endif;
                                     endif;
                                     if (authCheck()):
                                         if ($subComment->user_id != user()->id):?>
-                                            <button type="button" class="button-link link-abuse-report" data-toggle="modal" data-target="#reportCommentModal" aria-label="report-comment-sub-<?= $subComment->id; ?>" onclick="$('#report_comment_id').val('<?= $subComment->id; ?>');">
-                                                <?= trans("report"); ?>
+                                            <button type="button" class="button-link link-abuse-report js-report-product-comment" data-toggle="modal" data-target="#reportCommentModal" aria-label="report-comment-sub-<?= esc($subComment->id, 'attr'); ?>" data-comment-id="<?= esc($subComment->id, 'attr'); ?>">
+                                                <?= esc(trans("report")); ?>
                                             </button>
                                         <?php endif;
                                     else: ?>
-                                        <button type="button" class="button-link link-abuse-report" data-toggle="modal" data-target="#loginModal" aria-label="report-comment-sub-<?= $subComment->id; ?>"><?= trans("report"); ?></button>
+                                        <button type="button" class="button-link link-abuse-report" data-toggle="modal" data-target="#loginModal" aria-label="report-comment-sub-<?= esc($subComment->id, 'attr'); ?>"><?= esc(trans("report")); ?></button>
                                     <?php endif; ?>
                                 </div>
                             </div>

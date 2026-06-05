@@ -3,11 +3,11 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><strong><?= trans('ticket'); ?>:&nbsp;#<?= $ticket->id; ?></strong></h3>
+                    <h3 class="box-title"><strong><?= esc(trans('ticket')); ?>:&nbsp;#<?= $ticket->id; ?></strong></h3>
                 </div>
                 <div class="right">
                     <a href="<?= adminUrl('support-tickets'); ?>" class="btn btn-success btn-add-new">
-                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= trans('support_tickets'); ?>
+                        <i class="fa fa-list-ul"></i>&nbsp;&nbsp;<?= esc(trans('support_tickets')); ?>
                     </a>
                 </div>
             </div>
@@ -16,24 +16,24 @@
                     <div class="ticket-container">
                         <div class="new-ticket-content new-ticket-content-reply">
                             <div class="ticket-header">
-                                <p><strong><?= trans("subject"); ?>:&nbsp;<?= esc($ticket->subject); ?></strong></p>
+                                <p><strong><?= esc(trans("subject")); ?>:&nbsp;<?= esc($ticket->subject); ?></strong></p>
                                 <div class="row row-ticket-details">
                                     <div class="col-xs-4 col-md-3">
-                                        <strong><?= trans("status"); ?></strong>
+                                        <strong><?= esc(trans("status")); ?></strong>
                                         <?php if ($ticket->status == 1): ?>
-                                            <label class="label label-success"><?= trans("open"); ?></label>
+                                            <label class="label label-success"><?= esc(trans("open")); ?></label>
                                         <?php elseif ($ticket->status == 2): ?>
-                                            <label class="label label-warning"><?= trans("responded"); ?></label>
+                                            <label class="label label-warning"><?= esc(trans("responded")); ?></label>
                                         <?php elseif ($ticket->status == 3): ?>
-                                            <label class="label label-default"><?= trans("closed"); ?></label>
+                                            <label class="label label-default"><?= esc(trans("closed")); ?></label>
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-xs-4 col-md-3">
-                                        <strong><?= trans("date"); ?></strong>
+                                        <strong><?= esc(trans("date")); ?></strong>
                                         <span><?= formatDate($ticket->created_at); ?></span>
                                     </div>
                                     <div class="col-xs-4 col-md-3">
-                                        <strong><?= trans("last_update"); ?></strong>
+                                        <strong><?= esc(trans("last_update")); ?></strong>
                                         <span><?= timeAgo($ticket->updated_at); ?></span>
                                     </div>
                                 </div>
@@ -43,15 +43,15 @@
                                     <div class="ticket-buttons">
                                         <?php if ($ticket->is_guest != 1): ?>
                                             <button class="btn btn-primary pull-left" type="button" data-toggle="collapse" data-target="#collapseTicketAnswer" aria-expanded="false" aria-controls="collapseTicketAnswer">
-                                                <i class="fa fa-reply"></i>&nbsp;&nbsp;<?= trans("reply"); ?>
+                                                <i class="fa fa-reply"></i>&nbsp;&nbsp;<?= esc(trans("reply")); ?>
                                             </button>
                                         <?php endif; ?>
                                         <div class="dropdown pull-right">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"><?= trans("status"); ?>&nbsp;&nbsp;<span class="caret"></span></button>
+                                            <button class="btn btn-secondary dropdown-bs-toggle" type="button" data-bs-toggle="dropdown"><?= esc(trans("status")); ?>&nbsp;&nbsp;<span class="caret"></span></button>
                                             <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0)" onclick="changeTicketStatus(<?= $ticket->id; ?>,1);"><?= trans("open"); ?></a></li>
-                                                <li><a href="javascript:void(0)" onclick="changeTicketStatus(<?= $ticket->id; ?>,2);"><?= trans("responded"); ?></a></li>
-                                                <li><a href="javascript:void(0)" onclick="changeTicketStatus(<?= $ticket->id; ?>,3);"><?= trans("closed"); ?></a></li>
+                                                <li><a href="javascript:void(0)" class="js-change-ticket-status" data-ticket-id="<?= esc($ticket->id, 'attr'); ?>" data-status="1"><?= esc(trans("open")); ?></a></li>
+                                                <li><a href="javascript:void(0)" class="js-change-ticket-status" data-ticket-id="<?= esc($ticket->id, 'attr'); ?>" data-status="2"><?= esc(trans("responded")); ?></a></li>
+                                                <li><a href="javascript:void(0)" class="js-change-ticket-status" data-ticket-id="<?= esc($ticket->id, 'attr'); ?>" data-status="3"><?= esc(trans("closed")); ?></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -63,17 +63,17 @@
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="ticket_id" value="<?= $ticket->id; ?>">
                                                 <div class="form-group m-0">
-                                                    <label class="form-label"><?= trans("message"); ?></label>
+                                                    <label class="form-label"><?= esc(trans("message")); ?></label>
                                                 </div>
                                                 <div class="form-group">
                                                     <?= renderTextEditorAdmin('message', '', old('message'), false, false, 'tinyMCEsmall'); ?>
                                                 </div>
                                                 <div class="form-group m-0">
-                                                    <label class="form-label"><?= trans("attachments"); ?></label>
+                                                    <label class="form-label"><?= esc(trans("attachments")); ?></label>
                                                     <div class="dm-uploader-container">
                                                         <div id="drag-and-drop-zone" class="dm-uploader text-center mb-2">
                                                             <p class="dm-upload-text">
-                                                                <?= trans("drag_drop_file_here"); ?>&nbsp;<span style="text-decoration: underline; font-weight: 600;"><?= trans('browse_files'); ?>
+                                                                <?= esc(trans("drag_drop_file_here")); ?>&nbsp;<span style="text-decoration: underline; font-weight: 600;"><?= esc(trans('browse_files')); ?>
                                                             </p>
                                                             <a class='btn btn-md dm-btn-select-files'>
                                                                 <input type="file" name="file" size="40" multiple="multiple">
@@ -98,7 +98,7 @@
                                                                 if (!empty($file->fileId) && !empty($file->name) && !empty($file->ticketType) && $file->ticketType == 'admin'): ?>
                                                                     <div class="item">
                                                                         <div class="item-inner">
-                                                                            <?= esc($file->name); ?><a href="javascript:void(0)" onclick="deleteSupportAttachment('<?= esc($file->fileId); ?>')"><i class="fa fa-times"></i></a>
+                                                                            <?= esc($file->name); ?><a href="javascript:void(0)" class="js-delete-support-attachment" data-file-id="<?= esc($file->fileId, 'attr'); ?>"><i class="fa fa-times"></i></a>
                                                                         </div>
                                                                     </div>
                                                                 <?php endif;
@@ -107,7 +107,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-right m-t-20">
-                                                    <button type="submit" class="btn btn-primary"><?= trans("send_message"); ?></button>
+                                                    <button type="submit" class="btn btn-primary"><?= esc(trans("send_message")); ?></button>
                                                 </div>
                                             </form>
                                         </div>
@@ -137,14 +137,14 @@
                                                                     <a href="<?= generateProfileUrl($user->slug) ?>" class="font-color" target="_blank"><?= esc(getUsername($user)); ?></a>
                                                                 <?php else: ?>
                                                                     <span><?= esc($ticket->name); ?></span>&nbsp;
-                                                                    <span class="label label-info" style="background-color: #00c0ef !important;"><?= trans("guest"); ?></span>
+                                                                    <span class="label label-info" style="background-color: #00c0ef !important;"><?= esc(trans("guest")); ?></span>
                                                                     <br>
                                                                     <span><?= esc($ticket->email); ?></span>
                                                                 <?php endif; ?>
                                                             </h5>
                                                             <span class="date text-right"><?= timeAgo($subTicket->created_at); ?></span>
                                                             <div class="message">
-                                                                <?= $subTicket->message; ?>
+                                                                <?= nl2br(esc($subTicket->message)); ?>
                                                             </div>
                                                             <?php $files = unserializeData($subTicket->attachments);
                                                             if (!empty($files)):?>
@@ -191,6 +191,14 @@
     const safeExtensions = <?= json_encode(getAppDefault('safeExtensions')); ?>;
     const msgInvalid = "<?= esc(trans("invalid_file_type")); ?>";
     const msgSizeError = "<?= esc(trans("file_too_large")); ?>";
+
+    $(document).on('click', '.js-change-ticket-status', function () {
+        changeTicketStatus($(this).data('ticket-id'), $(this).data('status'));
+    });
+
+    $(document).on('click', '.js-delete-support-attachment', function () {
+        deleteSupportAttachment($(this).data('file-id'));
+    });
 
     $(function () {
         $('#drag-and-drop-zone').dmUploader({

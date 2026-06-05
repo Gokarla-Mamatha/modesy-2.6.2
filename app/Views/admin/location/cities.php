@@ -5,7 +5,7 @@
         </div>
         <div class="right">
             <a href="<?= adminUrl('add-city'); ?>" class="btn btn-success btn-add-new">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= trans('add_city'); ?>
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;<?= esc(trans('add_city')); ?>
             </a>
         </div>
     </div>
@@ -15,12 +15,12 @@
                 <div class="row table-filter-container">
                     <div class="col-sm-12">
                         <button type="button" class="btn btn-default filter-toggle collapsed m-b-10" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false">
-                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= trans("filter"); ?>
+                            <i class="fa fa-filter"></i>&nbsp;&nbsp;<?= esc(trans("filter")); ?>
                         </button>
                         <div class="collapse navbar-collapse" id="collapseFilter">
                             <form action="<?= adminUrl('cities'); ?>" method="get">
                                 <div class="item-table-filter" style="width: 80px; min-width: 80px;">
-                                    <label><?= trans("show"); ?></label>
+                                    <label><?= esc(trans("show")); ?></label>
                                     <select name="show" class="form-control">
                                         <option value="15" <?= inputGet('show') == '15' ? 'selected' : ''; ?>>15</option>
                                         <option value="30" <?= inputGet('show') == '30' ? 'selected' : ''; ?>>30</option>
@@ -29,9 +29,9 @@
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans('country'); ?></label>
+                                    <label><?= esc(trans('country')); ?></label>
                                     <select name="country" class="form-control" onchange="getStatesByCountry($(this).val());">
-                                        <option value=""><?= trans("all"); ?></option>
+                                        <option value=""><?= esc(trans("all")); ?></option>
                                         <?php if (!empty($countries)):
                                             foreach ($countries as $item): ?>
                                                 <option value="<?= $item->id; ?>" <?= inputGet('country') == $item->id ? 'selected' : ''; ?>><?= esc($item->name); ?></option>
@@ -40,9 +40,9 @@
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans('state'); ?></label>
+                                    <label><?= esc(trans('state')); ?></label>
                                     <select name="state" id="select_states" class="form-control">
-                                        <option value=""><?= trans("all"); ?></option>
+                                        <option value=""><?= esc(trans("all")); ?></option>
                                         <?php $countryId = inputGet('country');
                                         if (!empty($countryId)) {
                                             $model = new \App\Models\LocationModel();
@@ -56,12 +56,12 @@
                                     </select>
                                 </div>
                                 <div class="item-table-filter">
-                                    <label><?= trans("search"); ?></label>
-                                    <input name="q" class="form-control" placeholder="<?= trans("search"); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
+                                    <label><?= esc(trans("search")); ?></label>
+                                    <input name="q" class="form-control" placeholder="<?= esc(trans("search")); ?>" type="search" value="<?= esc(inputGet('q')); ?>">
                                 </div>
                                 <div class="item-table-filter md-top-10" style="width: 65px; min-width: 65px;">
                                     <label style="display: block">&nbsp;</label>
-                                    <button type="submit" class="btn bg-purple"><?= trans("filter"); ?></button>
+                                    <button type="submit" class="btn bg-purple"><?= esc(trans("filter")); ?></button>
                                 </div>
                             </form>
                         </div>
@@ -71,11 +71,11 @@
                     <table class="table table-bordered table-striped" role="grid">
                         <thead>
                         <tr role="row">
-                            <th width="20"><?= trans('id'); ?></th>
-                            <th><?= trans('name'); ?></th>
-                            <th><?= trans('country'); ?></th>
-                            <th><?= trans('state'); ?></th>
-                            <th><?= trans('options'); ?></th>
+                            <th width="20"><?= esc(trans('id')); ?></th>
+                            <th><?= esc(trans('name')); ?></th>
+                            <th><?= esc(trans('country')); ?></th>
+                            <th><?= esc(trans('state')); ?></th>
+                            <th><?= esc(trans('options')); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -88,13 +88,13 @@
                                     <td><?= esc($item->state_name); ?></td>
                                     <td width="20%">
                                         <div class="dropdown">
-                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-toggle="dropdown"><?= trans('select_option'); ?><span class="caret"></span></button>
+                                            <button class="btn bg-purple dropdown-toggle btn-select-option" type="button" data-bs-toggle="dropdown"><?= esc(trans('select_option')); ?><span class="caret"></span></button>
                                             <ul class="dropdown-menu options-dropdown">
-                                                <li><a href="<?= adminUrl('edit-city/' . $item->id); ?>"><i class="fa fa-edit option-icon"></i><?= trans('edit'); ?></a></li>
+                                                <li><a href="<?= adminUrl('edit-city/' . $item->id); ?>"><i class="fa fa-edit option-icon"></i><?= esc(trans('edit')); ?></a></li>
                                                 <li>
-                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteCityPost','<?= $item->id; ?>','<?= trans("confirm_delete", true); ?>');"> -->
-                                                    <a href="#" class="btn-item-delete" data-url="Admin/deleteCityPost" data-id="<?= $item->id; ?>" data-msg="<?= trans('confirm_delete', true); ?>">
-                                                    <i class="fa fa-trash-can option-icon"></i><?= trans('delete'); ?></a></li>
+                                                    <!-- <a href="javascript:void(0)" onclick="deleteItem('Admin/deleteCityPost','<?= $item->id; ?>','<?= esc(trans("confirm_delete", true)); ?>');"> -->
+                                                    <a href="#" class="btn-item-delete" data-url="Admin/deleteCityPost" data-id="<?= $item->id; ?>" data-msg="<?= esc(trans('confirm_delete', true)); ?>">
+                                                    <i class="fa fa-trash-can option-icon"></i><?= esc(trans('delete')); ?></a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -105,7 +105,7 @@
                     </table>
                     <?php if (empty($cities)): ?>
                         <p class="text-center">
-                            <?= trans("no_records_found"); ?>
+                            <?= esc(trans("no_records_found")); ?>
                         </p>
                     <?php endif; ?>
                     <div class="col-sm-12 table-ft">

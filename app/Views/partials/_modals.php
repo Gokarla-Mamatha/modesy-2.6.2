@@ -8,7 +8,7 @@
                             class="custom-close-btn">
                             <i class="icon-close"></i>
                         </button>
-                        <div class="title"><?= trans("login"); ?></div>
+                        <div class="title"><?= esc(trans("login")); ?></div>
                         <form id="form_login" novalidate="novalidate">
                             <div class="social-login">
                                 <?= view('auth/_social_login', ["orText" => trans("login_with_email")]); ?>
@@ -16,18 +16,18 @@
                             <div id="result-login" class="font-size-13"></div>
                             <div id="confirmation-result-login" class="font-size-13"></div>
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control auth-form-input" placeholder="<?= trans("email_address"); ?>" maxlength="255" required>
+                                <input type="email" name="email" class="form-control auth-form-input" placeholder="<?= esc(trans("email_address")); ?>" maxlength="255" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control auth-form-input" placeholder="<?= trans("password"); ?>" minlength="4" maxlength="255" required>
+                                <input type="password" name="password" class="form-control auth-form-input" placeholder="<?= esc(trans("password")); ?>" minlength="4" maxlength="255" required>
                             </div>
                             <div class="form-group text-right">
-                                <a href="<?= generateUrl("forgot_password"); ?>" class="link-forgot-password"><?= trans("forgot_password"); ?></a>
+                                <a href="<?= generateUrl("forgot_password"); ?>" class="link-forgot-password"><?= esc(trans("forgot_password")); ?></a>
                             </div>
                             <div class="form-group m-t-20">
-                                <button type="submit" class="btn btn-md btn-custom btn-block"><?= trans("login"); ?></button>
+                                <button type="submit" class="btn btn-md btn-custom btn-block"><?= esc(trans("login")); ?></button>
                             </div>
-                            <p class="p-social-media m-0 m-t-5"><?= trans("dont_have_account"); ?>&nbsp;<a href="<?= generateUrl("register"); ?>" class="link font-600"><?= trans("register"); ?></a></p>
+                            <p class="p-social-media m-0 m-t-5"><?= esc(trans("dont_have_account")); ?>&nbsp;<a href="<?= generateUrl("register"); ?>" class="link font-600"><?= esc(trans("register")); ?></a></p>
                         </form>
                     </div>
                 </div>
@@ -44,8 +44,8 @@
             <div class="modal-content">
                 <div class="auth-box">
                     <button type="button" class="btn-close" data-bs-dismiss="modal"><i class="icon-close"></i></button>
-                    <div class="title"><?= trans("select_location"); ?></div>
-                    <p class="location-modal-description"><?= trans("filter_products_location"); ?></p>
+                    <div class="title"><?= esc(trans("select_location")); ?></div>
+                    <p class="location-modal-description"><?= esc(trans("filter_products_location")); ?></p>
                     <form id="locationForm" action="<?= base_url('Home/setDefaultLocationPost'); ?>" method="post">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="form_type">
@@ -53,7 +53,7 @@
                             <?php if ($generalSettings->single_country_mode != 1): ?>
                                 <div class="m-b-5">
                                     <select id="select_countries_filter" name="country_id" class="select2 form-control" >
-                                        <option value=""><?= trans("country"); ?></option>
+                                        <option value=""><?= esc(trans("country")); ?></option>
                                         <?php if (!empty($countries)):
                                             foreach ($countries as $item): ?>
                                                 <option value="<?= $item->id; ?>">
@@ -68,7 +68,7 @@
                             <?php endif; ?>
                             <div id="get_states_container_filter" class="m-b-5 <?= !empty($filterStates) ? '' : 'display-none'; ?>">
                                 <select id="select_states_filter" name="state_id" class="select2 form-control">
-                                    <option value=""><?= trans('state'); ?></option>
+                                    <option value=""><?= esc(trans('state')); ?></option>
                                     <?php if (!empty($filterStates)):
                                         foreach ($filterStates as $item): ?>
                                             <option value="<?= $item->id; ?>" <?= $item->id == $baseVars->defaultLocation->state_id ? 'selected' : ''; ?>><?= esc($item->name); ?></option>
@@ -78,7 +78,7 @@
                             </div>
                             <div id="get_cities_container_filter" class="m-b-5 <?= empty($filterCities) ? 'display-none' : ''; ?>">
                                 <select id="select_cities_filter" name="city_id" class="select2 form-control">
-                                    <option value=""><?= trans('city'); ?></option>
+                                    <option value=""><?= esc(trans('city')); ?></option>
                                     <?php if (!empty($filterCities)):
                                         foreach ($filterCities as $item): ?>
                                             <option value="<?= $item->id; ?>" <?= $item->id == $baseVars->defaultLocation->city_id ? 'selected' : ''; ?>><?= esc($item->name); ?></option>
@@ -95,7 +95,7 @@
                             <button type="submit"
                                 id="locationSubmitBtn"
                                 class="btn btn-md btn-custom btn-block">
-                                <?= trans("select_location"); ?>
+                                <?= esc(trans("select_location")); ?>
                             </button>
 
                         </div>
@@ -112,18 +112,18 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6 col-left">
-                                <img src="<?= getStorageFileUrl($newsletterSettings->image, $newsletterSettings->storage, 'newsletter_bg'); ?>" alt="<?= trans("newsletter") ?>" class="newsletter-img" width="394" height="394">
+                                <img src="<?= getStorageFileUrl($newsletterSettings->image, $newsletterSettings->storage, 'newsletter_bg'); ?>" alt="<?= esc(trans("newsletter")) ?>" class="newsletter-img" width="394" height="394">
                             </div>
                             <div class="col-6 col-right">
                                 <div class="newsletter-form-container">
                                     <div class="newsletter-form">
-                                        <div class="modal-title"><?= trans("join_newsletter"); ?></div>
-                                        <p class="modal-desc"><?= trans("newsletter_desc"); ?></p>
+                                        <div class="modal-title"><?= esc(trans("join_newsletter")); ?></div>
+                                        <p class="modal-desc"><?= esc(trans("newsletter_desc")); ?></p>
                                         <form id="form_newsletter_modal" class="form-newsletter" data-form-type="modal">
                                             <div class="form-group">
                                                 <div class="modal-newsletter-inputs">
-                                                    <input type="email" name="email" class="form-control form-input newsletter-input" placeholder="<?= trans('enter_email') ?>">
-                                                    <button type="submit" class="btn"><?= trans("subscribe"); ?></button>
+                                                    <input type="email" name="email" class="form-control form-input newsletter-input" placeholder="<?= esc(trans('enter_email')) ?>">
+                                                    <button type="submit" class="btn"><?= esc(trans("subscribe")); ?></button>
                                                 </div>
                                             </div>
                                             <input type="text" name="url">
@@ -141,7 +141,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <strong class="font-600 text-success" style="font-size: 16px;"> <i class="icon-check"></i>&nbsp;<?= trans("product_added_to_cart"); ?></strong>
+                    <strong class="font-600 text-success" style="font-size: 16px;"> <i class="icon-check"></i>&nbsp;<?= esc(trans("product_added_to_cart")); ?></strong>
                     <button type="button" class="close modal-close-rounded" data-bs-dismiss="modal"><i class="icon-close"></i></button>
                 </div>
                 <div id="contentModalCartProduct" class="modal-body"></div>

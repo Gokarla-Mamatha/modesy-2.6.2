@@ -51,7 +51,7 @@ endif;
 endforeach;
 if (countItems($menuCategories) > $limit): ?>
 <li class="nav-item dropdown" data-category-id="more">
-<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?= trans("more"); ?>&nbsp;<i class="icon-arrow-down"></i></a>
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?= esc(trans("more")); ?>&nbsp;<i class="icon-arrow-down"></i></a>
 <div id="mega_menu_content_more" class="dropdown-menu dropdown-menu-large mds-scrollbar">
 <div class="row">
 <div class="col-4 left">

@@ -27,12 +27,12 @@
                     endif; ?>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"><?= trans('save_changes'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right"><?= esc(trans('save_changes')); ?></button>
                 </div>
             </form>
         </div>
         <div class="alert alert-danger alert-large">
-            <strong><?= trans("warning"); ?>!</strong>&nbsp;&nbsp;<?= trans("route_settings_warning"); ?>
+            <strong><?= esc(trans("warning")); ?>!</strong>&nbsp;&nbsp;<?= esc(trans("route_settings_warning")); ?>
         </div>
     </div>
 </div>

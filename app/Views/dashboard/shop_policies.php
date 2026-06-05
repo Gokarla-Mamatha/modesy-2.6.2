@@ -3,22 +3,22 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="left">
-                    <h3 class="box-title"><?= trans("shop_policies"); ?></h3>
+                    <h3 class="box-title"><?= esc(trans("shop_policies")); ?></h3>
                 </div>
             </div>
             <div class="box-body">
                 <form action="<?= base_url('Dashboard/shopPoliciesPost'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="form-group">
-                        <label><?= trans("status"); ?></label>
+                        <label><?= esc(trans("status")); ?></label>
                         <?= formRadio('status_shop_policies', 1, 0, trans("enable"), trans("disable"), $pages->status_shop_policies); ?>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= trans("content"); ?></label>
+                        <label class="control-label"><?= esc(trans("content")); ?></label>
                         <textarea name="content_shop_policies" class="tinyMCE"><?= $pages->content_shop_policies; ?></textarea>
                     </div>
                     <div class="form-group text-right">
-                        <button type="submit" class="btn btn-md btn-success"><?= trans("save_changes") ?></button>
+                        <button type="submit" class="btn btn-md btn-success"><?= esc(trans("save_changes")) ?></button>
                     </div>
                 </form>
             </div>

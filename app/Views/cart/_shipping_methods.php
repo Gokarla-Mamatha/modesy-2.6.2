@@ -13,16 +13,16 @@ if (!empty($shippingMethods)) {
 
 if ($hasMethods == false):
     if (!empty($stateId) && $stateId > 0):?>
-        <p class="msg-no-delivery text-danger"><?= trans("no_delivery_is_made_to_address"); ?></p>
+        <p class="msg-no-delivery text-danger"><?= esc(trans("no_delivery_is_made_to_address")); ?></p>
     <?php endif;
 else: ?>
     <div class="row">
         <div class="col-12 m-t-60">
-            <p class="text-shipping-address"><?= trans("shipping_method"); ?></p>
+            <p class="text-shipping-address"><?= esc(trans("shipping_method")); ?></p>
         </div>
         <?php if (countItems($shippingMethods) > 1 && !empty($shippingMethods[0]->methods)): ?>
             <div class="col-12">
-                <p><?= trans("products_sent_different_stores"); ?></p>
+                <p><?= esc(trans("products_sent_different_stores")); ?></p>
             </div>
         <?php endif; ?>
     </div>
@@ -39,7 +39,7 @@ else: ?>
                         <strong><?= esc($shippingMethod->shop_name); ?></strong>
                     </p>
                     <?php if (empty($shippingMethod->methods)): ?>
-                        <p class="text-danger font-700"><?= trans("seller_does_not_ship_to_address"); ?></p>
+                        <p class="text-danger font-700"><?= esc(trans("seller_does_not_ship_to_address")); ?></p>
                     <?php else: ?>
                         <div class="cart-options-list">
                             <?php $i = 0;
@@ -79,7 +79,7 @@ else: ?>
     <?php if ($showButton == true): ?>
         <div class="row">
             <div class="col-12 m-t-30 text-right">
-                <button type="submit" name="btn_submit" value="update" class="btn btn-lg btn-custom btn-cart-shipping"><?= trans("continue_to_payment_method") ?>&nbsp;&nbsp;<i class="icon-arrow-right m-0"></i></button>
+                <button type="submit" name="btn_submit" value="update" class="btn btn-lg btn-custom btn-cart-shipping"><?= esc(trans("continue_to_payment_method")) ?>&nbsp;&nbsp;<i class="icon-arrow-right m-0"></i></button>
             </div>
         </div>
     <?php endif;
@@ -93,18 +93,18 @@ endif; ?>
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="8" x2="12" y2="12"></line>
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
-            </svg><?= trans("msg_cart_shipping"); ?>
+            </svg><?= esc(trans("msg_cart_shipping")); ?>
         </div>
     </div>
 
     <div class="form-group m-t-60 text-right">
-        <button type="button" id="btnShowCartShippingError" class="btn btn-lg btn-custom btn-cart-shipping"><?= trans("continue_to_payment_method") ?>&nbsp;&nbsp;<i class="icon-arrow-right m-0"></i></button>
+        <button type="button" id="btnShowCartShippingError" class="btn btn-lg btn-custom btn-cart-shipping"><?= esc(trans("continue_to_payment_method")) ?>&nbsp;&nbsp;<i class="icon-arrow-right m-0"></i></button>
     </div>
 <?php endif; ?>
 
 
 <div class="row">
     <div class="col-12 m-t-30">
-        <a href="<?= generateUrl('cart'); ?>" class="link-underlined link-return-cart"><&nbsp;<?= trans("return_to_cart"); ?></a>
+        <a href="<?= generateUrl('cart'); ?>" class="link-underlined link-return-cart"><&nbsp;<?= esc(trans("return_to_cart")); ?></a>
     </div>
 </div>

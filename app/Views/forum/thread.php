@@ -8,9 +8,9 @@ if ($hideReplies == 1) {
 <div class="comment-box nested-comment level-<?= $level ?>">
     <div class="user-avatar">
         <?php if (!empty($reply['is_anonymous'])): ?>
-        <img src="<?= base_url('uploads/default.png') ?>">
+        <img src="<?= esc(base_url('uploads/default.png'), 'attr') ?>">
         <?php else: ?>
-        <img src="<?= getUserAvatar($reply['avatar'] ?? null) ?>">
+        <img src="<?= esc(getUserAvatar($reply['avatar'] ?? null), 'attr') ?>">
         <?php endif; ?>
     </div>
 
@@ -18,7 +18,7 @@ if ($hideReplies == 1) {
         <?php if (!empty($reply['is_anonymous'])): ?>
         <span class="username">Anonymous User</span>
         <?php else: ?>
-        <a href="<?= base_url('profile/' . $reply['user_slug']) ?>" class="username">
+        <a href="<?= esc(base_url('profile/' . rawurlencode($reply['user_slug'] ?? '')), 'attr') ?>" class="username">
             <?= esc($reply['username']) ?>
         </a>
         <?php endif; ?>
@@ -71,7 +71,7 @@ if ($hideReplies == 1) {
         <ol class="breadcrumb bg-white p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="<?= base_url('forum') ?>">Forum Home</a></li>
             <li class="breadcrumb-item"><a
-                    href="<?= base_url('forum/category/' . $thread->category_slug) ?>"><?= esc($thread->category_name) ?></a>
+                    href="<?= esc(base_url('forum/category/' . rawurlencode($thread->category_slug ?? '')), 'attr') ?>"><?= esc($thread->category_name) ?></a>
             </li>
             <li class="breadcrumb-item active"><?= esc($thread->title) ?></li>
         </ol>
@@ -86,7 +86,7 @@ if ($hideReplies == 1) {
                 <ul class="list-group list-group-flush">
                     <?php foreach($categories as $cat): ?>
                     <li class="list-group-item <?= $cat['id'] == $thread->category_id ? 'active' : '' ?>">
-                        <a href="<?= base_url('forum/category/' . $cat['slug']) ?>"
+                        <a href="<?= esc(base_url('forum/category/' . rawurlencode($cat['slug'] ?? '')), 'attr') ?>"
                             class="<?= $cat['id'] == $thread->category_id ? 'text-white' : 'text-dark' ?>">
                             <?= esc($cat['name']) ?>
                             <span class="badge badge-secondary float-right"><?= $cat['thread_count'] ?></span>
@@ -106,12 +106,12 @@ if ($hideReplies == 1) {
             <div class="card mb-3 shadow-sm">
                 <div class="card-body">
                        <?php if (!empty($thread->thumbnail)): ?>
-                            <img src="<?= base_url($thread->thumbnail); ?>"
+                            <img src="<?= esc(base_url($thread->thumbnail), 'attr'); ?>"
                                 style="width:90px;height:90px;object-fit:cover;border-radius:10px;margin-bottom:8px;">
                         <?php else: ?>
-                            <img src="<?= base_url('uploads/default-thread.png'); ?>"
+                            <img src="<?= esc(base_url('uploads/default-thread.png'), 'attr'); ?>"
                                 style="width:90px;height:90px;object-fit:cover;border-radius:10px;margin-bottom:8px;">
-                        <?php endif; ?>   
+                        <?php endif; ?>
                     <h3><?= esc($thread->title) ?></h3>
                     <?php if (!empty($tags)): ?>
                         <div class="thread-tags mt-2 mb-3">
@@ -128,23 +128,12 @@ if ($hideReplies == 1) {
                     ?>
                     <div class="thread-share mb-3">
                         <ul class="share-list">
-                            <li><button
-                                    onclick='window.open("https://www.facebook.com/sharer/sharer.php?u=<?= $threadUrl ?>")'><i
-                                        class="icon-facebook"></i></button></li>
-                            <li><button
-                                    onclick='window.open("https://twitter.com/share?url=<?= $threadUrl ?>&text=<?= $ThreadTitle ?>")'><i
-                                        class="icon-twitter"></i></button></li>
-                            <li><a href="https://api.whatsapp.com/send?text=<?= $ThreadTitle ?> - <?= $threadUrl ?>"
-                                    target="_blank"><i class="icon-whatsapp"></i></a></li>
-                            <li><button
-                                    onclick='window.open("http://pinterest.com/pin/create/button/?url=<?= $threadUrl ?>")'><i
-                                        class="icon-pinterest"></i></button></li>
-                            <li><button
-                                    onclick='window.open("http://www.linkedin.com/shareArticle?mini=true&url=<?= $threadUrl ?>")'><i
-                                        class="icon-linkedin"></i></button></li>
-                            <li><button
-                                    onclick='window.open("https://t.me/share/url?url=<?= $threadUrl ?>&text=<?= $ThreadTitle ?>")'><i
-                                        class="icon-telegram"></i></button></li>
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=<?= esc($threadUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer"><i class="icon-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/share?url=<?= esc($threadUrl, 'attr'); ?>&text=<?= esc($ThreadTitle, 'attr'); ?>" target="_blank" rel="noopener noreferrer"><i class="icon-twitter"></i></a></li>
+                            <li><a href="https://api.whatsapp.com/send?text=<?= esc($ThreadTitle, 'attr'); ?> - <?= esc($threadUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer"><i class="icon-whatsapp"></i></a></li>
+                            <li><a href="http://pinterest.com/pin/create/button/?url=<?= esc($threadUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer"><i class="icon-pinterest"></i></a></li>
+                            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?= esc($threadUrl, 'attr'); ?>" target="_blank" rel="noopener noreferrer"><i class="icon-linkedin"></i></a></li>
+                            <li><a href="https://t.me/share/url?url=<?= esc($threadUrl, 'attr'); ?>&text=<?= esc($ThreadTitle, 'attr'); ?>" target="_blank" rel="noopener noreferrer"><i class="icon-telegram"></i></a></li>
                         </ul>
                     </div>
                     <div class="flex">
@@ -164,13 +153,13 @@ if ($hideReplies == 1) {
                             <?php foreach ($attachments as $file): ?>
 
                                 <?php if (strpos($file['file_type'], 'image') !== false): ?>
-                                    <img src="<?= base_url($file['file_path']) ?>" 
-                                        class="img-thumbnail mb-2" 
+                                    <img src="<?= esc(base_url($file['file_path']), 'attr') ?>"
+                                        class="img-thumbnail mb-2"
                                         style="max-width:200px;">
                                 <?php else: ?>
                                     <div class="mb-2">
-                                        <a href="<?= base_url($file['file_path']) ?>" 
-                                        target="_blank" 
+                                        <a href="<?= esc(base_url($file['file_path']), 'attr') ?>"
+                                        target="_blank" rel="noopener noreferrer"
                                         class="btn btn-sm btn-outline-primary">
                                             📄 <?= esc($file['file_name']) ?>
                                         </a>
@@ -220,9 +209,9 @@ if ($hideReplies == 1) {
                 <div class="comment-content-wrapper">
                     <div class="user-avatar">
                         <?php if (!empty($reply['is_anonymous'])): ?>
-                            <img src="<?= base_url('uploads/default.png'); ?>">
+                            <img src="<?= esc(base_url('uploads/default.png'), 'attr'); ?>">
                         <?php else: ?>
-                            <img src="<?= getUserAvatar($reply['avatar'] ?? null); ?>">
+                            <img src="<?= esc(getUserAvatar($reply['avatar'] ?? null), 'attr'); ?>">
                         <?php endif; ?>
                     </div>
                     <div class="comment-body">
@@ -230,7 +219,7 @@ if ($hideReplies == 1) {
                             <?php if (!empty($post['is_anonymous'])): ?>
                                 <span class="username">Anonymous User</span>
                             <?php else: ?>
-                                <a href="<?= base_url('profile/' . $post['user_slug']) ?>" class="username">
+                                <a href="<?= esc(base_url('profile/' . rawurlencode($post['user_slug'] ?? '')), 'attr') ?>" class="username">
                                     <?= esc($post['username']) ?>
                                 </a>
                             <?php endif; ?>
@@ -245,13 +234,13 @@ if ($hideReplies == 1) {
                                     $ext = strtolower(pathinfo($file['file_name'], PATHINFO_EXTENSION));
                                 ?>
                                 <?php if (strpos($file['mime_type'], 'image') !== false): ?>
-                                    <img src="<?= base_url($file['file_path']) ?>" 
-                                        class="img-thumbnail mb-2" 
+                                    <img src="<?= esc(base_url($file['file_path']), 'attr') ?>"
+                                        class="img-thumbnail mb-2"
                                         style="max-width:60px; height:auto; border-radius:6px;">
                                 <?php elseif ($file['mime_type'] === 'application/pdf' && $ext === 'pdf'): ?>
                                     <div class="mb-2">
-                                        <a href="<?= base_url($file['file_path']) ?>" 
-                                        target="_blank" 
+                                        <a href="<?= esc(base_url($file['file_path']), 'attr') ?>"
+                                        target="_blank" rel="noopener noreferrer"
                                         class="btn btn-sm btn-outline-primary">
                                             📎 <?= esc($file['file_name']) ?>
                                         </a>
@@ -491,24 +480,25 @@ if ($hideReplies == 1) {
                 alert(res.message);
                 return;
             }
-            let html = '';
+            const modalBody = $('#reactionsModal .modal-body').empty();
             if (res.data.length === 0) {
-                html = '<p>No users reacted yet.</p>';
+                modalBody.append($('<p>').text('No users reacted yet.'));
             } else {
+                const defaultAvatar = "<?= esc(base_url('uploads/default.png'), 'js') ?>";
                 res.data.forEach(function(user) {
-                    html += `
-                        <div class="d-flex align-items-center mb-2">
-                            <img src="${user.avatar ? user.avatar : '<?= base_url('uploads/default.png') ?>'}"
-                                style="width:36px;height:36px;border-radius:50%;margin-right:10px;">
-                            <div>
-                                <strong>${user.username}</strong><br>
-                                <small>${type.toUpperCase()}</small>
-                            </div>
-                        </div>
-                    `;
+                    const row = $('<div>').addClass('d-flex align-items-center mb-2');
+                    const img = $('<img>').attr({
+                        src: (typeof user.avatar === 'string' && user.avatar) ? user.avatar : defaultAvatar,
+                        style: 'width:36px;height:36px;border-radius:50%;margin-right:10px;'
+                    });
+                    const info = $('<div>');
+                    $('<strong>').text(user.username == null ? '' : String(user.username)).appendTo(info);
+                    info.append('<br>');
+                    $('<small>').text(String(type).toUpperCase()).appendTo(info);
+                    row.append(img).append(info);
+                    modalBody.append(row);
                 });
             }
-            $('#reactionsModal .modal-body').html(html);
             $('#reactionsModal').modal('show');
         }, 'json');
     });

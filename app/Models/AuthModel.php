@@ -553,12 +553,32 @@ class AuthModel extends BaseModel
     }
 
     //filter vendor
-    public function filterVendors()
+   public function filterVendors()
     {
         $q = removeSpecialCharacters(inputGet('q'));
         $isAffiliate = clrNum(inputGet('affiliate')) == 1 ? 1 : 0;
 
-        $this->builder->select('users.*, (SELECT COUNT(id) FROM products WHERE users.id = products.user_id AND products.is_active = 1) AS num_products')->where('banned', 0);
+         //match the same product-visibility filters as the product list (buildQuery + setBaseQuery(true))
+        $productFilters = ' AND users.vacation_mode = 0';
+        if ($this->generalSettings->membership_plans_system == 1) {
+            $productFilters .= ' AND users.is_membership_plan_expired = 0';
+        }
+        $productFilters .= ' AND products.is_active = 1';
+        if ($this->generalSettings->show_sold_products != 1) {
+            $productFilters .= ' AND products.is_sold = 0';
+        }
+        $defaultLocation = getContextValue('defaultLocation');
+        if (!empty($defaultLocation->country_id)) {
+            $productFilters .= ' AND products.country_id = ' . clrNum($defaultLocation->country_id);
+        }
+        if (!empty($defaultLocation->state_id)) {
+            $productFilters .= ' AND products.state_id = ' . clrNum($defaultLocation->state_id);
+        }
+        if (!empty($defaultLocation->city_id)) {
+            $productFilters .= ' AND products.city_id = ' . clrNum($defaultLocation->city_id);
+        }
+
+        $this->builder->select('users.*, (SELECT COUNT(id) FROM products WHERE users.id = products.user_id' . $productFilters . ') AS num_products')->where('banned', 0);
         if ($this->generalSettings->vendor_verification_system == 1) {
             $this->builder->where('EXISTS (SELECT 1 FROM products WHERE users.id = products.user_id AND products.is_active = 1)');
         }
@@ -570,7 +590,6 @@ class AuthModel extends BaseModel
         }
 
         //filter by location
-        $defaultLocation = getContextValue('defaultLocation');
         if (!empty($defaultLocation->country_id)) {
             $this->builder->where('users.country_id', clrNum($defaultLocation->country_id));
         }

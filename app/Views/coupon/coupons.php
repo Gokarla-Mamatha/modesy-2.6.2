@@ -4,7 +4,7 @@
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb bg-transparent p-0 m-0 breadcrumb-mobile-scroll">
-                <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= trans("home"); ?></a></li>
+                <li class="breadcrumb-item"><a href="<?= langBaseUrl(); ?>"><?= esc(trans("home")); ?></a></li>
                 <?php if (!empty($parentCategoriesTree)): ?>
                     <?php foreach ($parentCategoriesTree as $item): ?>
                         <li class="breadcrumb-item">
@@ -12,7 +12,7 @@
                         </li>
                     <?php endforeach; ?>
                 <?php endif; ?>
-                <li class="breadcrumb-item active" aria-current="page"><?= trans("coupons"); ?></li>
+                <li class="breadcrumb-item active" aria-current="page"><?= esc(trans("coupons")); ?></li>
             </ol>
         </nav>
 
@@ -22,12 +22,12 @@
             <aside class="col-lg-3">
                 <div class="sticky-top" style="top: 100px;">
                     <div class="bg-white rounded-3 shadow-sm p-4 border">
-                        <h2 class="h5 fw-bold mb-4 text-dark"><?= trans("categories"); ?></h2>
+                        <h2 class="h5 fw-bold mb-4 text-dark"><?= esc(trans("categories")); ?></h2>
                         <ul class="list-unstyled category-list-filter mb-0">
                             <li class="mb-2">
                                 <a href="<?= langBaseUrl('coupons'); ?>" 
                                    class="d-block py-2 px-3 rounded-2 text-decoration-none fw-medium <?= empty($category) ? 'bg-primary text-white' : 'text-dark hover-bg-light'; ?>">
-                                    <?= trans("all_categories"); ?>
+                                    <?= esc(trans("all_categories")); ?>
                                     <?php if (empty($category)): ?><i class="bi bi-check2 ms-2"></i><?php endif; ?>
                                 </a>
                             </li>
@@ -69,7 +69,7 @@
                     <?php if (!empty($pager) && $numRows > ($productSettings->pagination_per_page ?? 24)): ?>
                         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 pt-4 border-top">
                             <p class="text-muted mb-3 mb-md-0">
-                                <strong><?= $numRows; ?></strong> <?= trans("number_of_entries"); ?>
+                                <strong><?= $numRows; ?></strong> <?= esc(trans("number_of_entries")); ?>
                             </p>
                             <nav aria-label="Page navigation">
                                 <?= $pager->links('default', 'custom_pagination'); ?>
@@ -80,9 +80,9 @@
                 <?php else: ?>
                     <!-- Clean Empty State (exactly like your screenshot) -->
                     <div class="text-center py-5 my-5">
-                        <p class="text-muted fs-5 mb-4"><?= trans("no_products_found"); ?></p>
+                        <p class="text-muted fs-5 mb-4"><?= esc(trans("no_products_found")); ?></p>
                         <a href="<?= langBaseUrl('coupons'); ?>" class="btn btn-outline-primary px-4">
-                            <?= trans("view_all_coupons"); ?>
+                            <?= esc(trans("view_all_coupons")); ?>
                         </a>
                     </div>
                 <?php endif; ?>

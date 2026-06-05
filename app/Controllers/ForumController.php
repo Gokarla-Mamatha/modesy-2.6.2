@@ -43,7 +43,7 @@ class ForumController extends BaseController
         echo view('partials/_footer');
     }
 
-   public function category($slug)
+    public function category($slug)
     {
         $category = $this->forumCategoryModel->getCategoryBySlug($slug);
 
@@ -64,7 +64,7 @@ class ForumController extends BaseController
                 ->groupStart()
                     ->where('forum_threads.invited_user_ids IS NULL')
                     ->orWhere('forum_threads.invited_user_ids', '')
-                    ->orWhere("JSON_CONTAINS(forum_threads.invited_user_ids, '$userId')")
+                    ->orWhere("JSON_CONTAINS(forum_threads.invited_user_ids, '\"$userId\"')")
                 ->groupEnd()
                 ->where('forum_threads.category_id', $category['id'])
                 ->where('forum_threads.status', 'approved')
@@ -160,12 +160,10 @@ class ForumController extends BaseController
         $file = $this->request->getFile('thumbnail');
 
         if ($file && $file->isValid() && !$file->hasMoved()) {
-
-            $allowed = ['jpg', 'jpeg', 'png', 'webp'];
-            $ext = strtolower($file->getExtension());
-
-            if (in_array($ext, $allowed)) {
-                $newName = $file->getRandomName();
+            helper('app');
+            $check = assertSafeImageUpload($file, ['image/jpeg', 'image/png', 'image/webp']);
+            if ($check['ok']) {
+                $newName = bin2hex(random_bytes(16)) . '.' . $check['extension'];
                 $file->move(FCPATH . 'uploads/thread/', $newName);
                 $this->threadModel->update($threadId, [
                     'thumbnail' => 'uploads/thread/' . $newName
@@ -235,15 +233,42 @@ class ForumController extends BaseController
    $file = $this->request->getFile('attachment');
 
     if ($file && $file->isValid() && !$file->hasMoved()) {
-        $allowedTypes = ['jpg', 'jpeg', 'png', 'webp', 'pdf'];
-        if (in_array(strtolower($file->getExtension()), $allowedTypes)) {
-            $newName = $file->getRandomName();
+        helper('app');
+
+        // Validate by REAL content type, not the client extension.
+        $tmp = $file->getTempName();
+        $finfo = function_exists('finfo_open') ? finfo_open(FILEINFO_MIME_TYPE) : false;
+        $realMime = $finfo ? finfo_file($finfo, $tmp) : mime_content_type($tmp);
+        if ($finfo) { finfo_close($finfo); }
+        $realMime = is_string($realMime) ? strtolower($realMime) : '';
+
+        $imageMimes = ['image/jpeg', 'image/png', 'image/webp'];
+        $isImage = in_array($realMime, $imageMimes, true);
+        $isPdf   = $realMime === 'application/pdf';
+
+        $extByMime = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'application/pdf' => 'pdf'];
+
+        $accepted = false;
+        if ($isImage) {
+            $check = assertSafeImageUpload($file, $imageMimes);
+            $accepted = $check['ok'];
+        } elseif ($isPdf && $file->getSize() <= 10 * 1024 * 1024) {
+            // PDF magic check: file must start with "%PDF-"
+            $fh = @fopen($tmp, 'rb');
+            if ($fh) {
+                $accepted = (fread($fh, 5) === '%PDF-');
+                fclose($fh);
+            }
+        }
+
+        if ($accepted) {
+            $newName = bin2hex(random_bytes(16)) . '.' . ($extByMime[$realMime] ?? 'bin');
             $file->move(FCPATH . 'uploads/forum/', $newName);
             $this->attachmentModel->insert([
                 'post_id'    => $insertId,
                 'file_name'  => $file->getClientName(),
                 'file_path'  => 'uploads/forum/' . $newName,
-                'mime_type'  => $file->getClientMimeType(),
+                'mime_type'  => $realMime,
                 'file_size'  => $file->getSize(),
                 'created_at' => date('Y-m-d H:i:s')
             ]);
@@ -380,7 +405,6 @@ public function showReactions($postId)
 public function forumSearch()
 {
     $q = trim($this->request->getGet('q'));
-    $q = ltrim($q, '#'); 
 
     if ($q === '') {
         return $this->response->setJSON([
@@ -391,38 +415,95 @@ public function forumSearch()
 
     $db = \Config\Database::connect();
 
-    $categories = $db->table('forum_categories')
-        ->select('id, name, slug, thumbnail')
-        ->like('name', $q)
-        ->get()
-        ->getResultArray();
-    $userId = authCheck() ? user()->id : 0;
-    $threads = $db->table('forum_threads ft')
+    $keywords = $this->buildSearchKeywords($q);
+
+    $threadsBuilder = $db->table('forum_threads ft')
         ->select('ft.id, ft.slug, ft.title, u.username, fc.name AS category_name')
         ->join('users u', 'u.id = ft.user_id', 'left')
         ->join('forum_categories fc', 'fc.id = ft.category_id', 'left')
-        ->join('forum_thread_tags ftt', 'ftt.thread_id = ft.id', 'left')
-        ->join('forum_tags t', 't.id = ftt.tag_id', 'left')
-        ->groupStart()
-            ->like('ft.title', $q)
-            ->orLike('ft.content', $q)
-            ->orLike('t.name', $q)
-        ->groupEnd()
-        ->groupStart()
-            ->where('ft.invited_user_ids IS NULL')
-            ->orWhere('ft.invited_user_ids', '')
-            ->orWhere("JSON_CONTAINS(ft.invited_user_ids, $userId)")
+        ->groupStart();
+
+    foreach ($keywords as $i => $word) {
+        if ($i == 0) {
+            $threadsBuilder->like('ft.title', $word);
+        } else {
+            $threadsBuilder->orLike('ft.title', $word);
+        }
+
+        $threadsBuilder
+            ->orLike('ft.content', $word)
+            ->orLike('fc.name', $word);
+    }
+
+    $threads = $threadsBuilder
         ->groupEnd()
         ->groupBy('ft.id')
         ->orderBy('ft.created_at', 'DESC')
         ->limit(20)
         ->get()
-    ->getResultArray();
+        ->getResultArray();
+
+    $categoriesBuilder = $db->table('forum_categories fc')
+        ->select('fc.id, fc.name, fc.slug, fc.thumbnail')
+        ->join('forum_threads ft', 'ft.category_id = fc.id', 'left')
+        ->groupStart();
+
+    foreach ($keywords as $i => $word) {
+        if ($i == 0) {
+            $categoriesBuilder->like('fc.name', $word);
+        } else {
+            $categoriesBuilder->orLike('fc.name', $word);
+        }
+
+        $categoriesBuilder
+            ->orLike('ft.title', $word)
+            ->orLike('ft.content', $word);
+    }
+
+    $categories = $categoriesBuilder
+        ->groupEnd()
+        ->groupBy('fc.id')
+        ->limit(20)
+        ->get()
+        ->getResultArray();
 
     return $this->response->setJSON([
         'categories' => $categories,
         'threads'    => $threads
     ]);
+}
+
+private function buildSearchKeywords($q)
+{
+    $q = strtolower(trim($q));
+    $q = preg_replace('/[^a-z0-9\s]/', ' ', $q);
+    $q = preg_replace('/\s+/', ' ', $q);
+
+    $keywords = [];
+
+    foreach (explode(' ', $q) as $word) {
+        $word = trim($word);
+
+        if (strlen($word) < 2) {
+            continue;
+        }
+
+        $keywords[] = $word;
+
+        // singular/plural
+        if (substr($word, -1) === 's') {
+            $keywords[] = substr($word, 0, -1);
+        } else {
+            $keywords[] = $word . 's';
+        }
+
+        // prefix/root matching
+        if (strlen($word) > 3) {
+            $keywords[] = substr($word, 0, 4);
+        }
+    }
+
+    return array_values(array_unique($keywords));
 }
 
 public function deletePost()

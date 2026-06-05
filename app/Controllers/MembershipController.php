@@ -94,6 +94,15 @@ class MembershipController extends BaseAdminController
         $data['activities'] = $this->membershipModel->getUserLoginActivitiesPaginated($this->perPage, $data['pager']->offset, $data['user']->id);
         $data['panelSettings'] = getPanelSettings();
 
+        // vendor business details (from start-selling)
+        $businessModel = new \App\Models\BusinessModel();
+        $bd = $businessModel->getBusinessDetails($data['user']->id);
+        $data['businessDetails'] = $bd;
+        $locationModel = new \App\Models\LocationModel();
+        $data['bdCountry'] = !empty($bd['country_id']) ? $locationModel->getCountry($bd['country_id']) : null;
+        $data['bdState'] = !empty($bd['state_id']) ? $locationModel->getState($bd['state_id']) : null;
+        $data['bdCity'] = !empty($bd['city_id']) ? $locationModel->getCity($bd['city_id']) : null;
+
         echo view('admin/includes/_header', $data);
         echo view('admin/membership/user_details', $data);
         echo view('admin/includes/_footer');

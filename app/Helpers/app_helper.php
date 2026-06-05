@@ -528,15 +528,6 @@ if (!function_exists('getMyReviewsCount')) {
 if (!function_exists('getUserProfileStats')) {
     function getUserProfileStats($user)
     {
-        $cacheKey = 'profile_stats_' . $user->id;
-        $cache = \Config\Services::cache();
-
-        if (SHORT_CACHE_STATUS == 1) {
-            if ($cachedData = $cache->get($cacheKey)) {
-                return $cachedData;
-            }
-        }
-
         $profileModel = new \App\Models\ProfileModel();
         $commonModel = new \App\Models\CommonModel();
 
@@ -552,9 +543,6 @@ if (!function_exists('getUserProfileStats')) {
         if (isVendor($user)) {
             $productModel = new \App\Models\ProductModel();
             $stats['productCount'] = $productModel->getSellerTotalProductsCount($user->id);
-            $userRating = calculateUserRating($user->id);
-            $stats['userRating'] = !empty($userRating) && !empty($userRating->rating) ? $userRating->rating : 0;
-            $stats['userRatingCount'] = !empty($userRating) && !empty($userRating->count) ? $userRating->count : 0;
         }
 
         foreach ($stats as $key => &$value) {
@@ -562,13 +550,7 @@ if (!function_exists('getUserProfileStats')) {
         }
         unset($value);
 
-        $statsObject = (object)$stats;
-
-        if (SHORT_CACHE_STATUS == 1) {
-            $cache->save($cacheKey, $statsObject, SHORT_CACHE_REFRESH_TIME);
-        }
-
-        return $statsObject;
+        return (object)$stats;
     }
 }
 
@@ -1093,4 +1075,104 @@ function getUserAvatar($img = null)
         return base_url($img);
     }
     return base_url('uploads/avatars/default.png');
+}
+
+if (!function_exists('safeUrl')) {
+    function safeUrl($url, $fallback = '#')
+    {
+        if (empty($url) || !is_string($url)) {
+            return $fallback;
+        }
+        $url = trim($url);
+        if ($url === '' || preg_match('/[\x00-\x1F\x7F]/', $url)) {
+            return $fallback;
+        }
+        $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
+        if ($scheme === '') {
+            return $fallback;
+        }
+        if (!in_array($scheme, ['http', 'https', 'mailto', 'tel'], true)) {
+            return $fallback;
+        }
+        if (in_array($scheme, ['http', 'https'], true)
+            && !filter_var($url, FILTER_VALIDATE_URL)) {
+            return $fallback;
+        }
+        return $url;
+    }
+}
+
+if (!function_exists('assertSafeImageUpload')) {
+    /**
+     * Server-side validation for an uploaded image.
+     * Verifies real MIME via finfo/getimagesize (NOT the client-provided extension),
+     * size limit, and that the file is actually a renderable bitmap (rejects SVG/HTML/polyglots).
+     *
+     * @param \CodeIgniter\HTTP\Files\UploadedFile|null $file
+     * @param array<int,string> $allowedMimes  Subset of: image/jpeg, image/png, image/webp, image/gif
+     * @param int               $maxBytes      Default 5 MB
+     * @return array{ok:bool, error?:string, extension?:string}
+     */
+    function assertSafeImageUpload($file, array $allowedMimes = ['image/jpeg', 'image/png', 'image/webp'], int $maxBytes = 5_242_880): array
+    {
+        if (!$file || !$file->isValid() || $file->hasMoved()) {
+            return ['ok' => false, 'error' => 'No valid upload'];
+        }
+        if ($file->getSize() > $maxBytes) {
+            return ['ok' => false, 'error' => 'File too large'];
+        }
+
+        $tmp = $file->getTempName();
+
+        // Real MIME from file contents (finfo), not the spoofable client header.
+        $finfo = function_exists('finfo_open') ? finfo_open(FILEINFO_MIME_TYPE) : false;
+        $realMime = $finfo ? finfo_file($finfo, $tmp) : mime_content_type($tmp);
+        if ($finfo) {
+            finfo_close($finfo);
+        }
+        if (!is_string($realMime) || !in_array(strtolower($realMime), array_map('strtolower', $allowedMimes), true)) {
+            return ['ok' => false, 'error' => 'Invalid file type'];
+        }
+
+        // Bitmap probe — defeats SVG-with-XML and HTML-renamed-as-JPG.
+        $info = @getimagesize($tmp);
+        if ($info === false || empty($info[0]) || empty($info[1])) {
+            return ['ok' => false, 'error' => 'Not a valid image'];
+        }
+        $imageMime = $info['mime'] ?? '';
+        if (!in_array(strtolower($imageMime), array_map('strtolower', $allowedMimes), true)) {
+            return ['ok' => false, 'error' => 'Image content does not match its declared type'];
+        }
+
+        $extByMime = [
+            'image/jpeg' => 'jpg',
+            'image/png'  => 'png',
+            'image/webp' => 'webp',
+            'image/gif'  => 'gif',
+        ];
+        return ['ok' => true, 'extension' => $extByMime[strtolower($imageMime)] ?? 'bin'];
+    }
+}
+
+if (!function_exists('purifyHtml')) {
+    function purifyHtml($html)
+    {
+        if ($html === null || $html === '') {
+            return '';
+        }
+        static $purifier = null;
+        if ($purifier === null) {
+            $config = HTMLPurifier_Config::createDefault();
+            $config->set('Cache.SerializerPath', WRITEPATH . 'cache');
+            $config->set('HTML.SafeIframe', true);
+            $config->set('URI.SafeIframeRegexp', '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%');
+            $config->set('Attr.AllowedFrameTargets', ['_blank']);
+            $config->set('HTML.TargetBlank', true);
+            $config->set('URI.AllowedSchemes', [
+                'http' => true, 'https' => true, 'mailto' => true, 'tel' => true, 'data' => false,
+            ]);
+            $purifier = new HTMLPurifier($config);
+        }
+        return $purifier->purify((string) $html);
+    }
 }
